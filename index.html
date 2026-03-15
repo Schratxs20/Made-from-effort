@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Made From Effort — Performance Edge Training + Gym Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  :root {
+    --white: #fafaf8;
+    --off: #f4f2ee;
+    --rule: #e2dfd8;
+    --ink: #181816;
+    --ink-mid: #3a3a36;
+    --ink-light: #7a7870;
+    --ink-faint: #b0ada6;
+    --blue: #3a6ea8;
+    --blue-light: #5a8ec8;
+    --blue-faint: #eef2f7;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--white); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+/* NAV */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+height: 60px; background: rgba(250,250,248,0.96);
+backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule);
+display: flex; align-items: center; padding: 0 48px; justify-content: space-between;
+}
+.nav-brand { text-decoration: none; display: flex; flex-direction: column; gap: 1px; }
+.nav-brand-name { font-family: 'Cormorant', serif; font-size: 16px; font-style: italic; font-weight: 400; color: var(--ink); letter-spacing: 0.3px; }
+.nav-brand-sub { font-size: 8.5px; letter-spacing: 2.2px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; }
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-light); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta { color: var(--white) !important; background: var(--ink); padding: 9px 22px; transition: background 0.25s !important; }
+.nav-cta:hover { background: var(--blue) !important; }
+
+/* HERO */
+#hero { margin-top: 60px; min-height: calc(100vh - 60px); display: grid; grid-template-columns: 1fr 1fr; background: var(--white); overflow: hidden; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; position: relative; }
+.hero-left::after { content: ''; position: absolute; right: 0; top: 10%; bottom: 10%; width: 1px; background: var(--rule); }
+.hero-eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--blue); font-weight: 400; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--blue); }
+h1 { font-family: 'Cormorant', serif; font-size: clamp(46px, 5.5vw, 80px); font-weight: 300; line-height: 1.05; color: var(--ink); margin-bottom: 28px; letter-spacing: -0.5px; }
+h1 em { font-style: italic; color: var(--ink-mid); }
+.hero-desc { font-size: 15px; line-height: 1.8; color: var(--ink-light); max-width: 420px; margin-bottom: 44px; font-weight: 300; }
+.hero-ctas { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn { display: inline-block; text-decoration: none; font-family: 'Outfit', sans-serif; font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 400; transition: all 0.25s; }
+.btn-solid { background: var(--ink); color: var(--white); padding: 13px 30px; }
+.btn-solid:hover { background: var(--blue); }
+.btn-outline { border: 1px solid var(--rule); color: var(--ink-light); padding: 12px 30px; }
+.btn-outline:hover { border-color: var(--ink-light); color: var(--ink); }
+.hero-right { position: relative; background: var(--off); display: flex; align-items: center; justify-content: center; overflow: hidden; min-height: 500px; }
+#gym-canvas { width: 100%; height: 100%; display: block; cursor: grab; }
+#gym-canvas:active { cursor: grabbing; }
+.canvas-hint { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); display: flex; align-items: center; gap: 8px; pointer-events: none; transition: opacity 0.5s; animation: hintPulse 2.5s ease-in-out infinite; }
+@keyframes hintPulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+/* MARQUEE */
+.marquee-bar { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 14px 0; overflow: hidden; background: var(--white); }
+.marquee-track { display: flex; white-space: nowrap; animation: mscroll 28s linear infinite; }
+.marquee-track span { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; padding: 0 28px; }
+.marquee-track .dot { color: var(--blue); padding: 0 4px; }
+@keyframes mscroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* STATEMENT */
+#statement { padding: 100px 64px; max-width: 860px; margin: 0 auto; text-align: center; }
+.stmt-rule { width: 32px; height: 1px; background: var(--blue); margin: 0 auto 32px; }
+.stmt-text { font-family: 'Cormorant', serif; font-size: clamp(22px, 3vw, 38px); font-weight: 300; font-style: italic; line-height: 1.5; color: var(--ink-mid); margin-bottom: 24px; }
+.stmt-body { font-size: 14px; line-height: 1.9; color: var(--ink-light); max-width: 580px; margin: 0 auto; }
+
+/* FEATURED */
+#featured { display: grid; grid-template-columns: 55fr 45fr; background: var(--off); border-top: 1px solid var(--rule); }
+.feat-img { position: relative; overflow: hidden; min-height: 560px; background: #c8c4bc; }
+.feat-img-inner { position: absolute; inset: 0; background: linear-gradient(140deg, #d4cec6 0%, #b8b0a4 50%, #a0988c 100%); transition: transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+.feat-img:hover .feat-img-inner { transform: scale(1.03); }
+.feat-img-label { position: absolute; top: 20px; left: 20px; z-index: 2; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; background: var(--white); color: var(--ink); padding: 5px 11px; font-weight: 400; }
+.feat-img-inner::after { content: 'YACHT GYM — YOUR PHOTO HERE'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.25); font-weight: 400; white-space: nowrap; }
+.feat-content { padding: 72px 64px; display: flex; flex-direction: column; justify-content: center; }
+.proj-eyebrow { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); font-weight: 400; margin-bottom: 18px; }
+.proj-title { font-family: 'Cormorant', serif; font-size: clamp(28px, 3.5vw, 48px); font-weight: 300; line-height: 1.15; color: var(--ink); margin-bottom: 20px; }
+.proj-title em { font-style: italic; }
+.proj-desc { font-size: 14px; line-height: 1.85; color: var(--ink-light); margin-bottom: 36px; max-width: 380px; }
+.proj-specs { display: flex; gap: 32px; padding-top: 28px; border-top: 1px solid var(--rule); margin-bottom: 36px; }
+.spec { display: flex; flex-direction: column; gap: 4px; }
+.spec-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); }
+.spec-v { font-size: 13px; color: var(--ink-mid); font-weight: 400; }
+
+/* PORTFOLIO */
+#portfolio { padding: 100px 48px; background: var(--white); }
+.sec-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--rule); padding-bottom: 24px; margin-bottom: 36px; }
+.sec-eyebrow { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; margin-bottom: 8px; }
+.sec-title { font-family: 'Cormorant', serif; font-size: clamp(26px, 3vw, 42px); font-weight: 300; color: var(--ink); }
+.sec-title em { font-style: italic; }
+.port-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; }
+.pc { position: relative; overflow: hidden; background: var(--off); cursor: pointer; }
+.pc:nth-child(1) { grid-column: 1/8; aspect-ratio: 16/9; }
+.pc:nth-child(2) { grid-column: 8/13; aspect-ratio: 4/3; }
+.pc:nth-child(3) { grid-column: 1/5; aspect-ratio: 4/3; }
+.pc:nth-child(4) { grid-column: 5/9; aspect-ratio: 4/3; }
+.pc:nth-child(5) { grid-column: 9/13; aspect-ratio: 4/3; }
+.pc-bg { position: absolute; inset: 0; transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.pc:hover .pc-bg { transform: scale(1.04); }
+.pc:nth-child(1) .pc-bg { background: linear-gradient(135deg,#c8c4bc,#a8a09a); }
+.pc:nth-child(2) .pc-bg { background: linear-gradient(135deg,#b4bcc4,#8898a8); }
+.pc:nth-child(3) .pc-bg { background: linear-gradient(135deg,#bcc4b8,#98a894); }
+.pc:nth-child(4) .pc-bg { background: linear-gradient(135deg,#c4bcb4,#a89888); }
+.pc:nth-child(5) .pc-bg { background: linear-gradient(135deg,#b8c0c8,#8898a8); }
+.pc-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(24,24,22,0.72) 0%, transparent 55%); z-index: 1; }
+.pc-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 22px 22px 18px; z-index: 2; }
+.pc-status { display: inline-block; font-size: 9px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 400; padding: 3px 9px; margin-bottom: 7px; }
+.s-done { background: var(--white); color: var(--ink); }
+.s-prog { border: 1px solid rgba(250,250,248,0.4); color: rgba(250,250,248,0.8); }
+.s-new  { border: 1px solid rgba(250,250,248,0.2); color: rgba(250,250,248,0.45); }
+.pc-name { font-family: 'Cormorant', serif; font-size: clamp(16px, 1.8vw, 22px); font-weight: 300; color: var(--white); margin-bottom: 3px; line-height: 1.2; }
+.pc-loc { font-size: 11px; color: rgba(250,250,248,0.5); letter-spacing: 0.5px; }
+
+/* WHY DIFFERENT */
+#why { background: var(--ink); color: var(--white); padding: 100px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+#why .sec-eyebrow { color: rgba(250,250,248,0.35); }
+.why-quote { font-family: 'Cormorant', serif; font-size: clamp(24px, 3vw, 40px); font-weight: 300; font-style: italic; line-height: 1.4; color: var(--white); border-left: 2px solid var(--blue); padding-left: 24px; margin: 20px 0 24px; }
+.why-body { font-size: 14px; line-height: 1.9; color: rgba(250,250,248,0.5); padding-left: 26px; }
+.cred-stack { display: flex; flex-direction: column; }
+.cred-item { padding: 22px 0; border-bottom: 1px solid rgba(250,250,248,0.07); display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: start; }
+.cred-item:first-child { border-top: 1px solid rgba(250,250,248,0.07); }
+.cred-num { font-family: 'Cormorant', serif; font-size: 30px; font-style: italic; color: var(--blue-light); line-height: 1; }
+.cred-item h4 { font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; font-weight: 500; color: var(--white); margin-bottom: 4px; }
+.cred-item p { font-size: 12px; color: rgba(250,250,248,0.4); line-height: 1.6; }
+
+/* SERVICES */
+#services { padding: 100px 64px; background: var(--white); }
+.svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 48px; background: var(--rule); }
+.svc-block { background: var(--white); padding: 52px 48px; transition: background 0.25s; }
+.svc-block:hover { background: var(--off); }
+.svc-num { font-family: 'Cormorant', serif; font-size: 52px; font-style: italic; font-weight: 300; color: var(--rule); line-height: 1; margin-bottom: 20px; }
+.svc-block h3 { font-family: 'Cormorant', serif; font-size: 28px; font-weight: 300; color: var(--ink); margin-bottom: 4px; }
+.svc-tag { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); font-weight: 400; display: block; margin-bottom: 18px; }
+.svc-block p { font-size: 14px; line-height: 1.85; color: var(--ink-light); margin-bottom: 24px; }
+.svc-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.svc-list li { font-size: 13px; color: var(--ink-mid); display: flex; gap: 12px; align-items: baseline; }
+.svc-list li::before { content: '—'; color: var(--rule); font-size: 11px; flex-shrink: 0; }
+
+/* PROCESS */
+#process { padding: 100px 64px; background: var(--off); border-top: 1px solid var(--rule); }
+.proc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 48px; }
+.proc-item { padding-top: 24px; border-top: 1px solid var(--rule); transition: border-color 0.3s; }
+.proc-item:hover { border-top-color: var(--blue); }
+.proc-n { font-family: 'Cormorant', serif; font-size: 13px; font-style: italic; color: var(--ink-faint); margin-bottom: 12px; }
+.proc-item h4 { font-family: 'Cormorant', serif; font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 10px; }
+.proc-item p { font-size: 13px; line-height: 1.85; color: var(--ink-light); }
+.proc-cta { text-align: center; margin-top: 64px; }
+.proc-cta p { font-family: 'Cormorant', serif; font-style: italic; font-size: 16px; color: var(--ink-faint); margin-bottom: 20px; }
+
+/* ABOUT */
+#about { display: grid; grid-template-columns: 1fr 1fr; background: var(--white); border-top: 1px solid var(--rule); }
+.about-img { position: relative; overflow: hidden; min-height: 560px; background: var(--off); }
+.about-img-inner { position: absolute; inset: 0; background: linear-gradient(160deg, #d8d4cc 0%, #c0b8ae 50%, #a8a09a 100%); transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.about-img:hover .about-img-inner { transform: scale(1.03); }
+.about-img-inner::after { content: 'YOUR PHOTO HERE'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.25); font-weight: 400; }
+.about-text { padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; }
+.about-text .sec-eyebrow { margin-bottom: 14px; }
+.about-text h2 { font-family: 'Cormorant', serif; font-size: clamp(28px, 3vw, 44px); font-weight: 300; line-height: 1.15; color: var(--ink); margin-bottom: 24px; }
+.about-text h2 em { font-style: italic; }
+.about-text p { font-size: 14px; line-height: 1.9; color: var(--ink-light); margin-bottom: 14px; }
+.about-text p strong { color: var(--ink-mid); font-weight: 400; }
+.badges { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--rule); }
+.badge { font-size: 9px; letter-spacing: 1.8px; text-transform: uppercase; border: 1px solid var(--rule); color: var(--ink-light); padding: 6px 13px; font-weight: 400; transition: border-color 0.25s, color 0.25s; }
+.badge:hover { border-color: var(--blue); color: var(--blue); }
+
+/* TESTIMONIAL */
+#testimonial { padding: 100px 64px; background: var(--blue-faint); border-top: 1px solid var(--rule); text-align: center; }
+.test-mark { font-family: 'Cormorant', serif; font-size: 64px; color: var(--blue); line-height: 0.5; margin-bottom: 24px; display: block; }
+.test-q { font-family: 'Cormorant', serif; font-size: clamp(20px, 2.8vw, 34px); font-weight: 300; font-style: italic; line-height: 1.5; color: var(--ink-mid); max-width: 720px; margin: 0 auto 24px; }
+.test-attr { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; }
+
+/* CONTACT */
+#contact { padding: 100px 64px; background: var(--white); border-top: 1px solid var(--rule); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; }
+.contact-left h2 { font-family: 'Cormorant', serif; font-size: clamp(30px, 3.5vw, 52px); font-weight: 300; line-height: 1.1; margin-bottom: 20px; margin-top: 14px; }
+.contact-left h2 em { font-style: italic; }
+.contact-left p { font-size: 14px; line-height: 1.85; color: var(--ink-light); margin-bottom: 36px; max-width: 380px; }
+.contact-details { display: flex; flex-direction: column; gap: 14px; }
+.cd-row { display: flex; gap: 16px; align-items: baseline; }
+.cd-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); min-width: 72px; }
+.cd-v { font-size: 13px; color: var(--ink-mid); }
+form { display: flex; flex-direction: column; gap: 16px; }
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.f-group { display: flex; flex-direction: column; gap: 6px; }
+.f-group label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; }
+.f-group input, .f-group select, .f-group textarea { border: 1px solid var(--rule); background: var(--white); color: var(--ink); padding: 11px 14px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 300; outline: none; appearance: none; transition: border-color 0.25s; }
+.f-group input:focus, .f-group select:focus, .f-group textarea:focus { border-color: var(--blue); }
+.f-group select option { background: var(--white); }
+.f-group textarea { height: 110px; resize: none; }
+.f-submit { display: flex; justify-content: flex-end; margin-top: 4px; }
+.f-submit button { background: var(--ink); color: var(--white); border: none; padding: 13px 36px; font-family: 'Outfit', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 400; cursor: pointer; transition: background 0.25s; }
+.f-submit button:hover { background: var(--blue); }
+
+/* FOOTER */
+footer { background: var(--ink); padding: 48px 64px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+.foot-brand { font-family: 'Cormorant', serif; font-size: 18px; font-style: italic; color: var(--white); }
+.foot-brand span { font-style: normal; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; display: block; color: rgba(250,250,248,0.3); margin-top: 3px; }
+.foot-links { display: flex; gap: 28px; list-style: none; flex-wrap: wrap; }
+.foot-links a { font-size: 10px; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(250,250,248,0.35); text-decoration: none; transition: color 0.2s; font-weight: 400; }
+.foot-links a:hover { color: var(--white); }
+.foot-copy { font-size: 10px; color: rgba(250,250,248,0.2); letter-spacing: 1px; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1); }
+.reveal.in { opacity: 1; transform: none; }
+.d1{transition-delay:0.08s} .d2{transition-delay:0.16s} .d3{transition-delay:0.24s} .d4{transition-delay:0.32s}
+
+/* MOBILE */
+@media(max-width:860px){
+nav{padding:0 20px} .nav-links{display:none}
+#hero{grid-template-columns:1fr}
+.hero-left{padding:60px 24px} .hero-left::after{display:none}
+.hero-right{min-height:340px}
+#featured,#about{grid-template-columns:1fr}
+.feat-content,.about-text{padding:48px 24px}
+#why{grid-template-columns:1fr;gap:48px;padding:64px 24px}
+.proc-grid{grid-template-columns:1fr 1fr}
+.svc-grid{grid-template-columns:1fr}
+.port-grid{grid-template-columns:1fr}
+.pc:nth-child(n){grid-column:1;aspect-ratio:4/3}
+#services,#process,#testimonial,#statement{padding:64px 24px}
+#contact{padding:64px 24px}
+.contact-grid{grid-template-columns:1fr;gap:48px}
+.f-row{grid-template-columns:1fr}
+footer{padding:32px 24px;flex-direction:column;text-align:center}
+}
+</style>
+
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">
+    <span class="nav-brand-name">Made From Effort</span>
+    <span class="nav-brand-sub">Performance Edge Training + Gym Design</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Start a Project</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Performance Edge Training + Gym Design</div>
+    <h1>Spaces Built<br>for How You<br><em>Actually Train.</em></h1>
+    <p class="hero-desc">Luxury gym design by a CSCS-certified trainer with 15 years of elite experience. Every detail engineered for performance — not just aesthetics.</p>
+    <div class="hero-ctas">
+      <a href="#portfolio" class="btn btn-solid">View Our Work</a>
+      <a href="#contact" class="btn btn-outline">Start a Conversation</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <canvas id="gym-canvas"></canvas>
+    <div class="canvas-hint" id="canvas-hint">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Drag to explore
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>Private Residences</span><span class="dot">·</span><span>Commercial Studios</span><span class="dot">·</span><span>Yacht Installations</span><span class="dot">·</span><span>CSCS Certified</span><span class="dot">·</span><span>Long Island NY</span><span class="dot">·</span><span>Jupiter Island FL</span><span class="dot">·</span><span>San Francisco CA</span><span class="dot">·</span><span>Made From Effort</span><span class="dot">·</span>
+    <span>Private Residences</span><span class="dot">·</span><span>Commercial Studios</span><span class="dot">·</span><span>Yacht Installations</span><span class="dot">·</span><span>CSCS Certified</span><span class="dot">·</span><span>Long Island NY</span><span class="dot">·</span><span>Jupiter Island FL</span><span class="dot">·</span><span>San Francisco CA</span><span class="dot">·</span><span>Made From Effort</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- STATEMENT -->
+
+<section id="statement">
+  <div class="stmt-rule"></div>
+  <p class="stmt-text reveal">"Most gym designers have never trained a single client. We've spent 15 years doing nothing else."</p>
+  <p class="stmt-body reveal d1">Every space we design is built by someone who has spent thousands of hours on the training floor — understanding load paths, recovery flow, sightlines, spacing, and the psychology of performance environments. The result is a gym that doesn't just look extraordinary. It performs that way.</p>
+</section>
+
+<!-- FEATURED -->
+
+<section id="featured">
+  <div class="feat-img">
+    <div class="feat-img-inner"></div>
+    <div class="feat-img-label">Completed · Atlantic</div>
+  </div>
+  <div class="feat-content reveal">
+    <div class="proj-eyebrow">Featured Project</div>
+    <h2 class="proj-title">Private <em>Yacht Gym</em></h2>
+    <p class="proj-desc">A fully custom performance facility installed aboard a private yacht — engineered around extreme space constraints, marine structural requirements, and the client's specific training program. Equipment, flooring, mirrors, and lighting all custom-specified for the marine environment.</p>
+    <div class="proj-specs">
+      <div class="spec"><span class="spec-l">Type</span><span class="spec-v">Marine Installation</span></div>
+      <div class="spec"><span class="spec-l">Status</span><span class="spec-v">Complete</span></div>
+      <div class="spec"><span class="spec-l">Scope</span><span class="spec-v">Full Design + Build</span></div>
+    </div>
+    <a href="#contact" class="btn btn-solid">Discuss Your Project</a>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+
+<section id="portfolio">
+  <div class="sec-header reveal">
+    <div><div class="sec-eyebrow">Selected Work</div><h2 class="sec-title">Current <em>Projects</em></h2></div>
+    <a href="#contact" class="btn btn-outline">Start Yours</a>
+  </div>
+  <div class="port-grid">
+    <div class="pc reveal"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Private Yacht Gym</div><div class="pc-loc">Marine Installation · Atlantic</div></div></div>
+    <div class="pc reveal d1"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 75%</span><div class="pc-name">Jupiter Island Estate</div><div class="pc-loc">Private Residence · South Florida</div></div></div>
+    <div class="pc reveal d1"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">Jericho Private Estate</div><div class="pc-loc">Luxury Residence · Long Island, NY</div></div></div>
+    <div class="pc reveal d2"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">San Francisco Residence</div><div class="pc-loc">Private Home Gym · Bay Area, CA</div></div></div>
+    <div class="pc reveal d3"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-new">Starting Soon</span><div class="pc-name">Sands Point Estate</div><div class="pc-loc">Private Residence · Long Island, NY</div></div></div>
+  </div>
+</section>
+
+<!-- WHY DIFFERENT -->
+
+<section id="why">
+  <div class="reveal">
+    <div class="sec-eyebrow">Our Difference</div>
+    <blockquote class="why-quote">"Designed by someone who understands performance. Built for those who take it seriously."</blockquote>
+    <p class="why-body">After nearly a decade as a Master Instructor at Equinox and 15 years training elite clients, every gym we design starts with one question: how does this person actually train? Not how do gyms look on Instagram.</p>
+  </div>
+  <div class="cred-stack reveal d1">
+    <div class="cred-item"><div class="cred-num">15</div><div><h4>Years Training Experience</h4><p>High-performance athletes and discerning HNW clients who demand excellence.</p></div></div>
+    <div class="cred-item"><div class="cred-num">~10</div><div><h4>Years at Equinox</h4><p>Top trainer and Master Instructor — the benchmark for luxury fitness.</p></div></div>
+    <div class="cred-item"><div class="cred-num">CSCS</div><div><h4>Certified Strength & Conditioning Specialist</h4><p>The gold standard in performance training certification.</p></div></div>
+    <div class="cred-item"><div class="cred-num">Now</div><div><h4>Active Private Clientele</h4><p>Still training HNW individuals — staying connected to what serious clients need.</p></div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+  <div class="reveal"><div class="sec-eyebrow">What We Do</div><h2 class="sec-title">Two Ways to <em>Work Together</em></h2></div>
+  <div class="svc-grid">
+    <div class="svc-block reveal d1">
+      <div class="svc-num">01</div>
+      <h3>Commercial Studio Design</h3><span class="svc-tag">For Trainers Opening Their Own Space</span>
+      <p>You've trained at the best facilities in the world. Now build one that's yours — designed around your programming, your brand, and your clients.</p>
+      <ul class="svc-list">
+        <li>Full layout and equipment planning</li><li>Brand integration — logo, signage, color</li><li>Flooring, lighting, mirror design</li><li>Equipment procurement and coordination</li><li>ADA compliance and safety planning</li><li>Full project management</li>
+      </ul>
+    </div>
+    <div class="svc-block reveal d2">
+      <div class="svc-num">02</div>
+      <h3>Private Residence Gym Design</h3><span class="svc-tag">For the Discerning Homeowner</span>
+      <p>A private gym should perform like a world-class facility and feel like the rest of your home — from estate gym wings to marine installations.</p>
+      <ul class="svc-list">
+        <li>Custom space planning and 3D renderings</li><li>Equipment curation to match your training</li><li>Premium material selection throughout</li><li>Smart home and AV integration</li><li>Recovery suite design — sauna, cold plunge</li><li>Architect and designer collaboration</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+
+<section id="process">
+  <div class="reveal"><div class="sec-eyebrow">How It Works</div><h2 class="sec-title">A Process Built on <em>Precision</em></h2></div>
+  <div class="proc-grid">
+    <div class="proc-item reveal d1"><div class="proc-n">01</div><h4>Discovery Call</h4><p>We learn your vision, training philosophy, space, and goals. No templates — every project starts from scratch.</p></div>
+    <div class="proc-item reveal d1"><div class="proc-n">02</div><h4>Site Assessment</h4><p>We visit, measure, and evaluate structural considerations, natural light, acoustics, and flow.</p></div>
+    <div class="proc-item reveal d2"><div class="proc-n">03</div><h4>Concept & Design</h4><p>Mood boards, floor plans, and 3D renderings — everything visualized before a single item is ordered.</p></div>
+    <div class="proc-item reveal d2"><div class="proc-n">04</div><h4>Procurement</h4><p>Equipment and materials sourced through our premium vendor network. Fully coordinated.</p></div>
+    <div class="proc-item reveal d3"><div class="proc-n">05</div><h4>Installation</h4><p>Fully managed build. Every trade, timeline, and delivery handled. You won't hear from us until it's perfect.</p></div>
+    <div class="proc-item reveal d3"><div class="proc-n">06</div><h4>Reveal</h4><p>A complete walkthrough of your finished space. Every system explained. Then we hand you the keys.</p></div>
+  </div>
+  <div class="proc-cta reveal"><p>Most projects complete in 8–20 weeks depending on scope.</p><a href="#contact" class="btn btn-solid">Book a Discovery Call</a></div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <div class="about-img"><div class="about-img-inner"></div></div>
+  <div class="about-text reveal">
+    <div class="sec-eyebrow">The Person Behind the Work</div>
+    <h2>Trained at the <em>Highest Level.</em><br>Designing at It Too.</h2>
+    <p>I started training in 2010 and spent nearly a decade at <strong>Equinox</strong> — first as a top trainer, then as a <strong>Master Instructor</strong>. I've trained high-net-worth clients and competitive athletes who demand the best from their environments.</p>
+    <p>The design work came naturally. When you've trained thousands of hours across the world's best facilities, you develop a sharp eye for what works — and what doesn't. I build spaces for the way people actually train.</p>
+    <p><strong>Currently working on a small number of large-scale projects</strong> — residential estates, boutique studios, and one-of-a-kind installations — where every detail gets my full attention.</p>
+    <div class="badges">
+      <span class="badge">CSCS Certified</span><span class="badge">Equinox Master Instructor</span><span class="badge">15 Years Training</span><span class="badge">Long Island, NY</span><span class="badge">Nationwide Projects</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+
+<section id="testimonial">
+  <span class="test-mark reveal">"</span>
+  <p class="test-q reveal d1">We're mid-build and already blown away by the level of detail and intention in every decision. This is not like working with a contractor — it's like working with someone who actually cares about how you train.</p>
+  <p class="test-attr reveal d2">Private Client — Jupiter Island, FL</p>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-left reveal">
+      <div class="sec-eyebrow">Get in Touch</div>
+      <h2>Let's Build Something <em>Extraordinary.</em></h2>
+      <p>We take on a limited number of projects at a time to ensure every space receives full focus. If you're serious about your training environment, we'd like to hear about it.</p>
+      <div class="contact-details">
+        <div class="cd-row"><span class="cd-l">Based</span><span class="cd-v">Long Island, New York</span></div>
+        <div class="cd-row"><span class="cd-l">Projects</span><span class="cd-v">Nationwide — NY, FL, CA & beyond</span></div>
+        <div class="cd-row"><span class="cd-l">Response</span><span class="cd-v">Within 1 business day</span></div>
+      </div>
+    </div>
+    <form class="reveal d1" onsubmit="return false;">
+      <div class="f-row">
+        <div class="f-group"><label>First Name</label><input type="text" placeholder="First"></div>
+        <div class="f-group"><label>Last Name</label><input type="text" placeholder="Last"></div>
+      </div>
+      <div class="f-group"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+      <div class="f-group"><label>Project Type</label><select><option value="" disabled selected>Select one</option><option>Private Residence / Home Gym</option><option>Commercial Training Studio</option><option>Yacht or Marine Installation</option><option>Other</option></select></div>
+      <div class="f-row">
+        <div class="f-group"><label>Budget Range</label><select><option value="" disabled selected>Approximate budget</option><option>$50K – $150K</option><option>$150K – $300K</option><option>$300K – $500K</option><option>$500K+</option></select></div>
+        <div class="f-group"><label>Timeline</label><select><option value="" disabled selected>When to start</option><option>ASAP</option><option>1–3 Months</option><option>3–6 Months</option><option>6+ Months</option></select></div>
+      </div>
+      <div class="f-group"><label>Tell us about your vision</label><textarea placeholder="Describe your space, training goals, and what you're looking to build..."></textarea></div>
+      <div class="f-submit"><button id="submit-btn">Send Inquiry →</button></div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="foot-brand">Made From Effort<span>Performance Edge Training + Gym Design</span></div>
+  <ul class="foot-links">
+    <li><a href="#portfolio">Portfolio</a></li><li><a href="#services">Services</a></li><li><a href="#process">Process</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="foot-copy">© 2025 Made From Effort</div>
+</footer>
+
+<script>
+/* ── 3D GYM ROOM ─────────────────────────────── */
+(function() {
+  const canvas = document.getElementById('gym-canvas');
+  const wrap = canvas.parentElement;
+  const W = () => wrap.clientWidth, H = () => wrap.clientHeight;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(W(), H());
+  renderer.setClearColor(0xf4f2ee, 1);
+  renderer.shadowMap.enabled = true;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(42, W()/H(), 0.1, 100);
+
+  scene.add(new THREE.AmbientLight(0xfaf8f4, 0.75));
+  const sun = new THREE.DirectionalLight(0xffffff, 1.1);
+  sun.position.set(6, 10, 8); sun.castShadow = true;
+  scene.add(sun);
+  scene.add(Object.assign(new THREE.DirectionalLight(0xddeeff, 0.35), {position: new THREE.Vector3(-4,3,-4)}));
+
+  const mFloor  = new THREE.MeshLambertMaterial({color:0xd4d0ca});
+  const mWall   = new THREE.MeshLambertMaterial({color:0xe8e4dc});
+  const mEquip  = new THREE.MeshLambertMaterial({color:0x2a2a28});
+  const mMid    = new THREE.MeshLambertMaterial({color:0x5a5a56});
+  const mRubber = new THREE.MeshLambertMaterial({color:0x383836});
+  const mMirror = new THREE.MeshLambertMaterial({color:0xc4d0dc});
+  const mTurf   = new THREE.MeshLambertMaterial({color:0x587858});
+  const mBlue   = new THREE.MeshLambertMaterial({color:0x3a6ea8});
+  const eGeo    = new THREE.LineBasicMaterial({color:0x3a6ea8});
+
+  function addBox(w,h,d,mat,x,y,z,edge=true) {
+    const g=new THREE.BoxGeometry(w,h,d), m=new THREE.Mesh(g,mat);
+    m.position.set(x,y,z); m.castShadow=true; m.receiveShadow=true; scene.add(m);
+    if(edge){const l=new THREE.LineSegments(new THREE.EdgesGeometry(g),eGeo);l.position.set(x,y,z);scene.add(l);}
+    return m;
+  }
+  function addCyl(rt,rb,h,mat,x,y,z,s=8){
+    const g=new THREE.CylinderGeometry(rt,rb,h,s),m=new THREE.Mesh(g,mat);
+    m.position.set(x,y,z);m.castShadow=true;scene.add(m);return m;
+  }
+
+  // Room
+  addBox(7,0.08,6,mFloor,0,0,0);
+  addBox(7,3,0.1,mWall,0,1.5,-3);
+  addBox(0.1,3,6,mWall,-3.5,1.5,0);
+  // Mirror
+  addBox(6.6,1.8,0.05,mMirror,0,1.9,-2.95,false);
+  {const l=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(6.6,1.8,0.05)),eGeo);l.position.set(0,1.9,-2.95);scene.add(l);}
+  // Rubber platform
+  addBox(2.8,0.06,2.6,mRubber,-1.2,0.07,0.5);
+  // Turf
+  addBox(1.6,0.05,4.2,mTurf,2.5,0.06,-0.3);
+
+  // Squat rack
+  addBox(0.08,2.1,0.08,mEquip,-1.65,1.05,-0.6);
+  addBox(0.08,2.1,0.08,mEquip,-0.75,1.05,-0.6);
+  addBox(1.0,0.07,0.07,mEquip,-1.2,2.1,-0.6);
+  addBox(1.8,0.05,0.05,mMid,-1.2,1.38,-0.5);
+  addCyl(0.28,0.28,0.07,mEquip,-2.05,1.38,-0.5);
+  addCyl(0.28,0.28,0.07,mEquip,-0.35,1.38,-0.5);
+  addBox(1.0,0.06,0.06,mMid,-1.2,0.7,-0.9);
+  addBox(1.0,0.06,0.06,mMid,-1.2,1.0,-0.9);
+
+  // Cable machine
+  addBox(0.7,2.2,0.5,mEquip,1.3,1.1,-2.3);
+  addBox(0.22,1.4,0.18,mMid,1.3,0.7,-2.55);
+  addBox(0.72,0.1,0.52,mBlue,1.3,1.6,-2.3,false);
+
+  // DB rack
+  addBox(1.8,0.06,0.4,mEquip,0,0.9,-2.7);
+  addBox(1.8,0.06,0.4,mEquip,0,0.55,-2.7);
+  addBox(1.8,0.06,0.4,mEquip,0,0.2,-2.7);
+  addBox(0.05,0.95,0.42,mEquip,-0.88,0.5,-2.7);
+  addBox(0.05,0.95,0.42,mEquip,0.88,0.5,-2.7);
+  for(let i=-3;i<=3;i++){const dx=i*0.26;addCyl(0.07,0.07,0.28,mMid,dx,0.96,-2.7,6);addCyl(0.1,0.1,0.04,mEquip,dx,0.96,-2.83,6);addCyl(0.1,0.1,0.04,mEquip,dx,0.96,-2.57,6);}
+
+  // Bench
+  addBox(1.1,0.12,0.36,mMid,-1.2,0.58,1.2);
+  addBox(0.06,0.58,0.06,mEquip,-1.62,0.29,1.08);addBox(0.06,0.58,0.06,mEquip,-0.78,0.29,1.08);
+  addBox(0.06,0.58,0.06,mEquip,-1.62,0.29,1.32);addBox(0.06,0.58,0.06,mEquip,-0.78,0.29,1.32);
+
+  // Assault bike
+  addBox(0.08,0.9,0.7,mEquip,2.2,0.45,0.4);
+  addBox(0.28,0.06,0.18,mMid,2.2,0.92,0.3);
+  addBox(0.6,0.06,0.06,mMid,2.2,1.05,0.58);
+  addCyl(0.32,0.32,0.08,mEquip,2.2,0.65,0.76,12);
+
+  // Rower
+  addBox(1.6,0.08,0.28,mEquip,2.3,0.18,-0.9);
+  addBox(0.3,0.3,0.22,mMid,2.96,0.34,-0.9);
+
+  // Ceiling accent strips
+  addBox(6.4,0.04,0.1,mBlue,0,2.96,-1.0,false);
+  addBox(6.4,0.04,0.1,mBlue,0,2.96,0.8,false);
+
+  // ── Orbit controls
+  let drag=false, px=0, py=0, ry=0.32, rx=0.26, auto=true;
+  const pivot=new THREE.Vector3(0,0.8,0);
+  const r=Math.hypot(5.5,4,6.5);
+
+  function updateCam(){
+    camera.position.x=pivot.x+r*Math.sin(ry)*Math.cos(rx);
+    camera.position.y=pivot.y+r*Math.sin(rx);
+    camera.position.z=pivot.z+r*Math.cos(ry)*Math.cos(rx);
+    camera.lookAt(pivot);
+  }
+  updateCam();
+
+  const clampX=(v)=>Math.max(-0.45,Math.min(0.65,v));
+
+  canvas.addEventListener('mousedown',e=>{drag=true;px=e.clientX;py=e.clientY;auto=false;document.getElementById('canvas-hint').style.opacity='0';});
+  window.addEventListener('mouseup',()=>drag=false);
+  window.addEventListener('mousemove',e=>{if(!drag)return;ry-=(e.clientX-px)*0.007;rx=clampX(rx-(e.clientY-py)*0.007);px=e.clientX;py=e.clientY;updateCam();});
+
+  canvas.addEventListener('touchstart',e=>{drag=true;px=e.touches[0].clientX;py=e.touches[0].clientY;auto=false;e.preventDefault();},{passive:false});
+  canvas.addEventListener('touchend',()=>drag=false);
+  canvas.addEventListener('touchmove',e=>{if(!drag)return;ry-=(e.touches[0].clientX-px)*0.007;rx=clampX(rx-(e.touches[0].clientY-py)*0.007);px=e.touches[0].clientX;py=e.touches[0].clientY;updateCam();e.preventDefault();},{passive:false});
+
+  window.addEventListener('resize',()=>{renderer.setSize(W(),H());camera.aspect=W()/H();camera.updateProjectionMatrix();});
+
+  (function tick(){requestAnimationFrame(tick);if(auto){ry+=0.004;updateCam();}renderer.render(scene,camera);})();
+})();
+
+/* ── SCROLL REVEAL ───────────────────────────── */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* ── FORM ────────────────────────────────────── */
+document.getElementById('submit-btn').addEventListener('click',function(){
+  this.textContent='Sent ✓';this.style.background='#3a7a5a';
+  setTimeout(()=>{this.textContent='Send Inquiry →';this.style.background='';},3000);
+});
+</script>
+
+</body>
+</html>
