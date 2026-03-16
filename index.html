@@ -450,6 +450,10 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
 
 <script>
 
+/* ── SCROLL TO TOP ON LOAD ───────────────────── */
+if (history.scrollRestoration) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
 /* ── SCROLL REVEAL ───────────────────────────── */
 const ro=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting){
