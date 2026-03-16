@@ -486,7 +486,13 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
 })();
 
 /* ── SCROLL REVEAL ───────────────────────────── */
-const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:0.1});
+const ro=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    e.target.classList.add('in');
+    const v=e.target.querySelector('video');
+    if(v) v.play().catch(()=>{});
+  }
+}),{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
 /* ── FORM ────────────────────────────────────── */
