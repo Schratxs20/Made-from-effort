@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training — Made From Effort</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #fafaf8;
+    --off: #f4f2ee;
+    --rule: #e2dfd8;
+    --ink: #181816;
+    --ink-mid: #3a3a36;
+    --ink-light: #7a7870;
+    --ink-faint: #b0ada6;
+    --blue: #3a6ea8;
+    --blue-light: #5a8ec8;
+    --blue-faint: #eef2f7;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--white); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 60px; background: rgba(250,250,248,0.96);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; padding: 0 48px; justify-content: space-between;
+  }
+  .nav-brand { text-decoration: none; display: flex; flex-direction: column; gap: 1px; }
+  .nav-brand-name { font-family: 'Cormorant', serif; font-size: 16px; font-style: italic; font-weight: 400; color: var(--ink); letter-spacing: 0.3px; }
+  .nav-brand-sub { font-size: 8.5px; letter-spacing: 2.2px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-light); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.active { color: var(--ink); }
+  .nav-cta { color: var(--white) !important; background: var(--ink); padding: 9px 22px; transition: background 0.25s !important; }
+  .nav-cta:hover { background: var(--blue) !important; }
+
+  /* PAGE HEADER */
+  .page-header {
+    margin-top: 60px;
+    padding: 80px 64px 72px;
+    background: var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: end;
+    border-bottom: 1px solid rgba(250,250,248,0.07);
+  }
+  .ph-eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--blue-light); font-weight: 400; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .ph-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--blue-light); }
+  .page-header h1 { font-family: 'Cormorant', serif; font-size: clamp(40px, 5vw, 72px); font-weight: 300; line-height: 1.05; color: var(--white); letter-spacing: -0.5px; }
+  .page-header h1 em { font-style: italic; color: rgba(250,250,248,0.55); }
+  .ph-right { padding-bottom: 6px; }
+  .ph-desc { font-size: 15px; line-height: 1.85; color: rgba(250,250,248,0.5); max-width: 400px; margin-bottom: 32px; }
+  .ph-stats { display: flex; gap: 36px; }
+  .ph-stat-n { font-family: 'Cormorant', serif; font-size: 36px; font-style: italic; color: var(--blue-light); line-height: 1; margin-bottom: 4px; }
+  .ph-stat-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(250,250,248,0.3); }
+
+  /* OPTIONS */
+  .options-section { padding: 80px 64px; background: var(--off); border-bottom: 1px solid var(--rule); }
+  .options-label { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; margin-bottom: 32px; }
+  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+  .opt-card {
+    background: var(--white);
+    padding: 48px 44px 40px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.25s, background 0.25s;
+    position: relative;
+  }
+  .opt-card:hover { background: var(--off); }
+  .opt-card.selected { border-color: var(--ink); background: var(--white); }
+  .opt-card.selected::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--blue);
+  }
+  .opt-check {
+    position: absolute; top: 20px; right: 24px;
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: transparent;
+    transition: all 0.25s;
+  }
+  .opt-card.selected .opt-check { background: var(--ink); border-color: var(--ink); color: var(--white); }
+  .opt-tag { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); font-weight: 400; margin-bottom: 16px; }
+  .opt-card h2 { font-family: 'Cormorant', serif; font-size: clamp(26px, 3vw, 38px); font-weight: 300; color: var(--ink); margin-bottom: 12px; }
+  .opt-card h2 em { font-style: italic; }
+  .opt-desc { font-size: 14px; line-height: 1.85; color: var(--ink-light); margin-bottom: 32px; max-width: 380px; }
+  .opt-rule { width: 32px; height: 1px; background: var(--rule); margin-bottom: 24px; }
+  .opt-perks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .opt-perks li { font-size: 13px; color: var(--ink-mid); display: flex; gap: 12px; align-items: baseline; }
+  .opt-perks li::before { content: '—'; color: var(--rule); font-size: 11px; flex-shrink: 0; }
+
+  /* FORM SECTION */
+  .form-section { padding: 80px 64px; background: var(--white); }
+  .form-section-header { margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid var(--rule); }
+  .form-section-header .sec-eyebrow { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; margin-bottom: 8px; }
+  .form-section-header h2 { font-family: 'Cormorant', serif; font-size: clamp(26px, 3vw, 40px); font-weight: 300; color: var(--ink); }
+  .form-section-header h2 em { font-style: italic; }
+  .form-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1100px; }
+  .form-meta { display: flex; flex-direction: column; gap: 14px; padding-top: 4px; }
+  .fm-row { display: flex; gap: 16px; align-items: baseline; }
+  .fm-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); min-width: 80px; }
+  .fm-v { font-size: 13px; color: var(--ink-mid); }
+  .fm-note { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 13px; line-height: 1.85; color: var(--ink-light); }
+
+  /* FORM FIELDS — shared styles */
+  form { display: flex; flex-direction: column; gap: 16px; }
+  .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .f-group { display: flex; flex-direction: column; gap: 6px; }
+  .f-group label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; }
+  .f-group input, .f-group select, .f-group textarea {
+    border: 1px solid var(--rule); background: var(--white); color: var(--ink);
+    padding: 11px 14px; font-family: 'Outfit', sans-serif; font-size: 14px;
+    font-weight: 300; outline: none; appearance: none; transition: border-color 0.25s;
+  }
+  .f-group input:focus, .f-group select:focus, .f-group textarea:focus { border-color: var(--blue); }
+  .f-group select option { background: var(--white); }
+  .f-group textarea { height: 110px; resize: none; }
+
+  /* Type toggle */
+  .t-type-row { display: flex; }
+  .t-type { flex: 1; text-align: center; padding: 10px; border: 1px solid var(--rule); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-light); cursor: pointer; transition: all 0.2s; background: var(--white); }
+  .t-type:first-child { border-right: none; }
+  .t-type.selected { background: var(--ink); color: var(--white); border-color: var(--ink); }
+  .t-type:hover:not(.selected) { border-color: var(--ink-light); color: var(--ink); }
+
+  .f-submit { display: flex; justify-content: flex-end; margin-top: 4px; }
+  .f-submit button { background: var(--ink); color: var(--white); border: none; padding: 13px 36px; font-family: 'Outfit', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 400; cursor: pointer; transition: background 0.25s; }
+  .f-submit button:hover { background: var(--blue); }
+
+  /* FOOTER */
+  footer { background: var(--ink); padding: 48px 64px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+  .foot-brand { font-family: 'Cormorant', serif; font-size: 18px; font-style: italic; color: var(--white); }
+  .foot-brand span { font-style: normal; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; display: block; color: rgba(250,250,248,0.3); margin-top: 3px; }
+  .foot-links { display: flex; gap: 28px; list-style: none; flex-wrap: wrap; }
+  .foot-links a { font-size: 10px; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(250,250,248,0.35); text-decoration: none; transition: color 0.2s; font-weight: 400; }
+  .foot-links a:hover { color: var(--white); }
+  .foot-copy { font-size: 10px; color: rgba(250,250,248,0.2); letter-spacing: 1px; }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; }
+
+  /* MOBILE */
+  @media(max-width: 860px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .page-header { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px 56px; }
+    .options-section { padding: 56px 24px; }
+    .options-grid { grid-template-columns: 1fr; }
+    .form-section { padding: 56px 24px; }
+    .form-layout { grid-template-columns: 1fr; gap: 40px; }
+    .f-row { grid-template-columns: 1fr; }
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <span class="nav-brand-name">Made From Effort</span>
+    <span class="nav-brand-sub">Performance Edge Training + Gym Design</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#portfolio">Portfolio</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="training.html" class="active">Training</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Start a Project</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="reveal">
+    <div class="ph-eyebrow">Personal Training</div>
+    <h1>Train With Someone<br>Who <em>Builds</em> For It.</h1>
+  </div>
+  <div class="ph-right reveal d1">
+    <p class="ph-desc">Fifteen years of elite coaching — now available to a limited number of private clients. Every programme is built from scratch around how you actually move, recover, and perform.</p>
+    <div class="ph-stats">
+      <div><div class="ph-stat-n">15</div><div class="ph-stat-l">Years Experience</div></div>
+      <div><div class="ph-stat-n">~10</div><div class="ph-stat-l">Years at Equinox</div></div>
+      <div><div class="ph-stat-n">CSCS</div><div class="ph-stat-l">Certified</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- OPTIONS -->
+<div class="options-section">
+  <div class="options-label reveal">Choose your format</div>
+  <div class="options-grid">
+    <div class="opt-card selected reveal d1" id="opt-inperson" data-type="In-Person">
+      <div class="opt-check">✓</div>
+      <div class="opt-tag">In-Person</div>
+      <h2>Private <em>Sessions</em></h2>
+      <p class="opt-desc">One-on-one coaching at your facility or mine — fully customised to your goals, programming, and schedule. No group classes, no distractions.</p>
+      <div class="opt-rule"></div>
+      <ul class="opt-perks">
+        <li>Fully custom programming built around your goals</li>
+        <li>Real-time form, technique, and cuing</li>
+        <li>Session frequency: 1–5x per week</li>
+        <li>Long Island, NY — travel available for key clients</li>
+        <li>Monthly programme reassessments</li>
+      </ul>
+    </div>
+    <div class="opt-card reveal d2" id="opt-online" data-type="Online">
+      <div class="opt-check">✓</div>
+      <div class="opt-tag">Online</div>
+      <h2>Remote <em>Coaching</em></h2>
+      <p class="opt-desc">Full programme design, video review, check-ins, and accountability — wherever you are in the world. The same standard of coaching, built around your schedule.</p>
+      <div class="opt-rule"></div>
+      <ul class="opt-perks">
+        <li>Weekly programming delivered to your app</li>
+        <li>Video form review and feedback</li>
+        <li>Nutrition guidance and habit tracking</li>
+        <li>Weekly check-in calls or messages</li>
+        <li>Available worldwide</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FORM SECTION -->
+<div class="form-section">
+  <div class="form-section-header reveal">
+    <div class="sec-eyebrow">Get Started</div>
+    <h2>Book a <em>Consultation.</em></h2>
+  </div>
+  <div class="form-layout">
+    <div class="form-meta reveal d1">
+      <div class="fm-row"><span class="fm-l">Based</span><span class="fm-v">Long Island, New York</span></div>
+      <div class="fm-row"><span class="fm-l">Online</span><span class="fm-v">Available worldwide</span></div>
+      <div class="fm-row"><span class="fm-l">Availability</span><span class="fm-v">Limited — select clients only</span></div>
+      <div class="fm-row"><span class="fm-l">Response</span><span class="fm-v">Within 1 business day</span></div>
+      <p class="fm-note">All new clients begin with a free 20-minute discovery call to discuss goals, schedule, and fit. Fill in the form and we'll be in touch.</p>
+    </div>
+    <form id="training-form" class="reveal d2">
+      <input type="hidden" name="_subject" value="New Training Inquiry — Made From Effort">
+      <input type="hidden" id="t-type-hidden" name="training_type" value="In-Person">
+      <div class="f-row">
+        <div class="f-group"><label for="t-first">First Name</label><input type="text" id="t-first" name="first_name" placeholder="First"></div>
+        <div class="f-group"><label for="t-last">Last Name</label><input type="text" id="t-last" name="last_name" placeholder="Last"></div>
+      </div>
+      <div class="f-row">
+        <div class="f-group"><label for="t-email">Email</label><input type="email" id="t-email" name="email" placeholder="you@email.com"></div>
+        <div class="f-group"><label for="t-phone">Phone</label><input type="tel" id="t-phone" name="phone" placeholder="+1 (917) 000 0000"></div>
+      </div>
+      <div class="f-group">
+        <label>Training Type</label>
+        <div class="t-type-row">
+          <div class="t-type selected" data-value="In-Person">In-Person</div>
+          <div class="t-type" data-value="Online">Online</div>
+        </div>
+      </div>
+      <div class="f-row">
+        <div class="f-group"><label for="t-goal">Primary Goal</label><select id="t-goal" name="goal"><option value="" disabled selected>Select your goal</option><option>Fat Loss & Body Composition</option><option>Strength & Muscle</option><option>Athletic Performance</option><option>General Fitness & Health</option><option>Rehab & Recovery</option></select></div>
+        <div class="f-group"><label for="t-level">Experience Level</label><select id="t-level" name="experience"><option value="" disabled selected>Your background</option><option>Beginner (0–1 years)</option><option>Intermediate (1–4 years)</option><option>Advanced (4+ years)</option></select></div>
+      </div>
+      <div class="f-group"><label for="t-message">Anything we should know?</label><textarea id="t-message" name="message" placeholder="Injuries, schedule, training history, specific goals..."></textarea></div>
+      <div class="f-submit"><button id="t-submit-btn" type="submit">Request Consultation →</button></div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-brand">Made From Effort<span>Performance Edge Training + Gym Design</span></div>
+  <ul class="foot-links">
+    <li><a href="index.html#portfolio">Portfolio</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="training.html">Training</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="foot-copy">© 2026 Made From Effort</div>
+</footer>
+
+<script>
+/* ── SMOOTH SCROLL ───────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    e.preventDefault();
+    const target = document.getElementById(id);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+/* ── SCROLL REVEAL ───────────────────────────── */
+const ro = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) e.target.classList.add('in');
+}), { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+/* ── TYPE SYNC ───────────────────────────────── */
+function syncType(value) {
+  document.querySelectorAll('.t-type').forEach(t => t.classList.toggle('selected', t.dataset.value === value));
+  document.querySelectorAll('.opt-card').forEach(c => c.classList.toggle('selected', c.dataset.type === value));
+  document.getElementById('t-type-hidden').value = value;
+}
+
+document.querySelectorAll('.opt-card').forEach(card => {
+  card.addEventListener('click', () => syncType(card.dataset.type));
+});
+
+document.querySelectorAll('.t-type').forEach(btn => {
+  btn.addEventListener('click', () => syncType(btn.dataset.value));
+});
+
+/* ── FORM ────────────────────────────────────── */
+(function() {
+  const form = document.getElementById('training-form');
+  const btn  = document.getElementById('t-submit-btn');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/mvzwwrzr', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (res.ok) {
+        btn.textContent = 'Sent ✓';
+        btn.style.background = '#3a7a5a';
+        form.reset();
+        syncType('In-Person');
+        setTimeout(() => { btn.textContent = 'Request Consultation →'; btn.style.background = ''; btn.disabled = false; }, 4000);
+      } else {
+        throw new Error();
+      }
+    } catch {
+      btn.textContent = 'Try again';
+      btn.style.background = '#a84040';
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = 'Request Consultation →'; btn.style.background = ''; }, 3000);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
