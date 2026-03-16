@@ -318,7 +318,7 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     <a href="#contact" class="btn btn-outline">Start Yours</a>
   </div>
   <div class="port-grid">
-    <div class="pc reveal"><div class="pc-bg"><video autoplay muted loop playsinline><source src="47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4" type="video/mp4"></video></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Private Yacht Gym</div><div class="pc-loc">Marine Installation · Atlantic</div></div></div>
+    <div class="pc reveal"><div class="pc-bg"><video autoplay muted loop playsinline preload="auto"><source src="47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4" type="video/mp4"></video></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Private Yacht Gym</div><div class="pc-loc">Marine Installation · Atlantic</div></div></div>
     <div class="pc reveal d1"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 75%</span><div class="pc-name">Jupiter Island Estate</div><div class="pc-loc">Private Residence · South Florida</div></div></div>
     <div class="pc reveal d1"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">Jericho Private Estate</div><div class="pc-loc">Luxury Residence · Long Island, NY</div></div></div>
     <div class="pc reveal d2"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">San Francisco Residence</div><div class="pc-loc">Private Home Gym · Bay Area, CA</div></div></div>
@@ -550,7 +550,12 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 // Force video autoplay
 document.querySelectorAll('video[autoplay]').forEach(v => {
   v.muted = true;
-  v.play().catch(() => {});
+  v.setAttribute('playsinline', '');
+  const tryPlay = () => v.play().catch(() => {});
+  tryPlay();
+  v.addEventListener('canplay', tryPlay, { once: true });
+  v.addEventListener('loadedmetadata', tryPlay, { once: true });
+  v.load();
 });
 </script>
 
