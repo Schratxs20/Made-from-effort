@@ -532,6 +532,12 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
     }
   });
 })();
+
+// Force video autoplay
+document.querySelectorAll('video[autoplay]').forEach(v => {
+  v.muted = true;
+  v.play().catch(() => {});
+});
 </script>
 
 </body>
