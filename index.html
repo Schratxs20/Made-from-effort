@@ -219,6 +219,147 @@ footer { background: var(--ink); padding: 48px 64px; display: flex; align-items:
 .reveal.in { opacity: 1; transform: none; }
 .d1{transition-delay:0.08s} .d2{transition-delay:0.16s} .d3{transition-delay:0.24s} .d4{transition-delay:0.32s}
 
+/* ── POPUP ───────────────────────────────────── */
+#popup-overlay {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(10,10,8,0.75);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.45s cubic-bezier(0.22,1,0.36,1);
+}
+#popup-overlay.popup-active { opacity: 1; pointer-events: all; }
+#popup-modal {
+  background: #181816;
+  max-width: 780px; width: 100%;
+  display: grid; grid-template-columns: 260px 1fr;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
+  overflow: hidden;
+  max-height: 90vh;
+}
+#popup-overlay.popup-active #popup-modal { transform: translateY(0); }
+#popup-close {
+  position: absolute; top: 16px; right: 20px;
+  background: none; border: none; cursor: pointer;
+  color: rgba(250,250,248,0.3); font-size: 16px;
+  font-family: 'Outfit', sans-serif; font-weight: 300;
+  line-height: 1; z-index: 2;
+  transition: color 0.2s; padding: 4px;
+}
+#popup-close:hover { color: #fafaf8; }
+.popup-book {
+  background: #0d0d0b;
+  padding: 44px 28px 40px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; border-right: 1px solid rgba(250,250,248,0.05);
+}
+.popup-book::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: linear-gradient(90deg, #c9a96e 0%, transparent 100%);
+}
+.popup-book::after {
+  content: ''; position: absolute; bottom: 0; left: 28px; right: 28px;
+  height: 1px; background: rgba(201,169,110,0.15);
+}
+.popup-book-tag {
+  font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
+  color: #c9a96e; font-weight: 400; margin-bottom: 32px;
+}
+.popup-book-cover-title {
+  font-family: 'Cormorant', serif; font-size: 28px; font-weight: 400;
+  color: #fafaf8; line-height: 1.15; letter-spacing: 0.2px;
+  flex-grow: 1;
+}
+.popup-book-cover-title em {
+  display: block; font-style: italic; font-weight: 300;
+  font-size: 14px; color: rgba(250,250,248,0.55);
+  line-height: 1.5; margin-top: 16px; letter-spacing: 0;
+}
+.popup-book-rule { width: 32px; height: 1px; background: #c9a96e; margin: 28px 0 12px; }
+.popup-book-brand {
+  font-size: 8.5px; letter-spacing: 2.2px; text-transform: uppercase;
+  color: rgba(250,250,248,0.25); font-weight: 400;
+}
+.popup-form-wrap { padding: 44px 40px; display: flex; flex-direction: column; overflow-y: auto; }
+.popup-kicker {
+  font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: #c9a96e; font-weight: 400; margin-bottom: 10px;
+}
+.popup-headline {
+  font-family: 'Cormorant', serif; font-size: 26px; font-weight: 400;
+  color: #fafaf8; line-height: 1.25; margin-bottom: 10px;
+}
+.popup-desc {
+  font-size: 13px; color: rgba(250,250,248,0.45);
+  line-height: 1.65; margin-bottom: 28px;
+}
+.popup-bullets {
+  list-style: none; margin-bottom: 28px; display: flex; flex-direction: column; gap: 8px;
+}
+.popup-bullets li {
+  font-size: 12px; color: rgba(250,250,248,0.5); padding-left: 16px; position: relative; line-height: 1.5;
+}
+.popup-bullets li::before {
+  content: '—'; position: absolute; left: 0; color: #c9a96e; font-size: 10px;
+}
+.popup-fg { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+.popup-fg label {
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(250,250,248,0.3); font-weight: 400;
+}
+.popup-fg input {
+  background: rgba(250,250,248,0.04);
+  border: 1px solid rgba(250,250,248,0.1);
+  color: #fafaf8; padding: 12px 15px;
+  font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 300;
+  outline: none; transition: border-color 0.25s; appearance: none;
+}
+.popup-fg input::placeholder { color: rgba(250,250,248,0.2); }
+.popup-fg input:focus { border-color: #c9a96e; }
+#popup-submit {
+  width: 100%; background: #c9a96e; color: #181816;
+  border: none; cursor: pointer;
+  padding: 14px 24px; margin-top: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+  font-weight: 500; transition: background 0.25s, opacity 0.2s;
+}
+#popup-submit:hover:not(:disabled) { background: #dbbf84; }
+#popup-submit:disabled { opacity: 0.55; cursor: default; }
+.popup-privacy {
+  font-size: 10px; color: rgba(250,250,248,0.2);
+  margin-top: 12px; letter-spacing: 0.2px; line-height: 1.5;
+}
+#popup-success {
+  display: none; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; padding: 16px 0 4px; flex: 1;
+}
+.popup-success-check {
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid #c9a96e;
+  display: flex; align-items: center; justify-content: center;
+  color: #c9a96e; font-size: 20px; margin: 0 auto 20px;
+}
+.popup-success-title {
+  font-family: 'Cormorant', serif; font-size: 26px; font-style: italic;
+  color: #fafaf8; margin-bottom: 10px;
+}
+.popup-success-text {
+  font-size: 13px; color: rgba(250,250,248,0.45); line-height: 1.65; margin-bottom: 24px;
+}
+#popup-download-btn {
+  display: inline-block;
+  background: none; border: 1px solid rgba(201,169,110,0.5); color: #c9a96e;
+  padding: 11px 28px;
+  font-family: 'Outfit', sans-serif; font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 400; text-decoration: none;
+  transition: border-color 0.25s, color 0.25s;
+}
+#popup-download-btn:hover { border-color: #c9a96e; color: #dbbf84; }
+
 /* MOBILE */
 @media(max-width:860px){
 nav{padding:0 20px} .nav-links{display:none}
@@ -237,6 +378,9 @@ nav{padding:0 20px} .nav-links{display:none}
 .contact-grid{grid-template-columns:1fr;gap:48px}
 .f-row{grid-template-columns:1fr}
 footer{padding:32px 24px;flex-direction:column;text-align:center}
+#popup-modal{grid-template-columns:1fr}
+.popup-book{display:none}
+.popup-form-wrap{padding:36px 24px}
 }
 </style>
 
@@ -531,7 +675,140 @@ const unlockAutoplay = () => {
   ['click','touchstart','keydown','scroll'].forEach(ev => document.removeEventListener(ev, unlockAutoplay));
 };
 ['click','touchstart','keydown','scroll'].forEach(ev => document.addEventListener(ev, unlockAutoplay, { once: true, passive: true }));
+
+/* ── POPUP ───────────────────────────────────── */
+(function() {
+  const STORAGE_KEY = 'mfe_popup_v1';
+  const DISMISS_DAYS = 7;
+  const overlay = document.getElementById('popup-overlay');
+  const closeBtn = document.getElementById('popup-close');
+  const form     = document.getElementById('popup-form');
+  const submitBtn= document.getElementById('popup-submit');
+  const success  = document.getElementById('popup-success');
+
+  function shouldShow() {
+    try {
+      const d = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      if (!d) return true;
+      if (d.submitted) return false;
+      if (d.dismissed && Date.now() - d.dismissed < DISMISS_DAYS * 864e5) return false;
+    } catch(e) {}
+    return true;
+  }
+
+  function openPopup() {
+    if (!shouldShow()) return;
+    overlay.classList.add('popup-active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    overlay.classList.remove('popup-active');
+    document.body.style.overflow = '';
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ dismissed: Date.now() })); } catch(e) {}
+  }
+
+  // Triggers: 6 seconds after load, or exit intent on desktop
+  let opened = false;
+  const showOnce = () => { if (!opened) { opened = true; openPopup(); } };
+
+  setTimeout(showOnce, 6000);
+
+  document.addEventListener('mouseleave', e => {
+    if (e.clientY <= 0) showOnce();
+  });
+
+  // Scroll 55% trigger
+  window.addEventListener('scroll', function onScroll() {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (pct >= 0.55) { showOnce(); window.removeEventListener('scroll', onScroll); }
+  }, { passive: true });
+
+  // Close
+  closeBtn.addEventListener('click', closePopup);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closePopup(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('popup-active')) closePopup(); });
+
+  // Submit
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+
+    try {
+      const res = await fetch('https://formspree.io/f/mvzwwrzr', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (!res.ok) throw new Error();
+
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ submitted: true })); } catch(err) {}
+      form.style.display = 'none';
+      success.style.display = 'flex';
+    } catch {
+      submitBtn.textContent = 'Try again';
+      submitBtn.disabled = false;
+      setTimeout(() => { submitBtn.textContent = 'Send Me the Free Guide →'; }, 3000);
+    }
+  });
+})();
 </script>
+
+<!-- ── EMAIL CAPTURE POPUP ─────────────────────── -->
+<div id="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popup-heading">
+  <div id="popup-modal">
+    <button id="popup-close" aria-label="Close popup">✕</button>
+
+    <!-- Book cover visual -->
+    <div class="popup-book" aria-hidden="true">
+      <div class="popup-book-tag">Free E-Book</div>
+      <div class="popup-book-cover-title">
+        Level Up Your<br>Home Gym
+        <em>The unconventional playbook for designing a space you'll actually use</em>
+      </div>
+      <div>
+        <div class="popup-book-rule"></div>
+        <div class="popup-book-brand">Made From Effort</div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="popup-form-wrap">
+      <div class="popup-kicker">Free Download</div>
+      <h2 class="popup-headline" id="popup-heading">Level Up Your<br>Home Gym</h2>
+      <p class="popup-desc">The unconventional playbook for designing a space you'll actually use — written by a CSCS-certified trainer with 15 years of elite experience.</p>
+      <ul class="popup-bullets">
+        <li>How to design around your actual training, not trends</li>
+        <li>Equipment selection without wasting money</li>
+        <li>The layout principles that change how you train</li>
+      </ul>
+
+      <form id="popup-form" novalidate>
+        <input type="hidden" name="_subject" value="New Lead — Level Up Your Home Gym">
+        <input type="hidden" name="source" value="ebook-popup">
+        <div class="popup-fg">
+          <label for="popup-name">First Name</label>
+          <input type="text" id="popup-name" name="name" placeholder="Your first name" autocomplete="given-name" required>
+        </div>
+        <div class="popup-fg">
+          <label for="popup-email">Email Address</label>
+          <input type="email" id="popup-email" name="email" placeholder="your@email.com" autocomplete="email" required>
+        </div>
+        <button type="submit" id="popup-submit">Send Me the Free Guide →</button>
+      </form>
+
+      <div id="popup-success">
+        <div class="popup-success-check">✓</div>
+        <div class="popup-success-title">It's on its way.</div>
+        <p class="popup-success-text">Check your inbox — your free guide is heading there now. In the meantime, take a look at our recent projects.</p>
+        <a id="popup-download-btn" href="home-gym-playbook.pdf" download>Download Now →</a>
+      </div>
+
+      <p class="popup-privacy">No spam. Just signal. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
