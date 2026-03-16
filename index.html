@@ -151,6 +151,29 @@ h1 em { font-style: italic; color: var(--ink-mid); }
 .svc-list li { font-size: 13px; color: var(--ink-mid); display: flex; gap: 12px; align-items: baseline; }
 .svc-list li::before { content: '—'; color: var(--rule); font-size: 11px; flex-shrink: 0; }
 
+/* TRAINING */
+#training { padding: 100px 64px; background: var(--off); border-top: 1px solid var(--rule); }
+.training-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.training-left .sec-title { margin-bottom: 20px; }
+.training-desc { font-size: 14px; line-height: 1.9; color: var(--ink-light); margin-bottom: 40px; max-width: 420px; }
+.t-cards { display: flex; flex-direction: column; gap: 12px; }
+.t-card { border: 1px solid var(--rule); padding: 28px 28px 24px; cursor: pointer; transition: border-color 0.25s, background 0.25s; background: var(--white); position: relative; }
+.t-card:hover { border-color: var(--ink-light); }
+.t-card.selected { border-color: var(--ink); }
+.t-card.selected::after { content: '✓'; position: absolute; top: 18px; right: 22px; font-size: 11px; color: var(--blue); font-weight: 400; }
+.t-card-tag { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); font-weight: 400; margin-bottom: 10px; }
+.t-card h3 { font-family: 'Cormorant', serif; font-size: 22px; font-weight: 300; color: var(--ink); margin-bottom: 8px; }
+.t-card p { font-size: 13px; line-height: 1.75; color: var(--ink-light); }
+.t-card-list { list-style: none; margin-top: 14px; display: flex; flex-direction: column; gap: 5px; }
+.t-card-list li { font-size: 12px; color: var(--ink-mid); display: flex; gap: 10px; align-items: baseline; }
+.t-card-list li::before { content: '—'; color: var(--rule); font-size: 10px; flex-shrink: 0; }
+.training-form-title { font-family: 'Cormorant', serif; font-size: 22px; font-weight: 300; color: var(--ink); margin-bottom: 24px; }
+.t-type-row { display: flex; }
+.t-type { flex: 1; text-align: center; padding: 10px; border: 1px solid var(--rule); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-light); cursor: pointer; transition: all 0.2s; background: var(--white); }
+.t-type:first-child { border-right: none; }
+.t-type.selected { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.t-type:hover:not(.selected) { border-color: var(--ink-light); color: var(--ink); }
+
 /* PROCESS */
 #process { padding: 100px 64px; background: var(--off); border-top: 1px solid var(--rule); }
 .proc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 48px; }
@@ -377,6 +400,8 @@ nav{padding:0 20px} .nav-links{display:none}
 #contact{padding:64px 24px}
 .contact-grid{grid-template-columns:1fr;gap:48px}
 .f-row{grid-template-columns:1fr}
+.training-layout{grid-template-columns:1fr;gap:48px}
+#training{padding:64px 24px}
 footer{padding:32px 24px;flex-direction:column;text-align:center}
 #popup-modal{grid-template-columns:1fr}
 .popup-book{display:none}
@@ -396,6 +421,7 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#process">Process</a></li>
+    <li><a href="#training">Training</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact" class="nav-cta">Start a Project</a></li>
   </ul>
@@ -511,6 +537,68 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
   </div>
 </section>
 
+<!-- TRAINING -->
+
+<section id="training">
+  <div class="training-layout">
+    <div class="training-left reveal">
+      <div class="sec-eyebrow">Personal Training</div>
+      <h2 class="sec-title">Train With Someone Who <em>Builds</em> For It.</h2>
+      <p class="training-desc">Fifteen years of elite coaching — now available to a limited number of private clients. Every programme is built from scratch around how you actually move, recover, and perform.</p>
+      <div class="t-cards">
+        <div class="t-card selected" data-type="in-person">
+          <div class="t-card-tag">In-Person</div>
+          <h3>Private Sessions</h3>
+          <p>One-on-one coaching at your facility or mine — fully customised to your goals and programming needs.</p>
+          <ul class="t-card-list">
+            <li>Fully custom programming</li>
+            <li>Form, technique, and performance focus</li>
+            <li>Long Island, NY based</li>
+          </ul>
+        </div>
+        <div class="t-card" data-type="online">
+          <div class="t-card-tag">Online</div>
+          <h3>Remote Coaching</h3>
+          <p>Full programme design, video review, and regular check-ins — wherever you are in the world.</p>
+          <ul class="t-card-list">
+            <li>Weekly programming & video review</li>
+            <li>Nutrition guidance</li>
+            <li>Available worldwide</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="training-right reveal d1">
+      <form id="training-form">
+        <input type="hidden" name="_subject" value="New Training Inquiry — Made From Effort">
+        <input type="hidden" id="t-type-hidden" name="training_type" value="In-Person">
+        <p class="training-form-title">Book a Consultation</p>
+        <div class="f-row">
+          <div class="f-group"><label for="t-first">First Name</label><input type="text" id="t-first" name="first_name" placeholder="First"></div>
+          <div class="f-group"><label for="t-last">Last Name</label><input type="text" id="t-last" name="last_name" placeholder="Last"></div>
+        </div>
+        <div class="f-row">
+          <div class="f-group"><label for="t-email">Email</label><input type="email" id="t-email" name="email" placeholder="you@email.com"></div>
+          <div class="f-group"><label for="t-phone">Phone</label><input type="tel" id="t-phone" name="phone" placeholder="+1 (917) 000 0000"></div>
+        </div>
+        <div class="f-group">
+          <label>Training Type</label>
+          <div class="t-type-row">
+            <div class="t-type selected" data-value="In-Person">In-Person</div>
+            <div class="t-type" data-value="Online">Online</div>
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-group"><label for="t-goal">Primary Goal</label><select id="t-goal" name="goal"><option value="" disabled selected>Select your goal</option><option>Fat Loss & Body Composition</option><option>Strength & Muscle</option><option>Athletic Performance</option><option>General Fitness & Health</option><option>Rehab & Recovery</option></select></div>
+          <div class="f-group"><label for="t-level">Experience Level</label><select id="t-level" name="experience"><option value="" disabled selected>Your background</option><option>Beginner (0–1 years)</option><option>Intermediate (1–4 years)</option><option>Advanced (4+ years)</option></select></div>
+        </div>
+        <div class="f-group"><label for="t-message">Anything we should know?</label><textarea id="t-message" name="message" placeholder="Injuries, schedule, training history, specific goals..."></textarea></div>
+        <div class="f-submit"><button id="t-submit-btn" type="submit">Request Consultation →</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- PROCESS -->
 
 <section id="process">
@@ -568,16 +656,16 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
       <input type="hidden" name="_subject" value="New Inquiry — Made From Effort">
       <input type="hidden" name="_replyto" id="reply-to-field">
       <div class="f-row">
-        <div class="f-group"><label>First Name</label><input type="text" name="first_name" placeholder="First"></div>
-        <div class="f-group"><label>Last Name</label><input type="text" name="last_name" placeholder="Last"></div>
+        <div class="f-group"><label for="first-name">First Name</label><input type="text" id="first-name" name="first_name" placeholder="First"></div>
+        <div class="f-group"><label for="last-name">Last Name</label><input type="text" id="last-name" name="last_name" placeholder="Last"></div>
       </div>
-      <div class="f-group"><label>Email</label><input type="email" name="email" id="email-field" placeholder="you@email.com"></div>
-      <div class="f-group"><label>Project Type</label><select name="project_type"><option value="" disabled selected>Select one</option><option>Private Residence / Home Gym</option><option>Commercial Training Studio</option><option>Yacht or Marine Installation</option><option>Other</option></select></div>
+      <div class="f-group"><label for="email-field">Email</label><input type="email" name="email" id="email-field" placeholder="you@email.com"></div>
+      <div class="f-group"><label for="project-type">Project Type</label><select id="project-type" name="project_type"><option value="" disabled selected>Select one</option><option>Private Residence / Home Gym</option><option>Commercial Training Studio</option><option>Yacht or Marine Installation</option><option>Other</option></select></div>
       <div class="f-row">
-        <div class="f-group"><label>Budget Range</label><select name="budget"><option value="" disabled selected>Approximate budget</option><option>$50K – $150K</option><option>$150K – $300K</option><option>$300K – $500K</option><option>$500K+</option></select></div>
-        <div class="f-group"><label>Timeline</label><select name="timeline"><option value="" disabled selected>When to start</option><option>ASAP</option><option>1–3 Months</option><option>3–6 Months</option><option>6+ Months</option></select></div>
+        <div class="f-group"><label for="budget">Budget Range</label><select id="budget" name="budget"><option value="" disabled selected>Approximate budget</option><option>$50K – $150K</option><option>$150K – $300K</option><option>$300K – $500K</option><option>$500K+</option></select></div>
+        <div class="f-group"><label for="timeline">Timeline</label><select id="timeline" name="timeline"><option value="" disabled selected>When to start</option><option>ASAP</option><option>1–3 Months</option><option>3–6 Months</option><option>6+ Months</option></select></div>
       </div>
-      <div class="f-group"><label>Tell us about your vision</label><textarea name="message" placeholder="Describe your space, training goals, and what you're looking to build..."></textarea></div>
+      <div class="f-group"><label for="message">Tell us about your vision</label><textarea id="message" name="message" placeholder="Describe your space, training goals, and what you're looking to build..."></textarea></div>
       <div class="f-submit"><button id="submit-btn" type="submit">Send Inquiry →</button></div>
     </form>
   </div>
@@ -590,8 +678,62 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
   <ul class="foot-links">
     <li><a href="#portfolio">Portfolio</a></li><li><a href="#services">Services</a></li><li><a href="#process">Process</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="foot-copy">© 2025 Made From Effort</div>
+  <div class="foot-copy">© 2026 Made From Effort</div>
 </footer>
+
+<!-- ── EMAIL CAPTURE POPUP ─────────────────────── -->
+<div id="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popup-heading">
+  <div id="popup-modal">
+    <button id="popup-close" aria-label="Close popup">✕</button>
+
+    <!-- Book cover visual -->
+    <div class="popup-book" aria-hidden="true">
+      <div class="popup-book-tag">Free E-Book</div>
+      <div class="popup-book-cover-title">
+        Level Up Your<br>Home Gym
+        <em>The unconventional playbook for designing a space you'll actually use</em>
+      </div>
+      <div>
+        <div class="popup-book-rule"></div>
+        <div class="popup-book-brand">Made From Effort</div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="popup-form-wrap">
+      <div class="popup-kicker">Free Download</div>
+      <h2 class="popup-headline" id="popup-heading">Level Up Your<br>Home Gym</h2>
+      <p class="popup-desc">The unconventional playbook for designing a space you'll actually use — written by a CSCS-certified trainer with 15 years of elite experience.</p>
+      <ul class="popup-bullets">
+        <li>How to design around your actual training, not trends</li>
+        <li>Equipment selection without wasting money</li>
+        <li>The layout principles that change how you train</li>
+      </ul>
+
+      <form id="popup-form" novalidate>
+        <input type="hidden" name="_subject" value="New Lead — Level Up Your Home Gym">
+        <input type="hidden" name="source" value="ebook-popup">
+        <div class="popup-fg">
+          <label for="popup-name">First Name</label>
+          <input type="text" id="popup-name" name="name" placeholder="Your first name" autocomplete="given-name" required>
+        </div>
+        <div class="popup-fg">
+          <label for="popup-email">Email Address</label>
+          <input type="email" id="popup-email" name="email" placeholder="your@email.com" autocomplete="email" required>
+        </div>
+        <button type="submit" id="popup-submit">Send Me the Free Guide →</button>
+      </form>
+
+      <div id="popup-success">
+        <div class="popup-success-check">✓</div>
+        <div class="popup-success-title">It's on its way.</div>
+        <p class="popup-success-text">Check your inbox — your free guide is heading there now. In the meantime, take a look at our recent projects.</p>
+      </div>
+
+      <p class="popup-privacy">No spam. Just signal. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</div>
 
 <script>
 
@@ -654,32 +796,91 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
   });
 })();
 
+/* ── TRAINING ────────────────────────────────── */
+(function() {
+  function syncType(value) {
+    document.querySelectorAll('.t-type').forEach(t => t.classList.toggle('selected', t.dataset.value === value));
+    document.querySelectorAll('.t-card').forEach(c => c.classList.toggle('selected', (value === 'In-Person' ? 'in-person' : 'online') === c.dataset.type));
+    document.getElementById('t-type-hidden').value = value;
+  }
+
+  document.querySelectorAll('.t-card').forEach(card => {
+    card.addEventListener('click', () => syncType(card.dataset.type === 'in-person' ? 'In-Person' : 'Online'));
+  });
+
+  document.querySelectorAll('.t-type').forEach(btn => {
+    btn.addEventListener('click', () => syncType(btn.dataset.value));
+  });
+
+  const form = document.getElementById('training-form');
+  const btn  = document.getElementById('t-submit-btn');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/mvzwwrzr', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (res.ok) {
+        btn.textContent = 'Sent ✓';
+        btn.style.background = '#3a7a5a';
+        form.reset();
+        syncType('In-Person');
+        setTimeout(() => { btn.textContent = 'Request Consultation →'; btn.style.background = ''; btn.disabled = false; }, 4000);
+      } else {
+        throw new Error();
+      }
+    } catch {
+      btn.textContent = 'Try again';
+      btn.style.background = '#a84040';
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = 'Request Consultation →'; btn.style.background = ''; }, 3000);
+    }
+  });
+})();
+
 // Force video autoplay
 const allAutoplayVideos = document.querySelectorAll('video[autoplay]');
 allAutoplayVideos.forEach(v => {
   v.muted = true;
+  v.defaultMuted = true;
+  v.setAttribute('muted', '');
   v.setAttribute('playsinline', '');
   v.setAttribute('webkit-playsinline', '');
-  const tryPlay = () => v.play().catch(() => {});
-  v.addEventListener('canplay', tryPlay, { once: true });
-  v.addEventListener('loadeddata', tryPlay, { once: true });
-  if (v.readyState >= 2) tryPlay();
-  setTimeout(tryPlay, 300);
-  setTimeout(tryPlay, 1000);
-  setTimeout(tryPlay, 2500);
+  v.setAttribute('x5-playsinline', '');
+  const tryPlay = () => { v.muted = true; v.play().catch(() => {}); };
+  ['canplay','loadedmetadata','loadeddata','canplaythrough'].forEach(ev => v.addEventListener(ev, tryPlay, { once: true }));
+  if (v.readyState >= 1) tryPlay();
+  else v.load();
+  [100, 500, 1000, 2000, 3500].forEach(ms => setTimeout(tryPlay, ms));
 });
 
-// Unlock autoplay on first user interaction (required by some browsers)
-const unlockAutoplay = () => {
-  allAutoplayVideos.forEach(v => { if (v.paused) v.play().catch(() => {}); });
-  ['click','touchstart','keydown','scroll'].forEach(ev => document.removeEventListener(ev, unlockAutoplay));
-};
-['click','touchstart','keydown','scroll'].forEach(ev => document.addEventListener(ev, unlockAutoplay, { once: true, passive: true }));
+// Unlock on first interaction
+document.addEventListener('click',      function u(){ allAutoplayVideos.forEach(v=>{ if(v.paused){v.muted=true;v.play().catch(()=>{});} }); document.removeEventListener('click',u); }, { passive:true });
+document.addEventListener('touchstart', function u(){ allAutoplayVideos.forEach(v=>{ if(v.paused){v.muted=true;v.play().catch(()=>{});} }); document.removeEventListener('touchstart',u); }, { passive:true });
+document.addEventListener('scroll',     function u(){ allAutoplayVideos.forEach(v=>{ if(v.paused){v.muted=true;v.play().catch(()=>{});} }); document.removeEventListener('scroll',u); }, { passive:true });
+
+// IntersectionObserver for hero video specifically
+const heroVid = document.getElementById('gym-video');
+if (heroVid) {
+  new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) { heroVid.muted = true; heroVid.play().catch(() => {}); }
+  }, { threshold: 0.1 }).observe(heroVid);
+}
 
 /* ── POPUP ───────────────────────────────────── */
 (function() {
   const STORAGE_KEY = 'mfe_popup_v1';
-  const DISMISS_DAYS = 7;
+  // Clear any old dismissed state so popup shows until signup
+  try {
+    const d = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (d && d.dismissed && !d.submitted) localStorage.removeItem(STORAGE_KEY);
+  } catch(e) {}
+
   const overlay = document.getElementById('popup-overlay');
   const closeBtn = document.getElementById('popup-close');
   const form     = document.getElementById('popup-form');
@@ -689,9 +890,7 @@ const unlockAutoplay = () => {
   function shouldShow() {
     try {
       const d = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      if (!d) return true;
-      if (d.submitted) return false;
-      if (d.dismissed && Date.now() - d.dismissed < DISMISS_DAYS * 864e5) return false;
+      if (d && d.submitted) return false;
     } catch(e) {}
     return true;
   }
@@ -705,7 +904,7 @@ const unlockAutoplay = () => {
   function closePopup() {
     overlay.classList.remove('popup-active');
     document.body.style.overflow = '';
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ dismissed: Date.now() })); } catch(e) {}
+    // No dismissal stored — popup will show again next visit until signup
   }
 
   // Triggers: 6 seconds after load, or exit intent on desktop
@@ -755,60 +954,6 @@ const unlockAutoplay = () => {
 })();
 </script>
 
-<!-- ── EMAIL CAPTURE POPUP ─────────────────────── -->
-<div id="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popup-heading">
-  <div id="popup-modal">
-    <button id="popup-close" aria-label="Close popup">✕</button>
-
-    <!-- Book cover visual -->
-    <div class="popup-book" aria-hidden="true">
-      <div class="popup-book-tag">Free E-Book</div>
-      <div class="popup-book-cover-title">
-        Level Up Your<br>Home Gym
-        <em>The unconventional playbook for designing a space you'll actually use</em>
-      </div>
-      <div>
-        <div class="popup-book-rule"></div>
-        <div class="popup-book-brand">Made From Effort</div>
-      </div>
-    </div>
-
-    <!-- Form -->
-    <div class="popup-form-wrap">
-      <div class="popup-kicker">Free Download</div>
-      <h2 class="popup-headline" id="popup-heading">Level Up Your<br>Home Gym</h2>
-      <p class="popup-desc">The unconventional playbook for designing a space you'll actually use — written by a CSCS-certified trainer with 15 years of elite experience.</p>
-      <ul class="popup-bullets">
-        <li>How to design around your actual training, not trends</li>
-        <li>Equipment selection without wasting money</li>
-        <li>The layout principles that change how you train</li>
-      </ul>
-
-      <form id="popup-form" novalidate>
-        <input type="hidden" name="_subject" value="New Lead — Level Up Your Home Gym">
-        <input type="hidden" name="source" value="ebook-popup">
-        <div class="popup-fg">
-          <label for="popup-name">First Name</label>
-          <input type="text" id="popup-name" name="name" placeholder="Your first name" autocomplete="given-name" required>
-        </div>
-        <div class="popup-fg">
-          <label for="popup-email">Email Address</label>
-          <input type="email" id="popup-email" name="email" placeholder="your@email.com" autocomplete="email" required>
-        </div>
-        <button type="submit" id="popup-submit">Send Me the Free Guide →</button>
-      </form>
-
-      <div id="popup-success">
-        <div class="popup-success-check">✓</div>
-        <div class="popup-success-title">It's on its way.</div>
-        <p class="popup-success-text">Check your inbox — your free guide is heading there now. In the meantime, take a look at our recent projects.</p>
-        <a id="popup-download-btn" href="home-gym-playbook.pdf" download>Download Now →</a>
-      </div>
-
-      <p class="popup-privacy">No spam. Just signal. Unsubscribe anytime.</p>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>
