@@ -417,19 +417,21 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
         <div class="cd-row"><span class="cd-l">Response</span><span class="cd-v">Within 1 business day</span></div>
       </div>
     </div>
-    <form class="reveal d1" onsubmit="return false;">
+    <form id="inquiry-form" class="reveal d1">
+      <input type="hidden" name="_subject" value="New Inquiry — Made From Effort">
+      <input type="hidden" name="_replyto" id="reply-to-field">
       <div class="f-row">
-        <div class="f-group"><label>First Name</label><input type="text" placeholder="First"></div>
-        <div class="f-group"><label>Last Name</label><input type="text" placeholder="Last"></div>
+        <div class="f-group"><label>First Name</label><input type="text" name="first_name" placeholder="First"></div>
+        <div class="f-group"><label>Last Name</label><input type="text" name="last_name" placeholder="Last"></div>
       </div>
-      <div class="f-group"><label>Email</label><input type="email" placeholder="you@email.com"></div>
-      <div class="f-group"><label>Project Type</label><select><option value="" disabled selected>Select one</option><option>Private Residence / Home Gym</option><option>Commercial Training Studio</option><option>Yacht or Marine Installation</option><option>Other</option></select></div>
+      <div class="f-group"><label>Email</label><input type="email" name="email" id="email-field" placeholder="you@email.com"></div>
+      <div class="f-group"><label>Project Type</label><select name="project_type"><option value="" disabled selected>Select one</option><option>Private Residence / Home Gym</option><option>Commercial Training Studio</option><option>Yacht or Marine Installation</option><option>Other</option></select></div>
       <div class="f-row">
-        <div class="f-group"><label>Budget Range</label><select><option value="" disabled selected>Approximate budget</option><option>$50K – $150K</option><option>$150K – $300K</option><option>$300K – $500K</option><option>$500K+</option></select></div>
-        <div class="f-group"><label>Timeline</label><select><option value="" disabled selected>When to start</option><option>ASAP</option><option>1–3 Months</option><option>3–6 Months</option><option>6+ Months</option></select></div>
+        <div class="f-group"><label>Budget Range</label><select name="budget"><option value="" disabled selected>Approximate budget</option><option>$50K – $150K</option><option>$150K – $300K</option><option>$300K – $500K</option><option>$500K+</option></select></div>
+        <div class="f-group"><label>Timeline</label><select name="timeline"><option value="" disabled selected>When to start</option><option>ASAP</option><option>1–3 Months</option><option>3–6 Months</option><option>6+ Months</option></select></div>
       </div>
-      <div class="f-group"><label>Tell us about your vision</label><textarea placeholder="Describe your space, training goals, and what you're looking to build..."></textarea></div>
-      <div class="f-submit"><button id="submit-btn">Send Inquiry →</button></div>
+      <div class="f-group"><label>Tell us about your vision</label><textarea name="message" placeholder="Describe your space, training goals, and what you're looking to build..."></textarea></div>
+      <div class="f-submit"><button id="submit-btn" type="submit">Send Inquiry →</button></div>
     </form>
   </div>
 </section>
@@ -487,10 +489,42 @@ const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.targe
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
 /* ── FORM ────────────────────────────────────── */
-document.getElementById('submit-btn').addEventListener('click',function(){
-  this.textContent='Sent ✓';this.style.background='#3a7a5a';
-  setTimeout(()=>{this.textContent='Send Inquiry →';this.style.background='';},3000);
-});
+(function() {
+  const form = document.getElementById('inquiry-form');
+  const btn  = document.getElementById('submit-btn');
+  const emailField = document.getElementById('email-field');
+  const replyTo    = document.getElementById('reply-to-field');
+
+  emailField.addEventListener('input', () => { replyTo.value = emailField.value; });
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://formspree.io/scottschratwieser@gmail.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+
+      if (res.ok) {
+        btn.textContent = 'Sent ✓';
+        btn.style.background = '#3a7a5a';
+        form.reset();
+        setTimeout(() => { btn.textContent = 'Send Inquiry →'; btn.style.background = ''; btn.disabled = false; }, 4000);
+      } else {
+        throw new Error();
+      }
+    } catch {
+      btn.textContent = 'Try again';
+      btn.style.background = '#a84040';
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = 'Send Inquiry →'; btn.style.background = ''; }, 3000);
+    }
+  });
+})();
 </script>
 
 </body>
