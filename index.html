@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Made From Effort — Performance Edge Training + Gym Design</title>
+<script>if(history.scrollRestoration)history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname);window.scrollTo(0,0);</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
@@ -450,9 +451,16 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
 
 <script>
 
-/* ── SCROLL TO TOP ON LOAD ───────────────────── */
-if (history.scrollRestoration) history.scrollRestoration = 'manual';
-window.scrollTo(0, 0);
+/* ── SMOOTH SCROLL (no hash in URL) ─────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    e.preventDefault();
+    const target = document.getElementById(id);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
 /* ── SCROLL REVEAL ───────────────────────────── */
 const ro=new IntersectionObserver(es=>es.forEach(e=>{
