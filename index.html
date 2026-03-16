@@ -264,7 +264,8 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     </div>
   </div>
   <div class="hero-right">
-    <img id="gym-photo" src="IMG_5788.webp" alt="Made From Effort Gym">
+    <img id="gym-photo" src="IMG_5788.webp" alt="Made From Effort Gym" style="transition:opacity 0.8s ease;">
+    <img id="gym-photo-2" src="IMG_6798.PNG" alt="Made From Effort Gym" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.8s ease;will-change:transform;">
     <div class="canvas-hint" id="canvas-hint">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Hover to explore
@@ -456,7 +457,10 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
   let hovering = false, t = 0, rafId;
 
   function applyTilt(rx, ry, scale) {
-    photo.style.transform = 'perspective(900px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale(' + scale + ')';
+    const t = 'perspective(900px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale(' + scale + ')';
+    photo.style.transform = t;
+    const p2 = document.getElementById('gym-photo-2');
+    if (p2) p2.style.transform = t;
   }
 
   function autoAnimate() {
@@ -483,6 +487,16 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     const y = (e.clientY - r.top) / r.height - 0.5;
     applyTilt(-y * 14, x * 14, 1.06);
   });
+
+  // Image crossfade cycling
+  const photos = [document.getElementById('gym-photo'), document.getElementById('gym-photo-2')];
+  let current = 0;
+  setInterval(() => {
+    photos[current].style.opacity = '0';
+    current = (current + 1) % photos.length;
+    photos[current].style.opacity = '1';
+    photos[current].style.transform = photo.style.transform;
+  }, 4000);
 })();
 
 /* ── SCROLL REVEAL ───────────────────────────── */
