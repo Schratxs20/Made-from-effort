@@ -568,16 +568,16 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
       <input type="hidden" name="_subject" value="New Inquiry — Made From Effort">
       <input type="hidden" name="_replyto" id="reply-to-field">
       <div class="f-row">
-        <div class="f-group"><label>First Name</label><input type="text" name="first_name" placeholder="First"></div>
-        <div class="f-group"><label>Last Name</label><input type="text" name="last_name" placeholder="Last"></div>
+        <div class="f-group"><label for="first-name">First Name</label><input type="text" id="first-name" name="first_name" placeholder="First"></div>
+        <div class="f-group"><label for="last-name">Last Name</label><input type="text" id="last-name" name="last_name" placeholder="Last"></div>
       </div>
-      <div class="f-group"><label>Email</label><input type="email" name="email" id="email-field" placeholder="you@email.com"></div>
-      <div class="f-group"><label>Project Type</label><select name="project_type"><option value="" disabled selected>Select one</option><option>Private Residence / Home Gym</option><option>Commercial Training Studio</option><option>Yacht or Marine Installation</option><option>Other</option></select></div>
+      <div class="f-group"><label for="email-field">Email</label><input type="email" name="email" id="email-field" placeholder="you@email.com"></div>
+      <div class="f-group"><label for="project-type">Project Type</label><select id="project-type" name="project_type"><option value="" disabled selected>Select one</option><option>Private Residence / Home Gym</option><option>Commercial Training Studio</option><option>Yacht or Marine Installation</option><option>Other</option></select></div>
       <div class="f-row">
-        <div class="f-group"><label>Budget Range</label><select name="budget"><option value="" disabled selected>Approximate budget</option><option>$50K – $150K</option><option>$150K – $300K</option><option>$300K – $500K</option><option>$500K+</option></select></div>
-        <div class="f-group"><label>Timeline</label><select name="timeline"><option value="" disabled selected>When to start</option><option>ASAP</option><option>1–3 Months</option><option>3–6 Months</option><option>6+ Months</option></select></div>
+        <div class="f-group"><label for="budget">Budget Range</label><select id="budget" name="budget"><option value="" disabled selected>Approximate budget</option><option>$50K – $150K</option><option>$150K – $300K</option><option>$300K – $500K</option><option>$500K+</option></select></div>
+        <div class="f-group"><label for="timeline">Timeline</label><select id="timeline" name="timeline"><option value="" disabled selected>When to start</option><option>ASAP</option><option>1–3 Months</option><option>3–6 Months</option><option>6+ Months</option></select></div>
       </div>
-      <div class="f-group"><label>Tell us about your vision</label><textarea name="message" placeholder="Describe your space, training goals, and what you're looking to build..."></textarea></div>
+      <div class="f-group"><label for="message">Tell us about your vision</label><textarea id="message" name="message" placeholder="Describe your space, training goals, and what you're looking to build..."></textarea></div>
       <div class="f-submit"><button id="submit-btn" type="submit">Send Inquiry →</button></div>
     </form>
   </div>
@@ -721,7 +721,7 @@ allAutoplayVideos.forEach(v => {
   const tryPlay = () => { v.muted = true; v.play().catch(() => {}); };
   ['canplay','loadedmetadata','loadeddata','canplaythrough'].forEach(ev => v.addEventListener(ev, tryPlay, { once: true }));
   if (v.readyState >= 1) tryPlay();
-  v.load();
+  else v.load();
   [100, 500, 1000, 2000, 3500].forEach(ms => setTimeout(tryPlay, ms));
 });
 
