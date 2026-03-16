@@ -151,6 +151,29 @@ h1 em { font-style: italic; color: var(--ink-mid); }
 .svc-list li { font-size: 13px; color: var(--ink-mid); display: flex; gap: 12px; align-items: baseline; }
 .svc-list li::before { content: '—'; color: var(--rule); font-size: 11px; flex-shrink: 0; }
 
+/* TRAINING */
+#training { padding: 100px 64px; background: var(--off); border-top: 1px solid var(--rule); }
+.training-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.training-left .sec-title { margin-bottom: 20px; }
+.training-desc { font-size: 14px; line-height: 1.9; color: var(--ink-light); margin-bottom: 40px; max-width: 420px; }
+.t-cards { display: flex; flex-direction: column; gap: 12px; }
+.t-card { border: 1px solid var(--rule); padding: 28px 28px 24px; cursor: pointer; transition: border-color 0.25s, background 0.25s; background: var(--white); position: relative; }
+.t-card:hover { border-color: var(--ink-light); }
+.t-card.selected { border-color: var(--ink); }
+.t-card.selected::after { content: '✓'; position: absolute; top: 18px; right: 22px; font-size: 11px; color: var(--blue); font-weight: 400; }
+.t-card-tag { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); font-weight: 400; margin-bottom: 10px; }
+.t-card h3 { font-family: 'Cormorant', serif; font-size: 22px; font-weight: 300; color: var(--ink); margin-bottom: 8px; }
+.t-card p { font-size: 13px; line-height: 1.75; color: var(--ink-light); }
+.t-card-list { list-style: none; margin-top: 14px; display: flex; flex-direction: column; gap: 5px; }
+.t-card-list li { font-size: 12px; color: var(--ink-mid); display: flex; gap: 10px; align-items: baseline; }
+.t-card-list li::before { content: '—'; color: var(--rule); font-size: 10px; flex-shrink: 0; }
+.training-form-title { font-family: 'Cormorant', serif; font-size: 22px; font-weight: 300; color: var(--ink); margin-bottom: 24px; }
+.t-type-row { display: flex; }
+.t-type { flex: 1; text-align: center; padding: 10px; border: 1px solid var(--rule); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-light); cursor: pointer; transition: all 0.2s; background: var(--white); }
+.t-type:first-child { border-right: none; }
+.t-type.selected { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.t-type:hover:not(.selected) { border-color: var(--ink-light); color: var(--ink); }
+
 /* PROCESS */
 #process { padding: 100px 64px; background: var(--off); border-top: 1px solid var(--rule); }
 .proc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 48px; }
@@ -377,6 +400,8 @@ nav{padding:0 20px} .nav-links{display:none}
 #contact{padding:64px 24px}
 .contact-grid{grid-template-columns:1fr;gap:48px}
 .f-row{grid-template-columns:1fr}
+.training-layout{grid-template-columns:1fr;gap:48px}
+#training{padding:64px 24px}
 footer{padding:32px 24px;flex-direction:column;text-align:center}
 #popup-modal{grid-template-columns:1fr}
 .popup-book{display:none}
@@ -396,6 +421,7 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#process">Process</a></li>
+    <li><a href="#training">Training</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact" class="nav-cta">Start a Project</a></li>
   </ul>
@@ -507,6 +533,68 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
       <ul class="svc-list">
         <li>Custom space planning and 3D renderings</li><li>Equipment curation to match your training</li><li>Premium material selection throughout</li><li>Smart home and AV integration</li><li>Recovery suite design — sauna, cold plunge</li><li>Architect and designer collaboration</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+
+<section id="training">
+  <div class="training-layout">
+    <div class="training-left reveal">
+      <div class="sec-eyebrow">Personal Training</div>
+      <h2 class="sec-title">Train With Someone Who <em>Builds</em> For It.</h2>
+      <p class="training-desc">Fifteen years of elite coaching — now available to a limited number of private clients. Every programme is built from scratch around how you actually move, recover, and perform.</p>
+      <div class="t-cards">
+        <div class="t-card selected" data-type="in-person">
+          <div class="t-card-tag">In-Person</div>
+          <h3>Private Sessions</h3>
+          <p>One-on-one coaching at your facility or mine — fully customised to your goals and programming needs.</p>
+          <ul class="t-card-list">
+            <li>Fully custom programming</li>
+            <li>Form, technique, and performance focus</li>
+            <li>Long Island, NY based</li>
+          </ul>
+        </div>
+        <div class="t-card" data-type="online">
+          <div class="t-card-tag">Online</div>
+          <h3>Remote Coaching</h3>
+          <p>Full programme design, video review, and regular check-ins — wherever you are in the world.</p>
+          <ul class="t-card-list">
+            <li>Weekly programming & video review</li>
+            <li>Nutrition guidance</li>
+            <li>Available worldwide</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="training-right reveal d1">
+      <form id="training-form">
+        <input type="hidden" name="_subject" value="New Training Inquiry — Made From Effort">
+        <input type="hidden" id="t-type-hidden" name="training_type" value="In-Person">
+        <p class="training-form-title">Book a Consultation</p>
+        <div class="f-row">
+          <div class="f-group"><label for="t-first">First Name</label><input type="text" id="t-first" name="first_name" placeholder="First"></div>
+          <div class="f-group"><label for="t-last">Last Name</label><input type="text" id="t-last" name="last_name" placeholder="Last"></div>
+        </div>
+        <div class="f-row">
+          <div class="f-group"><label for="t-email">Email</label><input type="email" id="t-email" name="email" placeholder="you@email.com"></div>
+          <div class="f-group"><label for="t-phone">Phone</label><input type="tel" id="t-phone" name="phone" placeholder="+1 (917) 000 0000"></div>
+        </div>
+        <div class="f-group">
+          <label>Training Type</label>
+          <div class="t-type-row">
+            <div class="t-type selected" data-value="In-Person">In-Person</div>
+            <div class="t-type" data-value="Online">Online</div>
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-group"><label for="t-goal">Primary Goal</label><select id="t-goal" name="goal"><option value="" disabled selected>Select your goal</option><option>Fat Loss & Body Composition</option><option>Strength & Muscle</option><option>Athletic Performance</option><option>General Fitness & Health</option><option>Rehab & Recovery</option></select></div>
+          <div class="f-group"><label for="t-level">Experience Level</label><select id="t-level" name="experience"><option value="" disabled selected>Your background</option><option>Beginner (0–1 years)</option><option>Intermediate (1–4 years)</option><option>Advanced (4+ years)</option></select></div>
+        </div>
+        <div class="f-group"><label for="t-message">Anything we should know?</label><textarea id="t-message" name="message" placeholder="Injuries, schedule, training history, specific goals..."></textarea></div>
+        <div class="f-submit"><button id="t-submit-btn" type="submit">Request Consultation →</button></div>
+      </form>
     </div>
   </div>
 </section>
@@ -704,6 +792,53 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
       btn.style.background = '#a84040';
       btn.disabled = false;
       setTimeout(() => { btn.textContent = 'Send Inquiry →'; btn.style.background = ''; }, 3000);
+    }
+  });
+})();
+
+/* ── TRAINING ────────────────────────────────── */
+(function() {
+  function syncType(value) {
+    document.querySelectorAll('.t-type').forEach(t => t.classList.toggle('selected', t.dataset.value === value));
+    document.querySelectorAll('.t-card').forEach(c => c.classList.toggle('selected', (value === 'In-Person' ? 'in-person' : 'online') === c.dataset.type));
+    document.getElementById('t-type-hidden').value = value;
+  }
+
+  document.querySelectorAll('.t-card').forEach(card => {
+    card.addEventListener('click', () => syncType(card.dataset.type === 'in-person' ? 'In-Person' : 'Online'));
+  });
+
+  document.querySelectorAll('.t-type').forEach(btn => {
+    btn.addEventListener('click', () => syncType(btn.dataset.value));
+  });
+
+  const form = document.getElementById('training-form');
+  const btn  = document.getElementById('t-submit-btn');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/mvzwwrzr', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (res.ok) {
+        btn.textContent = 'Sent ✓';
+        btn.style.background = '#3a7a5a';
+        form.reset();
+        syncType('In-Person');
+        setTimeout(() => { btn.textContent = 'Request Consultation →'; btn.style.background = ''; btn.disabled = false; }, 4000);
+      } else {
+        throw new Error();
+      }
+    } catch {
+      btn.textContent = 'Try again';
+      btn.style.background = '#a84040';
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = 'Request Consultation →'; btn.style.background = ''; }, 3000);
     }
   });
 })();
