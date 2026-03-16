@@ -658,28 +658,40 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 const allAutoplayVideos = document.querySelectorAll('video[autoplay]');
 allAutoplayVideos.forEach(v => {
   v.muted = true;
+  v.defaultMuted = true;
+  v.setAttribute('muted', '');
   v.setAttribute('playsinline', '');
   v.setAttribute('webkit-playsinline', '');
-  const tryPlay = () => v.play().catch(() => {});
-  v.addEventListener('canplay', tryPlay, { once: true });
-  v.addEventListener('loadeddata', tryPlay, { once: true });
-  if (v.readyState >= 2) tryPlay();
-  setTimeout(tryPlay, 300);
-  setTimeout(tryPlay, 1000);
-  setTimeout(tryPlay, 2500);
+  v.setAttribute('x5-playsinline', '');
+  const tryPlay = () => { v.muted = true; v.play().catch(() => {}); };
+  ['canplay','loadedmetadata','loadeddata','canplaythrough'].forEach(ev => v.addEventListener(ev, tryPlay, { once: true }));
+  if (v.readyState >= 1) tryPlay();
+  v.load();
+  [100, 500, 1000, 2000, 3500].forEach(ms => setTimeout(tryPlay, ms));
 });
 
-// Unlock autoplay on first user interaction (required by some browsers)
-const unlockAutoplay = () => {
-  allAutoplayVideos.forEach(v => { if (v.paused) v.play().catch(() => {}); });
-  ['click','touchstart','keydown','scroll'].forEach(ev => document.removeEventListener(ev, unlockAutoplay));
-};
-['click','touchstart','keydown','scroll'].forEach(ev => document.addEventListener(ev, unlockAutoplay, { once: true, passive: true }));
+// Unlock on first interaction
+document.addEventListener('click',      function u(){ allAutoplayVideos.forEach(v=>{ if(v.paused){v.muted=true;v.play().catch(()=>{});} }); document.removeEventListener('click',u); }, { passive:true });
+document.addEventListener('touchstart', function u(){ allAutoplayVideos.forEach(v=>{ if(v.paused){v.muted=true;v.play().catch(()=>{});} }); document.removeEventListener('touchstart',u); }, { passive:true });
+document.addEventListener('scroll',     function u(){ allAutoplayVideos.forEach(v=>{ if(v.paused){v.muted=true;v.play().catch(()=>{});} }); document.removeEventListener('scroll',u); }, { passive:true });
+
+// IntersectionObserver for hero video specifically
+const heroVid = document.getElementById('gym-video');
+if (heroVid) {
+  new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) { heroVid.muted = true; heroVid.play().catch(() => {}); }
+  }, { threshold: 0.1 }).observe(heroVid);
+}
 
 /* ── POPUP ───────────────────────────────────── */
 (function() {
   const STORAGE_KEY = 'mfe_popup_v1';
-  const DISMISS_DAYS = 7;
+  // Clear any old dismissed state so popup shows until signup
+  try {
+    const d = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (d && d.dismissed && !d.submitted) localStorage.removeItem(STORAGE_KEY);
+  } catch(e) {}
+
   const overlay = document.getElementById('popup-overlay');
   const closeBtn = document.getElementById('popup-close');
   const form     = document.getElementById('popup-form');
@@ -689,9 +701,7 @@ const unlockAutoplay = () => {
   function shouldShow() {
     try {
       const d = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      if (!d) return true;
-      if (d.submitted) return false;
-      if (d.dismissed && Date.now() - d.dismissed < DISMISS_DAYS * 864e5) return false;
+      if (d && d.submitted) return false;
     } catch(e) {}
     return true;
   }
@@ -705,7 +715,7 @@ const unlockAutoplay = () => {
   function closePopup() {
     overlay.classList.remove('popup-active');
     document.body.style.overflow = '';
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ dismissed: Date.now() })); } catch(e) {}
+    // No dismissal stored — popup will show again next visit until signup
   }
 
   // Triggers: 6 seconds after load, or exit intent on desktop
