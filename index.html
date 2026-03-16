@@ -161,9 +161,8 @@ h1 em { font-style: italic; color: var(--ink-mid); }
 /* ABOUT */
 #about { display: grid; grid-template-columns: 1fr 1fr; background: var(--white); border-top: 1px solid var(--rule); }
 .about-img { position: relative; overflow: hidden; min-height: 560px; background: var(--off); }
-.about-img-inner { position: absolute; inset: 0; background: linear-gradient(160deg, #d8d4cc 0%, #c0b8ae 50%, #a8a09a 100%); transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.about-img-inner { position: absolute; inset: 0; background-image: url('IMG_6798.PNG'); background-size: cover; background-position: center; transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
 .about-img:hover .about-img-inner { transform: scale(1.03); }
-.about-img-inner::after { content: 'YOUR PHOTO HERE'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.25); font-weight: 400; }
 .about-text { padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; }
 .about-text .sec-eyebrow { margin-bottom: 14px; }
 .about-text h2 { font-family: 'Cormorant', serif; font-size: clamp(28px, 3vw, 44px); font-weight: 300; line-height: 1.15; color: var(--ink); margin-bottom: 24px; }
