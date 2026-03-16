@@ -511,7 +511,8 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 })();
 
 // Force video autoplay
-document.querySelectorAll('video[autoplay]').forEach(v => {
+const allAutoplayVideos = document.querySelectorAll('video[autoplay]');
+allAutoplayVideos.forEach(v => {
   v.muted = true;
   v.setAttribute('playsinline', '');
   v.setAttribute('webkit-playsinline', '');
@@ -523,6 +524,13 @@ document.querySelectorAll('video[autoplay]').forEach(v => {
   setTimeout(tryPlay, 1000);
   setTimeout(tryPlay, 2500);
 });
+
+// Unlock autoplay on first user interaction (required by some browsers)
+const unlockAutoplay = () => {
+  allAutoplayVideos.forEach(v => { if (v.paused) v.play().catch(() => {}); });
+  ['click','touchstart','keydown','scroll'].forEach(ev => document.removeEventListener(ev, unlockAutoplay));
+};
+['click','touchstart','keydown','scroll'].forEach(ev => document.addEventListener(ev, unlockAutoplay, { once: true, passive: true }));
 </script>
 
 </body>
