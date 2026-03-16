@@ -112,7 +112,7 @@ h1 em { font-style: italic; color: var(--ink-mid); }
 .pc-bg video::-webkit-media-controls { display: none !important; }
 .pc-bg video::-webkit-media-controls-start-playback-button { display: none !important; }
 .pc-bg video::-webkit-media-controls-overlay-play-button { display: none !important; }
-.pc:nth-child(2) .pc-bg { background-image: url('IMG_1009.png'); background-size: cover; background-position: center; }
+.pc:nth-child(2) .pc-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 .pc:nth-child(3) .pc-bg { background: linear-gradient(135deg,#bcc4b8,#98a894); }
 .pc:nth-child(4) .pc-bg { background: linear-gradient(135deg,#c4bcb4,#a89888); }
 .pc:nth-child(5) .pc-bg { background: linear-gradient(135deg,#b8c0c8,#8898a8); }
@@ -269,7 +269,7 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     </div>
   </div>
   <div class="hero-right">
-    <video id="gym-video" src="hf_20260316_190700_d21dac8c-e8fe-4c2a-b4b8-b8d08669933b.mp4" autoplay muted loop playsinline preload="auto"></video>
+    <video id="gym-video" src="hf_20260316_190700_d21dac8c-e8fe-4c2a-b4b8-b8d08669933b.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
   </div>
 </section>
 
@@ -318,8 +318,8 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     <a href="#contact" class="btn btn-outline">Start Yours</a>
   </div>
   <div class="port-grid">
-    <div class="pc reveal"><div class="pc-bg"><video autoplay muted loop playsinline preload="auto"><source src="47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4" type="video/mp4"></video></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Private Yacht Gym</div><div class="pc-loc">Marine Installation · Atlantic</div></div></div>
-    <div class="pc reveal d1"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 75%</span><div class="pc-name">Jupiter Island Estate</div><div class="pc-loc">Private Residence · South Florida</div></div></div>
+    <div class="pc reveal"><div class="pc-bg"><video autoplay muted loop playsinline webkit-playsinline preload="auto"><source src="47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4" type="video/mp4"></video></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Private Yacht Gym</div><div class="pc-loc">Marine Installation · Atlantic</div></div></div>
+    <div class="pc reveal d1"><div class="pc-bg"><img src="IMG_1009.png" alt="Jupiter Island Estate"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 75%</span><div class="pc-name">Jupiter Island Estate</div><div class="pc-loc">Private Residence · South Florida</div></div></div>
     <div class="pc reveal d1"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">Jericho Private Estate</div><div class="pc-loc">Luxury Residence · Long Island, NY</div></div></div>
     <div class="pc reveal d2"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">San Francisco Residence</div><div class="pc-loc">Private Home Gym · Bay Area, CA</div></div></div>
     <div class="pc reveal d3"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-new">Starting Soon</span><div class="pc-name">Sands Point Estate</div><div class="pc-loc">Private Residence · Long Island, NY</div></div></div>
@@ -450,6 +450,10 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
 
 <script>
 
+/* ── SCROLL TO TOP ON LOAD ───────────────────── */
+if (history.scrollRestoration) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
 /* ── SCROLL REVEAL ───────────────────────────── */
 const ro=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting){
@@ -502,13 +506,14 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 document.querySelectorAll('video[autoplay]').forEach(v => {
   v.muted = true;
   v.setAttribute('playsinline', '');
+  v.setAttribute('webkit-playsinline', '');
   const tryPlay = () => v.play().catch(() => {});
-  if (v.readyState >= 2) {
-    tryPlay();
-  } else {
-    v.addEventListener('canplay', tryPlay, { once: true });
-  }
-  setTimeout(tryPlay, 500);
+  v.addEventListener('canplay', tryPlay, { once: true });
+  v.addEventListener('loadeddata', tryPlay, { once: true });
+  if (v.readyState >= 2) tryPlay();
+  setTimeout(tryPlay, 300);
+  setTimeout(tryPlay, 1000);
+  setTimeout(tryPlay, 2500);
 });
 </script>
 
