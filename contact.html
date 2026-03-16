@@ -698,11 +698,44 @@ select option { background: var(--white); }
     if (from > 1) setStep(from - 1);
   }
 
-  function submitForm() {
+  async function submitForm() {
     if (!validateStep(3)) return;
-    document.getElementById('stepBar').style.display = 'none';
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('successPanel').classList.add('active');
+
+    const submitBtn = document.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.querySelector('span').textContent = 'Sending…';
+
+    const data = new FormData();
+    data.append('firstName',   document.getElementById('firstName').value.trim());
+    data.append('lastName',    document.getElementById('lastName').value.trim());
+    data.append('email',       document.getElementById('email').value.trim());
+    data.append('phone',       document.getElementById('phone').value.trim());
+    data.append('projectType', selectedProjectType);
+    data.append('budget',      document.getElementById('budget').value);
+    data.append('timeline',    document.getElementById('timeline').value);
+    data.append('vision',      document.getElementById('vision').value.trim());
+    data.append('_subject',    'New Inquiry — Made From Effort');
+
+    try {
+      const res = await fetch('https://formspree.io/f/mvzwwrzr', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      });
+      if (!res.ok) throw new Error();
+
+      document.getElementById('stepBar').style.display = 'none';
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('successPanel').classList.add('active');
+    } catch {
+      submitBtn.disabled = false;
+      submitBtn.querySelector('span').textContent = 'Send Inquiry →';
+      const errEl = document.createElement('p');
+      errEl.style.cssText = 'color:var(--error);font-size:13px;margin-top:12px;text-align:right';
+      errEl.textContent = 'Something went wrong. Please try again.';
+      submitBtn.closest('.form-nav').appendChild(errEl);
+      setTimeout(() => errEl.remove(), 4000);
+    }
   }
 
   document.querySelectorAll('input, select, textarea').forEach(el => {
