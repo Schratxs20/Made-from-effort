@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Made From Effort — Contact</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ivory: #F9F7F3;
+  --white: #FFFFFF;
+  --slate: #8A9099;
+  --slate-light: #C8CDD4;
+  --ink: #1A1A1A;
+  --ink-soft: #2E2E2E;
+  --gold: #A8906A;
+  --gold-light: #C4AB87;
+  --border: #E2DDD6;
+  --error: #9B4A3A;
+  --success: #4A7A5C;
+  --shadow: 0 2px 40px rgba(26,26,26,0.06);
+}
+
+html { font-size: 16px; }
+
+body {
+  background: var(--ivory);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+}
+
+/* ── SECTION WRAPPER ─────────────────────────── */
+.section {
+  width: 100%;
+  max-width: 960px;
+}
+
+/* ── HEADER ──────────────────────────────────── */
+.section-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.section-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.section-heading em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.section-sub {
+  font-size: 14px;
+  color: var(--slate);
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 56px;
+}
+
+/* ── FORM CARD ───────────────────────────────── */
+.form-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 56px 64px;
+  box-shadow: var(--shadow);
+}
+
+/* ── STEP INDICATOR ──────────────────────────── */
+.step-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 48px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: default;
+}
+
+.step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--slate);
+  background: var(--white);
+  transition: all 0.4s ease;
+  flex-shrink: 0;
+}
+
+.step-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate-light);
+  transition: color 0.4s ease;
+  white-space: nowrap;
+}
+
+.step-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  margin: 0 16px;
+  min-width: 24px;
+}
+
+.step.active .step-num {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--white);
+}
+
+.step.active .step-label { color: var(--ink); }
+
+.step.done .step-num {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--white);
+}
+
+.step.done .step-label { color: var(--gold); }
+
+/* ── PANELS ──────────────────────────────────── */
+.panel { display: none; }
+.panel.active {
+  display: block;
+  animation: fadeUp 0.4s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.panel-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 32px;
+  letter-spacing: 0.01em;
+}
+
+.panel-title span {
+  color: var(--slate);
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* ── FIELDS ──────────────────────────────────── */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.field-row.single { grid-template-columns: 1fr; }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--slate);
+  transition: color 0.2s;
+}
+
+.field:focus-within label { color: var(--ink); }
+
+input, select, textarea {
+  font-family: 'Jost', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--ivory);
+  border: 1px solid var(--border);
+  border-radius: 1px;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--slate-light);
+  font-style: italic;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--ink);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(26,26,26,0.04);
+}
+
+input.error, select.error, textarea.error { border-color: var(--error); }
+
+textarea {
+  resize: none;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.select-wrap { position: relative; }
+
+.select-wrap::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 6px;
+  background: var(--slate);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  pointer-events: none;
+}
+
+select { cursor: pointer; padding-right: 36px; }
+select option { background: var(--white); }
+
+.field-note {
+  font-size: 11px;
+  color: var(--slate);
+  letter-spacing: 0.03em;
+  margin-top: -4px;
+}
+
+.error-msg {
+  font-size: 11px;
+  color: var(--error);
+  letter-spacing: 0.03em;
+  display: none;
+}
+
+.field.has-error .error-msg { display: block; }
+.field.has-error label { color: var(--error); }
+
+/* ── TILE SELECTOR ───────────────────────────── */
+.tile-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.tile {
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 20px 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: var(--ivory);
+  position: relative;
+  user-select: none;
+}
+
+.tile:hover { border-color: var(--slate); background: var(--white); }
+
+.tile.selected {
+  border-color: var(--ink);
+  background: var(--white);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+.tile input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.tile-icon {
+  font-size: 20px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.tile-name {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.tile-desc {
+  font-size: 11px;
+  color: var(--slate);
+  line-height: 1.5;
+}
+
+.tile.selected .tile-name { color: var(--ink); }
+
+/* ── NAVIGATION ──────────────────────────────── */
+.form-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+
+.btn-back:hover { color: var(--ink); }
+.btn-back.hidden { visibility: hidden; }
+
+.btn-next {
+  background: var(--ink);
+  border: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  cursor: pointer;
+  padding: 16px 40px;
+  border-radius: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.25s, transform 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-next::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.btn-next:hover::before { transform: translateX(0); }
+.btn-next span { position: relative; z-index: 1; }
+.btn-next:hover { transform: translateY(-1px); }
+.btn-next:active { transform: translateY(0); }
+
+.btn-next.submit-btn { background: var(--gold); }
+.btn-next.submit-btn::before { background: var(--ink); }
+
+/* ── SUCCESS STATE ───────────────────────────── */
+.success-panel {
+  display: none;
+  text-align: center;
+  padding: 40px 0;
+  animation: fadeUp 0.5s ease both;
+}
+
+.success-panel.active { display: block; }
+
+.success-mark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+  color: var(--gold);
+  font-size: 22px;
+}
+
+.success-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.success-heading em { font-style: italic; color: var(--gold); }
+
+.success-text {
+  font-size: 14px;
+  color: var(--slate);
+  line-height: 1.7;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 700px) {
+  .form-card { padding: 36px 28px; }
+  .field-row { grid-template-columns: 1fr; }
+  .tile-group { grid-template-columns: 1fr; }
+  .step-label { display: none; }
+  .step-line { min-width: 16px; }
+}
+
+@media (max-width: 480px) {
+  .form-card { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<section class="section">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-heading">Let's Build Something <em>Extraordinary.</em></h2>
+  <p class="section-sub">We take on a limited number of projects at a time. If you're serious about your training environment, we'd like to hear about it.</p>
+
+  <div class="form-card">
+
+    <!-- STEP BAR -->
+    <div class="step-bar" id="stepBar">
+      <div class="step active" id="step-dot-1">
+        <div class="step-num">1</div>
+        <span class="step-label">You</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step-dot-2">
+        <div class="step-num">2</div>
+        <span class="step-label">Project</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step-dot-3">
+        <div class="step-num">3</div>
+        <span class="step-label">Vision</span>
+      </div>
+    </div>
+
+    <!-- PANEL 1: Contact Info -->
+    <div class="panel active" id="panel-1">
+      <p class="panel-title">Tell us about <span>yourself.</span></p>
+      <div class="field-row">
+        <div class="field" id="field-firstName">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="James" autocomplete="given-name">
+          <span class="error-msg">Please enter your first name.</span>
+        </div>
+        <div class="field" id="field-lastName">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Worthington" autocomplete="family-name">
+          <span class="error-msg">Please enter your last name.</span>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field" id="field-email">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="james@example.com" autocomplete="email">
+          <span class="error-msg">Please enter a valid email address.</span>
+        </div>
+        <div class="field" id="field-phone">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="+1 (917) 000 0000" autocomplete="tel">
+          <span class="error-msg">Please enter a phone number.</span>
+        </div>
+      </div>
+      <div class="form-nav">
+        <button class="btn-back hidden">← Back</button>
+        <button class="btn-next" onclick="nextStep(1)"><span>Continue →</span></button>
+      </div>
+    </div>
+
+    <!-- PANEL 2: Project Details -->
+    <div class="panel" id="panel-2">
+      <p class="panel-title">About your <span>project.</span></p>
+
+      <div class="field-row single" style="margin-bottom: 28px;">
+        <div class="field" id="field-projectType">
+          <label>Project Type</label>
+          <div class="tile-group">
+            <label class="tile" id="tile-residence" onclick="selectTile('projectType','residence',this)">
+              <input type="radio" name="projectType" value="residence">
+              <span class="tile-icon">🏠</span>
+              <span class="tile-name">Residence</span>
+              <span class="tile-desc">Estate or home gym</span>
+            </label>
+            <label class="tile" id="tile-commercial" onclick="selectTile('projectType','commercial',this)">
+              <input type="radio" name="projectType" value="commercial">
+              <span class="tile-icon">🏢</span>
+              <span class="tile-name">Commercial</span>
+              <span class="tile-desc">Boutique studio or facility</span>
+            </label>
+            <label class="tile" id="tile-marine" onclick="selectTile('projectType','marine',this)">
+              <input type="radio" name="projectType" value="marine">
+              <span class="tile-icon">⚓</span>
+              <span class="tile-name">Marine</span>
+              <span class="tile-desc">Yacht or vessel installation</span>
+            </label>
+          </div>
+          <span class="error-msg" id="projectType-error">Please select a project type.</span>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field" id="field-budget">
+          <label for="budget">Approximate Budget</label>
+          <div class="select-wrap">
+            <select id="budget" name="budget">
+              <option value="" disabled selected>Select a range</option>
+              <option value="50-150">$50K – $150K</option>
+              <option value="150-300">$150K – $300K</option>
+              <option value="300-500">$300K – $500K</option>
+              <option value="500+">$500K+</option>
+            </select>
+          </div>
+          <span class="error-msg">Please select a budget range.</span>
+        </div>
+        <div class="field" id="field-timeline">
+          <label for="timeline">When to Start</label>
+          <div class="select-wrap">
+            <select id="timeline" name="timeline">
+              <option value="" disabled selected>Select a window</option>
+              <option value="asap">As soon as possible</option>
+              <option value="1-3">1 – 3 months</option>
+              <option value="3-6">3 – 6 months</option>
+              <option value="6+">6+ months</option>
+            </select>
+          </div>
+          <span class="error-msg">Please select a timeline.</span>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-back" onclick="prevStep(2)">← Back</button>
+        <button class="btn-next" onclick="nextStep(2)"><span>Continue →</span></button>
+      </div>
+    </div>
+
+    <!-- PANEL 3: Vision -->
+    <div class="panel" id="panel-3">
+      <p class="panel-title">Share your <span>vision.</span></p>
+      <div class="field-row single">
+        <div class="field" id="field-vision">
+          <label for="vision">Tell us about the space</label>
+          <textarea id="vision" name="vision" placeholder="Describe your goals, the space you have in mind, how you train, and anything else that matters to you..."></textarea>
+          <span class="field-note">The more specific you are, the better we can prepare for your discovery call.</span>
+          <span class="error-msg">Please share a few details about your vision.</span>
+        </div>
+      </div>
+      <div class="form-nav">
+        <button class="btn-back" onclick="prevStep(3)">← Back</button>
+        <button class="btn-next submit-btn" onclick="submitForm()"><span>Send Inquiry →</span></button>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success-panel" id="successPanel">
+      <div class="success-mark">✓</div>
+      <p class="success-heading">We'll be in <em>touch.</em></p>
+      <p class="success-text">Your inquiry has been received. Expect a response within one business day — we look forward to learning about your project.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  let currentStep = 1;
+  const totalSteps = 3;
+  let selectedProjectType = '';
+
+  function selectTile(group, value, el) {
+    selectedProjectType = value;
+    document.querySelectorAll('.tile').forEach(t => t.classList.remove('selected'));
+    el.classList.add('selected');
+    el.querySelector('input[type="radio"]').checked = true;
+    document.getElementById('field-projectType').classList.remove('has-error');
+  }
+
+  function setStep(n) {
+    document.querySelectorAll('.panel').forEach((p, i) => {
+      p.classList.toggle('active', i + 1 === n);
+    });
+    for (let i = 1; i <= totalSteps; i++) {
+      const dot = document.getElementById(`step-dot-${i}`);
+      dot.classList.remove('active', 'done');
+      if (i < n) dot.classList.add('done');
+      else if (i === n) dot.classList.add('active');
+    }
+    currentStep = n;
+  }
+
+  function validateStep(n) {
+    let valid = true;
+
+    function check(id, condition) {
+      const field = document.getElementById(`field-${id}`);
+      if (!field) return;
+      if (!condition) {
+        field.classList.add('has-error');
+        const input = field.querySelector('input, select, textarea');
+        if (input) input.classList.add('error');
+        valid = false;
+      } else {
+        field.classList.remove('has-error');
+        const input = field.querySelector('input, select, textarea');
+        if (input) input.classList.remove('error');
+      }
+    }
+
+    if (n === 1) {
+      const fn = document.getElementById('firstName').value.trim();
+      const ln = document.getElementById('lastName').value.trim();
+      const em = document.getElementById('email').value.trim();
+      const ph = document.getElementById('phone').value.trim();
+      check('firstName', fn.length > 0);
+      check('lastName', ln.length > 0);
+      check('email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em));
+      check('phone', ph.length > 6);
+    }
+
+    if (n === 2) {
+      const budget = document.getElementById('budget').value;
+      const timeline = document.getElementById('timeline').value;
+
+      if (!selectedProjectType) {
+        document.getElementById('field-projectType').classList.add('has-error');
+        document.getElementById('projectType-error').style.display = 'block';
+        valid = false;
+      } else {
+        document.getElementById('field-projectType').classList.remove('has-error');
+        document.getElementById('projectType-error').style.display = 'none';
+      }
+
+      check('budget', budget !== '');
+      check('timeline', timeline !== '');
+    }
+
+    if (n === 3) {
+      const v = document.getElementById('vision').value.trim();
+      check('vision', v.length >= 20);
+    }
+
+    return valid;
+  }
+
+  function nextStep(from) {
+    if (!validateStep(from)) return;
+    if (from < totalSteps) setStep(from + 1);
+  }
+
+  function prevStep(from) {
+    if (from > 1) setStep(from - 1);
+  }
+
+  function submitForm() {
+    if (!validateStep(3)) return;
+    document.getElementById('stepBar').style.display = 'none';
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('successPanel').classList.add('active');
+  }
+
+  document.querySelectorAll('input, select, textarea').forEach(el => {
+    el.addEventListener('input', () => {
+      el.classList.remove('error');
+      el.closest('.field')?.classList.remove('has-error');
+    });
+  });
+</script>
+
+</body>
+</html>
