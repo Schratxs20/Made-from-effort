@@ -590,8 +590,63 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
   <ul class="foot-links">
     <li><a href="#portfolio">Portfolio</a></li><li><a href="#services">Services</a></li><li><a href="#process">Process</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="foot-copy">© 2025 Made From Effort</div>
+  <div class="foot-copy">© 2026 Made From Effort</div>
 </footer>
+
+<!-- ── EMAIL CAPTURE POPUP ─────────────────────── -->
+<div id="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popup-heading">
+  <div id="popup-modal">
+    <button id="popup-close" aria-label="Close popup">✕</button>
+
+    <!-- Book cover visual -->
+    <div class="popup-book" aria-hidden="true">
+      <div class="popup-book-tag">Free E-Book</div>
+      <div class="popup-book-cover-title">
+        Level Up Your<br>Home Gym
+        <em>The unconventional playbook for designing a space you'll actually use</em>
+      </div>
+      <div>
+        <div class="popup-book-rule"></div>
+        <div class="popup-book-brand">Made From Effort</div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="popup-form-wrap">
+      <div class="popup-kicker">Free Download</div>
+      <h2 class="popup-headline" id="popup-heading">Level Up Your<br>Home Gym</h2>
+      <p class="popup-desc">The unconventional playbook for designing a space you'll actually use — written by a CSCS-certified trainer with 15 years of elite experience.</p>
+      <ul class="popup-bullets">
+        <li>How to design around your actual training, not trends</li>
+        <li>Equipment selection without wasting money</li>
+        <li>The layout principles that change how you train</li>
+      </ul>
+
+      <form id="popup-form" novalidate>
+        <input type="hidden" name="_subject" value="New Lead — Level Up Your Home Gym">
+        <input type="hidden" name="source" value="ebook-popup">
+        <div class="popup-fg">
+          <label for="popup-name">First Name</label>
+          <input type="text" id="popup-name" name="name" placeholder="Your first name" autocomplete="given-name" required>
+        </div>
+        <div class="popup-fg">
+          <label for="popup-email">Email Address</label>
+          <input type="email" id="popup-email" name="email" placeholder="your@email.com" autocomplete="email" required>
+        </div>
+        <button type="submit" id="popup-submit">Send Me the Free Guide →</button>
+      </form>
+
+      <div id="popup-success">
+        <div class="popup-success-check">✓</div>
+        <div class="popup-success-title">It's on its way.</div>
+        <p class="popup-success-text">Check your inbox — your free guide is heading there now. In the meantime, take a look at our recent projects.</p>
+        <a id="popup-download-btn" href="home-gym-playbook.pdf" download>Download Now →</a>
+      </div>
+
+      <p class="popup-privacy">No spam. Just signal. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</div>
 
 <script>
 
@@ -765,60 +820,6 @@ if (heroVid) {
 })();
 </script>
 
-<!-- ── EMAIL CAPTURE POPUP ─────────────────────── -->
-<div id="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popup-heading">
-  <div id="popup-modal">
-    <button id="popup-close" aria-label="Close popup">✕</button>
-
-    <!-- Book cover visual -->
-    <div class="popup-book" aria-hidden="true">
-      <div class="popup-book-tag">Free E-Book</div>
-      <div class="popup-book-cover-title">
-        Level Up Your<br>Home Gym
-        <em>The unconventional playbook for designing a space you'll actually use</em>
-      </div>
-      <div>
-        <div class="popup-book-rule"></div>
-        <div class="popup-book-brand">Made From Effort</div>
-      </div>
-    </div>
-
-    <!-- Form -->
-    <div class="popup-form-wrap">
-      <div class="popup-kicker">Free Download</div>
-      <h2 class="popup-headline" id="popup-heading">Level Up Your<br>Home Gym</h2>
-      <p class="popup-desc">The unconventional playbook for designing a space you'll actually use — written by a CSCS-certified trainer with 15 years of elite experience.</p>
-      <ul class="popup-bullets">
-        <li>How to design around your actual training, not trends</li>
-        <li>Equipment selection without wasting money</li>
-        <li>The layout principles that change how you train</li>
-      </ul>
-
-      <form id="popup-form" novalidate>
-        <input type="hidden" name="_subject" value="New Lead — Level Up Your Home Gym">
-        <input type="hidden" name="source" value="ebook-popup">
-        <div class="popup-fg">
-          <label for="popup-name">First Name</label>
-          <input type="text" id="popup-name" name="name" placeholder="Your first name" autocomplete="given-name" required>
-        </div>
-        <div class="popup-fg">
-          <label for="popup-email">Email Address</label>
-          <input type="email" id="popup-email" name="email" placeholder="your@email.com" autocomplete="email" required>
-        </div>
-        <button type="submit" id="popup-submit">Send Me the Free Guide →</button>
-      </form>
-
-      <div id="popup-success">
-        <div class="popup-success-check">✓</div>
-        <div class="popup-success-title">It's on its way.</div>
-        <p class="popup-success-text">Check your inbox — your free guide is heading there now. In the meantime, take a look at our recent projects.</p>
-        <a id="popup-download-btn" href="home-gym-playbook.pdf" download>Download Now →</a>
-      </div>
-
-      <p class="popup-privacy">No spam. Just signal. Unsubscribe anytime.</p>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>
