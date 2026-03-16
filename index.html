@@ -108,7 +108,10 @@ h1 em { font-style: italic; color: var(--ink-mid); }
 .pc-bg { position: absolute; inset: 0; transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
 .pc:hover .pc-bg { transform: scale(1.04); }
 .pc:nth-child(1) .pc-bg { background: #1a1a18; }
-.pc:nth-child(1) .pc-bg video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pc:nth-child(1) .pc-bg video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.pc-bg video::-webkit-media-controls { display: none !important; }
+.pc-bg video::-webkit-media-controls-start-playback-button { display: none !important; }
+.pc-bg video::-webkit-media-controls-overlay-play-button { display: none !important; }
 .pc:nth-child(2) .pc-bg { background-image: url('IMG_1009.png'); background-size: cover; background-position: center; }
 .pc:nth-child(3) .pc-bg { background: linear-gradient(135deg,#bcc4b8,#98a894); }
 .pc:nth-child(4) .pc-bg { background: linear-gradient(135deg,#c4bcb4,#a89888); }
@@ -315,7 +318,7 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     <a href="#contact" class="btn btn-outline">Start Yours</a>
   </div>
   <div class="port-grid">
-    <div class="pc reveal"><div class="pc-bg"><video autoplay muted loop playsinline preload="auto"><source src="47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4" type="video/mp4"></video></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Private Yacht Gym</div><div class="pc-loc">Marine Installation · Atlantic</div></div></div>
+    <div class="pc reveal"><div class="pc-bg"><video autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback x-webkit-airplay="deny"><source src="47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4" type="video/mp4"></video></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Private Yacht Gym</div><div class="pc-loc">Marine Installation · Atlantic</div></div></div>
     <div class="pc reveal d1"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 75%</span><div class="pc-name">Jupiter Island Estate</div><div class="pc-loc">Private Residence · South Florida</div></div></div>
     <div class="pc reveal d1"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">Jericho Private Estate</div><div class="pc-loc">Luxury Residence · Long Island, NY</div></div></div>
     <div class="pc reveal d2"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">San Francisco Residence</div><div class="pc-loc">Private Home Gym · Bay Area, CA</div></div></div>
