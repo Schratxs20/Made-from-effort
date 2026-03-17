@@ -9,9 +9,21 @@
 
 <script>
   (function() {
+    var TOKEN = 'peg-7x2k-accs';
+    var STORE = 'mfe_popup_v1';
     try {
-      var d = JSON.parse(localStorage.getItem('mfe_popup_v1'));
-      if (!d || !d.submitted) window.location.replace('index.html');
+      // Valid token in URL → store access flag, strip token from address bar, allow in
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('t') === TOKEN) {
+        localStorage.setItem(STORE, JSON.stringify({ submitted: true }));
+        history.replaceState(null, '', window.location.pathname);
+        return;
+      }
+      // Returning visitor who already submitted
+      var d = JSON.parse(localStorage.getItem(STORE));
+      if (d && d.submitted) return;
+      // Neither condition met — redirect to home
+      window.location.replace('index.html');
     } catch(e) { window.location.replace('index.html'); }
   })();
 </script>
