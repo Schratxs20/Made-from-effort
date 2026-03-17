@@ -783,35 +783,135 @@ function shareSVG() {
       '<div class="share-card-body">' + c.body + '</div>' +
       '<div class="share-card-footer">' +
         '<a class="share-card-insta" href="https://www.instagram.com/scottschrat" target="_blank" rel="noopener">' + igSVG() + '@SCOTTSCHRAT</a>' +
-        '<button class="share-btn" onclick="shareCard(this)">' + shareSVG() + 'Share</button>' +
+        '<button class="share-btn" onclick="shareAsStory(this)">' + shareSVG() + 'Story</button>' +
       '</div>';
     grid.appendChild(div);
   });
 })();
 
-// SHARE
-function shareCard(btn) {
+// STORY SHARE — renders card as 9:16 canvas image, shares via native sheet (→ Instagram Stories on mobile)
+function shareAsStory(btn) {
   var card = btn.closest('.share-card');
-  var title = card.querySelector('.share-card-title').innerText;
-  var body = card.querySelector('.share-card-body').innerText;
-  var tag = card.querySelector('.share-card-tag').innerText;
-  var text = tag.toUpperCase() + '\n\n' + title + '\n\n' + body + '\n\n@SCOTTSCHRAT\n#homegym #gymdesign #performanceedge';
-  if (navigator.share) {
-    navigator.share({ title: title, text: text, url: window.location.href })
-      .then(function() { showToast('Shared! \uD83D\uDE4C'); })
-      .catch(function() { fallbackShare(text); });
-  } else {
-    fallbackShare(text);
-  }
-}
-function fallbackShare(text) {
-  navigator.clipboard.writeText(text).then(function() {
-    showToast('Caption copied \u2014 open Instagram to post! \uD83D\uDCF8');
-    setTimeout(function() { window.open('https://www.instagram.com/', '_blank'); }, 800);
-  }).catch(function() {
-    showToast('Open Instagram and share this card \uD83D\uDCF8');
-    window.open('https://www.instagram.com/', '_blank');
+  var tag   = card.querySelector('.share-card-tag').innerText.trim();
+  var title = card.querySelector('.share-card-title').innerText.trim();
+  var body  = card.querySelector('.share-card-body').innerText.trim();
+  var accent = card.classList.contains('accent-red')   ? '#E07070'
+             : card.classList.contains('accent-green') ? '#7EC89A'
+             : '#C9A84C';
+
+  var origHTML = btn.innerHTML;
+  btn.textContent = '...';
+  btn.disabled = true;
+
+  document.fonts.ready.then(function() {
+    var W = 1080, H = 1920;
+    var canvas = document.createElement('canvas');
+    canvas.width = W; canvas.height = H;
+    var ctx = canvas.getContext('2d');
+
+    // Background
+    ctx.fillStyle = '#111111';
+    ctx.fillRect(0, 0, W, H);
+
+    // Radial gold glow top-right
+    var grd = ctx.createRadialGradient(W * 0.8, H * 0.15, 0, W * 0.8, H * 0.15, W * 0.85);
+    grd.addColorStop(0, 'rgba(201,168,76,0.08)');
+    grd.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, W, H);
+
+    // Left accent bar
+    ctx.fillStyle = accent;
+    ctx.fillRect(80, 160, 5, H - 360);
+
+    // Tag
+    ctx.font = '500 40px "DM Sans", sans-serif';
+    ctx.fillStyle = accent;
+    ctx.fillText(tag.toUpperCase(), 120, 280);
+
+    // Thin divider under tag
+    ctx.strokeStyle = accent;
+    ctx.lineWidth = 1;
+    ctx.globalAlpha = 0.25;
+    ctx.beginPath(); ctx.moveTo(120, 306); ctx.lineTo(W - 120, 306); ctx.stroke();
+    ctx.globalAlpha = 1;
+
+    // Title
+    var titleFontSize = title.length > 22 ? 108 : 130;
+    var titleLineH = titleFontSize * 1.1;
+    ctx.font = '400 ' + titleFontSize + 'px "Bebas Neue", sans-serif';
+    ctx.fillStyle = '#F2EDE4';
+    var titleLinesDrawn = canvasWrapText(ctx, title, 120, 460, W - 240, titleLineH);
+
+    // Body
+    var bodyY = 460 + titleLinesDrawn * titleLineH + 80;
+    ctx.font = '300 50px "DM Sans", sans-serif';
+    ctx.fillStyle = 'rgba(242,237,228,0.58)';
+    canvasWrapText(ctx, body, 120, bodyY, W - 240, 72);
+
+    // Footer bar
+    ctx.fillStyle = 'rgba(201,168,76,0.05)';
+    ctx.fillRect(0, H - 220, W, 220);
+    ctx.strokeStyle = accent;
+    ctx.lineWidth = 1;
+    ctx.globalAlpha = 0.25;
+    ctx.beginPath(); ctx.moveTo(0, H - 220); ctx.lineTo(W, H - 220); ctx.stroke();
+    ctx.globalAlpha = 1;
+
+    ctx.font = '400 54px "Bebas Neue", sans-serif';
+    ctx.fillStyle = accent;
+    ctx.fillText('@SCOTTSCHRAT', 120, H - 130);
+
+    ctx.font = '300 30px "DM Sans", sans-serif';
+    ctx.fillStyle = 'rgba(242,237,228,0.28)';
+    ctx.fillText('PERFORMANCE EDGE  ·  TRAINING + GYM DESIGN', 120, H - 80);
+
+    // Share the image
+    canvas.toBlob(function(blob) {
+      var file = new File([blob], 'gym-design-tip.png', { type: 'image/png' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        // Native share sheet → user picks Instagram Stories (or any app)
+        navigator.share({ files: [file] })
+          .then(function() { showToast('Story image shared \uD83D\uDE4C'); })
+          .catch(function() { downloadImage(blob); })
+          .finally(function() { btn.innerHTML = origHTML; btn.disabled = false; });
+      } else {
+        // Fallback: download the PNG, instruct user to post manually
+        downloadImage(blob);
+        btn.innerHTML = origHTML;
+        btn.disabled = false;
+      }
+    }, 'image/png');
   });
+}
+
+function canvasWrapText(ctx, text, x, y, maxWidth, lineHeight) {
+  var words = text.split(' ');
+  var line = '';
+  var lineCount = 0;
+  for (var i = 0; i < words.length; i++) {
+    var test = line + words[i] + ' ';
+    if (ctx.measureText(test).width > maxWidth && i > 0) {
+      ctx.fillText(line.trim(), x, y);
+      line = words[i] + ' ';
+      y += lineHeight;
+      lineCount++;
+    } else {
+      line = test;
+    }
+  }
+  ctx.fillText(line.trim(), x, y);
+  return lineCount + 1;
+}
+
+function downloadImage(blob) {
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'gym-design-tip.png';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  setTimeout(function() { URL.revokeObjectURL(url); }, 1500);
+  showToast('Image saved \u2014 post it to your Story \uD83D\uDCF8');
 }
 function showToast(msg) {
   var t = document.getElementById('shareToast');
