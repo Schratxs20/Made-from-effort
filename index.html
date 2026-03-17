@@ -728,7 +728,7 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
         <div class="popup-success-check">✓</div>
         <div class="popup-success-title">It's on its way.</div>
         <p class="popup-success-text">Check your inbox — your free guide is heading there now. Or open it right here.</p>
-        <a id="popup-download-btn" href="home-gym-guide.html">View the Free Guide →</a>
+        <a id="popup-download-btn" href="home-gym-guide.html?t=peg-7x2k-accs">View the Free Guide →</a>
       </div>
 
       <p class="popup-privacy">No spam. Just signal. Unsubscribe anytime.</p>
@@ -946,7 +946,7 @@ if (heroVid) {
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ submitted: true })); } catch(err) {}
       form.style.display = 'none';
       success.style.display = 'flex';
-      setTimeout(function() { window.location.href = 'home-gym-guide.html'; }, 2500);
+      setTimeout(function() { window.location.href = 'home-gym-guide.html?t=peg-7x2k-accs'; }, 2500);
     } catch {
       submitBtn.textContent = 'Try again';
       submitBtn.disabled = false;
