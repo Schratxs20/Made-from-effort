@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /home-gym-guide.html
+
+Sitemap: https://www.madefromeffort.com/sitemap.xml
