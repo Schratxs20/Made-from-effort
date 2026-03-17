@@ -5,803 +5,896 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Level Up Your Home Gym — Performance Edge</title>
 <meta name="robots" content="noindex, nofollow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <script>
-  // Access gate — must have completed the popup form
   (function() {
     try {
       var d = JSON.parse(localStorage.getItem('mfe_popup_v1'));
-      if (!d || !d.submitted) {
-        window.location.replace('index.html');
-      }
-    } catch(e) {
-      window.location.replace('index.html');
-    }
+      if (!d || !d.submitted) window.location.replace('index.html');
+    } catch(e) { window.location.replace('index.html'); }
   })();
 </script>
 
 <style>
   :root {
-    --bg:       #0C0C0A;
-    --surface:  #111110;
-    --surface2: #181816;
-    --border:   rgba(255,255,255,0.06);
-    --gold:     #C9A96E;
-    --gold-lt:  #DBBF84;
-    --cream:    #F2EDE4;
-    --muted:    rgba(242,237,228,0.5);
-    --dim:      rgba(242,237,228,0.28);
-    --ink:      #0C0C0A;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --black: #0A0A0A;
+    --dark: #111111;
+    --dark2: #1A1A1A;
+    --dark3: #222222;
+    --white: #F2EDE4;
+    --gray: #888;
+    --red: #C0392B;
   }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--bg);
-    color: var(--cream);
-    font-family: 'Outfit', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
-    line-height: 1.7;
   }
 
-  /* ── NAV ── */
+  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    height: 56px;
-    background: rgba(12,12,10,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 48px;
+    padding: 18px 40px;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+    backdrop-filter: blur(4px);
   }
-  .nav-brand { text-decoration: none; display: flex; flex-direction: column; gap: 1px; }
-  .nav-brand-name { font-family: 'Cormorant', serif; font-size: 15px; font-style: italic; font-weight: 400; color: var(--cream); letter-spacing: 0.3px; }
-  .nav-brand-sub  { font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--dim); font-weight: 400; }
-  .nav-badge {
-    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gold); border: 1px solid rgba(201,169,110,0.3);
-    padding: 5px 14px; font-weight: 400;
+  .nav-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem; letter-spacing: 3px;
+    color: var(--gold); text-decoration: none;
   }
+  .nav-tabs { display: flex; gap: 6px; }
+  .nav-tab {
+    padding: 7px 18px; border-radius: 30px;
+    font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase;
+    cursor: pointer; border: 1px solid transparent;
+    transition: all 0.25s;
+    background: transparent; color: var(--gray);
+  }
+  .nav-tab:hover { color: var(--white); border-color: rgba(201,168,76,0.3); }
+  .nav-tab.active { background: var(--gold); color: var(--black); border-color: var(--gold); font-weight: 500; }
 
-  /* ── HERO ── */
-  #guide-hero {
-    margin-top: 56px;
-    min-height: 70vh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center;
-    padding: 80px 48px;
-    position: relative;
-    overflow: hidden;
+  /* VIEWS */
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 60px 80px;
+    position: relative; overflow: hidden;
+    background: var(--black);
   }
-  #guide-hero::before {
-    content: '';
-    position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 65%);
-    pointer-events: none;
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 70% 40%, rgba(201,168,76,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 50%);
   }
-  .hero-rule { width: 32px; height: 1px; background: var(--gold); margin: 0 auto 24px; }
+  .hero-line {
+    position: absolute; top: 0; left: 60px;
+    width: 1px; height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.3) 40%, rgba(201,168,76,0.3) 60%, transparent);
+  }
   .hero-eyebrow {
-    font-size: 10px; letter-spacing: 3.5px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 20px; font-weight: 400;
+    font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
   }
-  .hero-title {
-    font-family: 'Bebas Neue', 'Cormorant', serif;
-    font-size: clamp(3.5rem, 9vw, 7rem);
-    line-height: 0.9;
-    color: var(--cream);
-    letter-spacing: 2px;
-    margin-bottom: 28px;
+  .hero-eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--gold); display: block; }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 12vw, 11rem);
+    line-height: 0.88;
+    color: var(--white);
+    position: relative; z-index: 1;
   }
-  .hero-title .gold { color: var(--gold); }
-  .hero-subtitle {
-    font-family: 'Cormorant', serif;
-    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  .hero h1 span { color: var(--gold); display: block; }
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
     font-style: italic;
-    color: var(--muted);
-    max-width: 560px;
-    line-height: 1.5;
-    margin-bottom: 40px;
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    color: var(--gray); margin-top: 28px; max-width: 520px;
+    line-height: 1.6;
   }
-  .hero-meta {
-    display: flex; align-items: center; gap: 28px; justify-content: center; flex-wrap: wrap;
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--dim); font-weight: 400;
+  .hero-cta { margin-top: 48px; display: flex; align-items: center; gap: 24px; }
+  .btn-primary {
+    padding: 14px 36px; background: var(--gold);
+    color: var(--black); font-size: 0.75rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 500; border: none; cursor: pointer;
+    transition: all 0.2s; text-decoration: none; display: inline-block;
   }
-  .hero-meta-dot { width: 3px; height: 3px; background: var(--gold); border-radius: 50%; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-ghost {
+    padding: 14px 36px; background: transparent;
+    color: var(--white); font-size: 0.75rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 400; border: 1px solid rgba(242,237,228,0.2); cursor: pointer;
+    transition: all 0.2s; text-decoration: none; display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-scroll {
+    position: absolute; bottom: 40px; right: 60px;
+    writing-mode: vertical-rl; font-size: 0.65rem;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--gray);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-scroll::after { content: ''; width: 1px; height: 50px; background: var(--gray); display: block; }
 
-  /* ── TOC ── */
-  #toc {
-    max-width: 680px; margin: 0 auto; padding: 0 48px 80px;
+  /* SECTION */
+  .section { padding: 120px 60px; }
+  .section-label {
+    font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
   }
-  .toc-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 2px solid var(--gold);
-    padding: 36px 40px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 12px 40px;
-  }
-  .toc-heading {
-    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 20px; grid-column: 1 / -1;
-  }
-  .toc-item {
-    display: flex; align-items: flex-start; gap: 12px;
-    font-size: 13px; color: var(--muted); text-decoration: none;
-    transition: color 0.2s; cursor: pointer;
-    background: none; border: none; text-align: left; font-family: inherit; font-weight: 300; padding: 0;
-  }
-  .toc-item:hover { color: var(--cream); }
-  .toc-item:hover .toc-num { color: var(--gold); }
-  .toc-num { font-size: 10px; color: var(--dim); font-weight: 400; flex-shrink: 0; margin-top: 1px; }
+  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
 
-  /* ── SECTION WRAPPER ── */
-  .guide-section {
-    max-width: 780px; margin: 0 auto; padding: 80px 48px;
-    border-top: 1px solid var(--border);
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: start; margin-top: 60px;
   }
-  .guide-section:first-of-type { border-top: none; }
-
-  .sec-num {
-    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 8px; display: flex; align-items: center; gap: 12px;
+  .problem-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.9; color: var(--white);
   }
-  .sec-num::before { content: ''; width: 22px; height: 1px; background: var(--gold); }
-
-  .sec-title {
-    font-family: 'Cormorant', serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 300; line-height: 1.15; color: var(--cream);
-    margin-bottom: 20px; letter-spacing: -0.3px;
+  .problem-headline em { color: var(--gold); font-style: normal; display: block; }
+  .problem-body p { font-size: 1.05rem; line-height: 1.85; color: #AAA; margin-bottom: 20px; }
+  .problem-body p strong { color: var(--white); font-weight: 500; }
+  .truth-box {
+    border-left: 3px solid var(--gold);
+    padding: 20px 24px; margin-top: 32px;
+    background: rgba(201,168,76,0.05);
   }
-  .sec-title em { font-style: italic; color: var(--gold-lt); }
-
-  .sec-lead {
-    font-size: 15px; line-height: 1.85; color: var(--muted);
-    margin-bottom: 36px; max-width: 620px;
+  .truth-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-style: italic;
+    color: var(--white); line-height: 1.6; margin: 0 !important;
   }
 
-  /* ── CALLOUT BOX ── */
-  .callout {
-    background: rgba(201,169,110,0.05);
-    border-left: 2px solid var(--gold);
-    padding: 22px 26px;
-    margin: 32px 0;
-    font-size: 14px; color: var(--muted); line-height: 1.75;
+  /* CHAPTERS */
+  .chapter { padding: 100px 60px; border-top: 1px solid rgba(255,255,255,0.05); }
+  .chapter-inner { max-width: 1100px; margin: 0 auto; }
+  .chapter-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 8rem; color: rgba(201,168,76,0.07);
+    line-height: 1; position: absolute; right: 60px;
+    pointer-events: none; user-select: none;
   }
-  .callout strong { color: var(--cream); font-weight: 500; }
-
-  /* ── NUMBERED LIST ── */
-  .num-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
-  .num-list li {
-    display: grid; grid-template-columns: 52px 1fr;
-    padding: 28px 0; border-bottom: 1px solid var(--border);
-    gap: 20px; align-items: start;
+  .chapter-header {
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 40px; align-items: start; position: relative;
   }
-  .num-list li:last-child { border-bottom: none; }
-  .nl-num {
-    font-family: 'Bebas Neue', serif;
-    font-size: 2.4rem; color: rgba(201,169,110,0.2); line-height: 1;
-  }
-  .nl-body {}
-  .nl-title { font-size: 14px; font-weight: 500; color: var(--cream); margin-bottom: 6px; letter-spacing: 0.3px; }
-  .nl-desc { font-size: 13px; color: var(--muted); line-height: 1.75; }
-
-  /* ── PHASE STEPS (Shell Method) ── */
-  .phase-grid { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
-  .phase {
-    display: grid; grid-template-columns: 4px 1fr;
-    gap: 24px;
-  }
-  .phase-line { background: var(--border); position: relative; }
-  .phase-line::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 100%; background: var(--gold);
-    transform: scaleY(0); transform-origin: top;
-    transition: transform 0.5s ease;
-  }
-  .phase.active .phase-line::before { transform: scaleY(1); }
-  .phase-body { padding: 28px 0 40px; }
-  .phase-label {
-    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 8px; font-weight: 400;
-  }
-  .phase-title { font-size: 18px; font-weight: 500; color: var(--cream); margin-bottom: 10px; }
-  .phase-desc { font-size: 13px; color: var(--muted); line-height: 1.75; max-width: 540px; }
-
-  /* ── EQUIPMENT GRID ── */
-  .equip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
-  .equip-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 24px;
-    transition: border-color 0.25s;
-  }
-  .equip-card:hover { border-color: rgba(201,169,110,0.3); }
-  .equip-tier {
-    font-size: 8.5px; letter-spacing: 2.5px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 12px; font-weight: 400;
-  }
-  .equip-title { font-size: 15px; font-weight: 500; color: var(--cream); margin-bottom: 8px; }
-  .equip-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-  .equip-list li {
-    font-size: 12px; color: var(--muted); display: flex; align-items: flex-start; gap: 8px;
-  }
-  .equip-list li::before { content: '–'; color: var(--gold); flex-shrink: 0; }
-
-  /* ── RULES GRID ── */
-  .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 8px; }
-  .rule-card {
-    background: var(--surface); padding: 28px 26px;
-    transition: background 0.25s;
-  }
-  .rule-card:hover { background: var(--surface2); }
-  .rule-n {
-    font-family: 'Bebas Neue', serif; font-size: 3rem;
-    color: rgba(201,169,110,0.15); line-height: 1; margin-bottom: 4px;
-  }
-  .rule-title { font-size: 13px; font-weight: 500; color: var(--cream); margin-bottom: 6px; }
-  .rule-desc { font-size: 12px; color: var(--dim); line-height: 1.65; }
-
-  /* ── CHECKLIST ── */
-  .checklist { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
-  .cl-section-title {
-    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gold); padding: 20px 0 12px; font-weight: 400;
-    border-top: 1px solid var(--border); margin-top: 8px;
-  }
-  .cl-section-title:first-of-type { border-top: none; margin-top: 0; }
-  .cl-item {
-    display: flex; align-items: flex-start; gap: 14px;
-    padding: 13px 0; border-bottom: 1px solid var(--border);
-    cursor: pointer; transition: opacity 0.2s;
-  }
-  .cl-item.done { opacity: 0.4; }
-  .cl-item.done .cl-text { text-decoration: line-through; }
-  .cl-box {
-    width: 18px; height: 18px; flex-shrink: 0;
-    border: 1px solid rgba(201,169,110,0.4);
+  .chapter-icon {
+    width: 56px; height: 56px; border: 1px solid var(--gold);
     display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s, border-color 0.2s; margin-top: 1px;
+    font-size: 1.5rem; flex-shrink: 0; margin-top: 4px;
   }
-  .cl-item.done .cl-box { background: var(--gold); border-color: var(--gold); }
-  .cl-check { font-size: 10px; color: var(--ink); display: none; }
-  .cl-item.done .cl-check { display: block; }
-  .cl-text { font-size: 13px; color: var(--muted); line-height: 1.55; }
-  .cl-reset {
-    margin-top: 20px; background: none; border: 1px solid var(--border);
-    color: var(--dim); font-family: 'Outfit', sans-serif;
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    padding: 10px 22px; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+  .chapter-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 0.9; color: var(--white); letter-spacing: 1px;
   }
-  .cl-reset:hover { border-color: rgba(201,169,110,0.4); color: var(--muted); }
-  .cl-progress-bar { height: 1px; background: var(--border); margin-bottom: 28px; }
-  .cl-progress-fill { height: 1px; background: var(--gold); transition: width 0.4s ease; }
-  .cl-counter { font-size: 10px; color: var(--dim); margin-bottom: 16px; letter-spacing: 1px; }
+  .chapter-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 1rem;
+    color: var(--gold); margin-top: 10px;
+  }
+  .chapter-content {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; margin-top: 60px;
+  }
+  .chapter-content p { font-size: 1rem; line-height: 1.9; color: #AAA; margin-bottom: 16px; }
+  .chapter-content p strong { color: var(--white); font-weight: 500; }
 
-  /* ── SHARE CARDS ── */
-  .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+  /* RULE LIST */
+  .rule-list { margin-top: 32px; }
+  .rule-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .rule-item:last-child { border-bottom: none; }
+  .rule-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 7px; }
+  .rule-text { font-size: 0.95rem; color: #CCC; line-height: 1.6; }
+  .rule-text strong { color: var(--white); }
+
+  /* PHASES */
+  .phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 60px; }
+  .phase-card { background: var(--dark2); padding: 32px 24px; border-top: 3px solid transparent; transition: border-color 0.2s; }
+  .phase-card:hover { border-color: var(--gold); }
+  .phase-card.p1 { border-color: var(--gold); }
+  .phase-num { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: rgba(201,168,76,0.15); line-height: 1; }
+  .phase-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 1px; color: var(--gold); margin-bottom: 16px; }
+  .phase-items { list-style: none; }
+  .phase-items li { font-size: 0.85rem; color: #AAA; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); line-height: 1.5; }
+  .phase-items li:last-child { border-bottom: none; }
+  .phase-badge { display: inline-block; margin-top: 16px; padding: 4px 12px; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; background: rgba(201,168,76,0.15); color: var(--gold); }
+
+  /* 8 RULES GRID */
+  .rules-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.05); margin-top: 60px; }
+  .rule-card { background: var(--black); padding: 36px 28px; transition: background 0.2s; }
+  .rule-card:hover { background: var(--dark2); }
+  .rule-card-num { font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem; letter-spacing: 3px; color: var(--gold); margin-bottom: 14px; }
+  .rule-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.5px; color: var(--white); line-height: 1.1; margin-bottom: 14px; }
+  .rule-card-body { font-size: 0.85rem; color: #777; line-height: 1.7; }
+
+  /* QUOTE BREAK */
+  .quote-break {
+    padding: 100px 60px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 60%);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    text-align: center;
+  }
+  .quote-break blockquote { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 6vw, 5rem); letter-spacing: 2px; line-height: 1.05; color: var(--white); max-width: 900px; margin: 0 auto; }
+  .quote-break blockquote span { color: var(--gold); }
+  .quote-break cite { display: block; margin-top: 24px; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); font-style: normal; }
+
+  /* CTA SECTION */
+  .cta-section { padding: 120px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .cta-left h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 5vw, 4.5rem); line-height: 0.9; color: var(--white); }
+  .cta-left h2 span { color: var(--gold); display: block; }
+  .cta-left p { font-size: 1rem; color: #888; margin-top: 24px; line-height: 1.8; }
+  .cta-right { display: flex; flex-direction: column; gap: 16px; }
+  .cta-action { padding: 24px; background: var(--dark2); border: 1px solid rgba(255,255,255,0.07); cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 20px; text-decoration: none; }
+  .cta-action:hover { border-color: var(--gold); background: var(--dark3); }
+  .cta-action-icon { width: 44px; height: 44px; background: rgba(201,168,76,0.1); border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+  .cta-action-text strong { display: block; font-size: 0.85rem; letter-spacing: 1px; color: var(--white); margin-bottom: 4px; }
+  .cta-action-text span { font-size: 0.78rem; color: var(--gray); }
+
+  /* FOOTER */
+  footer { padding: 40px 60px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; }
+  .footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--gold); }
+  .footer-note { font-size: 0.72rem; color: var(--gray); letter-spacing: 1px; }
+
+  /* CARDS VIEW */
+  .cards-view { padding: 100px 40px 80px; }
+  .cards-header { text-align: center; margin-bottom: 60px; }
+  .cards-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--white); letter-spacing: 2px; }
+  .cards-header h2 span { color: var(--gold); }
+  .cards-header p { color: var(--gray); font-size: 0.9rem; margin-top: 12px; letter-spacing: 1px; }
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 3px; max-width: 1200px; margin: 0 auto; }
+
   .share-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--dark);
+    aspect-ratio: 4/5;
+    display: flex; flex-direction: column; justify-content: space-between;
     padding: 32px 28px;
     position: relative; overflow: hidden;
-    transition: border-color 0.3s;
+    cursor: pointer; transition: transform 0.2s;
+    border: 1px solid rgba(255,255,255,0.04);
   }
-  .share-card::before {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--gold) 0%, transparent 80%);
-  }
-  .share-card:hover { border-color: rgba(201,169,110,0.3); }
-  .sc-quote {
-    font-family: 'Cormorant', serif;
-    font-size: clamp(1rem, 2vw, 1.3rem);
-    font-style: italic;
-    color: var(--cream); line-height: 1.45;
-    margin-bottom: 20px;
-  }
-  .sc-attr {
-    font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
-    color: var(--gold); font-weight: 400;
-  }
+  .share-card:hover { transform: scale(1.02); z-index: 2; }
+  .share-card::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s; background: linear-gradient(135deg, rgba(201,168,76,0.08), transparent); }
+  .share-card:hover::before { opacity: 1; }
+  .share-card-tag { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 8px; }
+  .share-card-tag::before { content: ''; width: 16px; height: 1px; background: var(--gold); }
+  .share-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; line-height: 0.9; color: var(--white); letter-spacing: 0.5px; position: relative; z-index: 1; }
+  .share-card-body { font-size: 0.82rem; color: #999; line-height: 1.7; position: relative; z-index: 1; }
+  .share-card-body strong { color: var(--white); }
+  .share-card-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 14px; position: relative; z-index: 1; gap: 10px; }
+  .share-card-insta { display: flex; align-items: center; gap: 4px; font-size: 0.55rem; letter-spacing: 0.8px; color: var(--gold); font-weight: 500; font-family: 'DM Sans', sans-serif; flex: 1; text-decoration: none; }
+  .share-card-insta:hover { opacity: 0.75; }
+  .share-card-insta svg { width: 13px; height: 13px; flex-shrink: 0; }
+  .share-btn { display: flex; align-items: center; gap: 5px; padding: 6px 12px; background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); border: none; border-radius: 20px; cursor: pointer; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: #fff; font-family: 'DM Sans', sans-serif; transition: all 0.2s; flex-shrink: 0; white-space: nowrap; }
+  .share-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(253,29,29,0.35); }
+  .share-btn svg { width: 11px; height: 11px; }
+  .share-card.accent-red .share-card-tag, .share-card.accent-red .share-card-title { color: #E07070; }
+  .share-card.accent-red .share-card-tag::before { background: #E07070; }
+  .share-card.accent-green .share-card-tag, .share-card.accent-green .share-card-title { color: #7EC89A; }
+  .share-card.accent-green .share-card-tag::before { background: #7EC89A; }
 
-  /* ── CLOSING CTA ── */
-  #cta {
-    max-width: 780px; margin: 0 auto;
-    padding: 80px 48px;
-    text-align: center;
-    border-top: 1px solid var(--border);
-  }
-  .cta-rule { width: 32px; height: 1px; background: var(--gold); margin: 0 auto 24px; }
-  .cta-title {
-    font-family: 'Cormorant', serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 300; font-style: italic; color: var(--cream);
-    margin-bottom: 16px; line-height: 1.2;
-  }
-  .cta-desc { font-size: 14px; color: var(--muted); max-width: 460px; margin: 0 auto 36px; }
-  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-  .btn-gold {
-    display: inline-block; text-decoration: none;
-    background: var(--gold); color: var(--ink);
-    font-family: 'Outfit', sans-serif; font-size: 10px;
-    letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
-    padding: 14px 32px; transition: background 0.2s, transform 0.15s;
-  }
-  .btn-gold:hover { background: var(--gold-lt); transform: translateY(-1px); }
-  .btn-outline-gold {
-    display: inline-block; text-decoration: none;
-    background: none; border: 1px solid rgba(201,169,110,0.4); color: var(--gold);
-    font-family: 'Outfit', sans-serif; font-size: 10px;
-    letter-spacing: 2px; text-transform: uppercase; font-weight: 400;
-    padding: 13px 32px; transition: border-color 0.2s, color 0.2s;
-  }
-  .btn-outline-gold:hover { border-color: var(--gold); color: var(--gold-lt); }
+  /* SHARE TOAST */
+  .share-toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--dark2); border: 1px solid var(--gold); color: var(--white); padding: 12px 24px; font-size: 0.8rem; letter-spacing: 1px; opacity: 0; transition: all 0.3s; pointer-events: none; z-index: 999; white-space: nowrap; }
+  .share-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 48px;
-    display: flex; align-items: center; justify-content: space-between;
-    font-size: 11px; color: var(--dim); letter-spacing: 0.3px;
+  /* QUIZ VIEW */
+  .quiz-view { min-height: 100vh; padding: 100px 40px 80px; display: flex; flex-direction: column; align-items: center; }
+  .quiz-header { text-align: center; margin-bottom: 60px; max-width: 700px; }
+  .quiz-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--white); }
+  .quiz-header h2 span { color: var(--gold); }
+  .quiz-header p { color: var(--gray); font-size: 0.9rem; margin-top: 12px; line-height: 1.7; }
+  .quiz-container { width: 100%; max-width: 800px; }
+  .quiz-progress-bar { height: 2px; background: rgba(255,255,255,0.08); border-radius: 2px; margin-bottom: 48px; overflow: hidden; }
+  .quiz-progress-fill { height: 100%; background: var(--gold); transition: width 0.5s cubic-bezier(0.4,0,0.2,1); }
+  .quiz-section { margin-bottom: 48px; }
+  .quiz-section-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 1px; color: var(--gold); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(201,168,76,0.2); display: flex; align-items: center; gap: 12px; }
+  .quiz-section-icon { font-size: 1.2rem; }
+  .quiz-item { display: flex; align-items: flex-start; gap: 16px; padding: 16px 20px; margin-bottom: 8px; background: var(--dark2); cursor: pointer; border: 1px solid rgba(255,255,255,0.05); transition: all 0.2s; border-radius: 2px; user-select: none; }
+  .quiz-item:hover { border-color: rgba(201,168,76,0.3); background: var(--dark3); }
+  .quiz-item.checked { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+  .quiz-checkbox { width: 20px; height: 20px; border: 1.5px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; transition: all 0.2s; font-size: 0.7rem; }
+  .quiz-item.checked .quiz-checkbox { border-color: var(--gold); background: var(--gold); color: var(--black); }
+  .quiz-item-text { font-size: 0.92rem; color: #BBB; line-height: 1.5; }
+  .quiz-item.checked .quiz-item-text { color: var(--white); }
+
+  /* SCORE PANEL */
+  .score-panel { position: sticky; bottom: 32px; background: var(--dark2); border: 1px solid var(--gold); padding: 20px 28px; display: flex; align-items: center; justify-content: space-between; margin-top: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+  .score-left { display: flex; align-items: center; gap: 20px; }
+  .score-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--gold); line-height: 1; }
+  .score-label { font-size: 0.75rem; letter-spacing: 2px; color: var(--gray); }
+  .score-grade { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--white); }
+  .score-bar-wrap { flex: 1; margin: 0 32px; height: 4px; background: rgba(255,255,255,0.08); }
+  .score-bar-fill { height: 100%; background: var(--gold); transition: width 0.5s ease; }
+  .score-reset { padding: 10px 24px; background: transparent; border: 1px solid rgba(255,255,255,0.15); color: var(--gray); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+  .score-reset:hover { border-color: var(--gold); color: var(--gold); }
+  .grade-message { margin-top: 16px; padding: 16px 20px; background: rgba(201,168,76,0.07); border-left: 3px solid var(--gold); font-size: 0.88rem; color: #CCC; line-height: 1.6; display: none; }
+  .grade-message.show { display: block; }
+  .grade-message strong { color: var(--gold); }
+
+  /* MOBILE NAV */
+  .mobile-nav-tabs { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(17,17,17,0.97); backdrop-filter: blur(10px); padding: 10px 20px 20px; border-top: 1px solid rgba(255,255,255,0.07); justify-content: space-around; z-index: 100; }
+  @media (max-width: 900px) { .mobile-nav-tabs { display: flex; } body { padding-bottom: 70px; } }
+  .mobile-tab { display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; padding: 6px 16px; border-radius: 8px; transition: background 0.2s; border: none; background: transparent; color: var(--gray); font-family: 'DM Sans', sans-serif; }
+  .mobile-tab.active { color: var(--gold); }
+  .mobile-tab-icon { font-size: 1.2rem; }
+  .mobile-tab-label { font-size: 0.6rem; letter-spacing: 1.5px; text-transform: uppercase; }
+
+  /* FADE UP */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.in { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 14px 20px; }
+    .nav-tabs { display: none; }
+    .hero { padding: 0 24px 60px; }
+    .hero h1 { font-size: 4rem; }
+    .hero-scroll { display: none; }
+    .section, .chapter { padding: 70px 24px; }
+    .problem-grid, .chapter-content, .cta-section { grid-template-columns: 1fr; gap: 40px; }
+    .phases, .rules-grid { grid-template-columns: 1fr 1fr; }
+    .quote-break { padding: 70px 24px; }
+    footer { padding: 30px 24px; flex-direction: column; gap: 10px; text-align: center; }
+    .cards-view { padding: 80px 16px 60px; }
+    .quiz-view { padding: 80px 16px 60px; }
   }
-  footer a { color: var(--dim); text-decoration: none; transition: color 0.2s; }
-  footer a:hover { color: var(--muted); }
-
-  /* ── REVEAL ── */
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
-  .reveal.in { opacity: 1; transform: none; }
-  .d1{transition-delay:0.08s} .d2{transition-delay:0.16s} .d3{transition-delay:0.24s}
-
-  /* ── RESPONSIVE ── */
-  @media(max-width:700px){
-    nav { padding: 0 20px; }
-    #guide-hero { padding: 60px 24px; }
-    #toc { padding: 0 24px 60px; }
-    .toc-card { grid-template-columns: 1fr; padding: 28px 24px; }
-    .guide-section { padding: 60px 24px; }
-    .equip-grid, .rules-grid, .cards-grid { grid-template-columns: 1fr; }
-    .num-list li { grid-template-columns: 40px 1fr; }
-    #cta { padding: 60px 24px; }
-    footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
+  @media (max-width: 600px) {
+    .phases { grid-template-columns: 1fr; }
+    .rules-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 3.2rem; }
+    .hero-cta { flex-direction: column; align-items: flex-start; }
+    .chapter-content { grid-template-columns: 1fr; }
+    .chapter-num { display: none; }
+    .score-panel { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .score-bar-wrap { width: 100%; margin: 0; }
   }
 </style>
 </head>
-
 <body>
 
-<!-- NAV -->
+<!-- Reusable SVG gradient definition -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fcb045"/>
+      <stop offset="50%" style="stop-color:#fd1d1d"/>
+      <stop offset="100%" style="stop-color:#833ab4"/>
+    </linearGradient>
+  </defs>
+</svg>
+
 <nav>
-  <a class="nav-brand" href="index.html">
-    <span class="nav-brand-name">Made From Effort</span>
-    <span class="nav-brand-sub">Performance Edge</span>
-  </a>
-  <span class="nav-badge">Member Guide</span>
+  <a class="nav-brand" href="#">Performance Edge</a>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="switchView('microsite', this)">The Guide</button>
+    <button class="nav-tab" onclick="switchView('cards', this)">Share Cards</button>
+    <button class="nav-tab" onclick="switchView('quiz', this)">Gym Checklist</button>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section id="guide-hero">
-  <div class="hero-rule"></div>
-  <div class="hero-eyebrow">Free Guide — Members Only</div>
-  <h1 class="hero-title">Level Up<br><span class="gold">Your Home Gym</span></h1>
-  <p class="hero-subtitle">The unconventional playbook for designing a space you'll actually use — written by a CSCS-certified trainer with 15 years of elite experience.</p>
-  <div class="hero-meta">
-    <span>Scott Schratweiser, CSCS</span>
-    <span class="hero-meta-dot"></span>
-    <span>Performance Edge</span>
-    <span class="hero-meta-dot"></span>
-    <span>15 Years Elite Experience</span>
-  </div>
-</section>
+<!-- VIEW 1: MICROSITE -->
+<div id="view-microsite" class="view active">
 
-<!-- TABLE OF CONTENTS -->
-<section id="toc">
-  <div class="toc-card reveal">
-    <div class="toc-heading">What's Inside</div>
-    <button class="toc-item" onclick="scrollTo('shell-method')">
-      <span class="toc-num">01</span>
-      <span>The Shell-First Design Method</span>
-    </button>
-    <button class="toc-item" onclick="scrollTo('eight-rules')">
-      <span class="toc-num">02</span>
-      <span>8 Rules That Make a Home Gym Last</span>
-    </button>
-    <button class="toc-item" onclick="scrollTo('equipment')">
-      <span class="toc-num">03</span>
-      <span>Equipment Selection Without Wasting Money</span>
-    </button>
-    <button class="toc-item" onclick="scrollTo('layout')">
-      <span class="toc-num">04</span>
-      <span>Layout Principles That Change How You Train</span>
-    </button>
-    <button class="toc-item" onclick="scrollTo('checklist')">
-      <span class="toc-num">05</span>
-      <span>Interactive Audit Checklist</span>
-    </button>
-    <button class="toc-item" onclick="scrollTo('cards')">
-      <span class="toc-num">06</span>
-      <span>Key Principles — Shareable Cards</span>
-    </button>
-  </div>
-</section>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-line"></div>
+    <div class="hero-eyebrow">Performance Edge Training + Gym Design</div>
+    <h1>Level Up<span>Your Home</span><span style="color:var(--white)">Gym</span></h1>
+    <p class="hero-sub">The unconventional playbook for designing a space you'll actually use — built around consistency, not inspiration.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#chapter1">Start Reading</a>
+      <button class="btn-ghost" onclick="switchView('quiz', document.querySelectorAll('.nav-tab')[2])">Take the Checklist &rarr;</button>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+  </section>
 
-<!-- SECTION 01: SHELL METHOD -->
-<section class="guide-section" id="shell-method">
-  <div class="sec-num">01 — The Method</div>
-  <h2 class="sec-title reveal">The Shell-First Design Method<br><em>Most People Skip</em></h2>
-  <p class="sec-lead reveal d1">Most home gym builders start with equipment. That's why most home gyms fail. You don't build a gym around a barbell — you build a barbell around a gym. The shell-first method flips the process and gives you a space that performs, not just one that looks the part.</p>
-
-  <div class="callout reveal d2">
-    <strong>The core idea:</strong> Before you buy a single piece of equipment, your space needs to be capable of handling how you actually train. Flooring, lighting, airflow, acoustics, and ceiling height aren't afterthoughts — they're the foundation everything else sits on.
-  </div>
-
-  <div class="phase-grid reveal d2">
-    <div class="phase">
-      <div class="phase-line"></div>
-      <div class="phase-body">
-        <div class="phase-label">Phase 01</div>
-        <div class="phase-title">Define the Space</div>
-        <p class="phase-desc">Measure everything. Note the ceiling height, note where natural light enters, identify any HVAC or electrical constraints. You cannot design around unknowns. A 10×10 garage bay and a 14×22 basement train completely differently — your layout must reflect that before anything else.</p>
+  <section class="section" id="chapter1">
+    <div class="section-label">Chapter 1</div>
+    <div class="problem-grid fade-up">
+      <div>
+        <h2 class="problem-headline">Why Most Home Gyms Die<em>Slow Deaths</em></h2>
+      </div>
+      <div class="problem-body">
+        <p>Home gyms don't fail all at once. They don't get torn out. <strong>They slowly stop getting used.</strong></p>
+        <p>The room feels cold. The lighting is harsh. Equipment is in the way. Setup takes longer than it should. You start walking past it more than you walk into it.</p>
+        <p>Days get skipped without a real decision being made. Nothing feels bad enough to fix — so nothing gets fixed.</p>
+        <div class="truth-box">
+          <p>"This isn't a motivation problem. It's a design problem. Once a room becomes inconvenient, it becomes invisible."</p>
+        </div>
       </div>
     </div>
-    <div class="phase">
-      <div class="phase-line"></div>
-      <div class="phase-body">
-        <div class="phase-label">Phase 02</div>
-        <div class="phase-title">Engineer the Environment</div>
-        <p class="phase-desc">Flooring first — rubber horse stall mats (3/4 inch) are the single best dollar-per-performance investment in home gym history. Next: lighting. Bright, diffuse, overhead. Then: temperature control. A gym at 85°F is a gym you skip. Solve these before buying anything that moves weight.</p>
-      </div>
-    </div>
-    <div class="phase">
-      <div class="phase-line"></div>
-      <div class="phase-body">
-        <div class="phase-label">Phase 03</div>
-        <div class="phase-title">Map Your Movement Patterns</div>
-        <p class="phase-desc">Write down every compound movement in your training. Deadlift, squat, press, row, carry. Each one has a footprint. Lay those footprints out on paper before a single piece of equipment enters the room. Where do you need ceiling clearance? Where will you drop weight? Where do you need open floor?</p>
-      </div>
-    </div>
-    <div class="phase">
-      <div class="phase-line"></div>
-      <div class="phase-body">
-        <div class="phase-label">Phase 04</div>
-        <div class="phase-title">Build In — Equipment Last</div>
-        <p class="phase-desc">Now you buy. With your shell engineered and your movement map complete, equipment selection becomes obvious. You're not browsing — you're filling specific slots in a purpose-built system. This is how you end up with a gym that costs less, performs better, and never sits unused.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- SECTION 02: 8 RULES -->
-<section class="guide-section" id="eight-rules">
-  <div class="sec-num">02 — The Rules</div>
-  <h2 class="sec-title reveal">8 Rules That Make a<br><em>Home Gym Last</em></h2>
-  <p class="sec-lead reveal d1">These aren't preferences. They're patterns from 15 years of watching home gyms succeed and fail. Follow all eight and your gym will outlast most commercial setups.</p>
-
-  <div class="rules-grid reveal d2">
-    <div class="rule-card">
-      <div class="rule-n">01</div>
-      <div class="rule-title">Buy for how you train now</div>
-      <p class="rule-desc">Not how you plan to train. Future-you is a myth. Buy for present-you and buy it well.</p>
-    </div>
-    <div class="rule-card">
-      <div class="rule-n">02</div>
-      <div class="rule-title">One rack, one barbell, one set of plates</div>
-      <p class="rule-desc">Get ruthlessly good with one squat rack and a quality 45 lb bar before you add anything. Complexity is the enemy of consistency.</p>
-    </div>
-    <div class="rule-card">
-      <div class="rule-n">03</div>
-      <div class="rule-title">Rubber flooring is non-negotiable</div>
-      <p class="rule-desc">Every dollar not spent on flooring gets spent on noise complaints, damaged subfloors, and ruined equipment. Do it first.</p>
-    </div>
-    <div class="rule-card">
-      <div class="rule-n">04</div>
-      <div class="rule-title">Solve the temperature problem before buying equipment</div>
-      <p class="rule-desc">A fan costs $40. A mini-split costs $800. Both are cheaper than the $3,000 rack you never use because your gym is 92°F in August.</p>
-    </div>
-    <div class="rule-card">
-      <div class="rule-n">05</div>
-      <div class="rule-title">Put a mirror only where it serves a purpose</div>
-      <p class="rule-desc">Mirrors for cueing form are useful. Mirrors for vanity waste wall space that could hold a cable machine or storage. Be intentional.</p>
-    </div>
-    <div class="rule-card">
-      <div class="rule-n">06</div>
-      <div class="rule-title">Your gym should smell like nothing</div>
-      <p class="rule-desc">Rubber, chalk, and sweat all have a cumulative effect. Ventilation isn't optional. A space you avoid because of the smell is a space that doesn't work.</p>
-    </div>
-    <div class="rule-card">
-      <div class="rule-n">07</div>
-      <div class="rule-title">Lighting changes everything</div>
-      <p class="rule-desc">Dim, yellow light makes your gym feel like a closet. Bright, daylight-balanced overhead lighting makes a 10×12 space feel like a facility. It costs less than a pair of dumbbell handles.</p>
-    </div>
-    <div class="rule-card">
-      <div class="rule-n">08</div>
-      <div class="rule-title">Leave 20% of the floor open. Always.</div>
-      <p class="rule-desc">That open floor is where you warm up, cool down, stretch, carry, and actually move. Pack it with equipment and you've built a storage unit, not a gym.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 03: EQUIPMENT -->
-<section class="guide-section" id="equipment">
-  <div class="sec-num">03 — Equipment</div>
-  <h2 class="sec-title reveal">Equipment Selection<br><em>Without Wasting Money</em></h2>
-  <p class="sec-lead reveal d1">Most home gym buyers spend too much on the wrong things and not enough on the right ones. Here's how to tier your spending based on actual training impact.</p>
-
-  <div class="callout reveal d2">
-    <strong>The 80/20 of equipment:</strong> A quality squat rack, a 45 lb barbell, and 300 lbs of bumper or iron plates can deliver 80% of the training stimulus of a full commercial gym. Everything else is refinement. Start there. Build outward only when you have a specific need.
+  <div class="quote-break">
+    <blockquote>Design <span>before</span><br>Equipment.<br><span style="color:var(--white)">Always.</span></blockquote>
+    <cite>Chapter 2 Principle</cite>
   </div>
 
-  <div class="equip-grid reveal d2">
-    <div class="equip-card">
-      <div class="equip-tier">Tier 1 — Buy First</div>
-      <div class="equip-title">The Foundation</div>
-      <ul class="equip-list">
-        <li>Squat rack with pull-up bar (1000 lb capacity min.)</li>
-        <li>Barbell — 45 lb, quality steel, no flex (Rogue, Titan, Rep)</li>
-        <li>300 lb plate set — iron or bumper depending on floor use</li>
-        <li>Adjustable bench — flat/incline, commercial-grade</li>
-        <li>Rubber flooring — 3/4" stall mats, full coverage</li>
-      </ul>
+  <section class="chapter" id="chapter2">
+    <div class="chapter-inner">
+      <div class="chapter-header fade-up">
+        <div class="chapter-icon">&#x1F3D7;</div>
+        <div>
+          <div class="chapter-title">Design Before<br>Equipment</div>
+          <div class="chapter-sub">Why the best home gyms are built backwards.</div>
+        </div>
+        <div class="chapter-num">02</div>
+      </div>
+      <div class="chapter-content fade-up">
+        <div>
+          <p>Most people build in the wrong order. They buy equipment first, arrange it second, and <strong>hope discipline fills the gaps.</strong></p>
+          <p>Equipment doesn't create consistency. The room does. If the space feels awkward, cluttered, or unfinished, no amount of gear will fix it.</p>
+          <p>Design should come first. Not decoration — design. How the room <em>feels</em>. How you move through it. How easy it is to start.</p>
+        </div>
+        <div>
+          <div class="rule-list">
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Design for reality</strong> — not best-case weeks</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Smaller, simpler gyms</strong> get used more</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Less friction = more sessions</strong> — always</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>A well-designed room pulls you in.</strong> A poorly designed one asks for effort before any work begins.</div></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="equip-card">
-      <div class="equip-tier">Tier 2 — Add When Ready</div>
-      <div class="equip-title">Conditioning + Variety</div>
-      <ul class="equip-list">
-        <li>Adjustable dumbbells (5–50 lb range covers most needs)</li>
-        <li>Pull-up bar / dip station if not built into rack</li>
-        <li>Kettlebell set — 16, 24, 32 kg to start</li>
-        <li>Resistance bands (loop and handled)</li>
-        <li>Jump rope — speed or weighted</li>
-      </ul>
+  </section>
+
+  <section class="chapter" style="background: var(--dark);">
+    <div class="chapter-inner">
+      <div class="chapter-header fade-up">
+        <div class="chapter-icon">&#x1FA9F;</div>
+        <div>
+          <div class="chapter-title">Design the<br>Shell First</div>
+          <div class="chapter-sub">The five decisions that determine everything.</div>
+        </div>
+        <div class="chapter-num">03</div>
+      </div>
+      <p style="color:#AAA; font-size:1rem; line-height:1.9; margin-top:40px; max-width:650px;" class="fade-up">Before a single piece of equipment arrives, lock in the shell. Equipment can be moved. <strong style="color:var(--white)">The shell cannot.</strong> These five elements affect comfort, mood, and how often the room actually gets used — and they're the most expensive to change later.</p>
+      <div class="phases fade-up">
+        <div class="phase-card p1">
+          <div class="phase-num">01</div>
+          <div class="phase-title">&#x1FAB5; Flooring</div>
+          <ul class="phase-items">
+            <li>Get this right above all else</li>
+            <li>Affects joints, sound &amp; feel</li>
+            <li>Choose one system. Commit.</li>
+            <li>Cheap floors kill rooms slowly</li>
+          </ul>
+          <span class="phase-badge">Start Here</span>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">02</div>
+          <div class="phase-title">&#x1F4A1; Lighting</div>
+          <ul class="phase-items">
+            <li>Think layers, not brightness</li>
+            <li>One color temp throughout</li>
+            <li>Ambient + task + accent</li>
+            <li>Plan before equipment goes in</li>
+          </ul>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">03</div>
+          <div class="phase-title">&#x1F9F1; Walls</div>
+          <ul class="phase-items">
+            <li>Pick one wall. Do it right.</li>
+            <li>Restraint reads as intention</li>
+            <li>Reduce echo, anchor the room</li>
+            <li>Less is more — always</li>
+          </ul>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">04</div>
+          <div class="phase-title">&#x1F32C; Air + Sound</div>
+          <ul class="phase-items">
+            <li>Fresh air beats stronger fans</li>
+            <li>Stable temp beats extremes</li>
+            <li>Rubber floors reduce echo</li>
+            <li>Comfort makes it repeatable</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="equip-card">
-      <div class="equip-tier">Tier 3 — When Space Allows</div>
-      <div class="equip-title">Specialization</div>
-      <ul class="equip-list">
-        <li>Cable machine or functional trainer</li>
-        <li>GHD or back extension machine</li>
-        <li>Specialty bars — safety squat, hex, cambered</li>
-        <li>Sled or prowler for conditioning</li>
-        <li>Second barbell for a dedicated Olympic lifting area</li>
-      </ul>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="chapter-header fade-up">
+        <div class="chapter-icon">&#x1F3CB;</div>
+        <div>
+          <div class="chapter-title">Equipment &amp;<br>Layout</div>
+          <div class="chapter-sub">Selection, not accumulation. Zones, not symmetry.</div>
+        </div>
+        <div class="chapter-num">04</div>
+      </div>
+      <div class="chapter-content fade-up">
+        <div>
+          <p><strong>Buy equipment that supports how you train — not what you aspire to collect.</strong> A smaller set of well-chosen tools used consistently beats a room full of gear that creates decision fatigue.</p>
+          <p>Most layout problems aren't space problems. They're flow problems. Equipment gets placed where it fits — not where it works.</p>
+          <p>You should be able to walk into the room and start training immediately. No rearranging. No setup gymnastics.</p>
+          <div class="truth-box" style="margin-top:24px">
+            <p>"Can you walk in and start training without moving anything first? If not, the equipment mix needs work."</p>
+          </div>
+        </div>
+        <div>
+          <div class="rule-list">
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Zone 1 — Movement:</strong> Open floor. Keep it clear. Always.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Zone 2 — Strength:</strong> Racks, benches, heavy gear. Stability first.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Zone 3 — Support:</strong> Storage, accessories, recovery tools.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Empty space is not wasted.</strong> Protect it intentionally.</div></div>
+            <div class="rule-item"><div class="rule-dot"></div><div class="rule-text"><strong>Buy in phases.</strong> Core pieces first. Everything else can wait.</div></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="equip-card">
-      <div class="equip-tier">Never Buy</div>
-      <div class="equip-title">Common Mistakes</div>
-      <ul class="equip-list">
-        <li>Big-box store barbells (they bend and damage plates)</li>
-        <li>Foam flooring tiles for heavy lifting areas</li>
-        <li>Cardio machines before you have your strength base set</li>
-        <li>Equipment you don't currently train with</li>
-        <li>Decorative items before functional ones</li>
-      </ul>
+  </section>
+
+  <div class="quote-break">
+    <blockquote><span>Sequence</span><br>beats speed.<br><span style="color:var(--white)">Every time.</span></blockquote>
+    <cite>Build Order Principle</cite>
+  </div>
+
+  <section class="chapter" style="background: var(--dark);">
+    <div class="chapter-inner">
+      <div class="chapter-header fade-up">
+        <div class="chapter-icon">&#x1F4CB;</div>
+        <div>
+          <div class="chapter-title">Build Order &amp;<br>Budget Phasing</div>
+          <div class="chapter-sub">Don't change the order. You can move slower. You can pause. But don't change the order.</div>
+        </div>
+        <div class="chapter-num">05</div>
+      </div>
+      <div class="phases fade-up" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="phase-card p1">
+          <div class="phase-num">1</div>
+          <div class="phase-title">Lock the Foundation</div>
+          <ul class="phase-items">
+            <li>Flooring</li><li>Lighting</li><li>Basic airflow</li><li>One wall decision</li>
+          </ul>
+          <span class="phase-badge">Room is Usable</span>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">2</div>
+          <div class="phase-title">Core Equipment</div>
+          <ul class="phase-items">
+            <li>Primary weekly-use gear</li><li>Layout + flow</li><li>Daily-use storage</li><li>No specialty machines yet</li>
+          </ul>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">3</div>
+          <div class="phase-title">Refinement</div>
+          <ul class="phase-items">
+            <li>Acoustics upgrade</li><li>Airflow improvements</li><li>Secondary lighting</li><li>Quality-of-life details</li>
+          </ul>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">4</div>
+          <div class="phase-title">Expansion</div>
+          <ul class="phase-items">
+            <li>Only after consistent use</li><li>Specialty equipment</li><li>Aesthetic upgrades</li><li>Advanced tools</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter-inner">
+      <div class="section-label fade-up">Final Chapter</div>
+      <h2 class="fade-up" style="font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,6vw,5rem); color:var(--white); line-height:0.9; margin-bottom:8px;">8 Rules That Make<br><span style="color:var(--gold)">a Home Gym Last</span></h2>
+      <div class="rules-grid fade-up">
+        <div class="rule-card"><div class="rule-card-num">Rule 01</div><div class="rule-card-title">Design for Real Life</div><div class="rule-card-body">Design for the version of yourself that trains consistently — not the version that never misses. If it only works when motivation is high, it won't last.</div></div>
+        <div class="rule-card"><div class="rule-card-num">Rule 02</div><div class="rule-card-title">Lock the Shell First</div><div class="rule-card-body">Floors, lighting, walls, air, and sound determine whether the room feels usable. Equipment only works if the room supports it.</div></div>
+        <div class="rule-card"><div class="rule-card-num">Rule 03</div><div class="rule-card-title">Protect Open Space</div><div class="rule-card-body">Empty space is not wasted. It's what allows movement and transitions without friction. Once it's gone, it rarely comes back.</div></div>
+        <div class="rule-card"><div class="rule-card-num">Rule 04</div><div class="rule-card-title">Buy Less, Use More</div><div class="rule-card-body">The right tools used often always win over variety that creates clutter. Constraint creates focus.</div></div>
+        <div class="rule-card"><div class="rule-card-num">Rule 05</div><div class="rule-card-title">Comfort Is Infrastructure</div><div class="rule-card-body">If the room is too hot, too loud, or too harsh, you'll find reasons not to stay. Comfort isn't indulgence — it's infrastructure.</div></div>
+        <div class="rule-card"><div class="rule-card-num">Rule 06</div><div class="rule-card-title">Build in Phases</div><div class="rule-card-body">Trying to do everything at once kills momentum. Build in the right order. Pause when needed. Let use guide refinement.</div></div>
+        <div class="rule-card"><div class="rule-card-num">Rule 07</div><div class="rule-card-title">No Temporary Solutions</div><div class="rule-card-body">Temporary floors, lighting, and layouts almost always become permanent. If something needs redoing later, slow down now.</div></div>
+        <div class="rule-card"><div class="rule-card-num">Rule 08</div><div class="rule-card-title">Let the Room Disappear</div><div class="rule-card-body">The best home gyms don't hype you up. They remove excuses. When the room stops demanding attention, training becomes the focus.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-left fade-up">
+      <h2>Ready to<span>Build Yours?</span></h2>
+      <p>Use the tools below to audit your current space, share the key ideas, or run through the full checklist.</p>
+    </div>
+    <div class="cta-right fade-up">
+      <a class="cta-action" href="#" onclick="switchView('quiz', document.querySelectorAll('.nav-tab')[2]); return false;">
+        <div class="cta-action-icon">&#x2705;</div>
+        <div class="cta-action-text"><strong>Gym Readiness Checklist</strong><span>Audit your space against all 8 principles</span></div>
+      </a>
+      <a class="cta-action" href="#" onclick="switchView('cards', document.querySelectorAll('.nav-tab')[1]); return false;">
+        <div class="cta-action-icon">&#x1F4F2;</div>
+        <div class="cta-action-text"><strong>Shareable Cards</strong><span>Screenshot-ready cards for every key idea</span></div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">Performance Edge Training + Gym Design</div>
+    <div class="footer-note">&copy; 2025 &middot; All rights reserved &middot; Share freely</div>
+  </footer>
+</div><!-- /view-microsite -->
+
+<!-- VIEW 2: CARD DECK -->
+<div id="view-cards" class="view">
+  <div class="cards-view">
+    <div class="cards-header">
+      <h2>Shareable <span>Cards</span></h2>
+      <p>Screenshot any card and share it. Each one is a standalone idea.</p>
+    </div>
+    <div class="cards-grid" id="cardsGrid">
+      <!-- Cards injected by JS -->
     </div>
   </div>
-</section>
+</div>
 
-<!-- SECTION 04: LAYOUT -->
-<section class="guide-section" id="layout">
-  <div class="sec-num">04 — Layout</div>
-  <h2 class="sec-title reveal">Layout Principles That<br><em>Change How You Train</em></h2>
-  <p class="sec-lead reveal d1">The right layout is invisible — you move through the space without thinking about it. The wrong layout shows up every session as friction, compromise, and wasted motion.</p>
+<!-- VIEW 3: CHECKLIST -->
+<div id="view-quiz" class="view">
+  <div class="quiz-view">
+    <div class="quiz-header">
+      <h2>Gym Readiness <span>Checklist</span></h2>
+      <p>Audit your space against the principles. Check everything that's already done or decided. See your score in real time.</p>
+    </div>
+    <div class="quiz-container">
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div></div>
 
-  <ul class="num-list reveal d1">
-    <li>
-      <span class="nl-num">01</span>
-      <div class="nl-body">
-        <div class="nl-title">The rack is the anchor. Everything else orbits it.</div>
-        <p class="nl-desc">Place your squat rack first. Center it on the longest open wall, far enough from the wall for a safety margin on loaded walkouts (minimum 3 feet behind the bar). All other equipment radiates outward from this anchor point. This keeps your primary movement pattern unobstructed and creates natural flow through accessory work.</p>
+      <div class="quiz-section">
+        <div class="quiz-section-title"><span class="quiz-section-icon">&#x1FAB5;</span> Flooring</div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">I've chosen one flooring system and committed to it (not a patchwork of options)</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">The flooring feels stable under load and protects joints during training</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">The flooring covers the entire training area — no temporary zones</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">The floor makes the room feel finished, not like something I'll upgrade later</div></div>
       </div>
-    </li>
-    <li>
-      <span class="nl-num">02</span>
-      <div class="nl-body">
-        <div class="nl-title">Zone your space: strength, conditioning, mobility</div>
-        <p class="nl-desc">Even in a 10×12 room you can have three distinct zones. Strength zone: rack, plates, bench. Conditioning zone: open floor for carries, jumps, sled work. Mobility zone: mat, bands, foam roller. Clear zones prevent equipment from bleeding into each other and make transitions between exercises feel intentional rather than chaotic.</p>
+
+      <div class="quiz-section">
+        <div class="quiz-section-title"><span class="quiz-section-icon">&#x1F4A1;</span> Lighting</div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">I have more than one light source (not just a single overhead fixture)</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">All lights are the same color temperature — no mixing warm and cool</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">The room feels inviting at 6am and late at night, not just during ideal conditions</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">Lighting was planned before equipment was installed (not an afterthought)</div></div>
       </div>
-    </li>
-    <li>
-      <span class="nl-num">03</span>
-      <div class="nl-body">
-        <div class="nl-title">The door is the last thing you want to face during a lift</div>
-        <p class="nl-desc">Orient your primary lifting station so you face a wall, not the entry point. This isn't superstition — it's focus. Facing a door invites distraction. Facing a wall (especially one with a training cue, clock, or whiteboard) keeps your attention inside the session. Position your mirror for cuing, not for checking who walked in.</p>
+
+      <div class="quiz-section">
+        <div class="quiz-section-title"><span class="quiz-section-icon">&#x1F9F1;</span> Walls</div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">I've made one intentional wall decision — not left everything bare or done too much</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">Mirrors are used functionally, not decoratively — only where they aid movement</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">The room feels like a finished space, not a garage with equipment in it</div></div>
       </div>
-    </li>
-    <li>
-      <span class="nl-num">04</span>
-      <div class="nl-body">
-        <div class="nl-title">Plate storage lives next to the bar. Always.</div>
-        <p class="nl-desc">Every step between the rack and your plates is a tax on momentum. Your plate storage — whether that's a dedicated tree, floor storage, or bumper stacks — needs to be reachable from your loaded position without moving equipment or walking across the room. This one change makes training feel dramatically more efficient.</p>
+
+      <div class="quiz-section">
+        <div class="quiz-section-title"><span class="quiz-section-icon">&#x1F32C;</span> Air, Sound &amp; Comfort</div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">The room has fresh air flowing in and warm air moving out during sessions</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">The room is usable in every season — not just part of the year</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">Echo and harsh sound are reduced — rubber flooring + wall treatments in place</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">I've never cut a session short because the room felt too hot, loud, or stuffy</div></div>
       </div>
-    </li>
-    <li>
-      <span class="nl-num">05</span>
-      <div class="nl-body">
-        <div class="nl-title">Vertical space is underused in almost every home gym</div>
-        <p class="nl-desc">The wall from 6 feet up to the ceiling is almost always wasted. That's where your band storage, belt hook, chalk bin, programming whiteboard, and speaker mount belong. Moving accessories off the floor gives you floor back — and floor space in a home gym is the most valuable real estate you have.</p>
+
+      <div class="quiz-section">
+        <div class="quiz-section-title"><span class="quiz-section-icon">&#x1F3CB;</span> Equipment</div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">I can walk into the room and start training without moving anything first</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">Every piece of equipment earns its footprint — nothing is "just in case"</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">Storage is clear — everything has a home and is easy to put away</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">I've prioritised multi-use tools over single-purpose machines</div></div>
       </div>
-    </li>
-  </ul>
-</section>
 
-<!-- SECTION 05: CHECKLIST -->
-<section class="guide-section" id="checklist">
-  <div class="sec-num">05 — Checklist</div>
-  <h2 class="sec-title reveal">Interactive Audit Checklist</h2>
-  <p class="sec-lead reveal d1">Work through this before you buy anything, before you start building, and every six months after. Progress is tracked in your browser.</p>
+      <div class="quiz-section">
+        <div class="quiz-section-title"><span class="quiz-section-icon">&#x1F4D0;</span> Layout &amp; Flow</div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">There is a clear movement zone that stays mostly free of equipment</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">Walkways are clear and obvious — no dead ends or tight corners</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">I can move from exercise to exercise without stopping to rearrange anything</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">Equipment is placed where it naturally gets used, not just where it fits</div></div>
+      </div>
 
-  <div class="reveal d2">
-    <div class="cl-progress-bar"><div class="cl-progress-fill" id="cl-fill" style="width:0%"></div></div>
-    <div class="cl-counter" id="cl-counter">0 of 24 complete</div>
+      <div class="quiz-section">
+        <div class="quiz-section-title"><span class="quiz-section-icon">&#x1F4CB;</span> Build Order &amp; Mindset</div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">I built (or am building) the shell before buying equipment</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">I'm designing for how I actually train — not an ideal version of myself</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">I have avoided temporary solutions that will become permanent problems</div></div>
+        <div class="quiz-item" onclick="toggleCheck(this)"><div class="quiz-checkbox">&#x2713;</div><div class="quiz-item-text">If I had to pause the build today, the room would still feel usable and finished</div></div>
+      </div>
 
-    <div class="checklist" id="checklist">
-
-      <div class="cl-section-title">The Shell</div>
-      <div class="cl-item" data-id="c1"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Measured all dimensions including ceiling height</span></div>
-      <div class="cl-item" data-id="c2"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Rubber flooring installed — full coverage, minimum 3/4 inch</span></div>
-      <div class="cl-item" data-id="c3"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Temperature control solution in place (fan, AC, mini-split)</span></div>
-      <div class="cl-item" data-id="c4"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Overhead lighting is bright and daylight-balanced</span></div>
-      <div class="cl-item" data-id="c5"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Ventilation is adequate — no stale air buildup after 30 min</span></div>
-      <div class="cl-item" data-id="c6"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Electrical outlets sufficient for all current and planned equipment</span></div>
-
-      <div class="cl-section-title">Equipment</div>
-      <div class="cl-item" data-id="c7"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Primary rack selected and installed — rated for intended load</span></div>
-      <div class="cl-item" data-id="c8"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Barbell quality-checked — no flex, quality steel, proper knurl</span></div>
-      <div class="cl-item" data-id="c9"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Plates sufficient for training goals (300 lb minimum starting point)</span></div>
-      <div class="cl-item" data-id="c10"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Adjustable bench rated commercial-grade, no wobble</span></div>
-      <div class="cl-item" data-id="c11"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">All equipment purchased for current training — not hypothetical future use</span></div>
-      <div class="cl-item" data-id="c12"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">No big-box / commercial-style cardio machines filling strength space</span></div>
-
-      <div class="cl-section-title">Layout</div>
-      <div class="cl-item" data-id="c13"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Rack positioned with 3+ feet clearance behind loaded barbell position</span></div>
-      <div class="cl-item" data-id="c14"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Plate storage adjacent to the rack — reachable without repositioning</span></div>
-      <div class="cl-item" data-id="c15"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Primary lifting station faces a wall, not the door</span></div>
-      <div class="cl-item" data-id="c16"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Strength, conditioning, and mobility zones are distinct</span></div>
-      <div class="cl-item" data-id="c17"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">At least 20% of total floor area remains open and clear</span></div>
-      <div class="cl-item" data-id="c18"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Vertical wall space used for storage above 6 feet</span></div>
-
-      <div class="cl-section-title">Experience</div>
-      <div class="cl-item" data-id="c19"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Audio solution installed — speaker mounted, not on the floor</span></div>
-      <div class="cl-item" data-id="c20"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">A clock or timer visible from primary lifting station</span></div>
-      <div class="cl-item" data-id="c21"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Programming board or cue sheet accessible during training</span></div>
-      <div class="cl-item" data-id="c22"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Space does not smell like rubber/mold after being closed overnight</span></div>
-      <div class="cl-item" data-id="c23"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Mirror placement is for form cuing only — not decorative</span></div>
-      <div class="cl-item" data-id="c24"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">You have trained in the space for 30+ days without skipping due to the environment</span></div>
-
-    </div>
-
-    <button class="cl-reset" id="cl-reset">Reset Checklist</button>
-  </div>
-</section>
-
-<!-- SECTION 06: SHAREABLE CARDS -->
-<section class="guide-section" id="cards">
-  <div class="sec-num">06 — Key Principles</div>
-  <h2 class="sec-title reveal">The Principles — At a Glance</h2>
-  <p class="sec-lead reveal d1">The ideas that matter most, distilled. Save these or share them.</p>
-
-  <div class="cards-grid reveal d2">
-    <div class="share-card">
-      <p class="sc-quote">"Don't build a gym around your equipment. Build your equipment around your gym."</p>
-      <div class="sc-attr">Shell-First Method — Performance Edge</div>
-    </div>
-    <div class="share-card">
-      <p class="sc-quote">"Every piece of equipment you don't own is floor space you do."</p>
-      <div class="sc-attr">Rule 08 — Keep 20% Open</div>
-    </div>
-    <div class="share-card">
-      <p class="sc-quote">"A gym at 85°F is a gym you skip. Solve the temperature problem before you buy the rack."</p>
-      <div class="sc-attr">Rule 04 — Environment First</div>
-    </div>
-    <div class="share-card">
-      <p class="sc-quote">"Buy for how you train now — not how you plan to. Present-you is the one who shows up."</p>
-      <div class="sc-attr">Rule 01 — Train for Now</div>
-    </div>
-    <div class="share-card">
-      <p class="sc-quote">"Lighting changes everything. Bright, daylight-balanced overhead light costs less than a pair of dumbbell handles."</p>
-      <div class="sc-attr">Rule 07 — Light Your Gym Right</div>
-    </div>
-    <div class="share-card">
-      <p class="sc-quote">"One rack, one barbell, one set of plates. Get ruthlessly good at the basics before adding complexity."</p>
-      <div class="sc-attr">Rule 02 — Simplicity First</div>
+      <div class="score-panel" id="scorePanel">
+        <div class="score-left">
+          <div><div class="score-num" id="scoreNum">0</div><div class="score-label">/ 28 Checked</div></div>
+          <div><div class="score-grade" id="scoreGrade">&mdash;</div><div class="score-label" id="scoreLabel">Start checking above</div></div>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar-fill" id="scoreBarFill" style="width:0%"></div></div>
+        <button class="score-reset" onclick="resetQuiz()">Reset All</button>
+      </div>
+      <div class="grade-message" id="gradeMsg"></div>
     </div>
   </div>
-</section>
+</div><!-- /view-quiz -->
 
-<!-- CTA -->
-<section id="cta">
-  <div class="cta-rule"></div>
-  <h2 class="cta-title reveal">Ready to Build?</h2>
-  <p class="cta-desc reveal d1">If you want a custom design consultation — flooring, layout, equipment selection, the whole thing — that's exactly what we do.</p>
-  <div class="cta-btns reveal d2">
-    <a href="contact.html" class="btn-gold">Book a Consultation</a>
-    <a href="index.html" class="btn-outline-gold">Back to the Site</a>
-  </div>
-</section>
+<!-- MOBILE NAV -->
+<div class="mobile-nav-tabs">
+  <button class="mobile-tab active" onclick="switchView('microsite', this)" id="mob-tab-microsite">
+    <span class="mobile-tab-icon">&#x1F4D6;</span>
+    <span class="mobile-tab-label">Guide</span>
+  </button>
+  <button class="mobile-tab" onclick="switchView('cards', this)" id="mob-tab-cards">
+    <span class="mobile-tab-icon">&#x1F4F2;</span>
+    <span class="mobile-tab-label">Cards</span>
+  </button>
+  <button class="mobile-tab" onclick="switchView('quiz', this)" id="mob-tab-quiz">
+    <span class="mobile-tab-icon">&#x2705;</span>
+    <span class="mobile-tab-label">Checklist</span>
+  </button>
+</div>
 
-<!-- FOOTER -->
-<footer>
-  <span>© 2025 Made From Effort / Performance Edge</span>
-  <a href="index.html">madebyscott.com</a>
-</footer>
+<div class="share-toast" id="shareToast"></div>
 
 <script>
-/* ── SMOOTH SCROLL TOC ── */
-function scrollTo(id) {
-  var el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+// Card data
+var CARDS = [
+  { tag:'The Problem', accent:'accent-red', title:'Home Gyms Die Slow Deaths', body:'They don\'t get torn out. <strong>They slowly stop getting used.</strong> Days get skipped. Nothing feels bad enough to fix. This isn\'t a motivation problem. It\'s a design problem.' },
+  { tag:'Core Principle', accent:'', title:'Design Before Equipment. Always.', body:'Most people buy equipment first, arrange it second, and hope discipline fills the gaps. <strong>Equipment doesn\'t create consistency. The room does.</strong>' },
+  { tag:'Flooring', accent:'', title:'If You Only Get One Decision Right...', body:'Make it the floor. It affects how your body feels on every rep, how sound travels, and how permanent the room feels. <strong>Cheap floors send a signal: this space isn\'t finished.</strong>' },
+  { tag:'Lighting', accent:'accent-green', title:'Lighting Isn\'t About Brightness', body:'It\'s about how the room feels at 6am when motivation is low. <strong>If the room feels harsh, you\'ll avoid it without realising.</strong> Think layers: ambient + task + accent.' },
+  { tag:'Walls', accent:'', title:'The One Wall Rule', body:'Pick one wall. Do something intentional with it. Keep the rest calm. <strong>Restraint reads as intention.</strong> A calm room gets used more than a dramatic one.' },
+  { tag:'Equipment', accent:'', title:'Build a System, Not a Catalog', body:'<strong>Can you walk in and start training without moving anything first?</strong> If not, the equipment mix needs work. Fewer pieces, used more often, always wins.' },
+  { tag:'Layout', accent:'accent-red', title:'You Don\'t Have a Space Problem', body:'You have a flow problem. <strong>Design for movement first, equipment second.</strong> Protect open space intentionally — once it\'s gone, it rarely comes back.' },
+  { tag:'Comfort', accent:'', title:'Comfort Is Infrastructure', body:'If the room is too hot, too loud, or too stale — your body finds reasons to leave. <strong>No amount of discipline overrides bad air, bad temp, or bad acoustics.</strong>' },
+  { tag:'Build Order', accent:'accent-green', title:'Sequence Beats Speed', body:'Build the shell &rarr; add core equipment &rarr; refine comfort &rarr; expand. <strong>If you build out of order, the room feels incomplete until the very end.</strong>' },
+  { tag:'The Big Rule', accent:'', title:'Let the Room Disappear', body:'The best home gyms don\'t hype you up. <strong>They remove excuses.</strong> When the room stops demanding attention, training becomes the only focus.' },
+  { tag:'Mindset Shift', accent:'accent-red', title:'Design for Tuesday, Not Your Best Day', body:'Design for the version of yourself who shows up on a random weekday when motivation is low. <strong>That\'s the only version that actually matters.</strong>' },
+  { tag:'Final Check', accent:'', title:'One Question to Ask Yourself', body:'If you had to stop the build today — <strong>does the room feel usable, finished, and easy to return to?</strong> If not, revisit the order. Not the motivation.' }
+];
+
+function igSVG() {
+  return '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="6" ry="6" stroke="url(#ig-grad)" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="4" stroke="url(#ig-grad)" stroke-width="2" fill="none"/><circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig-grad)"/></svg>';
+}
+function shareSVG() {
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>';
 }
 
-/* ── SCROLL REVEAL ── */
-var ro = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) e.target.classList.add('in');
+(function buildCards() {
+  var grid = document.getElementById('cardsGrid');
+  CARDS.forEach(function(c) {
+    var div = document.createElement('div');
+    div.className = 'share-card' + (c.accent ? ' ' + c.accent : '');
+    div.innerHTML =
+      '<div class="share-card-tag">' + c.tag + '</div>' +
+      '<div class="share-card-title">' + c.title + '</div>' +
+      '<div class="share-card-body">' + c.body + '</div>' +
+      '<div class="share-card-footer">' +
+        '<a class="share-card-insta" href="https://www.instagram.com/scottschrat" target="_blank" rel="noopener">' + igSVG() + '@SCOTTSCHRAT</a>' +
+        '<button class="share-btn" onclick="shareCard(this)">' + shareSVG() + 'Share</button>' +
+      '</div>';
+    grid.appendChild(div);
   });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(function(el) { ro.observe(el); });
-
-/* ── PHASE HIGHLIGHT ── */
-var phases = document.querySelectorAll('.phase');
-var phaseObs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    e.target.classList.toggle('active', e.isIntersecting);
-  });
-}, { threshold: 0.5 });
-phases.forEach(function(p) { phaseObs.observe(p); });
-
-/* ── CHECKLIST ── */
-(function() {
-  var STORE = 'mfe_guide_checklist_v1';
-  var items = document.querySelectorAll('.cl-item');
-  var fill  = document.getElementById('cl-fill');
-  var counter = document.getElementById('cl-counter');
-  var total = items.length;
-
-  function load() {
-    try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch(e) { return {}; }
-  }
-  function save(state) {
-    try { localStorage.setItem(STORE, JSON.stringify(state)); } catch(e) {}
-  }
-  function update() {
-    var state = load();
-    var done = 0;
-    items.forEach(function(item) {
-      var id = item.dataset.id;
-      var checked = !!state[id];
-      item.classList.toggle('done', checked);
-      if (checked) done++;
-    });
-    var pct = Math.round((done / total) * 100);
-    fill.style.width = pct + '%';
-    counter.textContent = done + ' of ' + total + ' complete';
-  }
-
-  items.forEach(function(item) {
-    item.addEventListener('click', function() {
-      var state = load();
-      var id = item.dataset.id;
-      state[id] = !state[id];
-      save(state);
-      update();
-    });
-  });
-
-  document.getElementById('cl-reset').addEventListener('click', function() {
-    save({});
-    update();
-  });
-
-  update();
 })();
-</script>
 
+// SHARE
+function shareCard(btn) {
+  var card = btn.closest('.share-card');
+  var title = card.querySelector('.share-card-title').innerText;
+  var body = card.querySelector('.share-card-body').innerText;
+  var tag = card.querySelector('.share-card-tag').innerText;
+  var text = tag.toUpperCase() + '\n\n' + title + '\n\n' + body + '\n\n@SCOTTSCHRAT\n#homegym #gymdesign #performanceedge';
+  if (navigator.share) {
+    navigator.share({ title: title, text: text, url: window.location.href })
+      .then(function() { showToast('Shared! \uD83D\uDE4C'); })
+      .catch(function() { fallbackShare(text); });
+  } else {
+    fallbackShare(text);
+  }
+}
+function fallbackShare(text) {
+  navigator.clipboard.writeText(text).then(function() {
+    showToast('Caption copied \u2014 open Instagram to post! \uD83D\uDCF8');
+    setTimeout(function() { window.open('https://www.instagram.com/', '_blank'); }, 800);
+  }).catch(function() {
+    showToast('Open Instagram and share this card \uD83D\uDCF8');
+    window.open('https://www.instagram.com/', '_blank');
+  });
+}
+function showToast(msg) {
+  var t = document.getElementById('shareToast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 3000);
+}
+
+// VIEW SWITCHING
+function switchView(name, triggerEl) {
+  document.querySelectorAll('.view').forEach(function(v) { v.classList.remove('active'); });
+  document.querySelectorAll('.nav-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.mobile-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.getElementById('view-' + name).classList.add('active');
+  if (triggerEl) triggerEl.classList.add('active');
+  var mobTab = document.getElementById('mob-tab-' + name);
+  if (mobTab) mobTab.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (name === 'microsite') initFadeUps();
+}
+
+// FADE UPS
+function initFadeUps() {
+  var els = document.querySelectorAll('#view-microsite .fade-up:not(.in)');
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  els.forEach(function(el) { obs.observe(el); });
+}
+document.addEventListener('DOMContentLoaded', initFadeUps);
+
+// QUIZ
+var TOTAL = 28;
+function toggleCheck(el) { el.classList.toggle('checked'); updateScore(); }
+function updateScore() {
+  var checked = document.querySelectorAll('.quiz-item.checked').length;
+  var pct = Math.round((checked / TOTAL) * 100);
+  document.getElementById('scoreNum').textContent = checked;
+  document.getElementById('scoreBarFill').style.width = pct + '%';
+  document.getElementById('quizProgressFill').style.width = pct + '%';
+  var grade, label, msg, color;
+  if (checked === 0) {
+    document.getElementById('scoreGrade').textContent = '\u2014';
+    document.getElementById('scoreLabel').textContent = 'Start checking above';
+    document.getElementById('gradeMsg').classList.remove('show');
+    document.getElementById('scoreBarFill').style.background = 'var(--gold)';
+    document.getElementById('scoreGrade').style.color = 'var(--white)';
+    return;
+  } else if (pct <= 30) {
+    grade='EARLY STAGE'; label='Room needs work'; color='#E07070';
+    msg='<strong>Early Stage Gym.</strong> The fundamentals aren\'t locked in yet. Focus on the shell first: flooring, lighting, and one wall decision. Don\'t buy any equipment until these are settled.';
+  } else if (pct <= 55) {
+    grade='TAKING SHAPE'; label='Good progress'; color='#E8C97A';
+    msg='<strong>Taking Shape.</strong> You\'re building in roughly the right order. Identify the remaining gaps in comfort and flow — those are what\'ll determine whether you actually use this space long-term.';
+  } else if (pct <= 79) {
+    grade='SOLID GYM'; label='Strong foundation'; color='#7EC89A';
+    msg='<strong>Solid Gym.</strong> The core principles are working. Now focus on refinement: acoustics, airflow, and the small quality-of-life details that make sessions more enjoyable to sustain.';
+  } else if (pct <= 95) {
+    grade='ELITE SETUP'; label='Almost perfect'; color='var(--gold)';
+    msg='<strong>Elite Setup.</strong> This is a gym built to last. You\'ve done the hard thinking most people skip. The few remaining boxes are finishing touches, not fundamentals.';
+  } else {
+    grade='DIALLED IN'; label='Full marks'; color='var(--gold)';
+    msg='<strong>Fully Dialled In.</strong> You\'ve ticked every box. This room is working with you, not against you. The only question now: are you using it?';
+  }
+  document.getElementById('scoreGrade').textContent = grade;
+  document.getElementById('scoreGrade').style.color = color;
+  document.getElementById('scoreLabel').textContent = label;
+  document.getElementById('scoreBarFill').style.background = color;
+  var msgEl = document.getElementById('gradeMsg');
+  msgEl.innerHTML = msg;
+  msgEl.classList.add('show');
+}
+function resetQuiz() {
+  document.querySelectorAll('.quiz-item').forEach(function(el) { el.classList.remove('checked'); });
+  document.getElementById('scoreNum').textContent = '0';
+  document.getElementById('scoreGrade').textContent = '\u2014';
+  document.getElementById('scoreLabel').textContent = 'Start checking above';
+  document.getElementById('scoreBarFill').style.width = '0%';
+  document.getElementById('scoreBarFill').style.background = 'var(--gold)';
+  document.getElementById('quizProgressFill').style.width = '0%';
+  document.getElementById('gradeMsg').classList.remove('show');
+  document.getElementById('scoreGrade').style.color = 'var(--white)';
+}
+</script>
 </body>
 </html>
