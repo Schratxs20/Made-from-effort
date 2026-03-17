@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Level Up Your Home Gym — Performance Edge</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script>
+  // Access gate — must have completed the popup form
+  (function() {
+    try {
+      var d = JSON.parse(localStorage.getItem('mfe_popup_v1'));
+      if (!d || !d.submitted) {
+        window.location.replace('index.html');
+      }
+    } catch(e) {
+      window.location.replace('index.html');
+    }
+  })();
+</script>
+
+<style>
+  :root {
+    --bg:       #0C0C0A;
+    --surface:  #111110;
+    --surface2: #181816;
+    --border:   rgba(255,255,255,0.06);
+    --gold:     #C9A96E;
+    --gold-lt:  #DBBF84;
+    --cream:    #F2EDE4;
+    --muted:    rgba(242,237,228,0.5);
+    --dim:      rgba(242,237,228,0.28);
+    --ink:      #0C0C0A;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 56px;
+    background: rgba(12,12,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+  }
+  .nav-brand { text-decoration: none; display: flex; flex-direction: column; gap: 1px; }
+  .nav-brand-name { font-family: 'Cormorant', serif; font-size: 15px; font-style: italic; font-weight: 400; color: var(--cream); letter-spacing: 0.3px; }
+  .nav-brand-sub  { font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--dim); font-weight: 400; }
+  .nav-badge {
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(201,169,110,0.3);
+    padding: 5px 14px; font-weight: 400;
+  }
+
+  /* ── HERO ── */
+  #guide-hero {
+    margin-top: 56px;
+    min-height: 70vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 80px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  #guide-hero::before {
+    content: '';
+    position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-rule { width: 32px; height: 1px; background: var(--gold); margin: 0 auto 24px; }
+  .hero-eyebrow {
+    font-size: 10px; letter-spacing: 3.5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px; font-weight: 400;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', 'Cormorant', serif;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    line-height: 0.9;
+    color: var(--cream);
+    letter-spacing: 2px;
+    margin-bottom: 28px;
+  }
+  .hero-title .gold { color: var(--gold); }
+  .hero-subtitle {
+    font-family: 'Cormorant', serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    font-style: italic;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+  }
+  .hero-meta {
+    display: flex; align-items: center; gap: 28px; justify-content: center; flex-wrap: wrap;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--dim); font-weight: 400;
+  }
+  .hero-meta-dot { width: 3px; height: 3px; background: var(--gold); border-radius: 50%; }
+
+  /* ── TOC ── */
+  #toc {
+    max-width: 680px; margin: 0 auto; padding: 0 48px 80px;
+  }
+  .toc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--gold);
+    padding: 36px 40px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px 40px;
+  }
+  .toc-heading {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px; grid-column: 1 / -1;
+  }
+  .toc-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 13px; color: var(--muted); text-decoration: none;
+    transition: color 0.2s; cursor: pointer;
+    background: none; border: none; text-align: left; font-family: inherit; font-weight: 300; padding: 0;
+  }
+  .toc-item:hover { color: var(--cream); }
+  .toc-item:hover .toc-num { color: var(--gold); }
+  .toc-num { font-size: 10px; color: var(--dim); font-weight: 400; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── SECTION WRAPPER ── */
+  .guide-section {
+    max-width: 780px; margin: 0 auto; padding: 80px 48px;
+    border-top: 1px solid var(--border);
+  }
+  .guide-section:first-of-type { border-top: none; }
+
+  .sec-num {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px; display: flex; align-items: center; gap: 12px;
+  }
+  .sec-num::before { content: ''; width: 22px; height: 1px; background: var(--gold); }
+
+  .sec-title {
+    font-family: 'Cormorant', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 300; line-height: 1.15; color: var(--cream);
+    margin-bottom: 20px; letter-spacing: -0.3px;
+  }
+  .sec-title em { font-style: italic; color: var(--gold-lt); }
+
+  .sec-lead {
+    font-size: 15px; line-height: 1.85; color: var(--muted);
+    margin-bottom: 36px; max-width: 620px;
+  }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    background: rgba(201,169,110,0.05);
+    border-left: 2px solid var(--gold);
+    padding: 22px 26px;
+    margin: 32px 0;
+    font-size: 14px; color: var(--muted); line-height: 1.75;
+  }
+  .callout strong { color: var(--cream); font-weight: 500; }
+
+  /* ── NUMBERED LIST ── */
+  .num-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .num-list li {
+    display: grid; grid-template-columns: 52px 1fr;
+    padding: 28px 0; border-bottom: 1px solid var(--border);
+    gap: 20px; align-items: start;
+  }
+  .num-list li:last-child { border-bottom: none; }
+  .nl-num {
+    font-family: 'Bebas Neue', serif;
+    font-size: 2.4rem; color: rgba(201,169,110,0.2); line-height: 1;
+  }
+  .nl-body {}
+  .nl-title { font-size: 14px; font-weight: 500; color: var(--cream); margin-bottom: 6px; letter-spacing: 0.3px; }
+  .nl-desc { font-size: 13px; color: var(--muted); line-height: 1.75; }
+
+  /* ── PHASE STEPS (Shell Method) ── */
+  .phase-grid { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+  .phase {
+    display: grid; grid-template-columns: 4px 1fr;
+    gap: 24px;
+  }
+  .phase-line { background: var(--border); position: relative; }
+  .phase-line::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 100%; background: var(--gold);
+    transform: scaleY(0); transform-origin: top;
+    transition: transform 0.5s ease;
+  }
+  .phase.active .phase-line::before { transform: scaleY(1); }
+  .phase-body { padding: 28px 0 40px; }
+  .phase-label {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px; font-weight: 400;
+  }
+  .phase-title { font-size: 18px; font-weight: 500; color: var(--cream); margin-bottom: 10px; }
+  .phase-desc { font-size: 13px; color: var(--muted); line-height: 1.75; max-width: 540px; }
+
+  /* ── EQUIPMENT GRID ── */
+  .equip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+  .equip-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px;
+    transition: border-color 0.25s;
+  }
+  .equip-card:hover { border-color: rgba(201,169,110,0.3); }
+  .equip-tier {
+    font-size: 8.5px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 12px; font-weight: 400;
+  }
+  .equip-title { font-size: 15px; font-weight: 500; color: var(--cream); margin-bottom: 8px; }
+  .equip-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .equip-list li {
+    font-size: 12px; color: var(--muted); display: flex; align-items: flex-start; gap: 8px;
+  }
+  .equip-list li::before { content: '–'; color: var(--gold); flex-shrink: 0; }
+
+  /* ── RULES GRID ── */
+  .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 8px; }
+  .rule-card {
+    background: var(--surface); padding: 28px 26px;
+    transition: background 0.25s;
+  }
+  .rule-card:hover { background: var(--surface2); }
+  .rule-n {
+    font-family: 'Bebas Neue', serif; font-size: 3rem;
+    color: rgba(201,169,110,0.15); line-height: 1; margin-bottom: 4px;
+  }
+  .rule-title { font-size: 13px; font-weight: 500; color: var(--cream); margin-bottom: 6px; }
+  .rule-desc { font-size: 12px; color: var(--dim); line-height: 1.65; }
+
+  /* ── CHECKLIST ── */
+  .checklist { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+  .cl-section-title {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); padding: 20px 0 12px; font-weight: 400;
+    border-top: 1px solid var(--border); margin-top: 8px;
+  }
+  .cl-section-title:first-of-type { border-top: none; margin-top: 0; }
+  .cl-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 13px 0; border-bottom: 1px solid var(--border);
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  .cl-item.done { opacity: 0.4; }
+  .cl-item.done .cl-text { text-decoration: line-through; }
+  .cl-box {
+    width: 18px; height: 18px; flex-shrink: 0;
+    border: 1px solid rgba(201,169,110,0.4);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, border-color 0.2s; margin-top: 1px;
+  }
+  .cl-item.done .cl-box { background: var(--gold); border-color: var(--gold); }
+  .cl-check { font-size: 10px; color: var(--ink); display: none; }
+  .cl-item.done .cl-check { display: block; }
+  .cl-text { font-size: 13px; color: var(--muted); line-height: 1.55; }
+  .cl-reset {
+    margin-top: 20px; background: none; border: 1px solid var(--border);
+    color: var(--dim); font-family: 'Outfit', sans-serif;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 10px 22px; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+  }
+  .cl-reset:hover { border-color: rgba(201,169,110,0.4); color: var(--muted); }
+  .cl-progress-bar { height: 1px; background: var(--border); margin-bottom: 28px; }
+  .cl-progress-fill { height: 1px; background: var(--gold); transition: width 0.4s ease; }
+  .cl-counter { font-size: 10px; color: var(--dim); margin-bottom: 16px; letter-spacing: 1px; }
+
+  /* ── SHARE CARDS ── */
+  .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+  .share-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 32px 28px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .share-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold) 0%, transparent 80%);
+  }
+  .share-card:hover { border-color: rgba(201,169,110,0.3); }
+  .sc-quote {
+    font-family: 'Cormorant', serif;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-style: italic;
+    color: var(--cream); line-height: 1.45;
+    margin-bottom: 20px;
+  }
+  .sc-attr {
+    font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold); font-weight: 400;
+  }
+
+  /* ── CLOSING CTA ── */
+  #cta {
+    max-width: 780px; margin: 0 auto;
+    padding: 80px 48px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  .cta-rule { width: 32px; height: 1px; background: var(--gold); margin: 0 auto 24px; }
+  .cta-title {
+    font-family: 'Cormorant', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 300; font-style: italic; color: var(--cream);
+    margin-bottom: 16px; line-height: 1.2;
+  }
+  .cta-desc { font-size: 14px; color: var(--muted); max-width: 460px; margin: 0 auto 36px; }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-gold {
+    display: inline-block; text-decoration: none;
+    background: var(--gold); color: var(--ink);
+    font-family: 'Outfit', sans-serif; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
+    padding: 14px 32px; transition: background 0.2s, transform 0.15s;
+  }
+  .btn-gold:hover { background: var(--gold-lt); transform: translateY(-1px); }
+  .btn-outline-gold {
+    display: inline-block; text-decoration: none;
+    background: none; border: 1px solid rgba(201,169,110,0.4); color: var(--gold);
+    font-family: 'Outfit', sans-serif; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase; font-weight: 400;
+    padding: 13px 32px; transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline-gold:hover { border-color: var(--gold); color: var(--gold-lt); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 11px; color: var(--dim); letter-spacing: 0.3px;
+  }
+  footer a { color: var(--dim); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--muted); }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .d1{transition-delay:0.08s} .d2{transition-delay:0.16s} .d3{transition-delay:0.24s}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:700px){
+    nav { padding: 0 20px; }
+    #guide-hero { padding: 60px 24px; }
+    #toc { padding: 0 24px 60px; }
+    .toc-card { grid-template-columns: 1fr; padding: 28px 24px; }
+    .guide-section { padding: 60px 24px; }
+    .equip-grid, .rules-grid, .cards-grid { grid-template-columns: 1fr; }
+    .num-list li { grid-template-columns: 40px 1fr; }
+    #cta { padding: 60px 24px; }
+    footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <span class="nav-brand-name">Made From Effort</span>
+    <span class="nav-brand-sub">Performance Edge</span>
+  </a>
+  <span class="nav-badge">Member Guide</span>
+</nav>
+
+<!-- HERO -->
+<section id="guide-hero">
+  <div class="hero-rule"></div>
+  <div class="hero-eyebrow">Free Guide — Members Only</div>
+  <h1 class="hero-title">Level Up<br><span class="gold">Your Home Gym</span></h1>
+  <p class="hero-subtitle">The unconventional playbook for designing a space you'll actually use — written by a CSCS-certified trainer with 15 years of elite experience.</p>
+  <div class="hero-meta">
+    <span>Scott Schratweiser, CSCS</span>
+    <span class="hero-meta-dot"></span>
+    <span>Performance Edge</span>
+    <span class="hero-meta-dot"></span>
+    <span>15 Years Elite Experience</span>
+  </div>
+</section>
+
+<!-- TABLE OF CONTENTS -->
+<section id="toc">
+  <div class="toc-card reveal">
+    <div class="toc-heading">What's Inside</div>
+    <button class="toc-item" onclick="scrollTo('shell-method')">
+      <span class="toc-num">01</span>
+      <span>The Shell-First Design Method</span>
+    </button>
+    <button class="toc-item" onclick="scrollTo('eight-rules')">
+      <span class="toc-num">02</span>
+      <span>8 Rules That Make a Home Gym Last</span>
+    </button>
+    <button class="toc-item" onclick="scrollTo('equipment')">
+      <span class="toc-num">03</span>
+      <span>Equipment Selection Without Wasting Money</span>
+    </button>
+    <button class="toc-item" onclick="scrollTo('layout')">
+      <span class="toc-num">04</span>
+      <span>Layout Principles That Change How You Train</span>
+    </button>
+    <button class="toc-item" onclick="scrollTo('checklist')">
+      <span class="toc-num">05</span>
+      <span>Interactive Audit Checklist</span>
+    </button>
+    <button class="toc-item" onclick="scrollTo('cards')">
+      <span class="toc-num">06</span>
+      <span>Key Principles — Shareable Cards</span>
+    </button>
+  </div>
+</section>
+
+<!-- SECTION 01: SHELL METHOD -->
+<section class="guide-section" id="shell-method">
+  <div class="sec-num">01 — The Method</div>
+  <h2 class="sec-title reveal">The Shell-First Design Method<br><em>Most People Skip</em></h2>
+  <p class="sec-lead reveal d1">Most home gym builders start with equipment. That's why most home gyms fail. You don't build a gym around a barbell — you build a barbell around a gym. The shell-first method flips the process and gives you a space that performs, not just one that looks the part.</p>
+
+  <div class="callout reveal d2">
+    <strong>The core idea:</strong> Before you buy a single piece of equipment, your space needs to be capable of handling how you actually train. Flooring, lighting, airflow, acoustics, and ceiling height aren't afterthoughts — they're the foundation everything else sits on.
+  </div>
+
+  <div class="phase-grid reveal d2">
+    <div class="phase">
+      <div class="phase-line"></div>
+      <div class="phase-body">
+        <div class="phase-label">Phase 01</div>
+        <div class="phase-title">Define the Space</div>
+        <p class="phase-desc">Measure everything. Note the ceiling height, note where natural light enters, identify any HVAC or electrical constraints. You cannot design around unknowns. A 10×10 garage bay and a 14×22 basement train completely differently — your layout must reflect that before anything else.</p>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-line"></div>
+      <div class="phase-body">
+        <div class="phase-label">Phase 02</div>
+        <div class="phase-title">Engineer the Environment</div>
+        <p class="phase-desc">Flooring first — rubber horse stall mats (3/4 inch) are the single best dollar-per-performance investment in home gym history. Next: lighting. Bright, diffuse, overhead. Then: temperature control. A gym at 85°F is a gym you skip. Solve these before buying anything that moves weight.</p>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-line"></div>
+      <div class="phase-body">
+        <div class="phase-label">Phase 03</div>
+        <div class="phase-title">Map Your Movement Patterns</div>
+        <p class="phase-desc">Write down every compound movement in your training. Deadlift, squat, press, row, carry. Each one has a footprint. Lay those footprints out on paper before a single piece of equipment enters the room. Where do you need ceiling clearance? Where will you drop weight? Where do you need open floor?</p>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-line"></div>
+      <div class="phase-body">
+        <div class="phase-label">Phase 04</div>
+        <div class="phase-title">Build In — Equipment Last</div>
+        <p class="phase-desc">Now you buy. With your shell engineered and your movement map complete, equipment selection becomes obvious. You're not browsing — you're filling specific slots in a purpose-built system. This is how you end up with a gym that costs less, performs better, and never sits unused.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02: 8 RULES -->
+<section class="guide-section" id="eight-rules">
+  <div class="sec-num">02 — The Rules</div>
+  <h2 class="sec-title reveal">8 Rules That Make a<br><em>Home Gym Last</em></h2>
+  <p class="sec-lead reveal d1">These aren't preferences. They're patterns from 15 years of watching home gyms succeed and fail. Follow all eight and your gym will outlast most commercial setups.</p>
+
+  <div class="rules-grid reveal d2">
+    <div class="rule-card">
+      <div class="rule-n">01</div>
+      <div class="rule-title">Buy for how you train now</div>
+      <p class="rule-desc">Not how you plan to train. Future-you is a myth. Buy for present-you and buy it well.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-n">02</div>
+      <div class="rule-title">One rack, one barbell, one set of plates</div>
+      <p class="rule-desc">Get ruthlessly good with one squat rack and a quality 45 lb bar before you add anything. Complexity is the enemy of consistency.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-n">03</div>
+      <div class="rule-title">Rubber flooring is non-negotiable</div>
+      <p class="rule-desc">Every dollar not spent on flooring gets spent on noise complaints, damaged subfloors, and ruined equipment. Do it first.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-n">04</div>
+      <div class="rule-title">Solve the temperature problem before buying equipment</div>
+      <p class="rule-desc">A fan costs $40. A mini-split costs $800. Both are cheaper than the $3,000 rack you never use because your gym is 92°F in August.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-n">05</div>
+      <div class="rule-title">Put a mirror only where it serves a purpose</div>
+      <p class="rule-desc">Mirrors for cueing form are useful. Mirrors for vanity waste wall space that could hold a cable machine or storage. Be intentional.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-n">06</div>
+      <div class="rule-title">Your gym should smell like nothing</div>
+      <p class="rule-desc">Rubber, chalk, and sweat all have a cumulative effect. Ventilation isn't optional. A space you avoid because of the smell is a space that doesn't work.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-n">07</div>
+      <div class="rule-title">Lighting changes everything</div>
+      <p class="rule-desc">Dim, yellow light makes your gym feel like a closet. Bright, daylight-balanced overhead lighting makes a 10×12 space feel like a facility. It costs less than a pair of dumbbell handles.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-n">08</div>
+      <div class="rule-title">Leave 20% of the floor open. Always.</div>
+      <p class="rule-desc">That open floor is where you warm up, cool down, stretch, carry, and actually move. Pack it with equipment and you've built a storage unit, not a gym.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03: EQUIPMENT -->
+<section class="guide-section" id="equipment">
+  <div class="sec-num">03 — Equipment</div>
+  <h2 class="sec-title reveal">Equipment Selection<br><em>Without Wasting Money</em></h2>
+  <p class="sec-lead reveal d1">Most home gym buyers spend too much on the wrong things and not enough on the right ones. Here's how to tier your spending based on actual training impact.</p>
+
+  <div class="callout reveal d2">
+    <strong>The 80/20 of equipment:</strong> A quality squat rack, a 45 lb barbell, and 300 lbs of bumper or iron plates can deliver 80% of the training stimulus of a full commercial gym. Everything else is refinement. Start there. Build outward only when you have a specific need.
+  </div>
+
+  <div class="equip-grid reveal d2">
+    <div class="equip-card">
+      <div class="equip-tier">Tier 1 — Buy First</div>
+      <div class="equip-title">The Foundation</div>
+      <ul class="equip-list">
+        <li>Squat rack with pull-up bar (1000 lb capacity min.)</li>
+        <li>Barbell — 45 lb, quality steel, no flex (Rogue, Titan, Rep)</li>
+        <li>300 lb plate set — iron or bumper depending on floor use</li>
+        <li>Adjustable bench — flat/incline, commercial-grade</li>
+        <li>Rubber flooring — 3/4" stall mats, full coverage</li>
+      </ul>
+    </div>
+    <div class="equip-card">
+      <div class="equip-tier">Tier 2 — Add When Ready</div>
+      <div class="equip-title">Conditioning + Variety</div>
+      <ul class="equip-list">
+        <li>Adjustable dumbbells (5–50 lb range covers most needs)</li>
+        <li>Pull-up bar / dip station if not built into rack</li>
+        <li>Kettlebell set — 16, 24, 32 kg to start</li>
+        <li>Resistance bands (loop and handled)</li>
+        <li>Jump rope — speed or weighted</li>
+      </ul>
+    </div>
+    <div class="equip-card">
+      <div class="equip-tier">Tier 3 — When Space Allows</div>
+      <div class="equip-title">Specialization</div>
+      <ul class="equip-list">
+        <li>Cable machine or functional trainer</li>
+        <li>GHD or back extension machine</li>
+        <li>Specialty bars — safety squat, hex, cambered</li>
+        <li>Sled or prowler for conditioning</li>
+        <li>Second barbell for a dedicated Olympic lifting area</li>
+      </ul>
+    </div>
+    <div class="equip-card">
+      <div class="equip-tier">Never Buy</div>
+      <div class="equip-title">Common Mistakes</div>
+      <ul class="equip-list">
+        <li>Big-box store barbells (they bend and damage plates)</li>
+        <li>Foam flooring tiles for heavy lifting areas</li>
+        <li>Cardio machines before you have your strength base set</li>
+        <li>Equipment you don't currently train with</li>
+        <li>Decorative items before functional ones</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04: LAYOUT -->
+<section class="guide-section" id="layout">
+  <div class="sec-num">04 — Layout</div>
+  <h2 class="sec-title reveal">Layout Principles That<br><em>Change How You Train</em></h2>
+  <p class="sec-lead reveal d1">The right layout is invisible — you move through the space without thinking about it. The wrong layout shows up every session as friction, compromise, and wasted motion.</p>
+
+  <ul class="num-list reveal d1">
+    <li>
+      <span class="nl-num">01</span>
+      <div class="nl-body">
+        <div class="nl-title">The rack is the anchor. Everything else orbits it.</div>
+        <p class="nl-desc">Place your squat rack first. Center it on the longest open wall, far enough from the wall for a safety margin on loaded walkouts (minimum 3 feet behind the bar). All other equipment radiates outward from this anchor point. This keeps your primary movement pattern unobstructed and creates natural flow through accessory work.</p>
+      </div>
+    </li>
+    <li>
+      <span class="nl-num">02</span>
+      <div class="nl-body">
+        <div class="nl-title">Zone your space: strength, conditioning, mobility</div>
+        <p class="nl-desc">Even in a 10×12 room you can have three distinct zones. Strength zone: rack, plates, bench. Conditioning zone: open floor for carries, jumps, sled work. Mobility zone: mat, bands, foam roller. Clear zones prevent equipment from bleeding into each other and make transitions between exercises feel intentional rather than chaotic.</p>
+      </div>
+    </li>
+    <li>
+      <span class="nl-num">03</span>
+      <div class="nl-body">
+        <div class="nl-title">The door is the last thing you want to face during a lift</div>
+        <p class="nl-desc">Orient your primary lifting station so you face a wall, not the entry point. This isn't superstition — it's focus. Facing a door invites distraction. Facing a wall (especially one with a training cue, clock, or whiteboard) keeps your attention inside the session. Position your mirror for cuing, not for checking who walked in.</p>
+      </div>
+    </li>
+    <li>
+      <span class="nl-num">04</span>
+      <div class="nl-body">
+        <div class="nl-title">Plate storage lives next to the bar. Always.</div>
+        <p class="nl-desc">Every step between the rack and your plates is a tax on momentum. Your plate storage — whether that's a dedicated tree, floor storage, or bumper stacks — needs to be reachable from your loaded position without moving equipment or walking across the room. This one change makes training feel dramatically more efficient.</p>
+      </div>
+    </li>
+    <li>
+      <span class="nl-num">05</span>
+      <div class="nl-body">
+        <div class="nl-title">Vertical space is underused in almost every home gym</div>
+        <p class="nl-desc">The wall from 6 feet up to the ceiling is almost always wasted. That's where your band storage, belt hook, chalk bin, programming whiteboard, and speaker mount belong. Moving accessories off the floor gives you floor back — and floor space in a home gym is the most valuable real estate you have.</p>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- SECTION 05: CHECKLIST -->
+<section class="guide-section" id="checklist">
+  <div class="sec-num">05 — Checklist</div>
+  <h2 class="sec-title reveal">Interactive Audit Checklist</h2>
+  <p class="sec-lead reveal d1">Work through this before you buy anything, before you start building, and every six months after. Progress is tracked in your browser.</p>
+
+  <div class="reveal d2">
+    <div class="cl-progress-bar"><div class="cl-progress-fill" id="cl-fill" style="width:0%"></div></div>
+    <div class="cl-counter" id="cl-counter">0 of 24 complete</div>
+
+    <div class="checklist" id="checklist">
+
+      <div class="cl-section-title">The Shell</div>
+      <div class="cl-item" data-id="c1"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Measured all dimensions including ceiling height</span></div>
+      <div class="cl-item" data-id="c2"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Rubber flooring installed — full coverage, minimum 3/4 inch</span></div>
+      <div class="cl-item" data-id="c3"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Temperature control solution in place (fan, AC, mini-split)</span></div>
+      <div class="cl-item" data-id="c4"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Overhead lighting is bright and daylight-balanced</span></div>
+      <div class="cl-item" data-id="c5"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Ventilation is adequate — no stale air buildup after 30 min</span></div>
+      <div class="cl-item" data-id="c6"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Electrical outlets sufficient for all current and planned equipment</span></div>
+
+      <div class="cl-section-title">Equipment</div>
+      <div class="cl-item" data-id="c7"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Primary rack selected and installed — rated for intended load</span></div>
+      <div class="cl-item" data-id="c8"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Barbell quality-checked — no flex, quality steel, proper knurl</span></div>
+      <div class="cl-item" data-id="c9"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Plates sufficient for training goals (300 lb minimum starting point)</span></div>
+      <div class="cl-item" data-id="c10"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Adjustable bench rated commercial-grade, no wobble</span></div>
+      <div class="cl-item" data-id="c11"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">All equipment purchased for current training — not hypothetical future use</span></div>
+      <div class="cl-item" data-id="c12"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">No big-box / commercial-style cardio machines filling strength space</span></div>
+
+      <div class="cl-section-title">Layout</div>
+      <div class="cl-item" data-id="c13"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Rack positioned with 3+ feet clearance behind loaded barbell position</span></div>
+      <div class="cl-item" data-id="c14"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Plate storage adjacent to the rack — reachable without repositioning</span></div>
+      <div class="cl-item" data-id="c15"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Primary lifting station faces a wall, not the door</span></div>
+      <div class="cl-item" data-id="c16"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Strength, conditioning, and mobility zones are distinct</span></div>
+      <div class="cl-item" data-id="c17"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">At least 20% of total floor area remains open and clear</span></div>
+      <div class="cl-item" data-id="c18"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Vertical wall space used for storage above 6 feet</span></div>
+
+      <div class="cl-section-title">Experience</div>
+      <div class="cl-item" data-id="c19"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Audio solution installed — speaker mounted, not on the floor</span></div>
+      <div class="cl-item" data-id="c20"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">A clock or timer visible from primary lifting station</span></div>
+      <div class="cl-item" data-id="c21"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Programming board or cue sheet accessible during training</span></div>
+      <div class="cl-item" data-id="c22"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Space does not smell like rubber/mold after being closed overnight</span></div>
+      <div class="cl-item" data-id="c23"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">Mirror placement is for form cuing only — not decorative</span></div>
+      <div class="cl-item" data-id="c24"><div class="cl-box"><span class="cl-check">✓</span></div><span class="cl-text">You have trained in the space for 30+ days without skipping due to the environment</span></div>
+
+    </div>
+
+    <button class="cl-reset" id="cl-reset">Reset Checklist</button>
+  </div>
+</section>
+
+<!-- SECTION 06: SHAREABLE CARDS -->
+<section class="guide-section" id="cards">
+  <div class="sec-num">06 — Key Principles</div>
+  <h2 class="sec-title reveal">The Principles — At a Glance</h2>
+  <p class="sec-lead reveal d1">The ideas that matter most, distilled. Save these or share them.</p>
+
+  <div class="cards-grid reveal d2">
+    <div class="share-card">
+      <p class="sc-quote">"Don't build a gym around your equipment. Build your equipment around your gym."</p>
+      <div class="sc-attr">Shell-First Method — Performance Edge</div>
+    </div>
+    <div class="share-card">
+      <p class="sc-quote">"Every piece of equipment you don't own is floor space you do."</p>
+      <div class="sc-attr">Rule 08 — Keep 20% Open</div>
+    </div>
+    <div class="share-card">
+      <p class="sc-quote">"A gym at 85°F is a gym you skip. Solve the temperature problem before you buy the rack."</p>
+      <div class="sc-attr">Rule 04 — Environment First</div>
+    </div>
+    <div class="share-card">
+      <p class="sc-quote">"Buy for how you train now — not how you plan to. Present-you is the one who shows up."</p>
+      <div class="sc-attr">Rule 01 — Train for Now</div>
+    </div>
+    <div class="share-card">
+      <p class="sc-quote">"Lighting changes everything. Bright, daylight-balanced overhead light costs less than a pair of dumbbell handles."</p>
+      <div class="sc-attr">Rule 07 — Light Your Gym Right</div>
+    </div>
+    <div class="share-card">
+      <p class="sc-quote">"One rack, one barbell, one set of plates. Get ruthlessly good at the basics before adding complexity."</p>
+      <div class="sc-attr">Rule 02 — Simplicity First</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-rule"></div>
+  <h2 class="cta-title reveal">Ready to Build?</h2>
+  <p class="cta-desc reveal d1">If you want a custom design consultation — flooring, layout, equipment selection, the whole thing — that's exactly what we do.</p>
+  <div class="cta-btns reveal d2">
+    <a href="contact.html" class="btn-gold">Book a Consultation</a>
+    <a href="index.html" class="btn-outline-gold">Back to the Site</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Made From Effort / Performance Edge</span>
+  <a href="index.html">madebyscott.com</a>
+</footer>
+
+<script>
+/* ── SMOOTH SCROLL TOC ── */
+function scrollTo(id) {
+  var el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ── SCROLL REVEAL ── */
+var ro = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) e.target.classList.add('in');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(function(el) { ro.observe(el); });
+
+/* ── PHASE HIGHLIGHT ── */
+var phases = document.querySelectorAll('.phase');
+var phaseObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    e.target.classList.toggle('active', e.isIntersecting);
+  });
+}, { threshold: 0.5 });
+phases.forEach(function(p) { phaseObs.observe(p); });
+
+/* ── CHECKLIST ── */
+(function() {
+  var STORE = 'mfe_guide_checklist_v1';
+  var items = document.querySelectorAll('.cl-item');
+  var fill  = document.getElementById('cl-fill');
+  var counter = document.getElementById('cl-counter');
+  var total = items.length;
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch(e) { return {}; }
+  }
+  function save(state) {
+    try { localStorage.setItem(STORE, JSON.stringify(state)); } catch(e) {}
+  }
+  function update() {
+    var state = load();
+    var done = 0;
+    items.forEach(function(item) {
+      var id = item.dataset.id;
+      var checked = !!state[id];
+      item.classList.toggle('done', checked);
+      if (checked) done++;
+    });
+    var pct = Math.round((done / total) * 100);
+    fill.style.width = pct + '%';
+    counter.textContent = done + ' of ' + total + ' complete';
+  }
+
+  items.forEach(function(item) {
+    item.addEventListener('click', function() {
+      var state = load();
+      var id = item.dataset.id;
+      state[id] = !state[id];
+      save(state);
+      update();
+    });
+  });
+
+  document.getElementById('cl-reset').addEventListener('click', function() {
+    save({});
+    update();
+  });
+
+  update();
+})();
+</script>
+
+</body>
+</html>
