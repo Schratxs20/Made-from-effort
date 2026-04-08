@@ -58,6 +58,28 @@ display: flex; align-items: center; padding: 0 48px; justify-content: space-betw
 .nav-cta { color: var(--white) !important; background: var(--ink); padding: 9px 22px; transition: background 0.25s !important; }
 .nav-cta:hover { background: var(--blue) !important; }
 
+/* NAV DROPDOWN */
+.nav-dropdown { position: relative; }
+.nav-dropdown > a { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+.nav-dropdown > a::after { content: ''; display: block; width: 5px; height: 5px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform 0.2s; }
+.nav-dropdown:hover > a::after { transform: rotate(-135deg) translateY(-2px); }
+.nav-dropdown-menu {
+  display: none;
+  position: absolute; top: calc(100% + 16px); left: 50%; transform: translateX(-50%);
+  background: rgba(250,250,248,0.98); border: 1px solid var(--rule);
+  backdrop-filter: blur(10px); min-width: 160px;
+  box-shadow: 0 8px 32px rgba(24,24,22,0.08);
+}
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu a {
+  display: block; padding: 12px 20px;
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--ink-light); text-decoration: none; font-weight: 400;
+  transition: color 0.2s, background 0.2s; white-space: nowrap;
+}
+.nav-dropdown-menu a:hover { color: var(--ink); background: var(--off); }
+.nav-dropdown-menu a + a { border-top: 1px solid var(--rule); }
+
 /* HERO */
 #hero { margin-top: 60px; min-height: calc(100vh - 60px); display: grid; grid-template-columns: 1fr 1fr; background: var(--white); overflow: hidden; }
 .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; position: relative; }
@@ -435,9 +457,14 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
   </a>
   <ul class="nav-links">
     <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#services">Services</a></li>
+    <li class="nav-dropdown">
+      <a href="#services">Services</a>
+      <div class="nav-dropdown-menu">
+        <a href="#services">Gym Design</a>
+        <a href="training.html">Training</a>
+      </div>
+    </li>
     <li><a href="#process">Process</a></li>
-    <li><a href="training.html">Training</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact" class="nav-cta">Start a Project</a></li>
   </ul>
