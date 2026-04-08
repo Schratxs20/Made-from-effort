@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Yacht Gym — Marine Installation | Made From Effort</title>
+<meta name="description" content="A fully custom marine gym installation aboard a private yacht. Engineered for performance on the Atlantic.">
+<link rel="canonical" href="https://www.madefromeffort.com/project-yacht.html">
+<meta property="og:title" content="Private Yacht Gym — Marine Installation | Made From Effort">
+<meta property="og:description" content="A fully custom marine gym installation aboard a private yacht. Engineered for performance on the Atlantic.">
+<meta property="og:url" content="https://www.madefromeffort.com/project-yacht.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #fafaf8;
+  --off: #f4f2ee;
+  --rule: #e2dfd8;
+  --ink: #181816;
+  --ink-mid: #3a3a36;
+  --ink-light: #7a7870;
+  --ink-faint: #b0ada6;
+  --blue: #3a6ea8;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--white); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 60px; background: rgba(10,10,10,0.7);
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; padding: 0 48px; justify-content: space-between;
+}
+.nav-brand { text-decoration: none; display: flex; flex-direction: column; gap: 1px; }
+.nav-brand-name { font-family: 'Cormorant', serif; font-size: 16px; font-style: italic; font-weight: 400; color: #fafaf8; letter-spacing: 0.3px; }
+.nav-brand-sub { font-size: 8.5px; letter-spacing: 2.2px; text-transform: uppercase; color: rgba(250,250,248,0.45); font-weight: 400; }
+.nav-back { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(250,250,248,0.6); text-decoration: none; font-weight: 400; transition: color 0.2s; display: flex; align-items: center; gap: 8px; }
+.nav-back:hover { color: #fafaf8; }
+.nav-back::before { content: '←'; }
+
+/* HERO */
+.hero {
+  position: relative; height: 100vh; min-height: 600px;
+  background: #0a0a0a; overflow: hidden;
+}
+.hero video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0.75;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%);
+}
+.hero-content {
+  position: absolute; bottom: 80px; left: 64px; right: 64px;
+}
+.hero-tag {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(250,250,248,0.6); font-weight: 400; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--blue); }
+.hero-title {
+  font-family: 'Cormorant', serif; font-size: clamp(42px, 6vw, 88px);
+  font-weight: 300; line-height: 1.0; color: #fafaf8;
+  margin-bottom: 20px; letter-spacing: -0.5px;
+}
+.hero-title em { font-style: italic; }
+.hero-meta {
+  display: flex; gap: 40px; flex-wrap: wrap;
+}
+.hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+.hero-meta-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(250,250,248,0.4); }
+.hero-meta-value { font-size: 13px; color: rgba(250,250,248,0.85); font-weight: 400; }
+
+/* SCROLL INDICATOR */
+.scroll-hint {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.scroll-hint span { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(250,250,248,0.35); }
+.scroll-line { width: 1px; height: 40px; background: rgba(250,250,248,0.2); position: relative; overflow: hidden; }
+.scroll-line::after { content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%; background: rgba(250,250,248,0.6); animation: scrolldown 1.8s ease infinite; }
+@keyframes scrolldown { to { top: 200%; } }
+
+/* OVERVIEW */
+.overview {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border-bottom: 1px solid var(--rule);
+}
+.overview-text {
+  padding: 80px 64px; border-right: 1px solid var(--rule);
+}
+.section-eyebrow { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 20px; }
+.overview-text h2 {
+  font-family: 'Cormorant', serif; font-size: clamp(28px, 3vw, 44px);
+  font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: 24px;
+}
+.overview-text h2 em { font-style: italic; color: var(--ink-mid); }
+.overview-text p {
+  font-size: 15px; line-height: 1.85; color: var(--ink-light);
+  margin-bottom: 16px; max-width: 480px;
+}
+.overview-specs { padding: 80px 64px; }
+.spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.spec-item {
+  padding: 28px 0; border-bottom: 1px solid var(--rule);
+}
+.spec-item:nth-child(odd) { padding-right: 40px; border-right: 1px solid var(--rule); }
+.spec-item:nth-child(even) { padding-left: 40px; }
+.spec-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
+.spec-value { font-family: 'Cormorant', serif; font-size: 22px; font-weight: 300; color: var(--ink); }
+
+/* GALLERY */
+.gallery-section { padding: 80px 48px; }
+.gallery-header { margin-bottom: 48px; border-bottom: 1px solid var(--rule); padding-bottom: 24px; }
+.gallery-header h3 { font-family: 'Cormorant', serif; font-size: clamp(26px, 3vw, 40px); font-weight: 300; color: var(--ink); }
+
+/* FEATURED VIDEO */
+.gallery-video-featured {
+  position: relative; width: 100%; aspect-ratio: 16/9;
+  background: #0a0a0a; overflow: hidden; margin-bottom: 16px;
+}
+.gallery-video-featured video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+/* PHOTO GRID */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+.gallery-item {
+  position: relative; overflow: hidden; background: var(--off);
+  cursor: pointer;
+}
+.gallery-item.tall { grid-row: span 2; }
+.gallery-item.wide { grid-column: span 2; }
+.gallery-item img, .gallery-item video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.6s ease;
+  min-height: 260px;
+}
+.gallery-item:hover img, .gallery-item:hover video { transform: scale(1.04); }
+
+/* LIGHTBOX */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(10,10,10,0.95); align-items: center; justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img, .lightbox video {
+  max-width: 90vw; max-height: 88vh; object-fit: contain;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+}
+.lightbox-close {
+  position: absolute; top: 24px; right: 32px;
+  font-size: 28px; color: rgba(255,255,255,0.5); cursor: pointer;
+  transition: color 0.2s; line-height: 1; background: none; border: none;
+  font-family: 'Outfit', sans-serif;
+}
+.lightbox-close:hover { color: #fff; }
+.lightbox-prev, .lightbox-next {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  font-size: 20px; color: rgba(255,255,255,0.4); cursor: pointer;
+  transition: color 0.2s; background: none; border: none;
+  padding: 16px; font-family: 'Outfit', sans-serif;
+}
+.lightbox-prev { left: 16px; }
+.lightbox-next { right: 16px; }
+.lightbox-prev:hover, .lightbox-next:hover { color: #fff; }
+
+/* CTA */
+.project-cta {
+  padding: 80px 64px; text-align: center;
+  border-top: 1px solid var(--rule); background: var(--off);
+}
+.project-cta p { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 20px; }
+.project-cta h3 { font-family: 'Cormorant', serif; font-size: clamp(28px, 3.5vw, 48px); font-weight: 300; color: var(--ink); margin-bottom: 32px; }
+.project-cta h3 em { font-style: italic; }
+.btn { display: inline-block; text-decoration: none; font-family: 'Outfit', sans-serif; font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 400; transition: all 0.25s; }
+.btn-solid { background: var(--ink); color: var(--white); padding: 14px 36px; }
+.btn-solid:hover { background: var(--blue); }
+.btn-ghost { border: 1px solid var(--rule); color: var(--ink-light); padding: 13px 36px; margin-left: 12px; }
+.btn-ghost:hover { border-color: var(--ink-light); color: var(--ink); }
+
+/* FOOTER */
+footer { padding: 32px 48px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; }
+.foot-brand { font-family: 'Cormorant', serif; font-size: 15px; font-style: italic; color: var(--ink-mid); }
+.foot-copy { font-size: 11px; color: var(--ink-faint); letter-spacing: 0.5px; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* MOBILE */
+@media (max-width: 860px) {
+  nav { padding: 0 20px; }
+  .hero-content { left: 24px; right: 24px; bottom: 60px; }
+  .overview { grid-template-columns: 1fr; }
+  .overview-text { padding: 56px 24px; border-right: none; border-bottom: 1px solid var(--rule); }
+  .overview-text p { max-width: 100%; }
+  .overview-specs { padding: 48px 24px; }
+  .gallery-section { padding: 56px 20px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-item.wide { grid-column: span 1; }
+  .project-cta { padding: 56px 24px; }
+  footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
+}
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item.tall { grid-row: span 1; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <span class="nav-brand-name">Made From Effort</span>
+    <span class="nav-brand-sub">Performance Edge Training + Gym Design</span>
+  </a>
+  <a href="index.html#portfolio" class="nav-back">All Projects</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <video autoplay muted loop playsinline webkit-playsinline preload="auto">
+    <source src="47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Marine Installation</div>
+    <h1 class="hero-title">Private<br><em>Yacht Gym</em></h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Location</span>
+        <span class="hero-meta-value">Atlantic</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Type</span>
+        <span class="hero-meta-value">Marine Installation</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Status</span>
+        <span class="hero-meta-value">Complete</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="overview">
+  <div class="overview-text reveal">
+    <div class="section-eyebrow">Project Overview</div>
+    <h2>A Gym Built for<br><em>Open Water.</em></h2>
+    <p>Designing a high-performance training environment aboard a private yacht presents challenges that land-based projects simply don't. Weight distribution, vibration, humidity, space constraints — every decision has to account for life at sea.</p>
+    <p>The result is a space that performs at the same level as a world-class land facility, while disappearing seamlessly into the vessel's design language.</p>
+  </div>
+  <div class="overview-specs reveal">
+    <div class="section-eyebrow">Project Details</div>
+    <div class="spec-grid">
+      <div class="spec-item">
+        <div class="spec-label">Environment</div>
+        <div class="spec-value">Marine</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Scope</div>
+        <div class="spec-value">Full Design</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Category</div>
+        <div class="spec-value">Private Vessel</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Status</div>
+        <div class="spec-value">Complete</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery-section reveal">
+  <div class="gallery-header">
+    <div class="section-eyebrow">The Finished Space</div>
+    <h3>Gallery</h3>
+  </div>
+
+  <!-- Featured video -->
+  <div class="gallery-video-featured">
+    <video autoplay muted loop playsinline webkit-playsinline preload="auto">
+      <source src="c468cf699aa14e1887cd5f34512e881e.mov" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Photo + video grid -->
+  <div class="gallery-grid">
+    <div class="gallery-item tall" onclick="openLightbox(0)">
+      <img src="IMG_4936.jpeg" alt="Yacht gym — overview">
+    </div>
+    <div class="gallery-item" onclick="openLightbox(1)">
+      <img src="IMG_4924.jpeg" alt="Yacht gym — detail">
+    </div>
+    <div class="gallery-item" onclick="openLightbox(2)">
+      <img src="5D0EB5B8-B489-4800-AEA7-893478C8FF03.jpeg" alt="Yacht gym — interior">
+    </div>
+    <div class="gallery-item wide" onclick="openLightbox(3)">
+      <img src="IMG_1285.jpeg" alt="Yacht gym — full view">
+    </div>
+  </div>
+
+  <!-- Secondary videos -->
+  <div class="gallery-grid" style="margin-top:12px">
+    <div class="gallery-item">
+      <video autoplay muted loop playsinline webkit-playsinline preload="auto" style="min-height:260px">
+        <source src="1ad2278edded41b6bef9b47ec13ac859.mov" type="video/mp4">
+      </video>
+    </div>
+    <div class="gallery-item">
+      <video autoplay muted loop playsinline webkit-playsinline preload="auto" style="min-height:260px">
+        <source src="864f10aa58e448219e7d4bef55d759f4.mov" type="video/mp4">
+      </video>
+    </div>
+    <div class="gallery-item">
+      <video autoplay muted loop playsinline webkit-playsinline preload="auto" style="min-height:260px">
+        <source src="4f2352a80d6647648cf2bd6cb3a50d44.mov" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <button class="lightbox-prev" onclick="shiftLightbox(-1, event)">←</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-next" onclick="shiftLightbox(1, event)">→</button>
+</div>
+
+<!-- CTA -->
+<div class="project-cta reveal">
+  <p>Ready to build yours?</p>
+  <h3>Let's Design<br><em>Your Space.</em></h3>
+  <a href="index.html#contact" class="btn btn-solid">Start a Project</a>
+  <a href="index.html#portfolio" class="btn btn-ghost">View All Work</a>
+</div>
+
+<footer>
+  <div class="foot-brand">Made From Effort</div>
+  <div class="foot-copy">© 2026 Made From Effort</div>
+</footer>
+
+<script>
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+reveals.forEach(el => io.observe(el));
+
+// Lightbox
+const images = [
+  { src: 'IMG_4936.jpeg' },
+  { src: 'IMG_4924.jpeg' },
+  { src: '5D0EB5B8-B489-4800-AEA7-893478C8FF03.jpeg' },
+  { src: 'IMG_1285.jpeg' }
+];
+let current = 0;
+
+function openLightbox(idx) {
+  current = idx;
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  img.src = images[idx].src;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(e) {
+  if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function shiftLightbox(dir, e) {
+  e && e.stopPropagation();
+  current = (current + dir + images.length) % images.length;
+  document.getElementById('lightbox-img').src = images[current].src;
+}
+
+document.addEventListener('keydown', e => {
+  const lb = document.getElementById('lightbox');
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  if (e.key === 'ArrowLeft') shiftLightbox(-1);
+  if (e.key === 'ArrowRight') shiftLightbox(1);
+});
+</script>
+</body>
+</html>
