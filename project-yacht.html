@@ -300,20 +300,42 @@ footer { padding: 32px 48px; border-top: 1px solid var(--rule); display: flex; j
   <!-- Featured video -->
   <div class="gallery-video-featured">
     <video autoplay muted loop playsinline webkit-playsinline preload="auto">
-      <source src="hf_20260316_190700_d21dac8c-e8fe-4c2a-b4b8-b8d08669933b.mp4" type="video/mp4">
+      <source src="c468cf699aa14e1887cd5f34512e881e.mov" type="video/mp4">
     </video>
   </div>
 
-  <!-- Photo grid -->
+  <!-- Photo + video grid -->
   <div class="gallery-grid">
     <div class="gallery-item tall" onclick="openLightbox(0)">
-      <img src="IMG_1009.png" alt="Yacht gym — overview">
+      <img src="IMG_4936.jpeg" alt="Yacht gym — overview">
     </div>
     <div class="gallery-item" onclick="openLightbox(1)">
-      <img src="IMG_5927.png" alt="Yacht gym — equipment detail">
+      <img src="IMG_4924.jpeg" alt="Yacht gym — detail">
     </div>
     <div class="gallery-item" onclick="openLightbox(2)">
-      <img src="IMG_6819.jpeg" alt="Yacht gym — interior">
+      <img src="5D0EB5B8-B489-4800-AEA7-893478C8FF03.jpeg" alt="Yacht gym — interior">
+    </div>
+    <div class="gallery-item wide" onclick="openLightbox(3)">
+      <img src="IMG_1285.jpeg" alt="Yacht gym — full view">
+    </div>
+  </div>
+
+  <!-- Secondary videos -->
+  <div class="gallery-grid" style="margin-top:12px">
+    <div class="gallery-item">
+      <video autoplay muted loop playsinline webkit-playsinline preload="auto" style="min-height:260px">
+        <source src="1ad2278edded41b6bef9b47ec13ac859.mov" type="video/mp4">
+      </video>
+    </div>
+    <div class="gallery-item">
+      <video autoplay muted loop playsinline webkit-playsinline preload="auto" style="min-height:260px">
+        <source src="864f10aa58e448219e7d4bef55d759f4.mov" type="video/mp4">
+      </video>
+    </div>
+    <div class="gallery-item">
+      <video autoplay muted loop playsinline webkit-playsinline preload="auto" style="min-height:260px">
+        <source src="4f2352a80d6647648cf2bd6cb3a50d44.mov" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
@@ -349,9 +371,10 @@ reveals.forEach(el => io.observe(el));
 
 // Lightbox
 const images = [
-  { src: 'IMG_1009.png', type: 'img' },
-  { src: 'IMG_5927.png', type: 'img' },
-  { src: 'IMG_6819.jpeg', type: 'img' }
+  { src: 'IMG_4936.jpeg' },
+  { src: 'IMG_4924.jpeg' },
+  { src: '5D0EB5B8-B489-4800-AEA7-893478C8FF03.jpeg' },
+  { src: 'IMG_1285.jpeg' }
 ];
 let current = 0;
 

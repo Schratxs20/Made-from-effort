@@ -163,6 +163,17 @@ h1 em { font-style: italic; color: var(--ink-mid); }
 .s-new  { border: 1px solid rgba(250,250,248,0.2); color: rgba(250,250,248,0.45); }
 .pc-name { font-family: 'Cormorant', serif; font-size: clamp(16px, 1.8vw, 22px); font-weight: 300; color: var(--white); margin-bottom: 3px; line-height: 1.2; }
 .pc-loc { font-size: 11px; color: rgba(250,250,248,0.5); letter-spacing: 0.5px; }
+.pc-view-btn {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  z-index: 3; opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease;
+  background: rgba(250,250,248,0.12); border: 1px solid rgba(250,250,248,0.4);
+  backdrop-filter: blur(8px);
+  color: var(--white); font-family: 'Outfit', sans-serif;
+  font-size: 10px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase;
+  padding: 12px 28px; text-decoration: none; white-space: nowrap;
+  pointer-events: none;
+}
+.pc:hover .pc-view-btn { opacity: 1; transform: translate(-50%, -50%) scale(1.03); pointer-events: auto; }
 
 /* WHY DIFFERENT */
 #why { background: var(--ink); color: var(--white); padding: 100px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -532,7 +543,7 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     <a href="#contact" class="btn btn-outline">Start Yours</a>
   </div>
   <div class="port-grid">
-    <div class="pc reveal"><div class="pc-bg"><video autoplay muted loop playsinline webkit-playsinline preload="auto"><source src="47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4" type="video/mp4"></video></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Private Yacht Gym</div><div class="pc-loc">Marine Installation · Atlantic</div></div></div>
+    <div class="pc reveal"><div class="pc-bg"><video autoplay muted loop playsinline webkit-playsinline preload="auto"><source src="47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4" type="video/mp4"></video></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Private Yacht Gym</div><div class="pc-loc">Marine Installation · Atlantic</div></div><a href="project-yacht.html" class="pc-view-btn">View Project</a></div>
     <div class="pc reveal d1"><div class="pc-bg"><img src="IMG_1009.png" alt="Jupiter Island Estate"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 75%</span><div class="pc-name">Jupiter Island Estate</div><div class="pc-loc">Private Residence · South Florida</div></div></div>
     <div class="pc reveal d1"><div class="pc-bg"><img src="IMG_5927.png" alt="Jericho Private Estate"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">Jericho Private Estate</div><div class="pc-loc">Luxury Residence · Long Island, NY</div></div></div>
     <div class="pc reveal d2"><div class="pc-bg"><img src="IMG_6819.jpeg" alt="San Francisco Residence"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">San Francisco Residence</div><div class="pc-loc">Private Home Gym · Bay Area, CA</div></div></div>
