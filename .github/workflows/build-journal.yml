@@ -34,5 +34,5 @@ jobs:
           git config user.name "journal-bot"
           git config user.email "journal-bot@users.noreply.github.com"
           git add journal/
-          git diff --cached --quiet || git commit -m "Auto-build journal [skip ci]"
+          git diff --cached --quiet || git commit -m "Auto-build journal"
           git push
