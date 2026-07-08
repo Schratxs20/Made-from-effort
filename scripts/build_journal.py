@@ -160,7 +160,7 @@ def render_post_page(post):
       {post['body_html']}
     </div>
     <div class="cta-wrap">
-      <a href="{SITE_URL}/#contact" class="cta">Start a Project</a>
+      <a href="{SITE_URL}/#contact" class="cta">{html.escape(post.get('cta_text', 'Start a Project'))}</a>
     </div>
     {FOOTER_HTML.format(site_url=SITE_URL, site_url_display=SITE_URL.replace('https://',''))}
   </div>
