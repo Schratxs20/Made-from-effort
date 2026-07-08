@@ -19,11 +19,11 @@
 <blockquote>
 <p>The mediocre plan you actually follow will outperform the elite plan you keep restarting.</p>
 </blockquote>
-<h2>01 / The Mistake</h2>
+<h2 id="01-the-mistake">01 / The Mistake</h2>
 <p>Here's a pattern I've seen for 15 years, across hundreds of clients, from first-timers to competitive athletes: the more optimized the plan, the more fragile it is.</p>
 <p>A 5-day split with precision macros and exact rest intervals looks great on paper. But it only works in a life with zero friction — no late meetings, no sick kid, no travel, no bad week. That life doesn't exist for almost anyone I've trained.</p>
 <p>So the plan breaks on week three. And here's the part people get wrong: they think the breakdown means they need a <em>better</em> plan. Usually it means they need a <em>more durable</em> one.</p>
-<h2>02 / The Math</h2>
+<h2 id="02-the-math">02 / The Math</h2>
 <p>Picture two people over a 12-week block.</p>
 <p>Person A trains at 100% intensity but only completes 60% of planned sessions — life keeps interfering with the "ideal" program.</p>
 <p>Person B trains at 80% intensity but completes 95% of planned sessions, because the plan was built to survive a real week.</p>
@@ -31,7 +31,7 @@
 <blockquote>
 <p>Motivation is a weather system. It changes daily and you don't control it. Your job isn't to chase it — it's to build a plan that doesn't need it to show up.</p>
 </blockquote>
-<h2>03 / The Fix</h2>
+<h2 id="03-the-fix">03 / The Fix</h2>
 <ol>
 <li><strong>Build a floor session, not just a target session.</strong> Every workout should have a 15-minute minimum-viable version. On the days you're at 40%, you still show up — you just execute the floor instead of the ceiling.</li>
 <li><strong>Design the calendar before you design the program.</strong> I ask every client to show me their actual week — meetings, kids, travel — before I write a single set. A plan built against a fantasy schedule is already broken.</li>
