@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Made From Effort | Luxury Gym Design & Private Training</title>
+<meta name="description" content="Bespoke gym design for private residences, estates, yachts, and boutique studios. Made From Effort creates world-class training environments built to perform.">
+<meta name="keywords" content="luxury gym design, custom gym design, home gym design, yacht gym design, estate gym design, bespoke gym design, private gym design, boutique studio design, gym design service">
+<link rel="canonical" href="https://www.madefromeffort.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.madefromeffort.com/">
+<meta property="og:title" content="Made From Effort | Luxury Gym Design & Private Training">
+<meta property="og:description" content="Bespoke gym design for private residences, estates, yachts, and boutique studios. World-class training environments built to perform.">
+<meta property="og:site_name" content="Made From Effort">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Made From Effort | Luxury Gym Design & Private Training">
+<meta name="twitter:description" content="Bespoke gym design for private residences, estates, yachts, and boutique studios. World-class training environments built to perform.">
+
+<script>if(history.scrollRestoration)history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname);window.scrollTo(0,0);</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #fafaf8;
+    --off: #f4f2ee;
+    --rule: #e2dfd8;
+    --ink: #181816;
+    --ink-mid: #3a3a36;
+    --ink-light: #7a7870;
+    --ink-faint: #b0ada6;
+    --blue: #3a6ea8;
+    --blue-light: #5a8ec8;
+    --blue-faint: #eef2f7;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--white); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+/* NAV */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+height: 60px; background: rgba(250,250,248,0.96);
+backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule);
+display: flex; align-items: center; padding: 0 48px; justify-content: space-between;
+}
+.nav-brand { text-decoration: none; display: flex; flex-direction: column; gap: 1px; }
+.nav-brand-name { font-family: 'Cormorant', serif; font-size: 16px; font-style: italic; font-weight: 400; color: var(--ink); letter-spacing: 0.3px; }
+.nav-brand-sub { font-size: 8.5px; letter-spacing: 2.2px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; }
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-light); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta { color: var(--white) !important; background: var(--ink); padding: 9px 22px; transition: background 0.25s !important; }
+.nav-cta:hover { background: var(--blue) !important; }
+
+/* NAV DROPDOWN */
+.nav-dropdown { position: relative; }
+.nav-dropdown > a { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+.nav-dropdown > a::after { content: ''; display: block; width: 5px; height: 5px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform 0.2s; }
+.nav-dropdown:hover > a::after { transform: rotate(-135deg) translateY(-2px); }
+.nav-dropdown-menu {
+  display: none;
+  position: absolute; top: calc(100% + 16px); left: 50%; transform: translateX(-50%);
+  background: rgba(250,250,248,0.98); border: 1px solid var(--rule);
+  backdrop-filter: blur(10px); min-width: 160px;
+  box-shadow: 0 8px 32px rgba(24,24,22,0.08);
+}
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu a {
+  display: block; padding: 12px 20px;
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--ink-light); text-decoration: none; font-weight: 400;
+  transition: color 0.2s, background 0.2s; white-space: nowrap;
+}
+.nav-dropdown-menu a:hover { color: var(--ink); background: var(--off); }
+.nav-dropdown-menu a + a { border-top: 1px solid var(--rule); }
+
+/* HERO */
+#hero { margin-top: 60px; min-height: calc(100vh - 60px); display: grid; grid-template-columns: 1fr 1fr; background: var(--white); overflow: hidden; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; position: relative; }
+.hero-left::after { content: ''; position: absolute; right: 0; top: 10%; bottom: 10%; width: 1px; background: var(--rule); }
+.hero-eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--blue); font-weight: 400; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--blue); }
+h1 { font-family: 'Cormorant', serif; font-size: clamp(46px, 5.5vw, 80px); font-weight: 300; line-height: 1.05; color: var(--ink); margin-bottom: 28px; letter-spacing: -0.5px; }
+h1 em { font-style: italic; color: var(--ink-mid); }
+.hero-desc { font-size: 15px; line-height: 1.8; color: var(--ink-light); max-width: 420px; margin-bottom: 44px; font-weight: 300; }
+.hero-ctas { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn { display: inline-block; text-decoration: none; font-family: 'Outfit', sans-serif; font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 400; transition: all 0.25s; }
+.btn-solid { background: var(--ink); color: var(--white); padding: 13px 30px; }
+.btn-solid:hover { background: var(--blue); }
+.btn-outline { border: 1px solid var(--rule); color: var(--ink-light); padding: 12px 30px; }
+.btn-outline:hover { border-color: var(--ink-light); color: var(--ink); }
+.hero-right { position: relative; background: var(--off); display: flex; align-items: center; justify-content: center; overflow: hidden; min-height: 500px; }
+#gym-video { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; pointer-events: none; }
+#gym-video::-webkit-media-controls { display: none !important; }
+#gym-video::-webkit-media-controls-start-playback-button { display: none !important; }
+#gym-video::-webkit-media-controls-play-button { display: none !important; }
+#gym-video::-webkit-media-controls-overlay-play-button { display: none !important; }
+
+/* MARQUEE */
+.marquee-bar { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 14px 0; overflow: hidden; background: var(--white); }
+.marquee-track { display: flex; white-space: nowrap; animation: mscroll 28s linear infinite; }
+.marquee-track span { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; padding: 0 28px; }
+.marquee-track .dot { color: var(--blue); padding: 0 4px; }
+@keyframes mscroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* STATEMENT */
+#statement { padding: 100px 64px; max-width: 860px; margin: 0 auto; text-align: center; }
+.stmt-rule { width: 32px; height: 1px; background: var(--blue); margin: 0 auto 32px; }
+.stmt-text { font-family: 'Cormorant', serif; font-size: clamp(22px, 3vw, 38px); font-weight: 300; font-style: italic; line-height: 1.5; color: var(--ink-mid); margin-bottom: 24px; }
+.stmt-body { font-size: 14px; line-height: 1.9; color: var(--ink-light); max-width: 580px; margin: 0 auto; }
+
+/* FEATURED */
+#featured { display: grid; grid-template-columns: 55fr 45fr; background: var(--off); border-top: 1px solid var(--rule); }
+.feat-img { position: relative; overflow: hidden; min-height: 560px; background: #c8c4bc; }
+.feat-img-inner { position: absolute; inset: 0; background-image: url('https://images.northropandjohnson.com/yacht/48efItZiNi/AFDB4348-C612-4F72-972E-CA48FFE32A82/1763667693-dscf3494.jpg?auto=format&q=65&w=1470'); background-size: cover; background-position: center; transition: transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+.feat-img:hover .feat-img-inner { transform: scale(1.03); }
+.feat-img-label { position: absolute; top: 20px; left: 20px; z-index: 2; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; background: var(--white); color: var(--ink); padding: 5px 11px; font-weight: 400; }
+.feat-content { padding: 72px 64px; display: flex; flex-direction: column; justify-content: center; }
+.proj-eyebrow { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); font-weight: 400; margin-bottom: 18px; }
+.proj-title { font-family: 'Cormorant', serif; font-size: clamp(28px, 3.5vw, 48px); font-weight: 300; line-height: 1.15; color: var(--ink); margin-bottom: 20px; }
+.proj-title em { font-style: italic; }
+.proj-desc { font-size: 14px; line-height: 1.85; color: var(--ink-light); margin-bottom: 36px; max-width: 380px; }
+.proj-specs { display: flex; gap: 32px; padding-top: 28px; border-top: 1px solid var(--rule); margin-bottom: 36px; }
+.spec { display: flex; flex-direction: column; gap: 4px; }
+.spec-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); }
+.spec-v { font-size: 13px; color: var(--ink-mid); font-weight: 400; }
+
+/* PORTFOLIO */
+#portfolio { padding: 100px 48px; background: var(--white); }
+.sec-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--rule); padding-bottom: 24px; margin-bottom: 36px; }
+.sec-eyebrow { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; margin-bottom: 8px; }
+.sec-title { font-family: 'Cormorant', serif; font-size: clamp(26px, 3vw, 42px); font-weight: 300; color: var(--ink); }
+.sec-title em { font-style: italic; }
+.port-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; }
+.pc { position: relative; overflow: hidden; background: var(--off); cursor: pointer; display: block; text-decoration: none; }
+.pc:nth-child(1) { grid-column: 1/8; aspect-ratio: 16/9; }
+.pc:nth-child(2) { grid-column: 8/13; }
+.pc:nth-child(3) { grid-column: 1/5; aspect-ratio: 4/3; }
+.pc:nth-child(4) { grid-column: 5/9; aspect-ratio: 4/3; }
+.pc:nth-child(5) { grid-column: 9/13; aspect-ratio: 4/3; }
+.pc-bg { position: absolute; inset: 0; transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.pc:hover .pc-bg { transform: scale(1.04); }
+.pc:nth-child(1) .pc-bg { background: #1a1a18; }
+.pc:nth-child(1) .pc-bg video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.pc-bg video::-webkit-media-controls { display: none !important; }
+.pc-bg video::-webkit-media-controls-start-playback-button { display: none !important; }
+.pc-bg video::-webkit-media-controls-overlay-play-button { display: none !important; }
+.pc:nth-child(2) .pc-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.pc:nth-child(3) .pc-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.pc:nth-child(4) .pc-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.pc:nth-child(5) .pc-bg { background: linear-gradient(135deg,#b8c0c8,#8898a8); }
+.pc-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(24,24,22,0.72) 0%, transparent 55%); z-index: 1; }
+.pc-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 22px 22px 18px; z-index: 2; }
+.pc-status { display: inline-block; font-size: 9px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 400; padding: 3px 9px; margin-bottom: 7px; }
+.s-done { background: var(--white); color: var(--ink); }
+.s-prog { border: 1px solid rgba(250,250,248,0.4); color: rgba(250,250,248,0.8); }
+.s-new  { border: 1px solid rgba(250,250,248,0.2); color: rgba(250,250,248,0.45); }
+.pc-name { font-family: 'Cormorant', serif; font-size: clamp(16px, 1.8vw, 22px); font-weight: 300; color: var(--white); margin-bottom: 3px; line-height: 1.2; }
+.pc-loc { font-size: 11px; color: rgba(250,250,248,0.5); letter-spacing: 0.5px; }
+.pc-view-btn {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  z-index: 3; opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease;
+  background: rgba(250,250,248,0.12); border: 1px solid rgba(250,250,248,0.4);
+  backdrop-filter: blur(8px);
+  color: var(--white); font-family: 'Outfit', sans-serif;
+  font-size: 10px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase;
+  padding: 12px 28px; text-decoration: none; white-space: nowrap;
+  pointer-events: none;
+}
+.pc:hover .pc-view-btn { opacity: 1; transform: translate(-50%, -50%) scale(1.03); pointer-events: auto; }
+
+/* WHY DIFFERENT */
+#why { background: var(--ink); color: var(--white); padding: 100px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+#why .sec-eyebrow { color: rgba(250,250,248,0.35); }
+.why-quote { font-family: 'Cormorant', serif; font-size: clamp(24px, 3vw, 40px); font-weight: 300; font-style: italic; line-height: 1.4; color: var(--white); border-left: 2px solid var(--blue); padding-left: 24px; margin: 20px 0 24px; }
+.why-body { font-size: 14px; line-height: 1.9; color: rgba(250,250,248,0.5); padding-left: 26px; }
+.cred-stack { display: flex; flex-direction: column; }
+.cred-item { padding: 22px 0; border-bottom: 1px solid rgba(250,250,248,0.07); display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: start; }
+.cred-item:first-child { border-top: 1px solid rgba(250,250,248,0.07); }
+.cred-num { font-family: 'Cormorant', serif; font-size: 30px; font-style: italic; color: var(--blue-light); line-height: 1; }
+.cred-item h4 { font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; font-weight: 500; color: var(--white); margin-bottom: 4px; }
+.cred-item p { font-size: 12px; color: rgba(250,250,248,0.4); line-height: 1.6; }
+
+/* SERVICES */
+#services { padding: 100px 64px; background: var(--white); }
+.svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 48px; background: var(--rule); }
+.svc-block { background: var(--white); padding: 52px 48px; transition: background 0.25s; }
+.svc-block:hover { background: var(--off); }
+.svc-num { font-family: 'Cormorant', serif; font-size: 52px; font-style: italic; font-weight: 300; color: var(--rule); line-height: 1; margin-bottom: 20px; }
+.svc-block h3 { font-family: 'Cormorant', serif; font-size: 28px; font-weight: 300; color: var(--ink); margin-bottom: 4px; }
+.svc-tag { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); font-weight: 400; display: block; margin-bottom: 18px; }
+.svc-block p { font-size: 14px; line-height: 1.85; color: var(--ink-light); margin-bottom: 24px; }
+.svc-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.svc-list li { font-size: 13px; color: var(--ink-mid); display: flex; gap: 12px; align-items: baseline; }
+.svc-list li::before { content: '—'; color: var(--rule); font-size: 11px; flex-shrink: 0; }
+
+/* TRAINING */
+#training { padding: 100px 64px; background: var(--off); border-top: 1px solid var(--rule); }
+.training-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.training-left .sec-title { margin-bottom: 20px; }
+.training-desc { font-size: 14px; line-height: 1.9; color: var(--ink-light); margin-bottom: 40px; max-width: 420px; }
+.t-cards { display: flex; flex-direction: column; gap: 12px; }
+.t-card { border: 1px solid var(--rule); padding: 28px 28px 24px; cursor: pointer; transition: border-color 0.25s, background 0.25s; background: var(--white); position: relative; }
+.t-card:hover { border-color: var(--ink-light); }
+.t-card.selected { border-color: var(--ink); }
+.t-card.selected::after { content: '✓'; position: absolute; top: 18px; right: 22px; font-size: 11px; color: var(--blue); font-weight: 400; }
+.t-card-tag { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); font-weight: 400; margin-bottom: 10px; }
+.t-card h3 { font-family: 'Cormorant', serif; font-size: 22px; font-weight: 300; color: var(--ink); margin-bottom: 8px; }
+.t-card p { font-size: 13px; line-height: 1.75; color: var(--ink-light); }
+.t-card-list { list-style: none; margin-top: 14px; display: flex; flex-direction: column; gap: 5px; }
+.t-card-list li { font-size: 12px; color: var(--ink-mid); display: flex; gap: 10px; align-items: baseline; }
+.t-card-list li::before { content: '—'; color: var(--rule); font-size: 10px; flex-shrink: 0; }
+.training-form-title { font-family: 'Cormorant', serif; font-size: 22px; font-weight: 300; color: var(--ink); margin-bottom: 24px; }
+.t-type-row { display: flex; }
+.t-type { flex: 1; text-align: center; padding: 10px; border: 1px solid var(--rule); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-light); cursor: pointer; transition: all 0.2s; background: var(--white); }
+.t-type:first-child { border-right: none; }
+.t-type.selected { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.t-type:hover:not(.selected) { border-color: var(--ink-light); color: var(--ink); }
+
+/* PROCESS */
+#process { padding: 100px 64px; background: var(--off); border-top: 1px solid var(--rule); }
+.proc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 48px; }
+.proc-item { padding-top: 24px; border-top: 1px solid var(--rule); transition: border-color 0.3s; }
+.proc-item:hover { border-top-color: var(--blue); }
+.proc-n { font-family: 'Cormorant', serif; font-size: 13px; font-style: italic; color: var(--ink-faint); margin-bottom: 12px; }
+.proc-item h4 { font-family: 'Cormorant', serif; font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 10px; }
+.proc-item p { font-size: 13px; line-height: 1.85; color: var(--ink-light); }
+.proc-cta { text-align: center; margin-top: 64px; }
+.proc-cta p { font-family: 'Cormorant', serif; font-style: italic; font-size: 16px; color: var(--ink-faint); margin-bottom: 20px; }
+
+/* ABOUT */
+#about { display: grid; grid-template-columns: 1fr 1fr; background: var(--white); border-top: 1px solid var(--rule); }
+.about-img { position: relative; overflow: hidden; min-height: 560px; background: var(--off); }
+.about-img-inner { position: absolute; inset: 0; background-image: url('IMG_6798.PNG'); background-size: cover; background-position: center; transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+.about-img:hover .about-img-inner { transform: scale(1.03); }
+.about-text { padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; }
+.about-text .sec-eyebrow { margin-bottom: 14px; }
+.about-text h2 { font-family: 'Cormorant', serif; font-size: clamp(28px, 3vw, 44px); font-weight: 300; line-height: 1.15; color: var(--ink); margin-bottom: 24px; }
+.about-text h2 em { font-style: italic; }
+.about-text p { font-size: 14px; line-height: 1.9; color: var(--ink-light); margin-bottom: 14px; }
+.about-text p strong { color: var(--ink-mid); font-weight: 400; }
+.badges { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--rule); }
+.badge { font-size: 9px; letter-spacing: 1.8px; text-transform: uppercase; border: 1px solid var(--rule); color: var(--ink-light); padding: 6px 13px; font-weight: 400; transition: border-color 0.25s, color 0.25s; }
+.badge:hover { border-color: var(--blue); color: var(--blue); }
+
+/* TESTIMONIAL */
+#testimonial { padding: 100px 64px; background: var(--blue-faint); border-top: 1px solid var(--rule); text-align: center; }
+.test-mark { font-family: 'Cormorant', serif; font-size: 64px; color: var(--blue); line-height: 0.5; margin-bottom: 24px; display: block; }
+.test-q { font-family: 'Cormorant', serif; font-size: clamp(20px, 2.8vw, 34px); font-weight: 300; font-style: italic; line-height: 1.5; color: var(--ink-mid); max-width: 720px; margin: 0 auto 24px; }
+.test-attr { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; }
+
+/* CONTACT */
+#contact { padding: 100px 64px; background: var(--white); border-top: 1px solid var(--rule); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; }
+.contact-left h2 { font-family: 'Cormorant', serif; font-size: clamp(30px, 3.5vw, 52px); font-weight: 300; line-height: 1.1; margin-bottom: 20px; margin-top: 14px; }
+.contact-left h2 em { font-style: italic; }
+.contact-left p { font-size: 14px; line-height: 1.85; color: var(--ink-light); margin-bottom: 36px; max-width: 380px; }
+.contact-details { display: flex; flex-direction: column; gap: 14px; }
+.cd-row { display: flex; gap: 16px; align-items: baseline; }
+.cd-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); min-width: 72px; }
+.cd-v { font-size: 13px; color: var(--ink-mid); }
+form { display: flex; flex-direction: column; gap: 16px; }
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.f-group { display: flex; flex-direction: column; gap: 6px; }
+.f-group label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; }
+.f-group input, .f-group select, .f-group textarea { border: 1px solid var(--rule); background: var(--white); color: var(--ink); padding: 11px 14px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 300; outline: none; appearance: none; transition: border-color 0.25s; }
+.f-group input:focus, .f-group select:focus, .f-group textarea:focus { border-color: var(--blue); }
+.f-group select option { background: var(--white); }
+.f-group textarea { height: 110px; resize: none; }
+.f-submit { display: flex; justify-content: flex-end; margin-top: 4px; }
+.f-submit button { background: var(--ink); color: var(--white); border: none; padding: 13px 36px; font-family: 'Outfit', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 400; cursor: pointer; transition: background 0.25s; }
+.f-submit button:hover { background: var(--blue); }
+
+/* FOOTER */
+footer { background: var(--ink); padding: 48px 64px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+.foot-brand { font-family: 'Cormorant', serif; font-size: 18px; font-style: italic; color: var(--white); }
+.foot-brand span { font-style: normal; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; display: block; color: rgba(250,250,248,0.3); margin-top: 3px; }
+.foot-links { display: flex; gap: 28px; list-style: none; flex-wrap: wrap; }
+.foot-links a { font-size: 10px; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(250,250,248,0.35); text-decoration: none; transition: color 0.2s; font-weight: 400; }
+.foot-links a:hover { color: var(--white); }
+.foot-copy { font-size: 10px; color: rgba(250,250,248,0.2); letter-spacing: 1px; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1); }
+.reveal.in { opacity: 1; transform: none; }
+.d1{transition-delay:0.08s} .d2{transition-delay:0.16s} .d3{transition-delay:0.24s} .d4{transition-delay:0.32s}
+
+/* ── POPUP ───────────────────────────────────── */
+#popup-overlay {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(10,10,8,0.75);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.45s cubic-bezier(0.22,1,0.36,1);
+}
+#popup-overlay.popup-active { opacity: 1; pointer-events: all; }
+#popup-modal {
+  background: #181816;
+  max-width: 780px; width: 100%;
+  display: grid; grid-template-columns: 260px 1fr;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
+  overflow: hidden;
+  max-height: 90vh;
+}
+#popup-overlay.popup-active #popup-modal { transform: translateY(0); }
+#popup-close {
+  position: absolute; top: 16px; right: 20px;
+  background: none; border: none; cursor: pointer;
+  color: rgba(250,250,248,0.3); font-size: 16px;
+  font-family: 'Outfit', sans-serif; font-weight: 300;
+  line-height: 1; z-index: 2;
+  transition: color 0.2s; padding: 4px;
+}
+#popup-close:hover { color: #fafaf8; }
+.popup-book {
+  background: #0d0d0b;
+  padding: 44px 28px 40px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; border-right: 1px solid rgba(250,250,248,0.05);
+}
+.popup-book::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: linear-gradient(90deg, #c9a96e 0%, transparent 100%);
+}
+.popup-book::after {
+  content: ''; position: absolute; bottom: 0; left: 28px; right: 28px;
+  height: 1px; background: rgba(201,169,110,0.15);
+}
+.popup-book-tag {
+  font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
+  color: #c9a96e; font-weight: 400; margin-bottom: 32px;
+}
+.popup-book-cover-title {
+  font-family: 'Cormorant', serif; font-size: 28px; font-weight: 400;
+  color: #fafaf8; line-height: 1.15; letter-spacing: 0.2px;
+  flex-grow: 1;
+}
+.popup-book-cover-title em {
+  display: block; font-style: italic; font-weight: 300;
+  font-size: 14px; color: rgba(250,250,248,0.55);
+  line-height: 1.5; margin-top: 16px; letter-spacing: 0;
+}
+.popup-book-rule { width: 32px; height: 1px; background: #c9a96e; margin: 28px 0 12px; }
+.popup-book-brand {
+  font-size: 8.5px; letter-spacing: 2.2px; text-transform: uppercase;
+  color: rgba(250,250,248,0.25); font-weight: 400;
+}
+.popup-form-wrap { padding: 44px 40px; display: flex; flex-direction: column; overflow-y: auto; }
+.popup-kicker {
+  font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: #c9a96e; font-weight: 400; margin-bottom: 10px;
+}
+.popup-headline {
+  font-family: 'Cormorant', serif; font-size: 26px; font-weight: 400;
+  color: #fafaf8; line-height: 1.25; margin-bottom: 10px;
+}
+.popup-desc {
+  font-size: 13px; color: rgba(250,250,248,0.45);
+  line-height: 1.65; margin-bottom: 28px;
+}
+.popup-bullets {
+  list-style: none; margin-bottom: 28px; display: flex; flex-direction: column; gap: 8px;
+}
+.popup-bullets li {
+  font-size: 12px; color: rgba(250,250,248,0.5); padding-left: 16px; position: relative; line-height: 1.5;
+}
+.popup-bullets li::before {
+  content: '—'; position: absolute; left: 0; color: #c9a96e; font-size: 10px;
+}
+.popup-fg { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+.popup-fg label {
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(250,250,248,0.3); font-weight: 400;
+}
+.popup-fg input {
+  background: rgba(250,250,248,0.04);
+  border: 1px solid rgba(250,250,248,0.1);
+  color: #fafaf8; padding: 12px 15px;
+  font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 300;
+  outline: none; transition: border-color 0.25s; appearance: none;
+}
+.popup-fg input::placeholder { color: rgba(250,250,248,0.2); }
+.popup-fg input:focus { border-color: #c9a96e; }
+#popup-submit {
+  width: 100%; background: #c9a96e; color: #181816;
+  border: none; cursor: pointer;
+  padding: 14px 24px; margin-top: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+  font-weight: 500; transition: background 0.25s, opacity 0.2s;
+}
+#popup-submit:hover:not(:disabled) { background: #dbbf84; }
+#popup-submit:disabled { opacity: 0.55; cursor: default; }
+.popup-privacy {
+  font-size: 10px; color: rgba(250,250,248,0.2);
+  margin-top: 12px; letter-spacing: 0.2px; line-height: 1.5;
+}
+#popup-success {
+  display: none; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; padding: 16px 0 4px; flex: 1;
+}
+.popup-success-check {
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid #c9a96e;
+  display: flex; align-items: center; justify-content: center;
+  color: #c9a96e; font-size: 20px; margin: 0 auto 20px;
+}
+.popup-success-title {
+  font-family: 'Cormorant', serif; font-size: 26px; font-style: italic;
+  color: #fafaf8; margin-bottom: 10px;
+}
+.popup-success-text {
+  font-size: 13px; color: rgba(250,250,248,0.45); line-height: 1.65; margin-bottom: 24px;
+}
+#popup-download-btn {
+  display: inline-block;
+  background: none; border: 1px solid rgba(201,169,110,0.5); color: #c9a96e;
+  padding: 11px 28px;
+  font-family: 'Outfit', sans-serif; font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 400; text-decoration: none;
+  transition: border-color 0.25s, color 0.25s;
+}
+#popup-download-btn:hover { border-color: #c9a96e; color: #dbbf84; }
+
+/* MOBILE */
+@media(max-width:860px){
+nav{padding:0 20px} .nav-links{display:none}
+#hero{grid-template-columns:1fr}
+.hero-left{padding:60px 24px} .hero-left::after{display:none}
+.hero-right{min-height:340px}
+#featured,#about{grid-template-columns:1fr}
+.feat-content,.about-text{padding:48px 24px}
+#why{grid-template-columns:1fr;gap:48px;padding:64px 24px}
+.proc-grid{grid-template-columns:1fr 1fr}
+.svc-grid{grid-template-columns:1fr}
+.port-grid{grid-template-columns:1fr}
+.pc:nth-child(n){grid-column:1;aspect-ratio:4/3}
+#services,#process,#testimonial,#statement{padding:64px 24px}
+#contact{padding:64px 24px}
+.contact-grid{grid-template-columns:1fr;gap:48px}
+.f-row{grid-template-columns:1fr}
+.training-layout{grid-template-columns:1fr;gap:48px}
+#training{padding:64px 24px}
+footer{padding:32px 24px;flex-direction:column;text-align:center}
+#popup-modal{grid-template-columns:1fr}
+.popup-book{display:none}
+.popup-form-wrap{padding:36px 24px}
+}
+</style>
+
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">
+    <span class="nav-brand-name">Made From Effort</span>
+    <span class="nav-brand-sub">Performance Edge Training + Gym Design</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li class="nav-dropdown">
+      <a href="#services">Services</a>
+      <div class="nav-dropdown-menu">
+        <a href="#services">Gym Design</a>
+        <a href="training.html">Training</a>
+      </div>
+    </li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Start a Project</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Performance Edge Training + Gym Design</div>
+    <h1>Spaces Built<br>for How You<br><em>Actually Train.</em></h1>
+    <p class="hero-desc">Luxury gym design by a CSCS-certified trainer with 15 years of elite experience. Every detail engineered for performance — not just aesthetics.</p>
+    <div class="hero-ctas">
+      <a href="#portfolio" class="btn btn-solid">View Our Work</a>
+      <a href="#contact" class="btn btn-outline">Start a Conversation</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <video id="gym-video" src="hf_20260316_190700_d21dac8c-e8fe-4c2a-b4b8-b8d08669933b.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>Private Residences</span><span class="dot">·</span><span>Commercial Studios</span><span class="dot">·</span><span>Yacht Installations</span><span class="dot">·</span><span>CSCS Certified</span><span class="dot">·</span><span>Long Island NY</span><span class="dot">·</span><span>Jupiter Island FL</span><span class="dot">·</span><span>San Francisco CA</span><span class="dot">·</span><span>Made From Effort</span><span class="dot">·</span>
+    <span>Private Residences</span><span class="dot">·</span><span>Commercial Studios</span><span class="dot">·</span><span>Yacht Installations</span><span class="dot">·</span><span>CSCS Certified</span><span class="dot">·</span><span>Long Island NY</span><span class="dot">·</span><span>Jupiter Island FL</span><span class="dot">·</span><span>San Francisco CA</span><span class="dot">·</span><span>Made From Effort</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- STATEMENT -->
+
+<section id="statement">
+  <div class="stmt-rule"></div>
+  <p class="stmt-text reveal">"Most gym designers have never trained a single client. We've spent 15 years doing nothing else."</p>
+  <p class="stmt-body reveal d1">Every space we design is built by someone who has spent thousands of hours on the training floor — understanding load paths, recovery flow, sightlines, spacing, and the psychology of performance environments. The result is a gym that doesn't just look extraordinary. It performs that way.</p>
+</section>
+
+<!-- FEATURED -->
+
+<section id="featured">
+  <div class="feat-img">
+    <div class="feat-img-inner"></div>
+    <div class="feat-img-label">Completed · Atlantic</div>
+  </div>
+  <div class="feat-content reveal">
+    <div class="proj-eyebrow">Featured Project</div>
+    <h2 class="proj-title">Private <em>Yacht Gym</em></h2>
+    <p class="proj-desc">A fully custom performance facility installed aboard a private yacht — engineered around extreme space constraints, marine structural requirements, and the client's specific training program. Equipment, flooring, mirrors, and lighting all custom-specified for the marine environment.</p>
+    <div class="proj-specs">
+      <div class="spec"><span class="spec-l">Type</span><span class="spec-v">Marine Installation</span></div>
+      <div class="spec"><span class="spec-l">Status</span><span class="spec-v">Complete</span></div>
+      <div class="spec"><span class="spec-l">Scope</span><span class="spec-v">Full Design + Build</span></div>
+    </div>
+    <a href="#contact" class="btn btn-solid">Discuss Your Project</a>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+
+<section id="portfolio">
+  <div class="sec-header reveal">
+    <div><div class="sec-eyebrow">Selected Work</div><h2 class="sec-title">Current <em>Projects</em></h2></div>
+    <a href="#contact" class="btn btn-outline">Start Yours</a>
+  </div>
+  <div class="port-grid">
+    <a href="project-yacht.html" class="pc reveal"><div class="pc-bg"><video autoplay muted loop playsinline webkit-playsinline preload="auto"><source src="47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4" type="video/mp4"></video></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Private Yacht Gym</div><div class="pc-loc">Marine Installation · Atlantic</div></div><span class="pc-view-btn">View Project</span></a>
+    <div class="pc reveal d1"><div class="pc-bg"><img src="IMG_1009.png" alt="Jupiter Island Estate"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 75%</span><div class="pc-name">Jupiter Island Estate</div><div class="pc-loc">Private Residence · South Florida</div></div></div>
+    <div class="pc reveal d1"><div class="pc-bg"><img src="IMG_5927.png" alt="Jericho Private Estate"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">Jericho Private Estate</div><div class="pc-loc">Luxury Residence · Long Island, NY</div></div></div>
+    <div class="pc reveal d2"><div class="pc-bg"><img src="IMG_6819.jpeg" alt="San Francisco Residence"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">San Francisco Residence</div><div class="pc-loc">Private Home Gym · Bay Area, CA</div></div></div>
+    <div class="pc reveal d3"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-new">Starting Soon</span><div class="pc-name">Sands Point Estate</div><div class="pc-loc">Private Residence · Long Island, NY</div></div></div>
+  </div>
+</section>
+
+<!-- WHY DIFFERENT -->
+
+<section id="why">
+  <div class="reveal">
+    <div class="sec-eyebrow">Our Difference</div>
+    <blockquote class="why-quote">"Designed by someone who understands performance. Built for those who take it seriously."</blockquote>
+    <p class="why-body">After nearly a decade as a Master Instructor at Equinox and 15 years training elite clients, every gym we design starts with one question: how does this person actually train? Not how do gyms look on Instagram.</p>
+  </div>
+  <div class="cred-stack reveal d1">
+    <div class="cred-item"><div class="cred-num">15</div><div><h4>Years Training Experience</h4><p>High-performance athletes and discerning HNW clients who demand excellence.</p></div></div>
+    <div class="cred-item"><div class="cred-num">~10</div><div><h4>Years at Equinox</h4><p>Top trainer and Master Instructor — the benchmark for luxury fitness.</p></div></div>
+    <div class="cred-item"><div class="cred-num">CSCS</div><div><h4>Certified Strength & Conditioning Specialist</h4><p>The gold standard in performance training certification.</p></div></div>
+    <div class="cred-item"><div class="cred-num">Now</div><div><h4>Active Private Clientele</h4><p>Still training HNW individuals — staying connected to what serious clients need.</p></div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+  <div class="reveal"><div class="sec-eyebrow">What We Do</div><h2 class="sec-title">Two Ways to <em>Work Together</em></h2></div>
+  <div class="svc-grid">
+    <div class="svc-block reveal d1">
+      <div class="svc-num">01</div>
+      <h3>Commercial Studio Design</h3><span class="svc-tag">For Trainers Opening Their Own Space</span>
+      <p>You've trained at the best facilities in the world. Now build one that's yours — designed around your programming, your brand, and your clients.</p>
+      <ul class="svc-list">
+        <li>Full layout and equipment planning</li><li>Brand integration — logo, signage, color</li><li>Flooring, lighting, mirror design</li><li>Equipment procurement and coordination</li><li>ADA compliance and safety planning</li><li>Full project management</li>
+      </ul>
+    </div>
+    <div class="svc-block reveal d2">
+      <div class="svc-num">02</div>
+      <h3>Private Residence Gym Design</h3><span class="svc-tag">For the Discerning Homeowner</span>
+      <p>A private gym should perform like a world-class facility and feel like the rest of your home — from estate gym wings to marine installations.</p>
+      <ul class="svc-list">
+        <li>Custom space planning and 3D renderings</li><li>Equipment curation to match your training</li><li>Premium material selection throughout</li><li>Smart home and AV integration</li><li>Recovery suite design — sauna, cold plunge</li><li>Architect and designer collaboration</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+
+<section id="process">
+  <div class="reveal"><div class="sec-eyebrow">How It Works</div><h2 class="sec-title">A Process Built on <em>Precision</em></h2></div>
+  <div class="proc-grid">
+    <div class="proc-item reveal d1"><div class="proc-n">01</div><h4>Discovery Call</h4><p>We learn your vision, training philosophy, space, and goals. No templates — every project starts from scratch.</p></div>
+    <div class="proc-item reveal d1"><div class="proc-n">02</div><h4>Site Assessment</h4><p>We visit, measure, and evaluate structural considerations, natural light, acoustics, and flow.</p></div>
+    <div class="proc-item reveal d2"><div class="proc-n">03</div><h4>Concept & Design</h4><p>Mood boards, floor plans, and 3D renderings — everything visualized before a single item is ordered.</p></div>
+    <div class="proc-item reveal d2"><div class="proc-n">04</div><h4>Procurement</h4><p>Equipment and materials sourced through our premium vendor network. Fully coordinated.</p></div>
+    <div class="proc-item reveal d3"><div class="proc-n">05</div><h4>Installation</h4><p>Fully managed build. Every trade, timeline, and delivery handled. You won't hear from us until it's perfect.</p></div>
+    <div class="proc-item reveal d3"><div class="proc-n">06</div><h4>Reveal</h4><p>A complete walkthrough of your finished space. Every system explained. Then we hand you the keys.</p></div>
+  </div>
+  <div class="proc-cta reveal"><p>Most projects complete in 8–20 weeks depending on scope.</p><a href="#contact" class="btn btn-solid">Book a Discovery Call</a></div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <div class="about-img"><div class="about-img-inner"></div></div>
+  <div class="about-text reveal">
+    <div class="sec-eyebrow">The Person Behind the Work</div>
+    <h2>Trained at the <em>Highest Level.</em><br>Designing at It Too.</h2>
+    <p>I started training in 2010 and spent nearly a decade at <strong>Equinox</strong> — first as a top trainer, then as a <strong>Master Instructor</strong>. I've trained high-net-worth clients and competitive athletes who demand the best from their environments.</p>
+    <p>The design work came naturally. When you've trained thousands of hours across the world's best facilities, you develop a sharp eye for what works — and what doesn't. I build spaces for the way people actually train.</p>
+    <p><strong>Currently working on a small number of large-scale projects</strong> — residential estates, boutique studios, and one-of-a-kind installations — where every detail gets my full attention.</p>
+    <div class="badges">
+      <span class="badge">CSCS Certified</span><span class="badge">Equinox Master Instructor</span><span class="badge">15 Years Training</span><span class="badge">Long Island, NY</span><span class="badge">Nationwide Projects</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+
+<section id="training">
+  <div class="training-layout">
+    <div class="training-left reveal">
+      <div class="sec-eyebrow">Personal Training</div>
+      <h2 class="sec-title">Train With Someone Who <em>Builds</em> For It.</h2>
+      <p class="training-desc">Fifteen years of elite coaching — now available to a limited number of private clients. Every programme is built from scratch around how you actually move, recover, and perform.</p>
+      <div class="t-cards">
+        <div class="t-card selected" data-type="in-person">
+          <div class="t-card-tag">In-Person</div>
+          <h3>Private Sessions</h3>
+          <p>One-on-one coaching at your facility or mine — fully customised to your goals and programming needs.</p>
+          <ul class="t-card-list">
+            <li>Fully custom programming</li>
+            <li>Form, technique, and performance focus</li>
+            <li>Long Island, NY based</li>
+          </ul>
+        </div>
+        <div class="t-card" data-type="online">
+          <div class="t-card-tag">Online</div>
+          <h3>Remote Coaching</h3>
+          <p>Full programme design, video review, and regular check-ins — wherever you are in the world.</p>
+          <ul class="t-card-list">
+            <li>Weekly programming & video review</li>
+            <li>Nutrition guidance</li>
+            <li>Available worldwide</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="training-right reveal d1">
+      <form id="training-form">
+        <input type="hidden" name="_subject" value="New Training Inquiry — Made From Effort">
+        <input type="hidden" id="t-type-hidden" name="training_type" value="In-Person">
+        <p class="training-form-title">Book a Consultation</p>
+        <div class="f-row">
+          <div class="f-group"><label for="t-first">First Name</label><input type="text" id="t-first" name="first_name" placeholder="First"></div>
+          <div class="f-group"><label for="t-last">Last Name</label><input type="text" id="t-last" name="last_name" placeholder="Last"></div>
+        </div>
+        <div class="f-row">
+          <div class="f-group"><label for="t-email">Email</label><input type="email" id="t-email" name="email" placeholder="you@email.com"></div>
+          <div class="f-group"><label for="t-phone">Phone</label><input type="tel" id="t-phone" name="phone" placeholder="+1 (917) 000 0000"></div>
+        </div>
+        <div class="f-group">
+          <label>Training Type</label>
+          <div class="t-type-row">
+            <div class="t-type selected" data-value="In-Person">In-Person</div>
+            <div class="t-type" data-value="Online">Online</div>
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-group"><label for="t-goal">Primary Goal</label><select id="t-goal" name="goal"><option value="" disabled selected>Select your goal</option><option>Fat Loss & Body Composition</option><option>Strength & Muscle</option><option>Athletic Performance</option><option>General Fitness & Health</option><option>Rehab & Recovery</option></select></div>
+          <div class="f-group"><label for="t-level">Experience Level</label><select id="t-level" name="experience"><option value="" disabled selected>Your background</option><option>Beginner (0–1 years)</option><option>Intermediate (1–4 years)</option><option>Advanced (4+ years)</option></select></div>
+        </div>
+        <div class="f-group"><label for="t-message">Anything we should know?</label><textarea id="t-message" name="message" placeholder="Injuries, schedule, training history, specific goals..."></textarea></div>
+        <div class="f-submit"><button id="t-submit-btn" type="submit">Request Consultation →</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+
+<section id="testimonial">
+  <span class="test-mark reveal">"</span>
+  <p class="test-q reveal d1">We're mid-build and already blown away by the level of detail and intention in every decision. This is not like working with a contractor — it's like working with someone who actually cares about how you train.</p>
+  <p class="test-attr reveal d2">Private Client — Jupiter Island, FL</p>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-left reveal">
+      <div class="sec-eyebrow">Get in Touch</div>
+      <h2>Let's Build Something <em>Extraordinary.</em></h2>
+      <p>We take on a limited number of projects at a time to ensure every space receives full focus. If you're serious about your training environment, we'd like to hear about it.</p>
+      <div class="contact-details">
+        <div class="cd-row"><span class="cd-l">Based</span><span class="cd-v">Long Island, New York</span></div>
+        <div class="cd-row"><span class="cd-l">Projects</span><span class="cd-v">Nationwide — NY, FL, CA & beyond</span></div>
+        <div class="cd-row"><span class="cd-l">Response</span><span class="cd-v">Within 1 business day</span></div>
+      </div>
+    </div>
+    <form id="inquiry-form" class="reveal d1">
+      <input type="hidden" name="_subject" value="New Inquiry — Made From Effort">
+      <input type="hidden" name="_replyto" id="reply-to-field">
+      <div class="f-row">
+        <div class="f-group"><label for="first-name">First Name</label><input type="text" id="first-name" name="first_name" placeholder="First"></div>
+        <div class="f-group"><label for="last-name">Last Name</label><input type="text" id="last-name" name="last_name" placeholder="Last"></div>
+      </div>
+      <div class="f-group"><label for="email-field">Email</label><input type="email" name="email" id="email-field" placeholder="you@email.com"></div>
+      <div class="f-group"><label for="project-type">Project Type</label><select id="project-type" name="project_type"><option value="" disabled selected>Select one</option><option>Private Residence / Home Gym</option><option>Commercial Training Studio</option><option>Yacht or Marine Installation</option><option>Other</option></select></div>
+      <div class="f-row">
+        <div class="f-group"><label for="budget">Budget Range</label><select id="budget" name="budget"><option value="" disabled selected>Approximate budget</option><option>$50K – $150K</option><option>$150K – $300K</option><option>$300K – $500K</option><option>$500K+</option></select></div>
+        <div class="f-group"><label for="timeline">Timeline</label><select id="timeline" name="timeline"><option value="" disabled selected>When to start</option><option>ASAP</option><option>1–3 Months</option><option>3–6 Months</option><option>6+ Months</option></select></div>
+      </div>
+      <div class="f-group"><label for="message">Tell us about your vision</label><textarea id="message" name="message" placeholder="Describe your space, training goals, and what you're looking to build..."></textarea></div>
+      <div class="f-submit"><button id="submit-btn" type="submit">Send Inquiry →</button></div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="foot-brand">Made From Effort<span>Performance Edge Training + Gym Design</span></div>
+  <ul class="foot-links">
+    <li><a href="#portfolio">Portfolio</a></li><li><a href="#services">Services</a></li><li><a href="#process">Process</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="foot-copy">© 2026 Made From Effort</div>
+</footer>
+
+<!-- ── EMAIL CAPTURE POPUP ─────────────────────── -->
+<div id="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popup-heading">
+  <div id="popup-modal">
+    <button id="popup-close" aria-label="Close popup">✕</button>
+
+    <!-- Book cover visual -->
+    <div class="popup-book" aria-hidden="true">
+      <div class="popup-book-tag">Free E-Book</div>
+      <div class="popup-book-cover-title">
+        Level Up Your<br>Home Gym
+        <em>The unconventional playbook for designing a space you'll actually use</em>
+      </div>
+      <div>
+        <div class="popup-book-rule"></div>
+        <div class="popup-book-brand">Made From Effort</div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="popup-form-wrap">
+      <div class="popup-kicker">Free Download</div>
+      <h2 class="popup-headline" id="popup-heading">Level Up Your<br>Home Gym</h2>
+      <p class="popup-desc">The unconventional playbook for designing a space you'll actually use — written by a CSCS-certified trainer with 15 years of elite experience.</p>
+      <ul class="popup-bullets">
+        <li>How to design around your actual training, not trends</li>
+        <li>Equipment selection without wasting money</li>
+        <li>The layout principles that change how you train</li>
+      </ul>
+
+      <form id="popup-form" novalidate>
+        <input type="hidden" name="_subject" value="New Lead — Level Up Your Home Gym">
+        <input type="hidden" name="source" value="ebook-popup">
+        <div class="popup-fg">
+          <label for="popup-name">First Name</label>
+          <input type="text" id="popup-name" name="name" placeholder="Your first name" autocomplete="given-name" required>
+        </div>
+        <div class="popup-fg">
+          <label for="popup-email">Email Address</label>
+          <input type="email" id="popup-email" name="email" placeholder="your@email.com" autocomplete="email" required>
+        </div>
+        <button type="submit" id="popup-submit">Send Me the Free Guide →</button>
+      </form>
+
+      <div id="popup-success">
+        <div class="popup-success-check">✓</div>
+        <div class="popup-success-title">It's on its way.</div>
+        <p class="popup-success-text">Check your inbox — your free guide is heading there now. Or open it right here.</p>
+        <a id="popup-download-btn" href="home-gym-guide.html?t=peg-7x2k-accs">View the Free Guide →</a>
+      </div>
+
+      <p class="popup-privacy">No spam. Just signal. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+
+/* ── SMOOTH SCROLL (no hash in URL) ─────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    e.preventDefault();
+    const target = document.getElementById(id);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+/* ── SCROLL REVEAL ───────────────────────────── */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    e.target.classList.add('in');
+    const v=e.target.querySelector('video');
+    if(v) v.play().catch(()=>{});
+  }
+}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* ── FORM ────────────────────────────────────── */
+(function() {
+  const form = document.getElementById('inquiry-form');
+  const btn  = document.getElementById('submit-btn');
+  const emailField = document.getElementById('email-field');
+  const replyTo    = document.getElementById('reply-to-field');
+
+  emailField.addEventListener('input', () => { replyTo.value = emailField.value; });
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://formspree.io/f/mvzwwrzr', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+
+      if (res.ok) {
+        btn.textContent = 'Sent ✓';
+        btn.style.background = '#3a7a5a';
+        form.reset();
+        setTimeout(() => { btn.textContent = 'Send Inquiry →'; btn.style.background = ''; btn.disabled = false; }, 4000);
+      } else {
+        throw new Error();
+      }
+    } catch {
+      btn.textContent = 'Try again';
+      btn.style.background = '#a84040';
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = 'Send Inquiry →'; btn.style.background = ''; }, 3000);
+    }
+  });
+})();
+
+/* ── TRAINING ────────────────────────────────── */
+(function() {
+  function syncType(value) {
+    document.querySelectorAll('.t-type').forEach(t => t.classList.toggle('selected', t.dataset.value === value));
+    document.querySelectorAll('.t-card').forEach(c => c.classList.toggle('selected', (value === 'In-Person' ? 'in-person' : 'online') === c.dataset.type));
+    document.getElementById('t-type-hidden').value = value;
+  }
+
+  document.querySelectorAll('.t-card').forEach(card => {
+    card.addEventListener('click', () => syncType(card.dataset.type === 'in-person' ? 'In-Person' : 'Online'));
+  });
+
+  document.querySelectorAll('.t-type').forEach(btn => {
+    btn.addEventListener('click', () => syncType(btn.dataset.value));
+  });
+
+  const form = document.getElementById('training-form');
+  const btn  = document.getElementById('t-submit-btn');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/mvzwwrzr', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (res.ok) {
+        btn.textContent = 'Sent ✓';
+        btn.style.background = '#3a7a5a';
+        form.reset();
+        syncType('In-Person');
+        setTimeout(() => { btn.textContent = 'Request Consultation →'; btn.style.background = ''; btn.disabled = false; }, 4000);
+      } else {
+        throw new Error();
+      }
+    } catch {
+      btn.textContent = 'Try again';
+      btn.style.background = '#a84040';
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = 'Request Consultation →'; btn.style.background = ''; }, 3000);
+    }
+  });
+})();
+
+// Force video autoplay
+const allAutoplayVideos = document.querySelectorAll('video[autoplay]');
+allAutoplayVideos.forEach(v => {
+  v.muted = true;
+  v.defaultMuted = true;
+  v.setAttribute('muted', '');
+  v.setAttribute('playsinline', '');
+  v.setAttribute('webkit-playsinline', '');
+  v.setAttribute('x5-playsinline', '');
+  const tryPlay = () => { v.muted = true; v.play().catch(() => {}); };
+  ['canplay','loadedmetadata','loadeddata','canplaythrough'].forEach(ev => v.addEventListener(ev, tryPlay, { once: true }));
+  if (v.readyState >= 1) tryPlay();
+  else v.load();
+  [100, 500, 1000, 2000, 3500].forEach(ms => setTimeout(tryPlay, ms));
+});
+
+// Unlock on first interaction
+document.addEventListener('click',      function u(){ allAutoplayVideos.forEach(v=>{ if(v.paused){v.muted=true;v.play().catch(()=>{});} }); document.removeEventListener('click',u); }, { passive:true });
+document.addEventListener('touchstart', function u(){ allAutoplayVideos.forEach(v=>{ if(v.paused){v.muted=true;v.play().catch(()=>{});} }); document.removeEventListener('touchstart',u); }, { passive:true });
+document.addEventListener('scroll',     function u(){ allAutoplayVideos.forEach(v=>{ if(v.paused){v.muted=true;v.play().catch(()=>{});} }); document.removeEventListener('scroll',u); }, { passive:true });
+
+// IntersectionObserver for hero video specifically
+const heroVid = document.getElementById('gym-video');
+if (heroVid) {
+  new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) { heroVid.muted = true; heroVid.play().catch(() => {}); }
+  }, { threshold: 0.1 }).observe(heroVid);
+}
+
+/* ── POPUP ───────────────────────────────────── */
+(function() {
+  const STORAGE_KEY = 'mfe_popup_v1';
+  // Clear any old dismissed state so popup shows until signup
+  try {
+    const d = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (d && d.dismissed && !d.submitted) localStorage.removeItem(STORAGE_KEY);
+  } catch(e) {}
+
+  const overlay = document.getElementById('popup-overlay');
+  const closeBtn = document.getElementById('popup-close');
+  const form     = document.getElementById('popup-form');
+  const submitBtn= document.getElementById('popup-submit');
+  const success  = document.getElementById('popup-success');
+
+  function shouldShow() {
+    try {
+      const d = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      if (d && d.submitted) return false;
+    } catch(e) {}
+    return true;
+  }
+
+  function openPopup() {
+    if (!shouldShow()) return;
+    overlay.classList.add('popup-active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    overlay.classList.remove('popup-active');
+    document.body.style.overflow = '';
+    // No dismissal stored — popup will show again next visit until signup
+  }
+
+  // Triggers: 6 seconds after load, or exit intent on desktop
+  let opened = false;
+  const showOnce = () => { if (!opened) { opened = true; openPopup(); } };
+
+  setTimeout(showOnce, 6000);
+
+  document.addEventListener('mouseleave', e => {
+    if (e.clientY <= 0) showOnce();
+  });
+
+  // Scroll 55% trigger
+  window.addEventListener('scroll', function onScroll() {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (pct >= 0.55) { showOnce(); window.removeEventListener('scroll', onScroll); }
+  }, { passive: true });
+
+  // Close
+  closeBtn.addEventListener('click', closePopup);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closePopup(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('popup-active')) closePopup(); });
+
+  // Submit
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+
+    try {
+      const res = await fetch('https://formspree.io/f/mvzwwrzr', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (!res.ok) throw new Error();
+
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ submitted: true })); } catch(err) {}
+      form.style.display = 'none';
+      success.style.display = 'flex';
+      setTimeout(function() { window.location.href = 'home-gym-guide.html?t=peg-7x2k-accs'; }, 2500);
+    } catch {
+      submitBtn.textContent = 'Try again';
+      submitBtn.disabled = false;
+      setTimeout(() => { submitBtn.textContent = 'Send Me the Free Guide →'; }, 3000);
+    }
+  });
+})();
+</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Made From Effort",
+  "url": "https://www.madefromeffort.com",
+  "description": "Bespoke gym design for private residences, estates, yachts, and boutique studios. World-class training environments built to perform.",
+  "serviceType": ["Luxury Gym Design", "Custom Home Gym Design", "Yacht Gym Design", "Boutique Studio Design", "Private Training"],
+  "areaServed": "Worldwide",
+  "priceRange": "$$$",
+  "sameAs": []
+}
+</script>
+
+</body>
+</html>
