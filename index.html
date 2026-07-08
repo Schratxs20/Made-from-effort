@@ -138,7 +138,7 @@ h1 em { font-style: italic; color: var(--ink-mid); }
 .sec-title { font-family: 'Cormorant', serif; font-size: clamp(26px, 3vw, 42px); font-weight: 300; color: var(--ink); }
 .sec-title em { font-style: italic; }
 .port-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; }
-.pc { position: relative; overflow: hidden; background: var(--off); cursor: pointer; }
+.pc { position: relative; overflow: hidden; background: var(--off); cursor: pointer; display: block; text-decoration: none; }
 .pc:nth-child(1) { grid-column: 1/8; aspect-ratio: 16/9; }
 .pc:nth-child(2) { grid-column: 8/13; }
 .pc:nth-child(3) { grid-column: 1/5; aspect-ratio: 4/3; }
@@ -543,7 +543,7 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     <a href="#contact" class="btn btn-outline">Start Yours</a>
   </div>
   <div class="port-grid">
-    <div class="pc reveal"><div class="pc-bg"><video autoplay muted loop playsinline webkit-playsinline preload="auto"><source src="47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4" type="video/mp4"></video></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Private Yacht Gym</div><div class="pc-loc">Marine Installation · Atlantic</div></div><a href="project-yacht.html" class="pc-view-btn">View Project</a></div>
+    <a href="project-yacht.html" class="pc reveal"><div class="pc-bg"><video autoplay muted loop playsinline webkit-playsinline preload="auto"><source src="47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4" type="video/mp4"></video></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Private Yacht Gym</div><div class="pc-loc">Marine Installation · Atlantic</div></div><span class="pc-view-btn">View Project</span></a>
     <div class="pc reveal d1"><div class="pc-bg"><img src="IMG_1009.png" alt="Jupiter Island Estate"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 75%</span><div class="pc-name">Jupiter Island Estate</div><div class="pc-loc">Private Residence · South Florida</div></div></div>
     <div class="pc reveal d1"><div class="pc-bg"><img src="IMG_5927.png" alt="Jericho Private Estate"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">Jericho Private Estate</div><div class="pc-loc">Luxury Residence · Long Island, NY</div></div></div>
     <div class="pc reveal d2"><div class="pc-bg"><img src="IMG_6819.jpeg" alt="San Francisco Residence"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">San Francisco Residence</div><div class="pc-loc">Private Home Gym · Bay Area, CA</div></div></div>
