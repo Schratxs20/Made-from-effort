@@ -1,0 +1,38 @@
+name: Build Journal
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "posts/**"
+      - "scripts/build_journal.py"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install markdown
+
+      - name: Build journal (posts, index, RSS feed)
+        run: python3 scripts/build_journal.py
+
+      - name: Commit generated files
+        run: |
+          git config user.name "journal-bot"
+          git config user.email "journal-bot@users.noreply.github.com"
+          git add journal/
+          git diff --cached --quiet || git commit -m "Auto-build journal [skip ci]"
+          git push
