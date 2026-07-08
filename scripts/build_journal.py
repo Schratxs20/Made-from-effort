@@ -63,9 +63,12 @@ def parse_post(path):
 
     slug = meta.get("slug") or slugify(meta["title"])
     meta["slug"] = slug
-    meta["body_html"] = markdown.markdown(
-        body_md.strip(), extensions=["extra", "sane_lists"]
-    )
+
+    md_engine = markdown.Markdown(extensions=["extra", "sane_lists", "toc"])
+    meta["body_html"] = md_engine.convert(body_md.strip())
+    # toc_tokens gives us the H2 sections in order, for an auto "In This Issue" index
+    meta["toc"] = [t for t in md_engine.toc_tokens if t["level"] == 2]
+
     meta["source_path"] = path
     return meta
 
@@ -102,6 +105,12 @@ STYLE_BLOCK = """
   .body-copy ol, .body-copy ul { padding-left: 22px; }
   .body-copy li { margin-bottom: 12px; }
   .meta-row { padding:0 40px 24px; font-family:'Inter',sans-serif; font-weight:400; font-size:12px; letter-spacing:1px; color:#A6A39B; text-transform:uppercase; }
+  .toc-box { margin:0 40px 36px; padding:22px 26px; border:1px solid #E2E0D9; background:#F1EFEA; }
+  .toc-label { font-family:'Inter',sans-serif; font-weight:500; font-size:11px; letter-spacing:2px; color:#57677A; text-transform:uppercase; margin-bottom:12px; }
+  .toc-item { font-family:'Inter',sans-serif; font-weight:400; font-size:15px; color:#1C1C1A; padding:8px 0; border-top:1px solid #E2E0D9; }
+  .toc-item:first-of-type { border-top:none; }
+  .toc-num { font-family:'Playfair Display',serif; font-style:italic; color:#57677A; margin-right:10px; }
+  .photo-cap { padding:10px 40px; font-family:'Inter',sans-serif; font-weight:500; font-size:11px; letter-spacing:1.5px; color:#A6A39B; text-transform:uppercase; border-bottom:1px solid #E2E0D9; margin-bottom:30px; }
   .divider { border:none; border-top:1px solid #E2E0D9; margin:8px 40px 32px; }
   .cta-wrap { padding:8px 40px 44px; }
   .cta { display:inline-block; font-family:'Inter',sans-serif; font-weight:500; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#FAF9F6; background:#1C1C1A; padding:16px 32px; text-decoration:none; }
@@ -133,6 +142,15 @@ FOOTER_HTML = """
     </div>
 """
 
+def render_toc_box(toc_items):
+    if not toc_items:
+        return ""
+    rows = ""
+    for t in toc_items:
+        rows += f'<div class="toc-item">{html.escape(t["name"])}</div>'
+    return f'<div class="toc-box"><div class="toc-label">In This Issue</div>{rows}</div>'
+
+
 def render_post_page(post):
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -153,9 +171,11 @@ def render_post_page(post):
       <a href="{SITE_URL}/journal/"><span class="nav-tag">Journal</span></a>
     </div>
     {'<img class="photo" src="' + post['image'] + '" alt="' + html.escape(post['title']) + '">' if post.get('image') else ''}
+    {'<div class="photo-cap">' + html.escape(post['photo_caption']) + '</div>' if post.get('photo_caption') else ''}
     <div class="eyebrow">Journal</div>
     <div class="headline">{html.escape(post['title'])}</div>
     <div class="meta-row">{format_date_long(post['date'])}</div>
+    {render_toc_box(post['toc'])}
     <div class="body-copy">
       {post['body_html']}
     </div>
