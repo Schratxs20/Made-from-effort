@@ -3,6 +3,7 @@ title: The plan you follow beats the plan you love
 date: 2026-07-08
 excerpt: Why the "perfect" plan usually fails, the compounding math of consistency, and the three levers that actually protect it.
 issue: "014"
+cta_text: Train with Me
 ---
 
 Every client I've ever trained who actually transformed had one thing in common.
