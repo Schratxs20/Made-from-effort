@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leads Dashboard | Made From Effort</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #fafaf8;
+  --off: #f4f2ee;
+  --rule: #e2dfd8;
+  --ink: #181816;
+  --ink-mid: #3a3a36;
+  --ink-light: #7a7870;
+  --ink-faint: #b0ada6;
+  --blue: #3a6ea8;
+  --blue-light: #5a8ec8;
+  --blue-faint: #eef2f7;
+  --green: #2e7d52;
+  --green-faint: #edf7f2;
+  --amber: #b06000;
+  --amber-faint: #fdf4e7;
+  --red: #b03030;
+  --red-faint: #fdf0f0;
+  --purple: #5a3a8a;
+  --purple-faint: #f3effe;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--off); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; overflow-x: hidden; min-height: 100vh; }
+
+/* ── LOCK SCREEN ── */
+#lock-screen {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+}
+.lock-card {
+  width: 100%; max-width: 380px;
+  padding: 56px 48px;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  text-align: center;
+}
+.lock-brand { font-family: 'Cormorant', serif; font-size: 15px; font-style: italic; color: var(--ink); margin-bottom: 4px; }
+.lock-sub { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 40px; }
+.lock-title { font-family: 'Cormorant', serif; font-size: 28px; font-weight: 300; color: var(--ink); margin-bottom: 8px; }
+.lock-desc { font-size: 13px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.6; }
+.lock-input {
+  width: 100%; padding: 13px 16px;
+  border: 1px solid var(--rule); background: var(--off);
+  font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 300;
+  color: var(--ink); outline: none; letter-spacing: 4px; text-align: center;
+  transition: border-color 0.2s;
+  margin-bottom: 12px;
+}
+.lock-input:focus { border-color: var(--blue); }
+.lock-input.error { border-color: var(--red); }
+.lock-error { font-size: 12px; color: var(--red); margin-bottom: 12px; min-height: 16px; }
+.lock-btn {
+  width: 100%; padding: 13px;
+  background: var(--ink); color: var(--white);
+  border: none; cursor: pointer;
+  font-family: 'Outfit', sans-serif; font-size: 11px; letter-spacing: 1.8px;
+  text-transform: uppercase; font-weight: 400;
+  transition: background 0.25s;
+}
+.lock-btn:hover { background: var(--blue); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 60px; background: rgba(250,250,248,0.97);
+  backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; padding: 0 40px; justify-content: space-between;
+}
+.nav-brand { text-decoration: none; display: flex; flex-direction: column; gap: 1px; }
+.nav-brand-name { font-family: 'Cormorant', serif; font-size: 16px; font-style: italic; font-weight: 400; color: var(--ink); }
+.nav-brand-sub { font-size: 8.5px; letter-spacing: 2.2px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; }
+.nav-right { display: flex; align-items: center; gap: 24px; }
+.nav-page-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); }
+.nav-home { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-light); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+.nav-home:hover { color: var(--ink); }
+
+/* ── LAYOUT ── */
+.page { padding: 60px 0 0; min-height: 100vh; }
+.inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+
+/* ── HEADER ── */
+.dash-header {
+  padding: 48px 0 32px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  border-bottom: 1px solid var(--rule);
+  background: var(--white);
+}
+.dash-header-inner { display: flex; align-items: flex-end; justify-content: space-between; width: 100%; }
+.dash-eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--blue); font-weight: 400; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.dash-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--blue); }
+.dash-title { font-family: 'Cormorant', serif; font-size: 42px; font-weight: 300; color: var(--ink); line-height: 1.05; }
+.dash-actions { display: flex; gap: 12px; align-items: center; }
+.btn { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; border: none; text-decoration: none; font-family: 'Outfit', sans-serif; font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; font-weight: 400; transition: all 0.25s; }
+.btn-solid { background: var(--ink); color: var(--white); padding: 11px 24px; }
+.btn-solid:hover { background: var(--blue); }
+.btn-outline { background: transparent; border: 1px solid var(--rule); color: var(--ink-light); padding: 10px 24px; }
+.btn-outline:hover { border-color: var(--ink-light); color: var(--ink); }
+
+/* ── STATS ── */
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 40px 0; }
+.stat-card { background: var(--white); padding: 28px 32px; }
+.stat-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 12px; }
+.stat-value { font-family: 'Cormorant', serif; font-size: 40px; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 6px; }
+.stat-sub { font-size: 12px; color: var(--ink-light); }
+.stat-sub span { color: var(--green); }
+.stat-sub span.down { color: var(--red); }
+
+/* ── TOOLBAR ── */
+.toolbar { display: flex; gap: 12px; align-items: center; margin-bottom: 20px; }
+.search-wrap { position: relative; flex: 1; max-width: 360px; }
+.search-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--ink-faint); pointer-events: none; }
+.search-input {
+  width: 100%; padding: 10px 14px 10px 42px;
+  border: 1px solid var(--rule); background: var(--white);
+  font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 300;
+  color: var(--ink); outline: none;
+  transition: border-color 0.2s;
+}
+.search-input:focus { border-color: var(--blue); }
+.search-input::placeholder { color: var(--ink-faint); }
+.filter-select {
+  padding: 10px 14px; border: 1px solid var(--rule); background: var(--white);
+  font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 300;
+  color: var(--ink-light); outline: none; cursor: pointer;
+  transition: border-color 0.2s;
+}
+.filter-select:focus { border-color: var(--blue); }
+.toolbar-right { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+.result-count { font-size: 12px; color: var(--ink-faint); }
+
+/* ── TABLE ── */
+.table-wrap { background: var(--white); border: 1px solid var(--rule); overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+thead th {
+  padding: 14px 20px; text-align: left;
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 400;
+  border-bottom: 1px solid var(--rule);
+  background: var(--off);
+  white-space: nowrap;
+  cursor: pointer; user-select: none;
+  transition: color 0.2s;
+}
+thead th:hover { color: var(--ink-light); }
+thead th.sort-asc::after { content: ' ↑'; }
+thead th.sort-desc::after { content: ' ↓'; }
+tbody tr { border-bottom: 1px solid var(--rule); transition: background 0.15s; cursor: pointer; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--blue-faint); }
+td { padding: 16px 20px; font-size: 13px; color: var(--ink-light); vertical-align: middle; }
+td.name { color: var(--ink); font-weight: 400; }
+td.amount { font-family: 'Cormorant', serif; font-size: 16px; color: var(--ink); }
+
+.badge {
+  display: inline-block; padding: 3px 10px;
+  font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 400;
+  border-radius: 0;
+}
+.badge-new { background: var(--blue-faint); color: var(--blue); }
+.badge-contacted { background: var(--amber-faint); color: var(--amber); }
+.badge-proposal { background: var(--purple-faint); color: var(--purple); }
+.badge-progress { background: var(--green-faint); color: var(--green); }
+.badge-won { background: var(--green-faint); color: var(--green); border: 1px solid #c3e6d5; }
+.badge-lost { background: var(--red-faint); color: var(--red); }
+
+.empty-state {
+  padding: 80px 20px; text-align: center;
+  border: 1px solid var(--rule); background: var(--white);
+}
+.empty-state p { font-family: 'Cormorant', serif; font-size: 22px; font-weight: 300; color: var(--ink-faint); margin-bottom: 8px; }
+.empty-state small { font-size: 12px; color: var(--ink-faint); }
+
+/* ── MODAL ── */
+.overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(24,24,22,0.5);
+  display: none; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.overlay.open { display: flex; }
+.modal {
+  background: var(--white); border: 1px solid var(--rule);
+  width: 100%; max-width: 560px;
+  max-height: 90vh; overflow-y: auto;
+  animation: modalIn 0.2s ease;
+}
+@keyframes modalIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.modal-header {
+  padding: 32px 36px 24px;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: flex-start; justify-content: space-between;
+}
+.modal-title { font-family: 'Cormorant', serif; font-size: 28px; font-weight: 300; color: var(--ink); }
+.modal-close {
+  background: none; border: none; cursor: pointer; padding: 4px;
+  color: var(--ink-faint); font-size: 20px; line-height: 1;
+  transition: color 0.2s;
+}
+.modal-close:hover { color: var(--ink); }
+.modal-body { padding: 28px 36px; }
+.modal-footer { padding: 20px 36px 32px; display: flex; gap: 12px; justify-content: flex-end; border-top: 1px solid var(--rule); }
+
+/* ── FORM ── */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-grid .full { grid-column: 1 / -1; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; }
+.field input, .field select, .field textarea {
+  padding: 11px 14px;
+  border: 1px solid var(--rule); background: var(--off);
+  font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 300;
+  color: var(--ink); outline: none;
+  transition: border-color 0.2s;
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--blue); background: var(--white); }
+.field textarea { resize: vertical; min-height: 90px; }
+.field select { cursor: pointer; }
+
+/* ── DETAIL MODAL ── */
+.detail-modal { max-width: 640px; }
+.detail-row { display: flex; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+.detail-row:last-child { border-bottom: none; }
+.detail-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); min-width: 130px; }
+.detail-value { font-size: 13px; color: var(--ink); flex: 1; }
+.detail-actions { display: flex; gap: 10px; margin-top: 20px; }
+.btn-danger { background: var(--red-faint); color: var(--red); border: 1px solid #f0cccc; padding: 10px 20px; }
+.btn-danger:hover { background: var(--red); color: var(--white); }
+
+/* ── TOAST ── */
+#toast {
+  position: fixed; bottom: 32px; right: 32px; z-index: 9000;
+  background: var(--ink); color: var(--white);
+  padding: 14px 24px; font-size: 13px; font-weight: 300;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+}
+#toast.show { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .dash-header-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .inner { padding: 0 20px; }
+}
+@media (max-width: 600px) {
+  .stats-row { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid .full { grid-column: 1; }
+  nav { padding: 0 20px; }
+  .modal { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lock-screen">
+  <div class="lock-card">
+    <div class="lock-brand">Made From Effort</div>
+    <div class="lock-sub">Gym Design · Private Training</div>
+    <div class="lock-title">Leads Dashboard</div>
+    <div class="lock-desc">Enter your access code to continue.</div>
+    <input type="password" id="lock-input" class="lock-input" placeholder="· · · · ·" maxlength="20" autocomplete="off">
+    <div class="lock-error" id="lock-error"></div>
+    <button class="lock-btn" onclick="unlock()">Access Dashboard</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <span class="nav-brand-name">Made From Effort</span>
+    <span class="nav-brand-sub">Gym Design · Private Training</span>
+  </a>
+  <div class="nav-right">
+    <span class="nav-page-title">Leads Dashboard</span>
+    <a href="index.html" class="nav-home">← Site</a>
+  </div>
+</nav>
+
+<!-- PAGE -->
+<div class="page" id="dashboard" style="display:none">
+  <div style="background:var(--white); border-bottom:1px solid var(--rule);">
+    <div class="inner">
+      <div class="dash-header">
+        <div class="dash-header-inner">
+          <div>
+            <div class="dash-eyebrow">Business Intelligence</div>
+            <h1 class="dash-title">New Leads</h1>
+          </div>
+          <div class="dash-actions">
+            <button class="btn btn-outline" onclick="exportCSV()">Export CSV</button>
+            <button class="btn btn-solid" onclick="openAddModal()">+ Add Lead</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inner">
+    <!-- STATS -->
+    <div class="stats-row" id="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">Total Leads</div>
+        <div class="stat-value" id="stat-total">0</div>
+        <div class="stat-sub">All time</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">New This Month</div>
+        <div class="stat-value" id="stat-new">0</div>
+        <div class="stat-sub" id="stat-new-sub">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">In Progress</div>
+        <div class="stat-value" id="stat-progress">0</div>
+        <div class="stat-sub">Active projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Pipeline Value</div>
+        <div class="stat-value" id="stat-value">—</div>
+        <div class="stat-sub">Estimated budgets</div>
+      </div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+      <div class="search-wrap">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.2"/><line x1="10.5" y1="10.5" x2="14" y2="14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <input type="text" class="search-input" id="search-input" placeholder="Search by name, email, project…" oninput="renderTable()">
+      </div>
+      <select class="filter-select" id="filter-status" onchange="renderTable()">
+        <option value="">All Statuses</option>
+        <option value="New">New</option>
+        <option value="Contacted">Contacted</option>
+        <option value="Proposal Sent">Proposal Sent</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Won">Won</option>
+        <option value="Lost">Lost</option>
+      </select>
+      <select class="filter-select" id="filter-type" onchange="renderTable()">
+        <option value="">All Project Types</option>
+        <option value="Home Gym">Home Gym</option>
+        <option value="Estate Gym">Estate Gym</option>
+        <option value="Yacht Gym">Yacht Gym</option>
+        <option value="Boutique Studio">Boutique Studio</option>
+        <option value="Commercial">Commercial</option>
+        <option value="Private Training">Private Training</option>
+        <option value="Other">Other</option>
+      </select>
+      <div class="toolbar-right">
+        <span class="result-count" id="result-count"></span>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div id="table-container"></div>
+
+    <div style="height:60px;"></div>
+  </div>
+</div>
+
+<!-- ADD / EDIT MODAL -->
+<div class="overlay" id="add-modal" onclick="closeModalOnOverlay(event,'add-modal')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Add New Lead</div>
+      <button class="modal-close" onclick="closeModal('add-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="field">
+          <label>First Name *</label>
+          <input type="text" id="f-first" placeholder="James">
+        </div>
+        <div class="field">
+          <label>Last Name *</label>
+          <input type="text" id="f-last" placeholder="Thornton">
+        </div>
+        <div class="field">
+          <label>Email *</label>
+          <input type="email" id="f-email" placeholder="j.thornton@email.com">
+        </div>
+        <div class="field">
+          <label>Phone</label>
+          <input type="tel" id="f-phone" placeholder="+1 (555) 000-0000">
+        </div>
+        <div class="field">
+          <label>Project Type</label>
+          <select id="f-type">
+            <option value="">Select type…</option>
+            <option>Home Gym</option>
+            <option>Estate Gym</option>
+            <option>Yacht Gym</option>
+            <option>Boutique Studio</option>
+            <option>Commercial</option>
+            <option>Private Training</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Budget Range</label>
+          <select id="f-budget">
+            <option value="">Select range…</option>
+            <option>Under £25k</option>
+            <option>£25k – £50k</option>
+            <option>£50k – £100k</option>
+            <option>£100k – £250k</option>
+            <option>£250k – £500k</option>
+            <option>£500k+</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Timeline</label>
+          <select id="f-timeline">
+            <option value="">Select timeline…</option>
+            <option>ASAP</option>
+            <option>1–3 months</option>
+            <option>3–6 months</option>
+            <option>6–12 months</option>
+            <option>12+ months</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Status</label>
+          <select id="f-status">
+            <option>New</option>
+            <option>Contacted</option>
+            <option>Proposal Sent</option>
+            <option>In Progress</option>
+            <option>Won</option>
+            <option>Lost</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>Notes / Vision</label>
+          <textarea id="f-notes" placeholder="Client's vision, project details, source of enquiry…"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('add-modal')">Cancel</button>
+      <button class="btn btn-solid" onclick="saveLead()">Save Lead</button>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL MODAL -->
+<div class="overlay" id="detail-modal" onclick="closeModalOnOverlay(event,'detail-modal')">
+  <div class="modal detail-modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="detail-name">—</div>
+        <div style="margin-top:6px;" id="detail-badge"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal('detail-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="detail-rows"></div>
+      <div class="detail-actions">
+        <button class="btn btn-solid" onclick="editFromDetail()">Edit</button>
+        <button class="btn btn-outline" onclick="cycleStatus()">Advance Status</button>
+        <button class="btn btn-danger" onclick="deleteLead()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+// ─── CONFIG ────────────────────────────────────────────────────────────────
+const ACCESS_CODE = 'mfe2025';   // Change this to your preferred password
+const STORAGE_KEY = 'mfe_leads';
+
+// ─── DEMO LEADS ────────────────────────────────────────────────────────────
+const DEMO_LEADS = [
+  { id: uid(), firstName:'James', lastName:'Thornton', email:'j.thornton@prvt.co', phone:'+44 7700 900123', type:'Estate Gym', budget:'£250k – £500k', timeline:'3–6 months', status:'New', notes:'Cotswolds estate, wants a full performance gym + recovery suite. Referred by architect firm.', date: daysAgo(1) },
+  { id: uid(), firstName:'Serena', lastName:'Marchetti', email:'serena@marchetti.it', phone:'+39 02 1234 5678', type:'Yacht Gym', budget:'£100k – £250k', timeline:'1–3 months', status:'Contacted', notes:'90m superyacht refit. Needs compact design with Technogym equipment. Very specific on aesthetics.', date: daysAgo(4) },
+  { id: uid(), firstName:'Oliver', lastName:'Faye', email:'ofaye@capitalfund.com', phone:'+44 20 7946 0958', type:'Home Gym', budget:'£50k – £100k', timeline:'3–6 months', status:'Proposal Sent', notes:'Kensington townhouse basement conversion. Strength + cardio + stretching area.', date: daysAgo(9) },
+  { id: uid(), firstName:'Priya', lastName:'Nair', email:'pnair@designstudio.co.uk', phone:'+44 7911 123456', type:'Boutique Studio', budget:'£100k – £250k', timeline:'6–12 months', status:'In Progress', notes:'Opening a boutique fitness studio in Mayfair. Needs full concept + equipment sourcing.', date: daysAgo(18) },
+  { id: uid(), firstName:'Marcus', lastName:'Stein', email:'marcus.stein@stein.de', phone:'+49 30 1234 5678', type:'Estate Gym', budget:'£500k+', timeline:'6–12 months', status:'Won', notes:'Full estate gym, spa, and outdoor training area. Munich property. Dream project.', date: daysAgo(32) },
+  { id: uid(), firstName:'Charlotte', lastName:'Voss', email:'cvoss@lvgroup.com', phone:'+44 7800 654321', type:'Private Training', budget:'£25k – £50k', timeline:'ASAP', status:'New', notes:'Executive wellness programme. Wants 1-1 training + custom home setup.', date: daysAgo(2) },
+  { id: uid(), firstName:'Damian', lastName:'Okafor', email:'d.okafor@okafor.ng', phone:'+234 802 345 6789', type:'Commercial', budget:'£500k+', timeline:'12+ months', status:'Contacted', notes:'Lagos commercial gym project. High-end members club concept.', date: daysAgo(6) },
+  { id: uid(), firstName:'Isabella', lastName:'Laurent', email:'i.laurent@atelierx.fr', phone:'+33 1 23 45 67 89', type:'Home Gym', budget:'£50k – £100k', timeline:'3–6 months', status:'Lost', notes:'Paris apartment — ultimately went with a local contractor. Budget constraints.', date: daysAgo(45) },
+];
+
+function uid() { return '_' + Math.random().toString(36).substr(2,9) + Date.now().toString(36); }
+function daysAgo(n) { const d = new Date(); d.setDate(d.getDate()-n); return d.toISOString(); }
+
+// ─── STATE ─────────────────────────────────────────────────────────────────
+let leads = [];
+let editingId = null;
+let viewingId = null;
+let sortCol = 'date';
+let sortDir = 'desc';
+
+const COLS = [
+  { key:'name',     label:'Name' },
+  { key:'type',     label:'Project Type' },
+  { key:'budget',   label:'Budget' },
+  { key:'timeline', label:'Timeline' },
+  { key:'status',   label:'Status' },
+  { key:'date',     label:'Date Added' },
+];
+
+// ─── AUTH ──────────────────────────────────────────────────────────────────
+function unlock() {
+  const val = document.getElementById('lock-input').value.trim();
+  if (val === ACCESS_CODE) {
+    sessionStorage.setItem('mfe_auth','1');
+    document.getElementById('lock-screen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    loadLeads();
+  } else {
+    const inp = document.getElementById('lock-input');
+    const err = document.getElementById('lock-error');
+    inp.classList.add('error');
+    err.textContent = 'Incorrect access code. Please try again.';
+    inp.value = '';
+    setTimeout(() => inp.classList.remove('error'), 1500);
+  }
+}
+document.getElementById('lock-input').addEventListener('keydown', e => { if(e.key==='Enter') unlock(); });
+if (sessionStorage.getItem('mfe_auth')==='1') {
+  document.getElementById('lock-screen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+}
+
+// ─── STORAGE ───────────────────────────────────────────────────────────────
+function loadLeads() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (raw) {
+    leads = JSON.parse(raw);
+  } else {
+    leads = DEMO_LEADS;
+    saveLeads();
+  }
+  renderStats();
+  renderTable();
+}
+
+function saveLeads() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+}
+
+// ─── STATS ─────────────────────────────────────────────────────────────────
+const BUDGET_MAP = {
+  'Under £25k': 12500, '£25k – £50k': 37500,
+  '£50k – £100k': 75000, '£100k – £250k': 175000,
+  '£250k – £500k': 375000, '£500k+': 750000,
+};
+
+function renderStats() {
+  const now = new Date();
+  const thisMonth = leads.filter(l => {
+    const d = new Date(l.date);
+    return d.getMonth()===now.getMonth() && d.getFullYear()===now.getFullYear();
+  });
+  const inProgress = leads.filter(l => ['Contacted','Proposal Sent','In Progress'].includes(l.status));
+  const pipeline = leads
+    .filter(l => !['Won','Lost'].includes(l.status) && l.budget)
+    .reduce((sum,l) => sum + (BUDGET_MAP[l.budget]||0), 0);
+
+  document.getElementById('stat-total').textContent = leads.length;
+  document.getElementById('stat-new').textContent = thisMonth.length;
+  document.getElementById('stat-new-sub').textContent = now.toLocaleString('default',{month:'long'});
+  document.getElementById('stat-progress').textContent = inProgress.length;
+  document.getElementById('stat-value').textContent = pipeline ? '£' + (pipeline/1000).toFixed(0) + 'k' : '—';
+}
+
+// ─── TABLE ─────────────────────────────────────────────────────────────────
+function getFiltered() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const st = document.getElementById('filter-status').value;
+  const ty = document.getElementById('filter-type').value;
+  return leads.filter(l => {
+    const name = (l.firstName + ' ' + l.lastName).toLowerCase();
+    const matchQ = !q || name.includes(q) || l.email.toLowerCase().includes(q) || (l.type||'').toLowerCase().includes(q) || (l.notes||'').toLowerCase().includes(q);
+    const matchSt = !st || l.status===st;
+    const matchTy = !ty || l.type===ty;
+    return matchQ && matchSt && matchTy;
+  });
+}
+
+function sorted(arr) {
+  return [...arr].sort((a,b) => {
+    let av, bv;
+    if (sortCol==='name') { av=(a.firstName+a.lastName).toLowerCase(); bv=(b.firstName+b.lastName).toLowerCase(); }
+    else if (sortCol==='date') { av=new Date(a.date); bv=new Date(b.date); }
+    else if (sortCol==='budget') { av=BUDGET_MAP[a.budget]||0; bv=BUDGET_MAP[b.budget]||0; }
+    else { av=(a[sortCol]||'').toLowerCase(); bv=(b[sortCol]||'').toLowerCase(); }
+    if (av<bv) return sortDir==='asc'?-1:1;
+    if (av>bv) return sortDir==='asc'?1:-1;
+    return 0;
+  });
+}
+
+function renderTable() {
+  const filtered = sorted(getFiltered());
+  document.getElementById('result-count').textContent = filtered.length + ' lead' + (filtered.length!==1?'s':'');
+  const c = document.getElementById('table-container');
+  if (!filtered.length) {
+    c.innerHTML = '<div class="empty-state"><p>No leads found</p><small>Try adjusting your search or filters</small></div>';
+    return;
+  }
+  let html = '<div class="table-wrap"><table><thead><tr>';
+  COLS.forEach(col => {
+    const cls = sortCol===col.key ? ('sort-'+sortDir) : '';
+    html += `<th class="${cls}" onclick="setSort('${col.key}')">${col.label}</th>`;
+  });
+  html += '</tr></thead><tbody>';
+  filtered.forEach(l => {
+    const badge = badgeHtml(l.status);
+    const date = new Date(l.date).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+    html += `<tr onclick="openDetail('${l.id}')">
+      <td class="name">${esc(l.firstName)} ${esc(l.lastName)}<div style="font-size:11px;color:var(--ink-faint);margin-top:2px;">${esc(l.email)}</div></td>
+      <td>${esc(l.type||'—')}</td>
+      <td class="amount">${esc(l.budget||'—')}</td>
+      <td>${esc(l.timeline||'—')}</td>
+      <td>${badge}</td>
+      <td>${date}</td>
+    </tr>`;
+  });
+  html += '</tbody></table></div>';
+  c.innerHTML = html;
+}
+
+function setSort(col) {
+  if (sortCol===col) sortDir = sortDir==='asc'?'desc':'asc';
+  else { sortCol=col; sortDir='asc'; }
+  renderTable();
+}
+
+function badgeHtml(status) {
+  const map = { 'New':'badge-new','Contacted':'badge-contacted','Proposal Sent':'badge-proposal','In Progress':'badge-progress','Won':'badge-won','Lost':'badge-lost' };
+  return `<span class="badge ${map[status]||'badge-new'}">${status}</span>`;
+}
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// ─── ADD / EDIT MODAL ──────────────────────────────────────────────────────
+function openAddModal() {
+  editingId = null;
+  clearForm();
+  document.getElementById('modal-title').textContent = 'Add New Lead';
+  openModal('add-modal');
+}
+
+function clearForm() {
+  ['f-first','f-last','f-email','f-phone','f-notes'].forEach(id => document.getElementById(id).value='');
+  ['f-type','f-budget','f-timeline'].forEach(id => document.getElementById(id).selectedIndex=0);
+  document.getElementById('f-status').value='New';
+}
+
+function saveLead() {
+  const first = document.getElementById('f-first').value.trim();
+  const last = document.getElementById('f-last').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  if (!first || !last || !email) { showToast('Please fill in first name, last name, and email.'); return; }
+  if (editingId) {
+    const idx = leads.findIndex(l=>l.id===editingId);
+    if (idx>-1) {
+      leads[idx] = { ...leads[idx], firstName:first, lastName:last, email, phone:document.getElementById('f-phone').value.trim(), type:document.getElementById('f-type').value, budget:document.getElementById('f-budget').value, timeline:document.getElementById('f-timeline').value, status:document.getElementById('f-status').value, notes:document.getElementById('f-notes').value.trim() };
+    }
+    showToast('Lead updated.');
+  } else {
+    leads.unshift({ id:uid(), firstName:first, lastName:last, email, phone:document.getElementById('f-phone').value.trim(), type:document.getElementById('f-type').value, budget:document.getElementById('f-budget').value, timeline:document.getElementById('f-timeline').value, status:document.getElementById('f-status').value, notes:document.getElementById('f-notes').value.trim(), date:new Date().toISOString() });
+    showToast('Lead added.');
+  }
+  saveLeads(); renderStats(); renderTable();
+  closeModal('add-modal');
+}
+
+// ─── DETAIL MODAL ──────────────────────────────────────────────────────────
+function openDetail(id) {
+  viewingId = id;
+  const l = leads.find(x=>x.id===id);
+  if (!l) return;
+  document.getElementById('detail-name').textContent = l.firstName + ' ' + l.lastName;
+  document.getElementById('detail-badge').innerHTML = badgeHtml(l.status);
+  const date = new Date(l.date).toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  const rows = [
+    ['Email', `<a href="mailto:${esc(l.email)}" style="color:var(--blue)">${esc(l.email)}</a>`],
+    ['Phone', l.phone ? `<a href="tel:${esc(l.phone)}" style="color:var(--blue)">${esc(l.phone)}</a>` : '—'],
+    ['Project Type', l.type||'—'],
+    ['Budget', l.budget||'—'],
+    ['Timeline', l.timeline||'—'],
+    ['Notes', l.notes ? `<span style="line-height:1.7">${esc(l.notes)}</span>` : '—'],
+    ['Date Added', date],
+  ];
+  document.getElementById('detail-rows').innerHTML = rows.map(([label,value]) =>
+    `<div class="detail-row"><span class="detail-label">${label}</span><span class="detail-value">${value}</span></div>`
+  ).join('');
+  openModal('detail-modal');
+}
+
+function editFromDetail() {
+  const l = leads.find(x=>x.id===viewingId);
+  if (!l) return;
+  closeModal('detail-modal');
+  editingId = l.id;
+  document.getElementById('f-first').value = l.firstName;
+  document.getElementById('f-last').value = l.lastName;
+  document.getElementById('f-email').value = l.email;
+  document.getElementById('f-phone').value = l.phone||'';
+  document.getElementById('f-type').value = l.type||'';
+  document.getElementById('f-budget').value = l.budget||'';
+  document.getElementById('f-timeline').value = l.timeline||'';
+  document.getElementById('f-status').value = l.status||'New';
+  document.getElementById('f-notes').value = l.notes||'';
+  document.getElementById('modal-title').textContent = 'Edit Lead';
+  openModal('add-modal');
+}
+
+const STATUS_CYCLE = ['New','Contacted','Proposal Sent','In Progress','Won'];
+function cycleStatus() {
+  const l = leads.find(x=>x.id===viewingId);
+  if (!l) return;
+  const idx = STATUS_CYCLE.indexOf(l.status);
+  l.status = STATUS_CYCLE[Math.min(idx+1, STATUS_CYCLE.length-1)];
+  saveLeads(); renderStats(); renderTable();
+  openDetail(viewingId);
+  showToast('Status updated to: ' + l.status);
+}
+
+function deleteLead() {
+  if (!confirm('Delete this lead? This cannot be undone.')) return;
+  leads = leads.filter(l=>l.id!==viewingId);
+  saveLeads(); renderStats(); renderTable();
+  closeModal('detail-modal');
+  showToast('Lead deleted.');
+}
+
+// ─── EXPORT ────────────────────────────────────────────────────────────────
+function exportCSV() {
+  const headers = ['First Name','Last Name','Email','Phone','Project Type','Budget','Timeline','Status','Notes','Date Added'];
+  const rows = leads.map(l => [l.firstName,l.lastName,l.email,l.phone||'',l.type||'',l.budget||'',l.timeline||'',l.status,l.notes||'',new Date(l.date).toLocaleDateString('en-GB')].map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(','));
+  const csv = [headers.join(','), ...rows].join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'mfe-leads-' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+  showToast('Leads exported to CSV.');
+}
+
+// ─── MODAL HELPERS ─────────────────────────────────────────────────────────
+function openModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
+function closeModalOnOverlay(e,id) { if(e.target===document.getElementById(id)) closeModal(id); }
+document.addEventListener('keydown', e => { if(e.key==='Escape') { closeModal('add-modal'); closeModal('detail-modal'); } });
+
+// ─── TOAST ─────────────────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// Init if already auth'd
+if (sessionStorage.getItem('mfe_auth')==='1') loadLeads();
+</script>
+</body>
+</html>
