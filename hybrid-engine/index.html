@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hybrid Engine — Training Series at CrossFit Full Motion</title>
+<meta name="description" content="Built for the athlete who runs hard and lifts harder. Station-based intervals. Saturdays at 11am — CrossFit Full Motion, Syosset NY.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F2EFE8;
+  --black: #0D0D0D;
+  --gray: #6B6B6B;
+  --rule: #CCCCCC;
+  --white: #FFFFFF;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--black); font-family: 'Inter', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+/* NAV */
+nav {
+  border-bottom: 1px solid var(--black);
+  padding: 14px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); }
+.nav-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 2px; color: var(--black); }
+.nav-sessions {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  border: 1px solid var(--black); padding: 6px 14px; font-weight: 500;
+}
+
+/* HERO */
+.hero {
+  padding: 56px 40px 48px;
+  border-bottom: 1px solid var(--black);
+}
+.hero-intro { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); margin-bottom: 16px; }
+.hero-title {
+  display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  margin-bottom: 24px; line-height: 1;
+}
+.hero-hybrid {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 13vw, 160px);
+  letter-spacing: 2px; color: var(--black);
+}
+.hero-engine {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 13vw, 160px);
+  letter-spacing: 4px; color: transparent;
+  -webkit-text-stroke: 2px var(--black);
+}
+.hero-tagline {
+  font-size: clamp(15px, 2vw, 19px); font-weight: 300;
+  line-height: 1.55; color: var(--black); max-width: 640px; margin-bottom: 12px;
+}
+.hero-quote {
+  font-size: 13px; font-style: italic; color: var(--gray); font-weight: 300;
+}
+
+/* DETAILS GRID */
+.details {
+  border-bottom: 1px solid var(--black);
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+}
+.detail-block {
+  padding: 32px 40px;
+  border-right: 1px solid var(--black);
+}
+.detail-block:last-child { border-right: none; }
+.detail-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
+.detail-value { font-size: 18px; font-weight: 600; color: var(--black); line-height: 1.3; margin-bottom: 4px; }
+.detail-sub { font-size: 12px; color: var(--gray); }
+
+/* PRICING */
+.pricing {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--black);
+}
+.price-block {
+  padding: 32px 40px;
+}
+.price-block:first-child {
+  background: var(--black); color: var(--cream);
+  border-right: 1px solid var(--cream);
+}
+.price-eyebrow { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; opacity: 0.6; }
+.price-amount {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 8vw, 80px); line-height: 1; letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.price-note { font-size: 11px; opacity: 0.6; line-height: 1.6; }
+
+/* TAGS */
+.tags-section {
+  padding: 32px 40px;
+  border-bottom: 1px solid var(--black);
+}
+.tags-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); margin-bottom: 16px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  border: 1px solid var(--black); padding: 7px 14px;
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
+}
+
+/* EMAIL SIGNUP */
+.signup-section {
+  padding: 56px 40px;
+  border-bottom: 1px solid var(--black);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+}
+.signup-text h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 5vw, 56px); letter-spacing: 2px;
+  line-height: 1.0; margin-bottom: 16px;
+}
+.signup-text p { font-size: 14px; color: var(--gray); line-height: 1.7; }
+.signup-form { display: flex; flex-direction: column; gap: 12px; }
+.signup-form input {
+  background: var(--white); border: 1px solid var(--black);
+  padding: 14px 18px; font-family: 'Inter', sans-serif;
+  font-size: 14px; font-weight: 300; color: var(--black);
+  outline: none; transition: box-shadow 0.2s;
+  width: 100%;
+}
+.signup-form input:focus { box-shadow: 0 0 0 2px var(--black); }
+.signup-form input::placeholder { color: #AAA; }
+.signup-btn {
+  background: var(--black); color: var(--cream);
+  border: none; padding: 15px 24px;
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500;
+  cursor: pointer; transition: background 0.2s;
+  text-align: center;
+}
+.signup-btn:hover { background: #333; }
+.signup-success {
+  display: none; padding: 20px;
+  border: 1px solid var(--black); background: var(--white);
+  font-size: 13px; font-weight: 500; text-align: center; letter-spacing: 0.5px;
+}
+
+/* BOOK SECTION */
+.book-section {
+  padding: 56px 40px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+  border-bottom: 1px solid var(--black);
+}
+.book-text h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 8vw, 96px); letter-spacing: 2px;
+  line-height: 0.95; margin-bottom: 16px;
+}
+.book-text p { font-size: 14px; color: var(--gray); line-height: 1.7; }
+.book-action { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.book-cta {
+  display: inline-block; background: var(--black); color: var(--cream);
+  text-decoration: none; padding: 18px 48px;
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  letter-spacing: 3px; text-transform: uppercase; font-weight: 500;
+  transition: background 0.2s;
+}
+.book-cta:hover { background: #333; }
+.book-note { font-size: 11px; color: var(--gray); letter-spacing: 0.5px; }
+
+/* FOOTER */
+footer {
+  padding: 24px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid var(--black);
+}
+.foot-address { font-size: 11px; color: var(--gray); letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px; }
+.foot-address::before { content: '📍'; font-size: 10px; }
+.foot-brand { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 2px; color: var(--black); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .hero { padding: 40px 20px 36px; }
+  .details { grid-template-columns: 1fr; }
+  .detail-block { border-right: none; border-bottom: 1px solid var(--black); padding: 24px 20px; }
+  .detail-block:last-child { border-bottom: none; }
+  .pricing { grid-template-columns: 1fr; }
+  .price-block:first-child { border-right: none; border-bottom: 1px solid var(--cream); }
+  .price-block { padding: 28px 20px; }
+  .tags-section { padding: 24px 20px; }
+  .signup-section { grid-template-columns: 1fr; gap: 32px; padding: 40px 20px; }
+  .book-section { grid-template-columns: 1fr; gap: 32px; padding: 40px 20px; }
+  footer { padding: 20px; flex-direction: column; gap: 12px; text-align: center; }
+  .hero-engine { -webkit-text-stroke-width: 1.5px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div>
+    <div class="nav-eyebrow">Training Series</div>
+    <div class="nav-name">Hybrid Engine</div>
+  </div>
+  <div class="nav-sessions">5 Sessions</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-intro">Introducing</div>
+  <div class="hero-title">
+    <span class="hero-hybrid">Hybrid</span>
+    <span class="hero-engine">Engine</span>
+  </div>
+  <p class="hero-tagline">Built for the athlete who runs hard and lifts harder. Station-based intervals. Community-first. No compromises.</p>
+  <p class="hero-quote">"For those who refuse to limit their potential."</p>
+</div>
+
+<!-- CLASS DETAILS -->
+<div class="details">
+  <div class="detail-block">
+    <div class="detail-label">Location</div>
+    <div class="detail-value">CrossFit Full Motion</div>
+    <div class="detail-sub">189 Lafayette Dr · Syosset, NY 11791</div>
+  </div>
+  <div class="detail-block">
+    <div class="detail-label">Time</div>
+    <div class="detail-value">11:00 AM</div>
+    <div class="detail-sub">Saturdays</div>
+  </div>
+  <div class="detail-block">
+    <div class="detail-label">Format</div>
+    <div class="detail-value">Interval</div>
+    <div class="detail-sub">Station-based circuits</div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="pricing">
+  <div class="price-block">
+    <div class="price-eyebrow">Full Series · Best Value</div>
+    <div class="price-amount">$150</div>
+    <div class="price-note">All 5 classes<br>Save $25 vs drop-in</div>
+  </div>
+  <div class="price-block">
+    <div class="price-eyebrow">Drop-In</div>
+    <div class="price-amount">$35</div>
+    <div class="price-note">Per class<br>No commitment</div>
+  </div>
+</div>
+
+<!-- TAGS -->
+<div class="tags-section">
+  <div class="tags-label">This is for you if —</div>
+  <div class="tags">
+    <span class="tag">You Run &amp; Lift</span>
+    <span class="tag">Race Prep</span>
+    <span class="tag">Hybrid Athletes</span>
+    <span class="tag">Functional Fitness</span>
+    <span class="tag">Community-Driven</span>
+    <span class="tag">Want Structure</span>
+  </div>
+</div>
+
+<!-- EMAIL SIGNUP -->
+<div class="signup-section">
+  <div class="signup-text">
+    <h2>Stay in the Loop.</h2>
+    <p>Drop your email and we'll keep you updated on upcoming sessions, schedule changes, and new series announcements.</p>
+  </div>
+  <div>
+    <form class="signup-form" id="signupForm">
+      <input type="text" name="name" placeholder="Your name" required autocomplete="name">
+      <input type="email" name="email" placeholder="Your email" required autocomplete="email">
+      <button type="submit" class="signup-btn">Join the List</button>
+    </form>
+    <div class="signup-success" id="signupSuccess">You're on the list. See you Saturday.</div>
+  </div>
+</div>
+
+<!-- BOOK -->
+<div class="book-section">
+  <div class="book-text">
+    <h2>Reserve Your Spot.</h2>
+    <p>Spots are limited. Book your class below — full series or drop-in, both available online.</p>
+  </div>
+  <div class="book-action">
+    <a href="https://www.picktime.com/25159e34-7ef2-4eb2-b45e-ffb57bc9a11a" class="book-cta" target="_blank" rel="noopener">Book a Class →</a>
+    <span class="book-note">Opens Picktime — secure online booking</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-address">CrossFit Full Motion · 189 Lafayette Dr · Syosset, NY 11791</div>
+  <div class="foot-brand">Hybrid Engine</div>
+</footer>
+
+<script>
+document.getElementById('signupForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.signup-btn');
+  const name = this.querySelector('[name="name"]').value.trim();
+  const email = this.querySelector('[name="email"]').value.trim();
+
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://formspree.io/f/mvzwwrzr', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, _subject: 'Hybrid Engine — New Sign Up' })
+    });
+    if (!res.ok) throw new Error();
+    this.style.display = 'none';
+    document.getElementById('signupSuccess').style.display = 'block';
+  } catch {
+    btn.textContent = 'Join the List';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  }
+});
+</script>
+</body>
+</html>
