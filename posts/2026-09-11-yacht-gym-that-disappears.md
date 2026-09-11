@@ -4,7 +4,7 @@ date: 2026-09-11
 excerpt: Yes — but only if the equipment disappears when it's not training time. A real refit story about $50,000 in gym equipment, one trip to Europe, and the fix that actually worked.
 issue: "015"
 cta_text: Start a Project
-stats: 140FT:Yacht Length|$50K:The Mistake|1:Europe Trip That Exposed It|3-4:Seats When Not Training
+stats: 140FT:Yacht Length|$50K:The Mistake|1:Europe Trip That Exposed It|3-4:Rooftop Lounge Seating When Not In Use
 image: https://www.madefromeffort.com/journal/assets/yacht-gym-that-disappears-hero.jpg
 ---
 
