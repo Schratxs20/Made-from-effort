@@ -6,6 +6,7 @@ issue: "015"
 cta_text: Start a Project
 stats: 140FT:Yacht Length|$50K:The Mistake|1:Europe Trip That Exposed It|3-4:Guests Seated On The Rooftop Lounge
 image: https://www.madefromeffort.com/journal/assets/yacht-gym-that-disappears-hero.jpg
+tags: Yacht Gyms, Marine Fitness Design, Custom Gym Equipment, Superyacht Refits
 ---
 
 Yes — but only if the equipment is designed to disappear the moment training's over. A dedicated gym room works on land because the room has a door. A yacht rooftop doesn't have that luxury: it's training space at 7am and it's the party by 7pm, in the same square footage. Get that wrong, and you've built a very expensive obstacle.

@@ -388,6 +388,10 @@ def render_email_ready_page(post, link):
       <div class="field-text"><b>Subtitle field:</b> {html.escape(post.get('excerpt', ''))}</div>
       <button class="mini-copy" type="button" data-copy-text="{html.escape(post.get('excerpt', ''))}">Copy</button>
     </div>
+    <div class="field-row">
+      <div class="field-text"><b>Content tags:</b> {html.escape(post.get('tags', ''))}</div>
+      <button class="mini-copy" type="button" data-copy-text="{html.escape(post.get('tags', ''))}">Copy</button>
+    </div>
   </div>
   <div class="wrap" id="emailContent">
     <div class="body-copy">

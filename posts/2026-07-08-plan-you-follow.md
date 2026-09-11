@@ -6,6 +6,7 @@ issue: "014"
 cta_text: Train with Me
 stats: 15YRS:Pattern Observed Across Clients|12WK:Training Block Studied|60%:Person A's Completion Rate|95%:Person B's Completion Rate
 image: https://www.madefromeffort.com/journal/assets/the-plan-you-follow-beats-the-plan-you-love-hero.jpg
+tags: Training Consistency, Program Design, Client Coaching, Habit Building
 ---
 
 Every client I've trained who actually transformed shares one thing.
