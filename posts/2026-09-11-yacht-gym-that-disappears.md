@@ -4,7 +4,7 @@ date: 2026-09-11
 excerpt: Yes — but only if the equipment disappears when it's not training time. A real refit story about $50,000 in gym equipment, one trip to Europe, and the fix that actually worked.
 issue: "015"
 cta_text: Start a Project
-stats: 140FT:Yacht Length|$50K:Equipment Rebuilt Once|1:Europe Trip That Exposed It|12:Seats When Not Training
+stats: 140FT:Yacht Length|$50K:The Mistake|1:Europe Trip That Exposed It|3-4:Seats When Not Training
 image: https://www.madefromeffort.com/journal/assets/yacht-gym-that-disappears-hero.jpg
 ---
 
@@ -28,7 +28,7 @@ I'd designed for how the space would be used, but not for everything it would be
 
 ## 03 / The Fix
 
-Build the equipment into the furniture instead of placing furniture around the equipment. The rack, the bench, the storage — all of it now lives inside custom-built outdoor couches and loungers. Train in the morning; by evening it's seating for twelve with drinks on it. Nobody at cocktail hour would guess what's underneath.
+Build the equipment into the furniture instead of placing furniture around the equipment. The rack, the bench, the storage — all of it now lives inside custom-built outdoor couches and loungers. Train in the morning; by evening it's a couch that seats three or four with drinks on it. Nobody at cocktail hour would guess what's underneath.
 
 ![The actual couch — full dumbbell set, TRX bands, and a kettlebell inside, cushions on top](https://www.madefromeffort.com/journal/assets/yacht-gym-that-disappears-couch.jpg)
 
