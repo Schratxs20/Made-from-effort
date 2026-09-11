@@ -15,6 +15,11 @@
   .toolbar-note { font-family:'Inter',sans-serif; font-size:12px; color:#A6A39B; }
   .subject-line { max-width:600px; margin:0 auto; padding:20px 32px 0; font-family:'Inter',sans-serif; font-size:13px; color:#57677A; }
   .subject-line b { color:#1C1C1A; }
+  .field-row { display:flex; align-items:flex-start; justify-content:space-between; gap:14px; padding:12px 0; border-bottom:1px solid #E2E0D9; }
+  .field-row:last-child { border-bottom:none; }
+  .field-text { flex:1; min-width:0; }
+  .mini-copy { flex-shrink:0; font-family:'Inter',sans-serif; font-weight:600; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#57677A; background:transparent; border:1px solid #57677A; padding:7px 14px; cursor:pointer; }
+  .mini-copy:hover { background:#57677A; color:#FAF9F6; }
   .wrap { max-width:600px; margin:0 auto; background:#FAF9F6; }
   .eyebrow { padding:24px 32px 0; font-family:'Inter',sans-serif; font-weight:500; font-size:11px; letter-spacing:2px; color:#A6A39B; text-transform:uppercase; }
   .headline { padding:8px 32px 20px; font-family:'Playfair Display',serif; font-weight:400; font-size:30px; line-height:1.2; color:#1C1C1A; }
@@ -34,8 +39,14 @@
     <span class="toolbar-note">Then: new post in Beehiiv &rarr; paste into the body</span>
   </div>
   <div class="subject-line">
-    <div><b>Title field:</b> Can You Put a Real Gym on a Yacht Without It Taking Over the Deck?</div>
-    <div style="margin-top:6px;"><b>Subtitle field:</b> Yes — but only if the equipment disappears when it&#x27;s not training time. A real refit story about $50,000 in gym equipment, one trip to Europe, and the fix that actually worked.</div>
+    <div class="field-row">
+      <div class="field-text"><b>Title field:</b> Can You Put a Real Gym on a Yacht Without It Taking Over the Deck?</div>
+      <button class="mini-copy" type="button" data-copy-text="Can You Put a Real Gym on a Yacht Without It Taking Over the Deck?">Copy</button>
+    </div>
+    <div class="field-row">
+      <div class="field-text"><b>Subtitle field:</b> Yes — but only if the equipment disappears when it&#x27;s not training time. A real refit story about $50,000 in gym equipment, one trip to Europe, and the fix that actually worked.</div>
+      <button class="mini-copy" type="button" data-copy-text="Yes — but only if the equipment disappears when it&#x27;s not training time. A real refit story about $50,000 in gym equipment, one trip to Europe, and the fix that actually worked.">Copy</button>
+    </div>
   </div>
   <div class="wrap" id="emailContent">
     <div class="body-copy">
@@ -106,6 +117,19 @@
         btn.textContent = 'Copy failed — select the page manually';
       }
       setTimeout(function() { btn.textContent = original; }, 3000);
+    });
+
+    document.querySelectorAll('.mini-copy').forEach(function(btn) {
+      var original = btn.textContent;
+      btn.addEventListener('click', async function() {
+        try {
+          await navigator.clipboard.writeText(btn.dataset.copyText);
+          btn.textContent = 'Copied';
+        } catch (err) {
+          btn.textContent = 'Failed';
+        }
+        setTimeout(function() { btn.textContent = original; }, 2000);
+      });
     });
   </script>
 </body>
