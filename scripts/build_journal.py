@@ -298,11 +298,11 @@ def render_email_ready_page(post, link):
     <button id="copyBtn" type="button">Copy For Beehiiv</button>
     <span class="toolbar-note">Then: new post in Beehiiv &rarr; paste into the body</span>
   </div>
-  <div class="subject-line">Subject line (type this into Beehiiv separately): <b>{html.escape(post['title'])}</b></div>
+  <div class="subject-line">
+    <div><b>Title field:</b> {html.escape(post['title'])}</div>
+    <div style="margin-top:6px;"><b>Subtitle field:</b> {html.escape(post.get('excerpt', ''))}</div>
+  </div>
   <div class="wrap" id="emailContent">
-    <div class="eyebrow">Journal</div>
-    <div class="headline">{html.escape(post['title'])}</div>
-    <div class="meta-row">{format_date_long(post['date'])}</div>
     <div class="body-copy">
       {post['body_html']}
     </div>
