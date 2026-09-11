@@ -17,6 +17,7 @@ import os
 import re
 import glob
 import html
+import json
 import markdown
 from datetime import datetime, timezone
 
@@ -67,6 +68,7 @@ def parse_post(path):
     md_engine = markdown.Markdown(extensions=["extra", "sane_lists", "toc"])
     meta["body_html"] = md_engine.convert(body_md.strip())
     meta["toc"] = [t for t in md_engine.toc_tokens if t["level"] == 2]
+    meta["faq"] = parse_faq(body_md)
 
     meta["source_path"] = path
     return meta
@@ -76,6 +78,68 @@ def slugify(text):
     text = text.lower()
     text = re.sub(r"[^a-z0-9]+", "-", text)
     return text.strip("-")
+
+
+# ---------------------------------------------------------------------------
+# FAQ extraction — for FAQPage schema (GEO/AI-citation spec, Sheet 05B)
+# ---------------------------------------------------------------------------
+# Convention: a "## FAQ" section where each question is its own bold
+# paragraph ending in "?", immediately followed by a plain-text answer
+# paragraph. Example:
+#
+#   ## FAQ
+#
+#   **How much space does this need?**
+#   Enough for one full range-of-motion lift, plus clearance to move.
+#
+#   **Another question?**
+#   Another answer.
+FAQ_SECTION_RE = re.compile(r"^##\s+FAQ\s*\n(.*?)(?=^##\s+|\Z)", re.MULTILINE | re.DOTALL)
+FAQ_PAIR_RE = re.compile(r"\*\*(.+?\?)\*\*\s*\n(.+?)(?=\n\s*\*\*.+?\?\*\*|\Z)", re.DOTALL)
+
+def parse_faq(body_md):
+    section = FAQ_SECTION_RE.search(body_md)
+    if not section:
+        return []
+    pairs = FAQ_PAIR_RE.findall(section.group(1))
+    faq = []
+    for question, answer in pairs:
+        answer_text = " ".join(answer.strip().split())
+        if question.strip() and answer_text:
+            faq.append({"question": question.strip(), "answer": answer_text})
+    return faq
+
+
+def render_schema(post, canonical_url):
+    """Article + (if present) FAQPage JSON-LD — every post, no exceptions."""
+    article = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": post["title"],
+        "description": post.get("excerpt", ""),
+        "datePublished": post["date"],
+        "url": canonical_url,
+        "author": {"@type": "Person", "name": "Scott Schratwieser"},
+        "publisher": {"@type": "Organization", "name": SITE_TITLE, "url": SITE_URL},
+    }
+    blocks = [f'<script type="application/ld+json">{json.dumps(article)}</script>']
+
+    if post.get("faq"):
+        faq_schema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": qa["question"],
+                    "acceptedAnswer": {"@type": "Answer", "text": qa["answer"]},
+                }
+                for qa in post["faq"]
+            ],
+        }
+        blocks.append(f'<script type="application/ld+json">{json.dumps(faq_schema)}</script>')
+
+    return "\n".join(blocks)
 
 
 # ---------------------------------------------------------------------------
@@ -161,6 +225,8 @@ def render_post_page(post):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{html.escape(post['title'])} — {SITE_TITLE}</title>
 <meta name="description" content="{html.escape(post.get('excerpt',''))}">
+<link rel="canonical" href="{SITE_URL}/journal/{post['slug']}.html">
+{render_schema(post, f"{SITE_URL}/journal/{post['slug']}.html")}
 <style>{STYLE_BLOCK}</style>
 </head>
 <body>
