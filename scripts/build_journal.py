@@ -391,6 +391,7 @@ def render_email_ready_page(post, link):
   </div>
   <div class="wrap" id="emailContent">
     <div class="body-copy">
+      {render_hero_image_html(post)}
       {render_stat_bar_html(post)}
       {post['body_html']}
     </div>
@@ -491,6 +492,12 @@ def render_stat_bar_html(post):
     return f'<img src="{post["stat_image_url"]}" alt="Key numbers from this post" style="width:100%;max-width:100%;height:auto;display:block;margin:0 0 30px;">'
 
 
+def render_hero_image_html(post):
+    if not post.get("image"):
+        return ""
+    return f'<img src="{post["image"]}" alt="{html.escape(post["title"])}" style="width:100%;max-width:100%;height:auto;display:block;margin:0 0 30px;">'
+
+
 def render_email_footer(post, link):
     """Appended after every post's body (both the RSS content:encoded and
     the email-ready copy/paste page). Deliberately plain inline formatting
@@ -522,7 +529,7 @@ def render_rss(posts):
     items_xml = ""
     for p in posts:
         link = f"{SITE_URL}/journal/{p['slug']}.html"
-        email_body = render_stat_bar_html(p) + p['body_html'] + render_email_footer(p, link)
+        email_body = render_hero_image_html(p) + render_stat_bar_html(p) + p['body_html'] + render_email_footer(p, link)
         items_xml += f"""
     <item>
       <title>{html.escape(p['title'])}</title>

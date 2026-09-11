@@ -5,6 +5,7 @@ excerpt: Yes — but only if the equipment disappears when it's not training tim
 issue: "015"
 cta_text: Start a Project
 stats: 140FT:Yacht Length|$50K:Equipment Rebuilt Once|1:Europe Trip That Exposed It|12:Seats When Not Training
+image: https://www.madefromeffort.com/journal/assets/yacht-gym-that-disappears-hero.jpg
 ---
 
 Yes — but only if the equipment is designed to disappear the moment training's over. A dedicated gym room works on land because the room has a door. A yacht rooftop doesn't have that luxury: it's training space at 7am and it's the party by 7pm, in the same square footage. Get that wrong, and you've built a very expensive obstacle.
@@ -28,6 +29,8 @@ I'd designed for how the space would be used, but not for everything it would be
 ## 03 / The Fix
 
 Build the equipment into the furniture instead of placing furniture around the equipment. The rack, the bench, the storage — all of it now lives inside custom-built outdoor couches and loungers. Train in the morning; by evening it's seating for twelve with drinks on it. Nobody at cocktail hour would guess what's underneath.
+
+![The actual couch — full dumbbell set, TRX bands, and a kettlebell inside, cushions on top](https://www.madefromeffort.com/journal/assets/yacht-gym-that-disappears-couch.jpg)
 
 And because nothing needs to be moved, stored, or staged, crew never touch it. No setting up equipment before a session, no breaking it down and stowing it after, no gym gear competing with everything else on their list. It's ready, or it's hidden. There's no in-between state for anyone to manage.
 
