@@ -5,6 +5,7 @@ excerpt: Why the "perfect" plan usually fails, the compounding math of consisten
 issue: "014"
 cta_text: Train with Me
 stats: 15YRS:Pattern Observed Across Clients|12WK:Training Block Studied|60%:Person A's Completion Rate|95%:Person B's Completion Rate
+image: https://www.madefromeffort.com/journal/assets/the-plan-you-follow-beats-the-plan-you-love-hero.jpg
 ---
 
 Every client I've trained who actually transformed shares one thing.
