@@ -19,6 +19,7 @@ import glob
 import html
 import json
 import markdown
+from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime, timezone
 
 # ---------------------------------------------------------------------------
@@ -69,9 +70,27 @@ def parse_post(path):
     meta["body_html"] = md_engine.convert(body_md.strip())
     meta["toc"] = [t for t in md_engine.toc_tokens if t["level"] == 2]
     meta["faq"] = parse_faq(body_md)
+    meta["stats"] = parse_stats(meta.get("stats", ""))
 
     meta["source_path"] = path
     return meta
+
+
+def parse_stats(raw_value):
+    """Frontmatter convention: stats: $50K:Equipment Rebuilt|140FT:Yacht Length
+    Pipe-separated stat cells, each "number:caption". Real facts already
+    stated in the post, reformatted as a scannable visual — not new claims."""
+    if not raw_value.strip():
+        return []
+    stats = []
+    for cell in raw_value.split("|"):
+        if ":" not in cell:
+            continue
+        number, _, caption = cell.partition(":")
+        number, caption = number.strip(), caption.strip()
+        if number and caption:
+            stats.append((number, caption))
+    return stats
 
 
 def slugify(text):
@@ -108,6 +127,62 @@ def parse_faq(body_md):
         if question.strip() and answer_text:
             faq.append({"question": question.strip(), "answer": answer_text})
     return faq
+
+
+FONTS_DIR = os.path.join(REPO_ROOT, "scripts", "fonts")
+
+def render_stat_bar_image(stats, out_path):
+    """Renders the post's stats as an actual PNG, not a CSS layout. A flex
+    row of number/caption cells doesn't survive paste into a block editor
+    like Beehiiv's — but a real hosted <img> does, in the site page, the
+    RSS feed, and a copy/pasted Beehiiv post alike. This is the one visual
+    device every post gets even with zero photography, generated straight
+    from facts already stated in the post copy."""
+    W, H = 1520, 260
+    INK = (28, 28, 26)
+    CREAM = (250, 249, 246)
+    RULE = (74, 79, 68)
+
+    canvas = Image.new("RGB", (W, H), INK)
+    draw = ImageDraw.Draw(canvas)
+
+    n = len(stats)
+    cell_w = W / n
+    num_font = ImageFont.truetype(os.path.join(FONTS_DIR, "PlayfairDisplay-Bold.ttf"), 68)
+    cap_font = ImageFont.truetype(os.path.join(FONTS_DIR, "Inter-SemiBold.ttf"), 21)
+
+    for i, (number, caption) in enumerate(stats):
+        cx = cell_w * i + cell_w / 2
+        if i > 0:
+            draw.line([(cell_w * i, H * 0.22), (cell_w * i, H * 0.78)], fill=RULE, width=2)
+
+        nbbox = draw.textbbox((0, 0), number, font=num_font)
+        nw, nh = nbbox[2] - nbbox[0], nbbox[3] - nbbox[1]
+        draw.text((cx - nw / 2 - nbbox[0], H * 0.30 - nh / 2 - nbbox[1]), number, font=num_font, fill=CREAM)
+
+        cap = caption.upper()
+        cbbox = draw.textbbox((0, 0), cap, font=cap_font)
+        # simple letter-tracking to match the site's tracked-caps captions
+        tracking = 2
+        total_w = sum(draw.textlength(ch, font=cap_font) + tracking for ch in cap) - tracking
+        max_w = cell_w * 0.82
+        if total_w > max_w:
+            words = caption.upper().split()
+            mid = len(words) // 2 or 1
+            lines = [" ".join(words[:mid]), " ".join(words[mid:])]
+        else:
+            lines = [cap]
+        line_h = cbbox[3] - cbbox[1]
+        start_y = H * 0.62
+        for li, line in enumerate(lines):
+            lw = sum(draw.textlength(ch, font=cap_font) + tracking for ch in line) - tracking
+            x = cx - lw / 2
+            y = start_y + li * (line_h + 10)
+            for ch in line:
+                draw.text((x, y), ch, font=cap_font, fill=(166, 163, 155))
+                x += draw.textlength(ch, font=cap_font) + tracking
+
+    canvas.save(out_path)
 
 
 def render_schema(post, canonical_url):
@@ -243,6 +318,7 @@ def render_post_page(post):
     <div class="headline">{html.escape(post['title'])}</div>
     <div class="meta-row">{format_date_long(post['date'])}</div>
     <div class="body-copy">
+      {render_stat_bar_html(post)}
       {post['body_html']}
     </div>
     <div class="cta-wrap">
@@ -315,6 +391,7 @@ def render_email_ready_page(post, link):
   </div>
   <div class="wrap" id="emailContent">
     <div class="body-copy">
+      {render_stat_bar_html(post)}
       {post['body_html']}
     </div>
     <div class="body-copy">
@@ -408,6 +485,12 @@ def rfc822(date_str):
     return dt.strftime("%a, %d %b %Y %H:%M:%S %z")
 
 
+def render_stat_bar_html(post):
+    if not post.get("stat_image_url"):
+        return ""
+    return f'<img src="{post["stat_image_url"]}" alt="Key numbers from this post" style="width:100%;max-width:100%;height:auto;display:block;margin:0 0 30px;">'
+
+
 def render_email_footer(post, link):
     """Appended after every post's body (both the RSS content:encoded and
     the email-ready copy/paste page). Deliberately plain inline formatting
@@ -439,7 +522,7 @@ def render_rss(posts):
     items_xml = ""
     for p in posts:
         link = f"{SITE_URL}/journal/{p['slug']}.html"
-        email_body = p['body_html'] + render_email_footer(p, link)
+        email_body = render_stat_bar_html(p) + p['body_html'] + render_email_footer(p, link)
         items_xml += f"""
     <item>
       <title>{html.escape(p['title'])}</title>
@@ -479,6 +562,15 @@ def main():
 
     out_dir = os.path.join(REPO_ROOT, OUTPUT_DIR)
     os.makedirs(out_dir, exist_ok=True)
+    assets_dir = os.path.join(out_dir, "assets")
+    os.makedirs(assets_dir, exist_ok=True)
+
+    for p in posts:
+        if p["stats"]:
+            stat_filename = f"{p['slug']}-stats.png"
+            render_stat_bar_image(p["stats"], os.path.join(assets_dir, stat_filename))
+            p["stat_image_url"] = f"{SITE_URL}/{OUTPUT_DIR}/assets/{stat_filename}"
+            print(f"Built {os.path.join(assets_dir, stat_filename)}")
 
     for p in posts:
         link = f"{SITE_URL}/{OUTPUT_DIR}/{p['slug']}.html"

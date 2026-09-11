@@ -4,6 +4,7 @@ date: 2026-09-11
 excerpt: Yes — but only if the equipment disappears when it's not training time. A real refit story about $50,000 in gym equipment, one trip to Europe, and the fix that actually worked.
 issue: "015"
 cta_text: Start a Project
+stats: 140FT:Yacht Length|$50K:Equipment Rebuilt Once|1:Europe Trip That Exposed It|12:Seats When Not Training
 ---
 
 Yes — but only if the equipment is designed to disappear the moment training's over. A dedicated gym room works on land because the room has a door. A yacht rooftop doesn't have that luxury: it's training space at 7am and it's the party by 7pm, in the same square footage. Get that wrong, and you've built a very expensive obstacle.

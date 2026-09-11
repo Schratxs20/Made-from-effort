@@ -24,7 +24,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install markdown
+        run: pip install markdown pillow
 
       - name: Build journal (posts, index, RSS feed)
         run: python3 scripts/build_journal.py

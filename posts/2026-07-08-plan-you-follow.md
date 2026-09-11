@@ -4,6 +4,7 @@ date: 2026-07-08
 excerpt: Why the "perfect" plan usually fails, the compounding math of consistency, and the three levers that actually protect it.
 issue: "014"
 cta_text: Train with Me
+stats: 15YRS:Pattern Observed Across Clients|12WK:Training Block Studied|60%:Person A's Completion Rate|95%:Person B's Completion Rate
 ---
 
 Every client I've ever trained who actually transformed had one thing in common.
