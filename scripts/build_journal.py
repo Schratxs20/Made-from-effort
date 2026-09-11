@@ -385,24 +385,28 @@ def rfc822(date_str):
 
 
 def render_email_footer(post, link):
-    """Appended to every RSS item's content:encoded — this is what Beehiiv's
-    RSS-to-Send pulls into the email body. Inline styles only: once this
-    passes through Beehiiv's importer, a shared <style> block can't be
-    relied on to survive, but inline styles do. This block is what makes
+    """Appended after every post's body (both the RSS content:encoded and
+    the email-ready copy/paste page). Deliberately plain inline formatting
+    only — bold, underline, color on a link — nothing that depends on
+    background-color, padding, or display:inline-block. Those read fine on
+    the site itself, but a paste into a block-based editor like Beehiiv's
+    Post Builder normalizes pasted HTML into its own block types and drops
+    styling like that; bold/underline/color on a run of text is about as
+    close to universally paste-safe as inline HTML gets. This is what makes
     'always link back to the site + always show Instagram' true regardless
     of whatever template settings get changed inside Beehiiv later."""
     cta_link = resolve_cta_link(post)
     cta_text = html.escape(post.get('cta_text', 'Start a Project'))
     return f"""
 <div style="margin-top:40px;padding-top:28px;border-top:1px solid #E2E0D9;font-family:Inter,-apple-system,sans-serif;">
-  <p style="margin:0 0 20px;">
-    <a href="{link}" style="display:inline-block;font-family:Inter,-apple-system,sans-serif;font-weight:500;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#FAF9F6;background:#1C1C1A;padding:14px 28px;text-decoration:none;">Read It On The Site</a>
+  <p style="margin:0 0 16px;">
+    <a href="{link}" style="color:#1C1C1A;font-weight:600;font-size:15px;text-decoration:underline;">Read It On The Site &rarr;</a>
   </p>
   <p style="margin:0 0 14px;">
-    <a href="{cta_link}" style="color:#1C1C1A;font-weight:500;font-size:15px;text-decoration:underline;">{cta_text} &rarr;</a>
+    <a href="{cta_link}" style="color:#1C1C1A;font-weight:600;font-size:15px;text-decoration:underline;">{cta_text} &rarr;</a>
   </p>
-  <p style="margin:0;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#A6A39B;">
-    Follow along &middot; <a href="https://www.instagram.com/scottschrat" style="color:#57677A;text-decoration:none;font-weight:500;">@SCOTTSCHRAT on Instagram</a>
+  <p style="margin:0;font-size:13px;color:#6B6B66;">
+    Follow along &middot; <a href="https://www.instagram.com/scottschrat" style="color:#57677A;font-weight:600;text-decoration:underline;">@SCOTTSCHRAT on Instagram</a>
   </p>
 </div>"""
 
