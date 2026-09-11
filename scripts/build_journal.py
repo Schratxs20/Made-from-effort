@@ -238,10 +238,34 @@ def rfc822(date_str):
     return dt.strftime("%a, %d %b %Y %H:%M:%S %z")
 
 
+def render_email_footer(post, link):
+    """Appended to every RSS item's content:encoded — this is what Beehiiv's
+    RSS-to-Send pulls into the email body. Inline styles only: once this
+    passes through Beehiiv's importer, a shared <style> block can't be
+    relied on to survive, but inline styles do. This block is what makes
+    'always link back to the site + always show Instagram' true regardless
+    of whatever template settings get changed inside Beehiiv later."""
+    cta_link = resolve_cta_link(post)
+    cta_text = html.escape(post.get('cta_text', 'Start a Project'))
+    return f"""
+<div style="margin-top:40px;padding-top:28px;border-top:1px solid #E2E0D9;font-family:Inter,-apple-system,sans-serif;">
+  <p style="margin:0 0 20px;">
+    <a href="{link}" style="display:inline-block;font-family:Inter,-apple-system,sans-serif;font-weight:500;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#FAF9F6;background:#1C1C1A;padding:14px 28px;text-decoration:none;">Read It On The Site</a>
+  </p>
+  <p style="margin:0 0 14px;">
+    <a href="{cta_link}" style="color:#1C1C1A;font-weight:500;font-size:15px;text-decoration:underline;">{cta_text} &rarr;</a>
+  </p>
+  <p style="margin:0;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#A6A39B;">
+    Follow along &middot; <a href="https://www.instagram.com/scottschrat" style="color:#57677A;text-decoration:none;font-weight:500;">@SCOTTSCHRAT on Instagram</a>
+  </p>
+</div>"""
+
+
 def render_rss(posts):
     items_xml = ""
     for p in posts:
         link = f"{SITE_URL}/journal/{p['slug']}.html"
+        email_body = p['body_html'] + render_email_footer(p, link)
         items_xml += f"""
     <item>
       <title>{html.escape(p['title'])}</title>
@@ -249,7 +273,7 @@ def render_rss(posts):
       <guid isPermaLink="true">{link}</guid>
       <pubDate>{rfc822(p['date'])}</pubDate>
       <description><![CDATA[{p.get('excerpt', '')}]]></description>
-      <content:encoded><![CDATA[{p['body_html']}]]></content:encoded>
+      <content:encoded><![CDATA[{email_body}]]></content:encoded>
     </item>"""
 
     return f"""<?xml version="1.0" encoding="UTF-8"?>
