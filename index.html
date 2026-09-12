@@ -150,6 +150,7 @@ h1 em { font-style: italic; color: var(--ink-mid); }
 .pc:nth-child(3) { grid-column: 1/5; aspect-ratio: 4/3; }
 .pc:nth-child(4) { grid-column: 5/9; aspect-ratio: 4/3; }
 .pc:nth-child(5) { grid-column: 9/13; aspect-ratio: 4/3; }
+.pc:nth-child(6) { grid-column: 1/5; aspect-ratio: 4/3; }
 .pc-bg { position: absolute; inset: 0; transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
 .pc:hover .pc-bg { transform: scale(1.04); }
 .pc:nth-child(1) .pc-bg { background: #1a1a18; }
@@ -163,6 +164,8 @@ h1 em { font-style: italic; color: var(--ink-mid); }
 .pc:nth-child(3) .pc-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
 .pc:nth-child(4) .pc-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 .pc:nth-child(5) .pc-bg { background: linear-gradient(135deg,#b8c0c8,#8898a8); }
+.pc:nth-child(6) .pc-bg { background: #1a1a18; }
+.pc:nth-child(6) .pc-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
 .pc-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(24,24,22,0.72) 0%, transparent 55%); z-index: 1; }
 .pc-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 22px 22px 18px; z-index: 2; }
 .pc-status { display: inline-block; font-size: 9px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 400; padding: 3px 9px; margin-bottom: 7px; }
@@ -573,6 +576,7 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     <a href="project-jericho.html" class="pc reveal d1"><div class="pc-bg"><img src="jericho-hero.jpg" alt="Jericho Private Estate"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Jericho Private Estate</div><div class="pc-loc">Luxury Residence · Long Island, NY</div></div><span class="pc-view-btn">View Project</span></a>
     <div class="pc reveal d2"><div class="pc-bg"><img src="IMG_6819.jpeg" alt="San Francisco Residence"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress — 50%</span><div class="pc-name">San Francisco Residence</div><div class="pc-loc">Private Home Gym · Bay Area, CA</div></div></div>
     <div class="pc reveal d3"><div class="pc-bg"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-new">Starting Soon</span><div class="pc-name">Sands Point Estate</div><div class="pc-loc">Private Residence · Long Island, NY</div></div></div>
+    <div class="pc reveal d3"><div class="pc-bg"><img src="glen-cove-hero.jpg" alt="Glen Cove Residence — under construction"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress</span><div class="pc-name">Glen Cove Residence</div><div class="pc-loc">Private Residence · Glen Cove, NY</div></div></div>
   </div>
 </section>
 
