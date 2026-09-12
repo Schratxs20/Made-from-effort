@@ -56,6 +56,12 @@
   .nav-cta { color: var(--white) !important; background: var(--ink); padding: 9px 22px; transition: background 0.25s !important; }
   .nav-cta:hover { background: var(--blue) !important; }
 
+  .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 32px; height: 32px; background: none; border: none; cursor: pointer; padding: 0; }
+  .nav-toggle span { display: block; width: 100%; height: 1.5px; background: var(--ink); transition: transform 0.25s ease, opacity 0.2s ease; }
+  nav.nav-open .nav-toggle span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  nav.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+  nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
   /* PAGE HEADER */
   .page-header {
     margin-top: 60px;
@@ -168,7 +174,17 @@
   /* MOBILE */
   @media(max-width: 860px) {
     nav { padding: 0 20px; }
-    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none; position: fixed; top: 60px; left: 0; right: 0; height: calc(100vh - 60px);
+      flex-direction: column; align-items: stretch; gap: 0; overflow-y: auto;
+      background: rgba(250,250,248,0.98); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule); padding: 8px 0 24px;
+    }
+    nav.nav-open .nav-links { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 16px 24px; border-bottom: 1px solid var(--rule); }
+    .nav-links .nav-cta { margin: 16px 24px; text-align: center; display: block; }
     .page-header { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px 56px; }
     .options-section { padding: 56px 24px; }
     .options-grid { grid-template-columns: 1fr; }
@@ -181,12 +197,15 @@
 </head>
 <body>
 
-<nav>
+<nav id="siteNav">
   <a href="index.html" class="nav-brand">
     <span class="nav-brand-name">Made From Effort</span>
     <span class="nav-brand-sub">Performance Edge Training + Gym Design</span>
   </a>
-  <ul class="nav-links">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="index.html#portfolio">Portfolio</a></li>
     <li><a href="index.html#services">Services</a></li>
     <li><a href="index.html#process">Process</a></li>
@@ -303,6 +322,24 @@
 </footer>
 
 <script>
+/* ── MOBILE NAV TOGGLE ────────────────────────── */
+(function() {
+  const nav = document.getElementById('siteNav');
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  if (!nav || !toggle || !links) return;
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      nav.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
 /* ── SMOOTH SCROLL ───────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
