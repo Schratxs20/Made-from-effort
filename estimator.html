@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Private Gym Investment Estimator | Made From Effort</title>
-<meta name="description" content="Answer a few questions about your space and vision and get a live, directional investment range — equipment, finishes, and construction included.">
+<meta name="description" content="Answer a few questions about your space and vision and get a directional investment range — equipment, finishes, and construction included.">
 <link rel="canonical" href="https://www.madefromeffort.com/estimator.html">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.madefromeffort.com/estimator.html">
 <meta property="og:title" content="Private Gym Investment Estimator | Made From Effort">
-<meta property="og:description" content="Answer a few questions about your space and vision and get a live, directional investment range.">
+<meta property="og:description" content="Answer a few questions about your space and vision and get a directional investment range.">
 <meta property="og:site_name" content="Made From Effort">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Private Gym Investment Estimator | Made From Effort">
-<meta name="twitter:description" content="Answer a few questions about your space and vision and get a live, directional investment range.">
+<meta name="twitter:description" content="Answer a few questions about your space and vision and get a directional investment range.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,7 +48,7 @@ body {
   padding: 60px 24px 100px;
 }
 
-.page { width: 100%; max-width: 720px; margin: 0 auto; }
+.page { width: 100%; max-width: 640px; margin: 0 auto; }
 
 .section-label {
   font-family: 'Jost', sans-serif;
@@ -63,7 +63,7 @@ body {
 
 .section-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(32px, 5vw, 50px);
+  font-size: clamp(30px, 5vw, 46px);
   font-weight: 300;
   line-height: 1.1;
   color: var(--ink);
@@ -77,34 +77,51 @@ body {
   color: var(--slate);
   letter-spacing: 0.02em;
   line-height: 1.7;
-  max-width: 480px;
-  margin: 0 auto 48px;
+  max-width: 460px;
+  margin: 0 auto 40px;
   text-align: center;
 }
 
-/* QUESTION BLOCKS */
-.q-block {
+.form-card {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 2px;
-  padding: 32px 32px 36px;
-  margin-bottom: 16px;
+  padding: 44px 40px;
   box-shadow: var(--shadow);
 }
+
+/* STEP BAR */
+.step-bar { display: flex; align-items: center; gap: 0; margin-bottom: 40px; }
+.step { display: flex; align-items: center; gap: 8px; cursor: default; }
+.step-num {
+  width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9.5px; font-weight: 500; color: var(--slate);
+  background: var(--white); transition: all 0.3s ease; flex-shrink: 0;
+}
+.step-line { flex: 1; height: 1px; background: var(--border); margin: 0 4px; min-width: 8px; }
+.step.active .step-num { background: var(--ink); border-color: var(--ink); color: var(--white); }
+.step.done .step-num { background: var(--gold); border-color: var(--gold); color: var(--white); }
+
+/* PANELS */
+.panel { display: none; }
+.panel.active { display: block; animation: fadeUp 0.35s ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
 .q-num {
   font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500;
-  letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px;
+  letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; text-transform: uppercase;
 }
 .q-title {
-  font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400;
-  color: var(--ink); margin-bottom: 4px;
+  font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400;
+  color: var(--ink); margin-bottom: 6px;
 }
-.q-note { font-size: 12.5px; color: var(--slate); margin-bottom: 22px; line-height: 1.6; }
+.q-note { font-size: 13px; color: var(--slate); margin-bottom: 26px; line-height: 1.6; }
 
 /* SLIDER */
 .slider-value {
-  font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400;
-  color: var(--ink); text-align: center; margin-bottom: 14px;
+  font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 400;
+  color: var(--ink); text-align: center; margin: 8px 0 20px;
 }
 .slider-value em { font-style: italic; color: var(--gold); }
 input[type="range"] {
@@ -112,71 +129,86 @@ input[type="range"] {
   outline: none; margin: 12px 0;
 }
 input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
+  -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
   background: var(--gold); cursor: pointer; border: 3px solid var(--white); box-shadow: 0 0 0 1px var(--gold);
 }
 input[type="range"]::-moz-range-thumb {
-  width: 18px; height: 18px; border-radius: 50%; background: var(--gold);
+  width: 20px; height: 20px; border-radius: 50%; background: var(--gold);
   cursor: pointer; border: 3px solid var(--white); box-shadow: 0 0 0 1px var(--gold);
 }
-.slider-endpoints { display: flex; justify-content: space-between; font-size: 10.5px; color: var(--slate-light); letter-spacing: 0.05em; }
+.slider-endpoints { display: flex; justify-content: space-between; font-size: 10.5px; color: var(--slate-light); letter-spacing: 0.05em; margin-bottom: 8px; }
 
 /* TILE SELECTOR */
-.tile-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.tile-group.tiles-4 { grid-template-columns: repeat(4, 1fr); }
+.tile-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.tile-group.tiles-4 { grid-template-columns: repeat(2, 1fr); }
 .tile {
-  border: 1px solid var(--border); border-radius: 2px; padding: 16px 14px;
+  border: 1px solid var(--border); border-radius: 2px; padding: 18px 16px;
   cursor: pointer; transition: all 0.2s ease; background: var(--ivory);
   position: relative; user-select: none;
 }
 .tile:hover { border-color: var(--slate); background: var(--white); }
 .tile.selected { border-color: var(--ink); background: var(--white); box-shadow: inset 0 0 0 1px var(--ink); }
 .tile input { position: absolute; opacity: 0; width: 0; height: 0; }
-.tile-name { font-size: 11.5px; font-weight: 500; letter-spacing: 0.05em; color: var(--ink); display: block; margin-bottom: 4px; }
-.tile-desc { font-size: 10.5px; color: var(--slate); line-height: 1.45; }
+.tile-name { font-size: 12px; font-weight: 500; letter-spacing: 0.05em; color: var(--ink); display: block; margin-bottom: 5px; }
+.tile-desc { font-size: 11px; color: var(--slate); line-height: 1.5; }
 .tile-check {
-  position: absolute; top: 10px; right: 10px; width: 15px; height: 15px; border-radius: 50%;
+  position: absolute; top: 12px; right: 12px; width: 16px; height: 16px; border-radius: 50%;
   border: 1px solid var(--border); background: var(--white); display: flex; align-items: center; justify-content: center;
   font-size: 9px; color: transparent; transition: all 0.2s ease;
 }
 .tile.selected .tile-check { background: var(--ink); border-color: var(--ink); color: var(--white); }
 
 @media (max-width: 560px) {
-  .tile-group, .tile-group.tiles-4 { grid-template-columns: 1fr 1fr; }
-  .q-block { padding: 24px 20px 28px; }
+  .tile-group { grid-template-columns: 1fr 1fr; }
+  .tile-group.tiles-4 { grid-template-columns: 1fr 1fr; }
+  .form-card { padding: 32px 22px; }
 }
 
-/* ESTIMATE PANEL */
-.estimate-panel {
-  background: var(--ink); color: var(--ivory); border-radius: 2px;
-  padding: 40px 32px; text-align: center; margin-top: 32px;
+/* NAV */
+.form-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--border);
 }
-.estimate-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 16px; }
+.btn-back {
+  background: none; border: none; font-family: 'Jost', sans-serif; font-size: 12px;
+  font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--slate);
+  cursor: pointer; padding: 0; transition: color 0.2s;
+}
+.btn-back:hover { color: var(--ink); }
+.btn-back.hidden { visibility: hidden; }
+.btn-next {
+  background: var(--ink); border: none; font-family: 'Jost', sans-serif; font-size: 12px;
+  font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white);
+  cursor: pointer; padding: 14px 34px; border-radius: 1px; transition: background 0.25s, transform 0.15s;
+}
+.btn-next:hover { background: var(--gold); transform: translateY(-1px); }
+
+/* ESTIMATE (final panel) */
+.estimate-block { background: var(--ink); color: var(--ivory); border-radius: 2px; padding: 36px 28px; text-align: center; margin: -44px -40px 0; }
+@media (max-width: 560px) { .estimate-block { margin: -32px -22px 0; padding: 32px 22px; } }
+.estimate-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 14px; }
 .estimate-range {
-  font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 7vw, 60px); font-weight: 300;
+  font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 7vw, 54px); font-weight: 300;
   color: var(--white); line-height: 1; margin-bottom: 10px; font-variant-numeric: tabular-nums;
 }
-.estimate-note { font-size: 12.5px; color: rgba(249,247,243,0.55); max-width: 380px; margin: 0 auto 28px; line-height: 1.6; }
+.estimate-note { font-size: 12px; color: rgba(249,247,243,0.55); max-width: 380px; margin: 0 auto 24px; line-height: 1.6; }
 
-.breakdown { text-align: left; max-width: 380px; margin: 0 auto 8px; border-top: 1px solid rgba(249,247,243,0.15); padding-top: 20px; }
+.breakdown { text-align: left; max-width: 380px; margin: 0 auto 8px; border-top: 1px solid rgba(249,247,243,0.15); padding-top: 18px; }
 .breakdown-row { display: flex; justify-content: space-between; font-size: 12.5px; padding: 9px 0; border-bottom: 1px solid rgba(249,247,243,0.08); }
 .breakdown-row .label { color: rgba(249,247,243,0.65); }
 .breakdown-row .value { color: var(--white); font-variant-numeric: tabular-nums; }
-.breakdown-locked { text-align: center; font-size: 11px; color: rgba(249,247,243,0.4); letter-spacing: 0.05em; margin-top: 16px; }
+.breakdown-locked { text-align: center; font-size: 11px; color: rgba(249,247,243,0.4); letter-spacing: 0.05em; margin-top: 14px; }
 
 /* GATE FORM */
-.gate {
-  background: var(--white); color: var(--ink); border-radius: 2px; padding: 32px 28px;
-  margin-top: 16px; text-align: left;
-}
-.gate-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; margin-bottom: 6px; }
-.gate-sub { font-size: 12px; color: var(--slate); margin-bottom: 20px; line-height: 1.6; }
+.gate { padding-top: 32px; }
+.gate-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; margin-bottom: 6px; }
+.gate-sub { font-size: 13px; color: var(--slate); margin-bottom: 22px; line-height: 1.6; }
 .gate .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
 .gate label { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--slate); }
 .gate input {
-  font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: var(--ink);
+  font-family: 'Jost', sans-serif; font-size: 15px; font-weight: 300; color: var(--ink);
   background: var(--ivory); border: 1px solid var(--border); border-radius: 1px;
-  padding: 12px 14px; outline: none; width: 100%;
+  padding: 13px 15px; outline: none; width: 100%;
 }
 .gate input:focus { border-color: var(--ink); background: var(--white); }
 .gate input.error { border-color: var(--error); }
@@ -191,14 +223,13 @@ input[type="range"]::-moz-range-thumb {
 .btn-unlock:hover { background: var(--gold); }
 .btn-unlock:disabled { opacity: 0.6; cursor: default; }
 
-.result-panel { display: none; }
+.result-panel { display: none; padding-top: 28px; text-align: center; }
 .result-panel.active { display: block; animation: fadeUp 0.4s ease both; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .result-mark { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: var(--gold); font-size: 18px; }
-.result-cta { display: inline-block; margin-top: 20px; color: var(--gold-light); font-size: 12px; letter-spacing: 0.1em; text-decoration: underline; }
+.result-cta { display: inline-block; margin-top: 20px; color: var(--gold); font-size: 12px; letter-spacing: 0.1em; text-decoration: underline; }
 
 .gate-hidden { display: none; }
-.disclaimer { text-align: center; font-size: 11px; color: var(--slate-light); margin-top: 20px; line-height: 1.6; }
+.disclaimer { text-align: center; font-size: 11px; color: var(--slate-light); margin-top: 28px; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -206,255 +237,299 @@ input[type="range"]::-moz-range-thumb {
 <div class="page">
   <p class="section-label">Private Gym Investment Estimator</p>
   <h1 class="section-heading">What Would Your <em>Gym</em> Actually Cost?</h1>
-  <p class="section-sub">Answer a few questions about your space and vision. This gives you a directional turnkey range — equipment, finishes, and construction included — in under a minute.</p>
+  <p class="section-sub">Answer eight questions about your space and vision. We'll give you a directional turnkey range — equipment, finishes, installation, and design — in under a minute.</p>
 
-  <!-- 01 SPACE -->
-  <div class="q-block">
-    <p class="q-num">01 / Your Space</p>
-    <p class="q-title">How much room do you have?</p>
-    <p class="slider-value"><em id="sqftValue">800</em> sq ft</p>
-    <input type="range" id="sqft" min="200" max="3000" step="25" value="800">
-    <div class="slider-endpoints"><span>200 sq ft</span><span>3,000 sq ft</span></div>
-  </div>
+  <div class="form-card">
 
-  <!-- 02 EQUIPMENT TIER -->
-  <div class="q-block">
-    <p class="q-num">02 / Equipment Tier</p>
-    <p class="q-title">What level of equipment?</p>
-    <p class="q-note">Pick the closest match — we'll refine it together once we know your goals.</p>
-    <div class="tile-group" id="group-tier">
-      <label class="tile" data-group="tier" data-value="functional">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="tier">
-        <span class="tile-name">Functional</span>
-        <span class="tile-desc">Training-focused. Workhorse racks, rigs, and conditioning iron.</span>
-      </label>
-      <label class="tile" data-group="tier" data-value="premium">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="tier">
-        <span class="tile-name">Premium</span>
-        <span class="tile-desc">Commercial-grade. The finish and feel of a private club.</span>
-      </label>
-      <label class="tile" data-group="tier" data-value="custom">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="tier">
-        <span class="tile-name">Custom &amp; Signature</span>
-        <span class="tile-desc">Hand-built and design-led. The equipment is the architecture.</span>
-      </label>
-    </div>
-  </div>
+    <!-- STEP BAR -->
+    <div class="step-bar" id="stepBar"></div>
 
-  <!-- 03 RECOVERY & WELLNESS -->
-  <div class="q-block">
-    <p class="q-num">03 / Recovery &amp; Wellness</p>
-    <p class="q-title">Any recovery features?</p>
-    <p class="q-note">Select any that apply — none required.</p>
-    <div class="tile-group tiles-4" id="group-recovery">
-      <label class="tile" data-group="recovery" data-value="sauna">
-        <span class="tile-check">✓</span>
-        <input type="checkbox">
-        <span class="tile-name">Sauna</span>
-        <span class="tile-desc">Infrared or traditional, installed with dedicated electrical.</span>
-      </label>
-      <label class="tile" data-group="recovery" data-value="coldplunge">
-        <span class="tile-check">✓</span>
-        <input type="checkbox">
-        <span class="tile-name">Cold Plunge</span>
-        <span class="tile-desc">Chilled immersion with filtration, plumbed in.</span>
-      </label>
-      <label class="tile" data-group="recovery" data-value="redlight">
-        <span class="tile-check">✓</span>
-        <input type="checkbox">
-        <span class="tile-name">Red Light</span>
-        <span class="tile-desc">Panel or booth, dedicated circuit.</span>
-      </label>
-      <label class="tile" data-group="recovery" data-value="recoverystation">
-        <span class="tile-check">✓</span>
-        <input type="checkbox">
-        <span class="tile-name">Recovery Station</span>
-        <span class="tile-desc">Percussion, compression, mobility tools with storage.</span>
-      </label>
-    </div>
-  </div>
-
-  <!-- 04 FLOORING -->
-  <div class="q-block">
-    <p class="q-num">04 / Flooring</p>
-    <p class="q-title">What kind of floor?</p>
-    <div class="tile-group" id="group-flooring">
-      <label class="tile" data-group="flooring" data-value="performance">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="flooring">
-        <span class="tile-name">Performance Rubber</span>
-        <span class="tile-desc">Commercial rubber roll or tile. The proven standard.</span>
-      </label>
-      <label class="tile" data-group="flooring" data-value="tile">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="flooring">
-        <span class="tile-name">Premium Tile</span>
-        <span class="tile-desc">Interlocking performance tile with turf accent options.</span>
-      </label>
-      <label class="tile" data-group="flooring" data-value="designer">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="flooring">
-        <span class="tile-name">Designer</span>
-        <span class="tile-desc">Marble-look and other design-led performance surfaces.</span>
-      </label>
-    </div>
-  </div>
-
-  <!-- 05 MIRRORS -->
-  <div class="q-block">
-    <p class="q-num">05 / Mirrors</p>
-    <p class="q-title">How much mirror wall?</p>
-    <div class="tile-group" id="group-mirrors">
-      <label class="tile" data-group="mirrors" data-value="none">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="mirrors">
-        <span class="tile-name">None</span>
-        <span class="tile-desc">No mirrored walls.</span>
-      </label>
-      <label class="tile" data-group="mirrors" data-value="single">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="mirrors">
-        <span class="tile-name">Single Wall</span>
-        <span class="tile-desc">Floor-to-ceiling glass on one wall.</span>
-      </label>
-      <label class="tile" data-group="mirrors" data-value="wraparound">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="mirrors">
-        <span class="tile-name">Wraparound</span>
-        <span class="tile-desc">Two to three mirrored walls for a full studio effect.</span>
-      </label>
-    </div>
-  </div>
-
-  <!-- 06 LIGHTING -->
-  <div class="q-block">
-    <p class="q-num">06 / Lighting</p>
-    <p class="q-title">Keep it or upgrade it?</p>
-    <div class="tile-group" id="group-lighting">
-      <label class="tile" data-group="lighting" data-value="existing">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="lighting">
-        <span class="tile-name">Keep Existing</span>
-        <span class="tile-desc">No lighting changes.</span>
-      </label>
-      <label class="tile" data-group="lighting" data-value="upgraded">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="lighting">
-        <span class="tile-name">Upgraded</span>
-        <span class="tile-desc">Dimmable, temperature-tuned recessed lighting with dedicated circuits.</span>
-      </label>
-      <label class="tile" data-group="lighting" data-value="statement">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="lighting">
-        <span class="tile-name">Statement</span>
-        <span class="tile-desc">Architectural LED features, coves, and scene control.</span>
-      </label>
-    </div>
-  </div>
-
-  <!-- 07 WALL FINISHES -->
-  <div class="q-block">
-    <p class="q-num">07 / Wall Finishes</p>
-    <p class="q-title">What's happening with the walls?</p>
-    <div class="tile-group" id="group-walls">
-      <label class="tile" data-group="walls" data-value="paint">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="walls">
-        <span class="tile-name">Paint Refresh</span>
-        <span class="tile-desc">Fresh paint to refresh the space.</span>
-      </label>
-      <label class="tile" data-group="walls" data-value="wood">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="walls">
-        <span class="tile-name">Wood Slat Accent</span>
-        <span class="tile-desc">Natural oak slat feature walls that define the room.</span>
-      </label>
-      <label class="tile" data-group="walls" data-value="designer">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="walls">
-        <span class="tile-name">Full Designer</span>
-        <span class="tile-desc">Wraparound treatments, millwork, and branded details.</span>
-      </label>
-    </div>
-  </div>
-
-  <!-- 08 CONSTRUCTION -->
-  <div class="q-block">
-    <p class="q-num">08 / Construction</p>
-    <p class="q-title">Does the space need build-out?</p>
-    <p class="q-note">Before the gym itself goes in.</p>
-    <div class="tile-group" id="group-construction">
-      <label class="tile" data-group="construction" data-value="movein">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="construction">
-        <span class="tile-name">Move-in Ready</span>
-        <span class="tile-desc">Finished room — flooring and equipment only.</span>
-      </label>
-      <label class="tile" data-group="construction" data-value="minor">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="construction">
-        <span class="tile-name">Minor Work</span>
-        <span class="tile-desc">Electrical, floor prep, subfloor leveling, light framing.</span>
-      </label>
-      <label class="tile" data-group="construction" data-value="major">
-        <span class="tile-check">✓</span>
-        <input type="radio" name="construction">
-        <span class="tile-name">Major Build-Out</span>
-        <span class="tile-desc">Structural work, garage or basement conversion, HVAC, sheetrock.</span>
-      </label>
-    </div>
-  </div>
-
-  <!-- LIVE ESTIMATE -->
-  <div class="estimate-panel">
-    <p class="estimate-label">Estimated Investment</p>
-    <p class="estimate-range" id="estimateRange">$— – $—</p>
-    <p class="estimate-note">Fully turnkey — project management, delivery, and installation are built into every figure.</p>
-
-    <div class="breakdown" id="teaserBreakdown">
-      <div class="breakdown-row"><span class="label">Equipment — delivered &amp; installed</span><span class="value" id="rowEquipment">$—</span></div>
-      <div class="breakdown-row"><span class="label">Flooring — installed</span><span class="value" id="rowFlooring">$—</span></div>
-    </div>
-    <p class="breakdown-locked" id="lockedNote">Full category breakdown locked — unlock it free below ↓</p>
-
-    <div class="breakdown gate-hidden" id="fullBreakdown">
-      <div class="breakdown-row"><span class="label">Wall finishes</span><span class="value" id="rowWalls">$—</span></div>
-      <div class="breakdown-row"><span class="label">Mirrors</span><span class="value" id="rowMirrors">$—</span></div>
-      <div class="breakdown-row"><span class="label">Lighting</span><span class="value" id="rowLighting">$—</span></div>
-      <div class="breakdown-row" id="rowRecoveryWrap"><span class="label">Recovery &amp; wellness</span><span class="value" id="rowRecovery">$—</span></div>
-      <div class="breakdown-row"><span class="label">Construction / build-out</span><span class="value" id="rowConstruction">$—</span></div>
-    </div>
-
-    <!-- GATE -->
-    <div class="gate" id="gateForm">
-      <p class="gate-title">Unlock your full breakdown</p>
-      <p class="gate-sub">Category-by-category figures and a complimentary 20-minute consultation with Scott.</p>
-      <div class="field" id="field-name">
-        <label for="name">Name</label>
-        <input type="text" id="name" placeholder="James Worthington" autocomplete="name">
-        <span class="gate-error-msg">Please enter your name.</span>
+    <!-- 01 SPACE -->
+    <div class="panel active" id="panel-1">
+      <p class="q-num">01 / Your Space</p>
+      <p class="q-title">How much room do you have?</p>
+      <p class="slider-value"><em id="sqftValue">800</em> sq ft</p>
+      <input type="range" id="sqft" min="200" max="3000" step="25" value="800">
+      <div class="slider-endpoints"><span>200 sq ft</span><span>3,000 sq ft</span></div>
+      <div class="form-nav">
+        <button class="btn-back hidden">← Back</button>
+        <button class="btn-next" onclick="goTo(2)">Continue →</button>
       </div>
-      <div class="field" id="field-email">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="james@example.com" autocomplete="email">
-        <span class="gate-error-msg">Please enter a valid email.</span>
-      </div>
-      <div class="field" id="field-phone">
-        <label for="phone">Phone (optional)</label>
-        <input type="tel" id="phone" placeholder="+1 (917) 000 0000" autocomplete="tel">
-      </div>
-      <button class="btn-unlock" id="unlockBtn">Send My Breakdown</button>
     </div>
 
-    <!-- POST-UNLOCK RESULT -->
-    <div class="result-panel" id="resultPanel">
-      <div class="result-mark">✓</div>
-      <p style="font-size:13px;color:rgba(249,247,243,0.7);line-height:1.6;">Full breakdown unlocked above. We'll follow up directly to set up your consultation — expect to hear from us within one business day.</p>
-      <a class="result-cta" href="contact.html">Or start your project now →</a>
+    <!-- 02 EQUIPMENT TIER -->
+    <div class="panel" id="panel-2">
+      <p class="q-num">02 / Equipment Tier</p>
+      <p class="q-title">What level of equipment?</p>
+      <p class="q-note">Pick the closest match — we'll refine it together once we know your goals.</p>
+      <div class="tile-group" id="group-tier">
+        <label class="tile" data-group="tier" data-value="functional">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="tier">
+          <span class="tile-name">Functional</span>
+          <span class="tile-desc">Training-focused. Workhorse racks, rigs, conditioning iron.</span>
+        </label>
+        <label class="tile" data-group="tier" data-value="premium">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="tier">
+          <span class="tile-name">Premium</span>
+          <span class="tile-desc">Commercial-grade. The finish and feel of a private club.</span>
+        </label>
+        <label class="tile" data-group="tier" data-value="custom">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="tier">
+          <span class="tile-name">Custom &amp; Signature</span>
+          <span class="tile-desc">Hand-built, design-led. The equipment is the architecture.</span>
+        </label>
+      </div>
+      <div class="form-nav">
+        <button class="btn-back" onclick="goTo(1)">← Back</button>
+        <button class="btn-next" onclick="goTo(3)">Continue →</button>
+      </div>
     </div>
+
+    <!-- 03 RECOVERY & WELLNESS -->
+    <div class="panel" id="panel-3">
+      <p class="q-num">03 / Recovery &amp; Wellness</p>
+      <p class="q-title">Any recovery features?</p>
+      <p class="q-note">Select any that apply — none required.</p>
+      <div class="tile-group tiles-4" id="group-recovery">
+        <label class="tile" data-group="recovery" data-value="sauna">
+          <span class="tile-check">✓</span>
+          <input type="checkbox">
+          <span class="tile-name">Sauna</span>
+          <span class="tile-desc">Infrared or traditional, dedicated electrical.</span>
+        </label>
+        <label class="tile" data-group="recovery" data-value="coldplunge">
+          <span class="tile-check">✓</span>
+          <input type="checkbox">
+          <span class="tile-name">Cold Plunge</span>
+          <span class="tile-desc">Chilled immersion with filtration, plumbed in.</span>
+        </label>
+        <label class="tile" data-group="recovery" data-value="redlight">
+          <span class="tile-check">✓</span>
+          <input type="checkbox">
+          <span class="tile-name">Red Light</span>
+          <span class="tile-desc">Panel or booth, dedicated circuit.</span>
+        </label>
+        <label class="tile" data-group="recovery" data-value="recoverystation">
+          <span class="tile-check">✓</span>
+          <input type="checkbox">
+          <span class="tile-name">Recovery Station</span>
+          <span class="tile-desc">Percussion, compression, mobility tools.</span>
+        </label>
+      </div>
+      <div class="form-nav">
+        <button class="btn-back" onclick="goTo(2)">← Back</button>
+        <button class="btn-next" onclick="goTo(4)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- 04 FLOORING -->
+    <div class="panel" id="panel-4">
+      <p class="q-num">04 / Flooring</p>
+      <p class="q-title">What kind of floor?</p>
+      <div class="tile-group" id="group-flooring">
+        <label class="tile" data-group="flooring" data-value="performance">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="flooring">
+          <span class="tile-name">Performance Rubber</span>
+          <span class="tile-desc">Commercial rubber roll or tile. The proven standard.</span>
+        </label>
+        <label class="tile" data-group="flooring" data-value="tile">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="flooring">
+          <span class="tile-name">Premium Tile</span>
+          <span class="tile-desc">Interlocking tile with turf accent options.</span>
+        </label>
+        <label class="tile" data-group="flooring" data-value="designer">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="flooring">
+          <span class="tile-name">Designer</span>
+          <span class="tile-desc">Marble-look and other design-led surfaces.</span>
+        </label>
+      </div>
+      <div class="form-nav">
+        <button class="btn-back" onclick="goTo(3)">← Back</button>
+        <button class="btn-next" onclick="goTo(5)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- 05 MIRRORS -->
+    <div class="panel" id="panel-5">
+      <p class="q-num">05 / Mirrors</p>
+      <p class="q-title">How much mirror wall?</p>
+      <div class="tile-group" id="group-mirrors">
+        <label class="tile" data-group="mirrors" data-value="none">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="mirrors">
+          <span class="tile-name">None</span>
+          <span class="tile-desc">No mirrored walls.</span>
+        </label>
+        <label class="tile" data-group="mirrors" data-value="single">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="mirrors">
+          <span class="tile-name">Single Wall</span>
+          <span class="tile-desc">Floor-to-ceiling glass on one wall.</span>
+        </label>
+        <label class="tile" data-group="mirrors" data-value="wraparound">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="mirrors">
+          <span class="tile-name">Wraparound</span>
+          <span class="tile-desc">Two to three mirrored walls, full studio effect.</span>
+        </label>
+      </div>
+      <div class="form-nav">
+        <button class="btn-back" onclick="goTo(4)">← Back</button>
+        <button class="btn-next" onclick="goTo(6)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- 06 LIGHTING -->
+    <div class="panel" id="panel-6">
+      <p class="q-num">06 / Lighting</p>
+      <p class="q-title">Keep it or upgrade it?</p>
+      <div class="tile-group" id="group-lighting">
+        <label class="tile" data-group="lighting" data-value="existing">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="lighting">
+          <span class="tile-name">Keep Existing</span>
+          <span class="tile-desc">No lighting changes.</span>
+        </label>
+        <label class="tile" data-group="lighting" data-value="upgraded">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="lighting">
+          <span class="tile-name">Upgraded</span>
+          <span class="tile-desc">Dimmable, temperature-tuned recessed lighting.</span>
+        </label>
+        <label class="tile" data-group="lighting" data-value="statement">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="lighting">
+          <span class="tile-name">Statement</span>
+          <span class="tile-desc">Architectural LED features, coves, scene control.</span>
+        </label>
+      </div>
+      <div class="form-nav">
+        <button class="btn-back" onclick="goTo(5)">← Back</button>
+        <button class="btn-next" onclick="goTo(7)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- 07 WALL FINISHES -->
+    <div class="panel" id="panel-7">
+      <p class="q-num">07 / Wall Finishes</p>
+      <p class="q-title">What's happening with the walls?</p>
+      <div class="tile-group" id="group-walls">
+        <label class="tile" data-group="walls" data-value="paint">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="walls">
+          <span class="tile-name">Paint Refresh</span>
+          <span class="tile-desc">Fresh paint to refresh the space.</span>
+        </label>
+        <label class="tile" data-group="walls" data-value="wood">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="walls">
+          <span class="tile-name">Wood Slat Accent</span>
+          <span class="tile-desc">Natural oak slat feature walls.</span>
+        </label>
+        <label class="tile" data-group="walls" data-value="designer">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="walls">
+          <span class="tile-name">Full Designer</span>
+          <span class="tile-desc">Wraparound treatments, millwork, branded details.</span>
+        </label>
+      </div>
+      <div class="form-nav">
+        <button class="btn-back" onclick="goTo(6)">← Back</button>
+        <button class="btn-next" onclick="goTo(8)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- 08 CONSTRUCTION -->
+    <div class="panel" id="panel-8">
+      <p class="q-num">08 / Construction</p>
+      <p class="q-title">Does your space need build-out before the gym goes in?</p>
+      <div class="tile-group" id="group-construction">
+        <label class="tile" data-group="construction" data-value="movein">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="construction">
+          <span class="tile-name">Move-in Ready</span>
+          <span class="tile-desc">Finished room — flooring and equipment only.</span>
+        </label>
+        <label class="tile" data-group="construction" data-value="minor">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="construction">
+          <span class="tile-name">Minor Work</span>
+          <span class="tile-desc">Electrical, floor prep, subfloor leveling, light framing.</span>
+        </label>
+        <label class="tile" data-group="construction" data-value="major">
+          <span class="tile-check">✓</span>
+          <input type="radio" name="construction">
+          <span class="tile-name">Major Build-Out</span>
+          <span class="tile-desc">Structural work, conversion, HVAC, sheetrock.</span>
+        </label>
+      </div>
+      <div class="form-nav">
+        <button class="btn-back" onclick="goTo(7)">← Back</button>
+        <button class="btn-next" onclick="goTo(9)">See My Estimate →</button>
+      </div>
+    </div>
+
+    <!-- 09 ESTIMATE + GATE -->
+    <div class="panel" id="panel-9">
+      <div class="estimate-block">
+        <p class="estimate-label">Estimated Investment</p>
+        <p class="estimate-range" id="estimateRange">$— – $—</p>
+        <p class="estimate-note">Fully turnkey — project management, delivery, and installation are built into every figure.</p>
+
+        <div class="breakdown" id="teaserBreakdown">
+          <div class="breakdown-row"><span class="label">Equipment — delivered &amp; installed</span><span class="value" id="rowEquipment">$—</span></div>
+          <div class="breakdown-row"><span class="label">Flooring — installed</span><span class="value" id="rowFlooring">$—</span></div>
+        </div>
+        <p class="breakdown-locked" id="lockedNote">Full category breakdown locked — unlock it free below ↓</p>
+
+        <div class="breakdown gate-hidden" id="fullBreakdown">
+          <div class="breakdown-row"><span class="label">Wall finishes</span><span class="value" id="rowWalls">$—</span></div>
+          <div class="breakdown-row"><span class="label">Mirrors</span><span class="value" id="rowMirrors">$—</span></div>
+          <div class="breakdown-row"><span class="label">Lighting</span><span class="value" id="rowLighting">$—</span></div>
+          <div class="breakdown-row" id="rowRecoveryWrap"><span class="label">Recovery &amp; wellness</span><span class="value" id="rowRecovery">$—</span></div>
+          <div class="breakdown-row"><span class="label">Construction / build-out</span><span class="value" id="rowConstruction">$—</span></div>
+        </div>
+      </div>
+
+      <!-- GATE -->
+      <div class="gate" id="gateForm">
+        <p class="gate-title">Unlock your full breakdown</p>
+        <p class="gate-sub">Category-by-category figures and a complimentary 20-minute consultation with Scott.</p>
+        <div class="field" id="field-name">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="James Worthington" autocomplete="name">
+          <span class="gate-error-msg">Please enter your name.</span>
+        </div>
+        <div class="field" id="field-email">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="james@example.com" autocomplete="email">
+          <span class="gate-error-msg">Please enter a valid email.</span>
+        </div>
+        <div class="field" id="field-phone">
+          <label for="phone">Phone (optional)</label>
+          <input type="tel" id="phone" placeholder="+1 (917) 000 0000" autocomplete="tel">
+        </div>
+        <button class="btn-unlock" id="unlockBtn">Send My Breakdown</button>
+      </div>
+
+      <!-- POST-UNLOCK RESULT -->
+      <div class="result-panel" id="resultPanel">
+        <div class="result-mark">✓</div>
+        <p style="font-size:13px;color:var(--slate);line-height:1.6;">Full breakdown unlocked above. We'll follow up directly to set up your consultation — expect to hear from us within one business day.</p>
+        <a class="result-cta" href="contact.html">Or start your project now →</a>
+      </div>
+
+      <div class="form-nav" style="border-top:none;margin-top:20px;padding-top:0;justify-content:flex-start;">
+        <button class="btn-back" onclick="goTo(8)">← Back to edit</button>
+      </div>
+    </div>
+
   </div>
 
   <p class="disclaimer">This is a directional estimate based on typical builds — your real number depends on your specific room, goals, and what's already there. Typical equipment lead time at this tier: 8–16 weeks; install adds 1–3 weeks.</p>
@@ -482,6 +557,38 @@ input[type="range"]::-moz-range-thumb {
     construction: 'movein',
     recovery: [],
   };
+
+  const TOTAL_STEPS = 9;
+  const STEP_LABELS = ['Space', 'Equipment', 'Recovery', 'Flooring', 'Mirrors', 'Lighting', 'Walls', 'Construction', 'You'];
+  let currentStep = 1;
+
+  // Build step bar dots
+  const stepBar = document.getElementById('stepBar');
+  for (let i = 1; i <= TOTAL_STEPS; i++) {
+    const step = document.createElement('div');
+    step.className = 'step' + (i === 1 ? ' active' : '');
+    step.id = `step-dot-${i}`;
+    step.innerHTML = `<div class="step-num">${i}</div>`;
+    stepBar.appendChild(step);
+    if (i < TOTAL_STEPS) {
+      const line = document.createElement('div');
+      line.className = 'step-line';
+      stepBar.appendChild(line);
+    }
+  }
+
+  function goTo(n) {
+    document.querySelectorAll('.panel').forEach((p, i) => p.classList.toggle('active', i + 1 === n));
+    for (let i = 1; i <= TOTAL_STEPS; i++) {
+      const dot = document.getElementById(`step-dot-${i}`);
+      dot.classList.remove('active', 'done');
+      if (i < n) dot.classList.add('done');
+      else if (i === n) dot.classList.add('active');
+    }
+    currentStep = n;
+    if (n === TOTAL_STEPS) recalc();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   function fmt(n) {
     if (n === 0) return '$0';
@@ -512,7 +619,6 @@ input[type="range"]::-moz-range-thumb {
           tile.classList.add('selected');
           state[key] = value;
         }
-        recalc();
       });
     });
   }
@@ -530,7 +636,6 @@ input[type="range"]::-moz-range-thumb {
   sqftSlider.addEventListener('input', () => {
     state.sqft = parseInt(sqftSlider.value, 10);
     sqftValue.textContent = state.sqft.toLocaleString('en-US');
-    recalc();
   });
 
   function recalc() {
@@ -566,8 +671,6 @@ input[type="range"]::-moz-range-thumb {
       document.getElementById('rowRecovery').textContent = `${fmt(recCost[0])} – ${fmt(recCost[1])}`;
     }
   }
-
-  recalc();
 
   // ── GATE SUBMIT ──────────────────────────────────────────────────
   document.getElementById('unlockBtn').addEventListener('click', async () => {
