@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Private Gym Investment Estimator | Made From Effort</title>
-<meta name="description" content="Answer a few questions about your space and vision and get a directional investment range — equipment, finishes, and construction included.">
+<meta name="description" content="Answer a few questions about your space and vision and get a directional investment range — equipment, finishes, and installation included.">
 <link rel="canonical" href="https://www.madefromeffort.com/estimator.html">
 
 <!-- Open Graph -->
@@ -239,7 +239,7 @@ input[type="range"]::-moz-range-thumb {
 <div class="page">
   <p class="section-label">Private Gym Investment Estimator</p>
   <h1 class="section-heading">What Would Your <em>Gym</em> Actually Cost?</h1>
-  <p class="section-sub">Answer eight questions about your space and vision. We'll give you a directional turnkey range — equipment, finishes, installation, and design — in under a minute.</p>
+  <p class="section-sub">Answer seven questions about your space and vision. We'll give you a directional range — equipment, finishes, installation, and design — in under a minute.</p>
 
   <div class="form-card">
 
@@ -251,8 +251,8 @@ input[type="range"]::-moz-range-thumb {
       <p class="q-num">01 / Your Space</p>
       <p class="q-title">How much room do you have?</p>
       <p class="slider-value"><em id="sqftValue">800</em> sq ft</p>
-      <input type="range" id="sqft" min="200" max="3000" step="25" value="800">
-      <div class="slider-endpoints"><span>200 sq ft</span><span>3,000 sq ft</span></div>
+      <input type="range" id="sqft" min="200" max="1500" step="25" value="800">
+      <div class="slider-endpoints"><span>200 sq ft</span><span>1,500 sq ft</span></div>
       <div class="form-nav">
         <button class="btn-back hidden">← Back</button>
         <button class="btn-next" onclick="goTo(2)">Continue →</button>
@@ -281,7 +281,7 @@ input[type="range"]::-moz-range-thumb {
           <span class="tile-check">✓</span>
           <input type="radio" name="tier">
           <span class="tile-name">Custom &amp; Signature</span>
-          <span class="tile-desc">Hand-built, design-led. The equipment is the architecture.</span>
+          <span class="tile-desc">Design-led. Custom logo, color, and rack configurations built to your brand.</span>
         </label>
       </div>
       <div class="form-nav">
@@ -295,18 +295,30 @@ input[type="range"]::-moz-range-thumb {
       <p class="q-num">03 / Recovery &amp; Wellness</p>
       <p class="q-title">Any recovery features?</p>
       <p class="q-note">Select any that apply — none required.</p>
-      <div class="tile-group tiles-4" id="group-recovery">
-        <label class="tile" data-group="recovery" data-value="sauna">
+      <div class="tile-group" id="group-recovery">
+        <label class="tile" data-group="recovery" data-value="sauna_prefab">
           <span class="tile-check">✓</span>
           <input type="checkbox">
-          <span class="tile-name">Sauna</span>
-          <span class="tile-desc">Infrared or traditional, dedicated electrical.</span>
+          <span class="tile-name">Sauna — Prefab</span>
+          <span class="tile-desc">Pre-built infrared or traditional unit, dedicated electrical.</span>
         </label>
-        <label class="tile" data-group="recovery" data-value="coldplunge">
+        <label class="tile" data-group="recovery" data-value="sauna_custom">
           <span class="tile-check">✓</span>
           <input type="checkbox">
-          <span class="tile-name">Cold Plunge</span>
-          <span class="tile-desc">Chilled immersion with filtration, plumbed in.</span>
+          <span class="tile-name">Sauna — Custom</span>
+          <span class="tile-desc">Fully custom-built sauna, dedicated electrical.</span>
+        </label>
+        <label class="tile" data-group="recovery" data-value="coldplunge_prefab">
+          <span class="tile-check">✓</span>
+          <input type="checkbox">
+          <span class="tile-name">Cold Plunge — Prefab</span>
+          <span class="tile-desc">Pre-built chilled immersion unit with filtration.</span>
+        </label>
+        <label class="tile" data-group="recovery" data-value="coldplunge_custom">
+          <span class="tile-check">✓</span>
+          <input type="checkbox">
+          <span class="tile-name">Cold Plunge — Custom</span>
+          <span class="tile-desc">Fully custom-built plunge, plumbed and filtered.</span>
         </label>
         <label class="tile" data-group="recovery" data-value="redlight">
           <span class="tile-check">✓</span>
@@ -314,11 +326,17 @@ input[type="range"]::-moz-range-thumb {
           <span class="tile-name">Red Light</span>
           <span class="tile-desc">Panel or booth, dedicated circuit.</span>
         </label>
-        <label class="tile" data-group="recovery" data-value="recoverystation">
+        <label class="tile" data-group="recovery" data-value="toolcharging">
           <span class="tile-check">✓</span>
           <input type="checkbox">
-          <span class="tile-name">Recovery Station</span>
-          <span class="tile-desc">Percussion, compression, mobility tools.</span>
+          <span class="tile-name">Tool Charging Station</span>
+          <span class="tile-desc">Dedicated charging station for percussion and mobility tools.</span>
+        </label>
+        <label class="tile" data-group="recovery" data-value="massageroom">
+          <span class="tile-check">✓</span>
+          <input type="checkbox">
+          <span class="tile-name">Massage Room</span>
+          <span class="tile-desc">A dedicated room for massage and hands-on recovery work.</span>
         </label>
       </div>
       <div class="form-nav">
@@ -408,7 +426,7 @@ input[type="range"]::-moz-range-thumb {
           <span class="tile-check">✓</span>
           <input type="radio" name="lighting">
           <span class="tile-name">Statement</span>
-          <span class="tile-desc">Architectural LED features, coves, scene control.</span>
+          <span class="tile-desc">Architectural LED features, coves, scene control, and a backlit mirror.</span>
         </label>
       </div>
       <div class="form-nav">
@@ -428,61 +446,31 @@ input[type="range"]::-moz-range-thumb {
           <span class="tile-name">Paint Refresh</span>
           <span class="tile-desc">Fresh paint to refresh the space.</span>
         </label>
-        <label class="tile" data-group="walls" data-value="wood">
+        <label class="tile" data-group="walls" data-value="accent">
           <span class="tile-check">✓</span>
           <input type="radio" name="walls">
-          <span class="tile-name">Wood Slat Accent</span>
-          <span class="tile-desc">Natural oak slat feature walls.</span>
+          <span class="tile-name">Accent Wall</span>
+          <span class="tile-desc">A single feature wall — wood, stone, or textured material.</span>
         </label>
         <label class="tile" data-group="walls" data-value="designer">
           <span class="tile-check">✓</span>
           <input type="radio" name="walls">
           <span class="tile-name">Full Designer</span>
-          <span class="tile-desc">Wraparound treatments, millwork, branded details.</span>
+          <span class="tile-desc">Wraparound treatments, millwork, branded details, or a custom mural.</span>
         </label>
       </div>
       <div class="form-nav">
         <button class="btn-back" onclick="goTo(6)">← Back</button>
-        <button class="btn-next" onclick="goTo(8)">Continue →</button>
+        <button class="btn-next" onclick="goTo(8)">See My Estimate →</button>
       </div>
     </div>
 
-    <!-- 08 CONSTRUCTION -->
+    <!-- 08 ESTIMATE + GATE -->
     <div class="panel" id="panel-8">
-      <p class="q-num">08 / Construction</p>
-      <p class="q-title">Does your space need build-out before the gym goes in?</p>
-      <div class="tile-group" id="group-construction">
-        <label class="tile" data-group="construction" data-value="movein">
-          <span class="tile-check">✓</span>
-          <input type="radio" name="construction">
-          <span class="tile-name">Move-in Ready</span>
-          <span class="tile-desc">Finished room — flooring and equipment only.</span>
-        </label>
-        <label class="tile" data-group="construction" data-value="minor">
-          <span class="tile-check">✓</span>
-          <input type="radio" name="construction">
-          <span class="tile-name">Minor Work</span>
-          <span class="tile-desc">Electrical, floor prep, subfloor leveling, light framing.</span>
-        </label>
-        <label class="tile" data-group="construction" data-value="major">
-          <span class="tile-check">✓</span>
-          <input type="radio" name="construction">
-          <span class="tile-name">Major Build-Out</span>
-          <span class="tile-desc">Structural work, conversion, HVAC, sheetrock.</span>
-        </label>
-      </div>
-      <div class="form-nav">
-        <button class="btn-back" onclick="goTo(7)">← Back</button>
-        <button class="btn-next" onclick="goTo(9)">See My Estimate →</button>
-      </div>
-    </div>
-
-    <!-- 09 ESTIMATE + GATE -->
-    <div class="panel" id="panel-9">
       <div class="estimate-block">
         <p class="estimate-label">Estimated Investment</p>
         <p class="estimate-range blurred" id="estimateRange">$— – $—</p>
-        <p class="estimate-note">Fully turnkey — project management, delivery, and installation are built into every figure.</p>
+        <p class="estimate-note">Equipment, finishes, and installation are built into every figure. Any structural or construction work is scoped separately with your contractor.</p>
 
         <div class="breakdown blurred" id="fullBreakdown">
           <div class="breakdown-row"><span class="label">Equipment — delivered &amp; installed</span><span class="value" id="rowEquipment">$—</span></div>
@@ -491,7 +479,6 @@ input[type="range"]::-moz-range-thumb {
           <div class="breakdown-row"><span class="label">Mirrors</span><span class="value" id="rowMirrors">$—</span></div>
           <div class="breakdown-row"><span class="label">Lighting</span><span class="value" id="rowLighting">$—</span></div>
           <div class="breakdown-row" id="rowRecoveryWrap"><span class="label">Recovery &amp; wellness</span><span class="value" id="rowRecovery">$—</span></div>
-          <div class="breakdown-row"><span class="label">Construction / build-out</span><span class="value" id="rowConstruction">$—</span></div>
         </div>
         <p class="breakdown-locked" id="lockedNote">Breakdown locked — unlock it free below ↓</p>
       </div>
@@ -525,13 +512,13 @@ input[type="range"]::-moz-range-thumb {
       </div>
 
       <div class="form-nav" style="border-top:none;margin-top:20px;padding-top:0;justify-content:flex-start;">
-        <button class="btn-back" onclick="goTo(8)">← Back to edit</button>
+        <button class="btn-back" onclick="goTo(7)">← Back to edit</button>
       </div>
     </div>
 
   </div>
 
-  <p class="disclaimer">This is a directional estimate based on typical builds — your real number depends on your specific room, goals, and what's already there. Typical equipment lead time at this tier: 8–16 weeks; install adds 1–3 weeks.</p>
+  <p class="disclaimer">This is a directional estimate based on typical builds — your real number depends on your specific room, goals, and what's already there. Covers equipment, finishes, and installation only; any construction or build-out work is priced separately with your contractor. Typical equipment lead time at this tier: 8–16 weeks; install adds 1–3 weeks.</p>
 </div>
 
 <script>
@@ -540,11 +527,18 @@ input[type="range"]::-moz-range-thumb {
   // range below with real figures before sending traffic to this page.
   const EQUIPMENT_RATE   = { functional: [30, 50], premium: [60, 95], custom: [110, 175] };   // $/sqft
   const FLOORING_RATE    = { performance: [8, 13], tile: [14, 20], designer: [22, 35] };       // $/sqft
-  const WALL_FINISH      = { paint: [1200, 2800], wood: [4000, 8500], designer: [9500, 20000] }; // flat
+  const WALL_FINISH      = { paint: [1200, 2800], accent: [4000, 8500], designer: [9500, 20000] }; // flat
   const MIRRORS          = { none: [0, 0], single: [1200, 2500], wraparound: [3500, 7000] };   // flat
   const LIGHTING         = { existing: [0, 0], upgraded: [2000, 4200], statement: [4800, 11000] }; // flat
-  const RECOVERY         = { sauna: [12000, 20000], coldplunge: [8000, 15000], redlight: [3200, 6500], recoverystation: [4000, 8500] }; // flat, additive
-  const CONSTRUCTION     = { movein: [0, 0], minor: [5000, 14000], major: [25000, 55000] };     // flat add
+  const RECOVERY         = {
+    sauna_prefab: [8000, 14000],
+    sauna_custom: [16000, 28000],
+    coldplunge_prefab: [6000, 11000],
+    coldplunge_custom: [12000, 20000],
+    redlight: [3200, 6500],
+    toolcharging: [2500, 5000],
+    massageroom: [6000, 12000],
+  }; // flat, additive
 
   const state = {
     sqft: 800,
@@ -553,12 +547,11 @@ input[type="range"]::-moz-range-thumb {
     mirrors: 'none',
     lighting: 'existing',
     walls: 'paint',
-    construction: 'movein',
     recovery: [],
   };
 
-  const TOTAL_STEPS = 9;
-  const STEP_LABELS = ['Space', 'Equipment', 'Recovery', 'Flooring', 'Mirrors', 'Lighting', 'Walls', 'Construction', 'You'];
+  const TOTAL_STEPS = 8;
+  const STEP_LABELS = ['Space', 'Equipment', 'Recovery', 'Flooring', 'Mirrors', 'Lighting', 'Walls', 'You'];
   let currentStep = 1;
 
   // Build step bar dots
@@ -628,7 +621,6 @@ input[type="range"]::-moz-range-thumb {
   initTileGroup('group-mirrors', 'mirrors', false);
   initTileGroup('group-lighting', 'lighting', false);
   initTileGroup('group-walls', 'walls', false);
-  initTileGroup('group-construction', 'construction', false);
 
   const sqftSlider = document.getElementById('sqft');
   const sqftValue = document.getElementById('sqftValue');
@@ -643,7 +635,6 @@ input[type="range"]::-moz-range-thumb {
     const wl = WALL_FINISH[state.walls];
     const mr = MIRRORS[state.mirrors];
     const lt = LIGHTING[state.lighting];
-    const cn = CONSTRUCTION[state.construction];
 
     const eqCost = [state.sqft * eq[0], state.sqft * eq[1]];
     const flCost = [state.sqft * fl[0], state.sqft * fl[1]];
@@ -652,8 +643,8 @@ input[type="range"]::-moz-range-thumb {
       return [acc[0] + r[0], acc[1] + r[1]];
     }, [0, 0]);
 
-    const totalLow = eqCost[0] + flCost[0] + wl[0] + mr[0] + lt[0] + recCost[0] + cn[0];
-    const totalHigh = eqCost[1] + flCost[1] + wl[1] + mr[1] + lt[1] + recCost[1] + cn[1];
+    const totalLow = eqCost[0] + flCost[0] + wl[0] + mr[0] + lt[0] + recCost[0];
+    const totalHigh = eqCost[1] + flCost[1] + wl[1] + mr[1] + lt[1] + recCost[1];
 
     document.getElementById('estimateRange').textContent = `${fmtK(totalLow)} – ${fmtK(totalHigh)}`;
     document.getElementById('rowEquipment').textContent = `${fmt(eqCost[0])} – ${fmt(eqCost[1])}`;
@@ -661,7 +652,6 @@ input[type="range"]::-moz-range-thumb {
     document.getElementById('rowWalls').textContent = wl[1] === 0 ? '—' : `${fmt(wl[0])} – ${fmt(wl[1])}`;
     document.getElementById('rowMirrors').textContent = mr[1] === 0 ? '—' : `${fmt(mr[0])} – ${fmt(mr[1])}`;
     document.getElementById('rowLighting').textContent = lt[1] === 0 ? '—' : `${fmt(lt[0])} – ${fmt(lt[1])}`;
-    document.getElementById('rowConstruction').textContent = cn[1] === 0 ? '—' : `${fmt(cn[0])} – ${fmt(cn[1])}`;
     const recoveryRow = document.getElementById('rowRecoveryWrap');
     if (state.recovery.length === 0) {
       recoveryRow.style.display = 'none';
@@ -701,7 +691,6 @@ input[type="range"]::-moz-range-thumb {
     data.append('mirrors', state.mirrors);
     data.append('lighting', state.lighting);
     data.append('walls', state.walls);
-    data.append('construction', state.construction);
     data.append('recovery', state.recovery.join(', ') || 'none');
     data.append('estimate', rangeText);
     data.append('_subject', 'New Estimator Lead — Made From Effort');
