@@ -199,6 +199,8 @@ input[type="range"]::-moz-range-thumb {
 .breakdown-row .value { color: var(--white); font-variant-numeric: tabular-nums; }
 .breakdown-locked { text-align: center; font-size: 11px; color: rgba(249,247,243,0.4); letter-spacing: 0.05em; margin-top: 14px; }
 
+.blurred { filter: blur(7px); user-select: none; pointer-events: none; transition: filter 0.4s ease; }
+
 /* GATE FORM */
 .gate { padding-top: 32px; }
 .gate-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; margin-bottom: 6px; }
@@ -479,22 +481,19 @@ input[type="range"]::-moz-range-thumb {
     <div class="panel" id="panel-9">
       <div class="estimate-block">
         <p class="estimate-label">Estimated Investment</p>
-        <p class="estimate-range" id="estimateRange">$— – $—</p>
+        <p class="estimate-range blurred" id="estimateRange">$— – $—</p>
         <p class="estimate-note">Fully turnkey — project management, delivery, and installation are built into every figure.</p>
 
-        <div class="breakdown" id="teaserBreakdown">
+        <div class="breakdown blurred" id="fullBreakdown">
           <div class="breakdown-row"><span class="label">Equipment — delivered &amp; installed</span><span class="value" id="rowEquipment">$—</span></div>
           <div class="breakdown-row"><span class="label">Flooring — installed</span><span class="value" id="rowFlooring">$—</span></div>
-        </div>
-        <p class="breakdown-locked" id="lockedNote">Full category breakdown locked — unlock it free below ↓</p>
-
-        <div class="breakdown gate-hidden" id="fullBreakdown">
           <div class="breakdown-row"><span class="label">Wall finishes</span><span class="value" id="rowWalls">$—</span></div>
           <div class="breakdown-row"><span class="label">Mirrors</span><span class="value" id="rowMirrors">$—</span></div>
           <div class="breakdown-row"><span class="label">Lighting</span><span class="value" id="rowLighting">$—</span></div>
           <div class="breakdown-row" id="rowRecoveryWrap"><span class="label">Recovery &amp; wellness</span><span class="value" id="rowRecovery">$—</span></div>
           <div class="breakdown-row"><span class="label">Construction / build-out</span><span class="value" id="rowConstruction">$—</span></div>
         </div>
+        <p class="breakdown-locked" id="lockedNote">Breakdown locked — unlock it free below ↓</p>
       </div>
 
       <!-- GATE -->
@@ -716,7 +715,8 @@ input[type="range"]::-moz-range-thumb {
       if (!res.ok) throw new Error();
 
       document.getElementById('lockedNote').style.display = 'none';
-      document.getElementById('fullBreakdown').classList.remove('gate-hidden');
+      document.getElementById('fullBreakdown').classList.remove('blurred');
+      document.getElementById('estimateRange').classList.remove('blurred');
       document.getElementById('gateForm').style.display = 'none';
       document.getElementById('resultPanel').classList.add('active');
     } catch {
