@@ -50,6 +50,13 @@ body {
 
 .page { width: 100%; max-width: 640px; margin: 0 auto; }
 
+.back-home {
+  display: block; text-align: center; font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--slate); text-decoration: none; margin-bottom: 28px;
+  transition: color 0.2s;
+}
+.back-home:hover { color: var(--ink); }
+
 .section-label {
   font-family: 'Jost', sans-serif;
   font-size: 10px;
@@ -237,6 +244,7 @@ input[type="range"]::-moz-range-thumb {
 <body>
 
 <div class="page">
+  <a class="back-home" href="index.html">← Made From Effort</a>
   <p class="section-label">Private Gym Investment Estimator</p>
   <h1 class="section-heading">What Would Your <em>Gym</em> Actually Cost?</h1>
   <p class="section-sub">Answer seven questions about your space and vision. We'll give you a directional range — equipment, finishes, installation, and design — in under a minute.</p>
