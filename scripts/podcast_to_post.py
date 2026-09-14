@@ -2,14 +2,21 @@
 """
 Made From Effort — Podcast-to-post drafting routine.
 
-Runs weekly. For each configured podcast RSS feed, finds episodes published
-since the last run, transcribes them (Deepgram), and hands the transcripts
-to Claude to pick the single strongest topic and draft a full Journal post
-in the site's existing voice and frontmatter format.
+Runs weekly (Fridays, building the post for the following week). For each
+configured podcast RSS feed, finds episodes published since the last run,
+transcribes them (Deepgram, with speaker labels), and hands the transcripts
+to Claude to surface a handful of candidate topics, pick the single
+strongest one, and draft a full Journal post in the site's existing voice
+and frontmatter format.
 
 The draft is written to posts/banked/ — NOT posts/ — so it never goes live
-on its own. A human has to read it and move it into posts/ before the
-existing build-journal workflow will publish it.
+on its own and never touches the existing build-journal workflow. A human
+has to read it and move it into posts/ before it publishes. A one-line
+summary (episodes checked, episodes skipped and why, topic chosen, draft
+link) is appended to podcast-log.md at the repo root on every run, whether
+or not a draft was produced. Transcripts themselves are never written to
+disk or logged anywhere — they exist only in memory for the duration of
+the run.
 
 Usage:
     python3 scripts/podcast_to_post.py
@@ -38,12 +45,21 @@ CONFIG_PATH = os.path.join(REPO_ROOT, "config", "podcasts.json")
 STATE_PATH = os.path.join(REPO_ROOT, "config", "podcast_state.json")
 POSTS_DIR = os.path.join(REPO_ROOT, "posts")
 BANKED_DIR = os.path.join(POSTS_DIR, "banked")
+LOG_PATH = os.path.join(REPO_ROOT, "podcast-log.md")
 
 DEEPGRAM_API_KEY = os.environ.get("DEEPGRAM_API_KEY")
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 ANTHROPIC_MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-5")
 
 PLACEHOLDER_MARKERS = ("REPLACE_WITH_", "REPLACE-WITH-")
+
+# Cliches the brand voice avoids. Checked against the drafted title/excerpt/
+# body after generation; any hit gets flagged in podcast-log.md for review
+# rather than silently blocking the draft (the model can slip, review can't).
+BANNED_PHRASES = [
+    "grind", "beast mode", "hustle", "crush it", "dominate", "hack",
+    "biohack", "optimize everything", "transformation", "life-changing",
+]
 
 
 # ---------------------------------------------------------------------------
@@ -77,25 +93,35 @@ def is_placeholder(value):
 # Feed / episode discovery
 # ---------------------------------------------------------------------------
 def find_new_episodes(config, state):
+    """Returns (candidates, skips). A feed that's unreachable, unconfigured,
+    or has no new episodes is never fatal — it's recorded in `skips` with a
+    reason and the run continues with whatever other feeds turned up."""
     lookback_days = config.get("lookback_days", 10)
     max_episodes = config.get("max_episodes_per_run", 5)
     cutoff = datetime.now(timezone.utc) - timedelta(days=lookback_days)
     seen = set(state.get("processed_episode_guids", []))
 
     candidates = []
+    skips = []
     for feed_cfg in config.get("feeds", []):
         name = feed_cfg.get("name", "Unknown show")
         rss_url = feed_cfg.get("rss_url", "")
 
         if is_placeholder(rss_url) or is_placeholder(name):
-            print(f"Skipping '{name}': placeholder feed config not filled in yet.")
+            skips.append(f"{name}: RSS feed not configured yet")
             continue
 
-        parsed = feedparser.parse(rss_url)
+        try:
+            parsed = feedparser.parse(rss_url)
+        except Exception as exc:
+            skips.append(f"{name}: feed fetch failed ({exc})")
+            continue
+
         if parsed.bozo and not parsed.entries:
-            print(f"Warning: could not parse feed for '{name}' ({rss_url}): {parsed.bozo_exception}")
+            skips.append(f"{name}: feed unreachable or unparseable ({parsed.bozo_exception})")
             continue
 
+        found_new = 0
         for entry in parsed.entries:
             guid = entry.get("id") or entry.get("link")
             if not guid or guid in seen:
@@ -116,7 +142,6 @@ def find_new_episodes(config, state):
                     break
 
             if not audio_url:
-                print(f"Skipping episode '{entry.get('title', guid)}': no audio enclosure found.")
                 continue
 
             candidates.append({
@@ -126,20 +151,29 @@ def find_new_episodes(config, state):
                 "published": published_dt,
                 "audio_url": audio_url,
                 "link": entry.get("link", ""),
-                "summary": entry.get("summary", ""),
             })
+            found_new += 1
+
+        if found_new == 0:
+            skips.append(f"{name}: no new episodes in the last {lookback_days} days")
 
     candidates.sort(key=lambda e: e["published"] or datetime.min.replace(tzinfo=timezone.utc))
-    return candidates[:max_episodes]
+    return candidates[:max_episodes], skips
 
 
 # ---------------------------------------------------------------------------
-# Transcription (Deepgram)
+# Transcription (Deepgram) — with speaker labels + timestamps
 # ---------------------------------------------------------------------------
 def transcribe_episode(audio_url):
     resp = requests.post(
         "https://api.deepgram.com/v1/listen",
-        params={"model": "nova-2", "smart_format": "true", "punctuate": "true"},
+        params={
+            "model": "nova-2",
+            "smart_format": "true",
+            "punctuate": "true",
+            "diarize": "true",
+            "utterances": "true",
+        },
         headers={
             "Authorization": f"Token {DEEPGRAM_API_KEY}",
             "Content-Type": "application/json",
@@ -149,7 +183,22 @@ def transcribe_episode(audio_url):
     )
     resp.raise_for_status()
     data = resp.json()
-    return data["results"]["channels"][0]["alternatives"][0]["transcript"]
+
+    utterances = data["results"].get("utterances")
+    if not utterances:
+        return data["results"]["channels"][0]["alternatives"][0]["transcript"]
+
+    lines = []
+    for u in utterances:
+        minutes, seconds = divmod(int(u.get("start", 0)), 60)
+        lines.append(f"[{minutes:02d}:{seconds:02d}] Speaker {u.get('speaker', 0)}: {u['transcript']}")
+
+    transcript = "\n".join(lines)
+    # Guard against extreme-length episodes blowing up the drafting prompt.
+    max_chars = 60000
+    if len(transcript) > max_chars:
+        transcript = transcript[:max_chars] + "\n[...transcript truncated for length...]"
+    return transcript
 
 
 # ---------------------------------------------------------------------------
@@ -213,18 +262,36 @@ def slugify(text):
 # Drafting (Claude)
 # ---------------------------------------------------------------------------
 DRAFT_SYSTEM_PROMPT = """You are the ghostwriter for the Made From Effort Journal — the blog at \
-madefromeffort.com, run by Scott Schratwieser (Performance Edge Training + Gym Design, Long Island, NY). \
-You write in his voice: direct, confident, systems-thinking, told through one real, specific story per post. \
-Short punchy sentences mixed with longer ones. No hype, no vague motivational language, no fabricated facts, \
-figures, or client details that were not present in the source material you were given.
+madefromeffort.com, run by Scott Schratwieser (Performance Edge Training + Gym Design, Long Island, NY).
 
-You will be given one or more podcast episode transcripts. Your job:
-1. Pick the single strongest, most concrete story or lesson across all the transcripts — the one that best \
-fits the Journal's beat (training, gym design/build, discipline and systems, client/project stories). \
-Do not try to cover everything; one sharp angle beats a broad summary.
-2. Draft one full Journal post about it, matching the site's existing structure exactly.
+BRAND VOICE
+Write in Scott's voice: plain language, documentary structure (an observation, then curiosity about why
+it happens, then the insight that resolves it), told through one concrete story per post. Short punchy
+sentences mixed with longer ones. Brand pillars to draw on, don't just name them: wellness architecture,
+"the spaces we build shape the habits we keep," craftsmanship, quiet confidence, longevity, discipline, and
+how environment shapes outcomes.
+
+Never use these words/phrases: grind, beast mode, hustle, crush it, dominate, hack, biohack, optimize
+everything, transformation, life-changing. Use "elite" and "luxury" sparingly, only when they're earned by a
+specific detail, never as a generic descriptor.
+
+Treat the podcast transcript(s) as inspiration for ORIGINAL commentary in Scott's voice, not something to
+recap or summarize. You may include a direct quote from a transcript only if it is under 15 words and clearly
+attributed to the speaker by name or role (e.g. "as the show's host put it, '...'"). Everything else in the
+post must be Scott's own framing and ideas — never invent facts, figures, or client details that are not
+actually present in the transcript(s) you were given.
+
+YOUR JOB
+1. Read the transcript(s). Identify 3 to 5 candidate topics/angles that connect a specific moment or idea in
+   the transcript(s) to the Journal's beat (training, gym design/build, discipline and systems, environment
+   shaping behavior). Each candidate should be concrete, not a generic theme.
+2. Pick the single strongest candidate — the one with the most specific, well-supported story to tell — and
+   draft one full Journal post about it. Do not try to cover every candidate; one sharp angle beats a broad
+   summary.
 
 Output ONLY a single JSON object (no markdown fences, no commentary) with these fields:
+- "candidate_topics": array of 3-5 short strings, the candidate angles you considered.
+- "chosen_topic": string, a short phrase naming the one you picked and why it won (one sentence).
 - "title": string, a direct question or bold claim, matching the tone of existing titles.
 - "excerpt": string, 1-2 sentences, the RSS/email preview text.
 - "cta_text": string, either "Start a Project" or "Train With Me" (pick whichever fits the post's theme).
@@ -232,18 +299,19 @@ Output ONLY a single JSON object (no markdown fences, no commentary) with these 
 - "stats": array of 0-4 objects {"number": string, "caption": string} — ONLY include real figures actually \
 stated in the transcript (a length, a dollar figure, a count, a duration). If no solid numbers exist in the \
 source material, return an empty array. Never invent a number.
-- "body_markdown": string, the full post body in Markdown, following this exact shape:
-    - Opens with 1-3 short paragraphs setting up the hook (often a direct-answer style first line).
-    - Then numbered "## 01 / <Section Title>" headers (typically 3 sections: The Mistake / What Went Wrong,
-      Why It Gets Missed, The Fix — adapt titles to the actual story).
-    - At least one "> pull quote" blockquote, a single punchy italic-worthy sentence pulled from or inspired
-      by the point being made.
+- "body_markdown": string, the full post body in Markdown, following this exact shape (this matches the
+  site's existing posts and its build script parses it with a strict regex, so the shape below is required):
+    - Opens with 1-3 short paragraphs setting up the hook (often a direct-answer style first line) —
+      this is the "observation."
+    - Then numbered "## 01 / <Section Title>" headers (typically 3 sections following the documentary arc:
+      the observation/mistake, the curiosity/why it gets missed, the insight/fix — adapt titles to the story).
+    - At least one "> pull quote" blockquote — a single punchy sentence in Scott's own voice, not a direct
+      transcript quote unless it meets the 15-word/attribution rule above.
     - A numbered practical takeaway list ("What this means if you're planning ...:") of 3-5 items, each
       starting with a **bolded lead-in phrase**.
     - A short closing (1-2 paragraphs) that lands the "whole game" point.
     - Ends with a "## FAQ" section: 3-4 question/answer pairs, each question as its own **bolded line ending
-      in a question mark**, followed immediately by a plain paragraph answer. This exact format is required —
-      the site's build script parses it with a strict regex.
+      in a question mark**, followed immediately by a plain paragraph answer.
 
 Do not include frontmatter (title/date/etc as a --- block) in body_markdown — only the Markdown body itself,
 starting from the first paragraph after the (already-provided) title.
@@ -262,7 +330,7 @@ def build_user_prompt(episodes, existing_posts):
             f"BODY:\n{example['body']}\n"
         )
 
-    parts.append("Podcast episode transcript(s) to draw the post from:\n")
+    parts.append("Podcast episode transcript(s) to draw the post from (speaker-labeled, timestamped):\n")
     for ep in episodes:
         parts.append(
             f"--- Episode: \"{ep['title']}\" (show: {ep['show']}) ---\n"
@@ -302,6 +370,15 @@ def draft_post(episodes, existing_posts):
     return json.loads(text)
 
 
+def find_banned_phrases(fields):
+    haystack = " ".join([
+        fields.get("title", ""),
+        fields.get("excerpt", ""),
+        fields.get("body_markdown", ""),
+    ]).lower()
+    return [p for p in BANNED_PHRASES if p in haystack]
+
+
 # ---------------------------------------------------------------------------
 # Assemble + write the .md draft
 # ---------------------------------------------------------------------------
@@ -324,15 +401,20 @@ def assemble_frontmatter(fields, date, issue):
     return "\n".join(lines)
 
 
-def write_draft(fields, date, issue, source_episodes):
+def write_draft(fields, date, issue, source_episodes, banned_hits):
     slug = slugify(fields["title"])
     out_path = os.path.join(BANKED_DIR, f"{date}-{slug}.md")
 
-    header_note = (
-        f"<!-- Drafted automatically from podcast episode(s): "
+    notes = [
+        "Drafted automatically from podcast episode(s): "
         + "; ".join(f"\"{e['title']}\" ({e['link']})" for e in source_episodes)
-        + " — review before moving to posts/. -->\n"
-    )
+        + " — review before moving to posts/.",
+        f"Chosen topic: {fields.get('chosen_topic', 'n/a')}",
+    ]
+    if banned_hits:
+        notes.append(f"FLAGGED: possible off-voice phrase(s) found: {', '.join(banned_hits)} — check before publishing.")
+
+    header_note = "".join(f"<!-- {n} -->\n" for n in notes)
 
     content = (
         assemble_frontmatter(fields, date, issue)
@@ -350,6 +432,30 @@ def write_draft(fields, date, issue, source_episodes):
 
 
 # ---------------------------------------------------------------------------
+# Weekly summary log (podcast-log.md) — never contains transcript text
+# ---------------------------------------------------------------------------
+def append_log(checked_count, skips, topic, draft_path):
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    skipped_str = "; ".join(skips) if skips else "none"
+    draft_str = os.path.relpath(draft_path, REPO_ROOT) if draft_path else "none"
+
+    line = (
+        f"- **{today}** — episodes checked: {checked_count}; "
+        f"skipped: {skipped_str}; topic chosen: {topic or 'none'}; draft: {draft_str}\n"
+    )
+
+    is_new = not os.path.exists(LOG_PATH)
+    with open(LOG_PATH, "a", encoding="utf-8") as f:
+        if is_new:
+            f.write("# Podcast-to-post run log\n\n")
+            f.write(
+                "One line per run. Transcripts are never stored here or anywhere else — "
+                "this is a summary only.\n\n"
+            )
+        f.write(line)
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 def main():
@@ -363,9 +469,10 @@ def main():
     config = load_config()
     state = load_state()
 
-    new_episodes = find_new_episodes(config, state)
+    new_episodes, skips = find_new_episodes(config, state)
     if not new_episodes:
         print("No new episodes found. Nothing to draft.")
+        append_log(0, skips, None, None)
         return
 
     print(f"Found {len(new_episodes)} new episode(s). Transcribing...")
@@ -376,25 +483,33 @@ def main():
         except Exception as exc:
             print(f"    Failed to transcribe: {exc}", file=sys.stderr)
             ep["transcript"] = None
+            skips.append(f"{ep['show']} — \"{ep['title']}\": transcription failed ({exc})")
 
     transcribed = [e for e in new_episodes if e.get("transcript")]
     if not transcribed:
         print("No episodes transcribed successfully. Nothing to draft.")
+        append_log(len(new_episodes), skips, None, None)
         return
 
     existing_posts = load_existing_posts()
     print("Drafting post with Claude...")
     fields = draft_post(transcribed, existing_posts)
 
+    banned_hits = find_banned_phrases(fields)
+    if banned_hits:
+        print(f"Warning: draft contains flagged phrase(s): {', '.join(banned_hits)}")
+
     issue = next_issue_number(existing_posts)
     date = next_draft_date(existing_posts)
-    out_path = write_draft(fields, date, issue, transcribed)
+    out_path = write_draft(fields, date, issue, transcribed, banned_hits)
     print(f"Wrote draft: {out_path}")
 
     # Only mark episodes as processed once a draft was successfully produced.
     state["processed_episode_guids"].extend(e["guid"] for e in transcribed)
     save_state(state)
     print("Updated podcast_state.json")
+
+    append_log(len(new_episodes), skips, fields.get("chosen_topic"), out_path)
 
 
 if __name__ == "__main__":

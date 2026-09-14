@@ -1,9 +1,20 @@
 {
-  "_comment": "One entry per show. 'rss_url' must be a real public RSS feed — Spotify does not expose one for most shows, so check your podcast host (Apple Podcasts, Libsyn, Transistor, etc.) for the actual feed URL. Replace the placeholder below before enabling the scheduled workflow.",
+  "_comment": "One entry per show. 'rss_url' must be a real public RSS feed URL (the actual .xml/.rss address, not a Spotify or Apple Podcasts page link) — Spotify does not expose a public feed for any show, exclusive or not. Get the real feed URL from the show's host (Apple Podcasts 'Copy Feed URL' via a podcast app, Libsyn, Podbean, Simplecast, etc.) or from Podchaser / Listen Notes. Entries with a REPLACE_WITH_ value are skipped automatically and logged as skipped in podcast-log.md until filled in.",
   "feeds": [
     {
-      "name": "REPLACE_WITH_SHOW_NAME",
-      "rss_url": "REPLACE_WITH_RSS_FEED_URL"
+      "name": "Open Residency",
+      "rss_url": "REPLACE_WITH_RSS_FEED_URL",
+      "note": "Hosted by Mark Brazil. Site: openresidency.com. Apple Podcasts id 1791782856 — get the real feed URL from there or the show's site."
+    },
+    {
+      "name": "Founders",
+      "rss_url": "REPLACE_WITH_RSS_FEED_URL",
+      "note": "David Senra. Site: founderspodcast.com. Apple Podcasts id 1141877104 — get the real feed URL from there or the show's site."
+    },
+    {
+      "name": "The Grant Owen Podcast",
+      "rss_url": "REPLACE_WITH_RSS_FEED_URL",
+      "note": "Hosted on Podbean (grantowenpodcast.podbean.com). Podbean feeds are usually at https://feed.podbean.com/<subdomain>/feed.xml (so likely https://feed.podbean.com/grantowenpodcast/feed.xml) but this is an UNVERIFIED guess — confirm the real URL before relying on it."
     }
   ],
   "lookback_days": 10,
