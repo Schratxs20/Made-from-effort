@@ -1,0 +1,11 @@
+{
+  "_comment": "One entry per show. 'rss_url' must be a real public RSS feed — Spotify does not expose one for most shows, so check your podcast host (Apple Podcasts, Libsyn, Transistor, etc.) for the actual feed URL. Replace the placeholder below before enabling the scheduled workflow.",
+  "feeds": [
+    {
+      "name": "REPLACE_WITH_SHOW_NAME",
+      "rss_url": "REPLACE_WITH_RSS_FEED_URL"
+    }
+  ],
+  "lookback_days": 10,
+  "max_episodes_per_run": 5
+}

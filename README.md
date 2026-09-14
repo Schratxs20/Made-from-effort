@@ -46,3 +46,30 @@ an email.
 - Make sure GitHub Pages is serving from the branch this workflow pushes to (main).
 - The workflow needs "Read and write permissions" enabled under
   Repo Settings > Actions > General > Workflow permissions.
+
+## Podcast-to-post routine (draft only, needs setup before it's live)
+`.github/workflows/podcast-to-post.yml` runs weekly (Mondays, and on-demand via
+"Run workflow"). It checks the podcast feed(s) in `config/podcasts.json` for
+new episodes, transcribes them with Deepgram, and asks Claude to pick the
+strongest topic and draft a full Journal post in the site's existing voice
+and frontmatter format. The draft is written to `posts/banked/` — **not**
+`posts/`, so it never goes live automatically. Nothing publishes until you
+read the draft and move the file into `posts/` yourself.
+
+Before enabling the schedule:
+1. Edit `config/podcasts.json` and replace the placeholder `name`/`rss_url`
+   with your show's real public RSS feed URL (Spotify does not expose one —
+   check your podcast host, e.g. Apple Podcasts, Libsyn, Transistor).
+2. Add two repo secrets under Repo Settings > Secrets and variables > Actions:
+   - `DEEPGRAM_API_KEY` — from https://deepgram.com
+   - `ANTHROPIC_API_KEY` — from https://console.anthropic.com
+3. `config/podcast_state.json` tracks which episode GUIDs have already been
+   drafted, so the same episode is never turned into a second post. It's
+   updated automatically by the workflow — don't hand-edit it unless you're
+   deliberately resetting what counts as "already processed."
+
+Local testing (optional):
+```
+pip install -r scripts/requirements-podcast.txt
+DEEPGRAM_API_KEY=... ANTHROPIC_API_KEY=... python3 scripts/podcast_to_post.py
+```
