@@ -1,25 +1,26 @@
 #!/usr/bin/env python3
 """
-Made From Effort — Podcast-to-draft routine (no API keys, no accounts).
+Made From Effort — Podcast transcript fetcher (no API keys, no accounts).
 
-Runs weekly (Fridays, prepping for the following week). For each configured
-podcast RSS feed, finds episodes published since the last run, downloads
-the audio, and transcribes it LOCALLY on the runner using faster-whisper
-(an open-source model that downloads once from Hugging Face's public model
-hub — no account, no API key, no per-minute cost).
+Meant to be run by the "Weekly Podcast Journal Draft" Claude Code Routine,
+not by a GitHub Action. For each configured podcast RSS feed, finds
+episodes published since the last run, downloads the audio, and
+transcribes it LOCALLY using faster-whisper (an open-source model that
+downloads once from Hugging Face's public model hub — no account, no API
+key, no per-minute cost).
 
-There is no AI drafting step, deliberately: picking a topic and writing
-copy in the site's voice needs an LLM, and an LLM cannot be called without
-an API key. So this script stops short of that. What it produces instead,
-per run:
+This script's job stops at producing transcripts. The Routine that invokes
+it is the one that reads the resulting transcript(s), decides what's worth
+writing about, and drafts the actual Journal post — because that step
+needs an LLM, and the live Claude Code session firing this Routine already
+is one, with no separate key to manage.
+
+Output per run:
   - transcripts/<date>-<slug>.txt — the full local transcript of each new
-    episode, timestamped, for a human (or an interactive Claude Code
-    session) to read and write from.
-  - posts/banked/<date>-needs-draft-<slug>.md — a frontmatter skeleton
-    (correct date/issue number, matching the site's format) with a TODO
-    body pointing at the transcript(s). Never auto-published — it isn't
-    even a real post until someone writes it.
+    episode, timestamped.
   - podcast-log.md — one summary line per run either way.
+  - Prints the transcript paths it wrote to stdout so the calling agent
+    knows what to read next.
 
 Usage:
     python3 scripts/podcast_to_post.py
@@ -28,11 +29,10 @@ Requires:
     pip install -r scripts/requirements-podcast.txt
 
 Environment (all optional):
-    WHISPER_MODEL_SIZE  - defaults to "base" (tiny/base/small/medium/large-v3)
+    WHISPER_MODEL_SIZE   - defaults to "base" (tiny/base/small/medium/large-v3)
     WHISPER_COMPUTE_TYPE - defaults to "int8" (fast on CPU)
 """
 
-import glob
 import json
 import os
 import re
@@ -47,8 +47,6 @@ from faster_whisper import WhisperModel
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONFIG_PATH = os.path.join(REPO_ROOT, "config", "podcasts.json")
 STATE_PATH = os.path.join(REPO_ROOT, "config", "podcast_state.json")
-POSTS_DIR = os.path.join(REPO_ROOT, "posts")
-BANKED_DIR = os.path.join(POSTS_DIR, "banked")
 TRANSCRIPTS_DIR = os.path.join(REPO_ROOT, "transcripts")
 LOG_PATH = os.path.join(REPO_ROOT, "podcast-log.md")
 
@@ -197,55 +195,6 @@ def transcribe_episode(audio_url):
         os.remove(audio_path)
 
 
-# ---------------------------------------------------------------------------
-# Existing posts — used only for issue numbering / date sequencing
-# ---------------------------------------------------------------------------
-FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n(.*)$", re.DOTALL)
-
-
-def load_existing_posts():
-    paths = sorted(glob.glob(os.path.join(POSTS_DIR, "*.md"))) + \
-        sorted(glob.glob(os.path.join(BANKED_DIR, "*.md")))
-    posts = []
-    for path in paths:
-        with open(path, "r", encoding="utf-8") as f:
-            raw = f.read()
-        m = FRONTMATTER_RE.match(raw)
-        if not m:
-            continue
-        fm_block = m.group(1)
-        meta = {}
-        for line in fm_block.splitlines():
-            line = line.strip()
-            if not line or ":" not in line:
-                continue
-            key, _, value = line.partition(":")
-            meta[key.strip()] = value.strip().strip('"').strip("'")
-        posts.append(meta)
-    return posts
-
-
-def next_issue_number(existing_posts):
-    max_issue = 0
-    for p in existing_posts:
-        try:
-            max_issue = max(max_issue, int(p.get("issue", 0)))
-        except ValueError:
-            continue
-    return f"{max_issue + 1:03d}"
-
-
-def next_draft_date(existing_posts):
-    dates = []
-    for p in existing_posts:
-        try:
-            dates.append(datetime.strptime(p["date"], "%Y-%m-%d"))
-        except (KeyError, ValueError):
-            continue
-    base = max(dates) if dates else datetime.now(timezone.utc).replace(tzinfo=None)
-    return (base + timedelta(days=7)).strftime("%Y-%m-%d")
-
-
 def slugify(text):
     text = text.lower()
     text = re.sub(r"[^a-z0-9]+", "-", text)
@@ -253,14 +202,15 @@ def slugify(text):
 
 
 # ---------------------------------------------------------------------------
-# Write transcript file(s) + the TODO draft skeleton
+# Write transcript file(s)
 # ---------------------------------------------------------------------------
-def write_transcripts(episodes, date):
+def write_transcripts(episodes):
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     os.makedirs(TRANSCRIPTS_DIR, exist_ok=True)
     paths = []
     for ep in episodes:
         slug = slugify(f"{ep['show']}-{ep['title']}")
-        path = os.path.join(TRANSCRIPTS_DIR, f"{date}-{slug}.txt")
+        path = os.path.join(TRANSCRIPTS_DIR, f"{today}-{slug}.txt")
         with open(path, "w", encoding="utf-8") as f:
             f.write(f"Show: {ep['show']}\n")
             f.write(f"Episode: {ep['title']}\n")
@@ -272,73 +222,27 @@ def write_transcripts(episodes, date):
     return paths
 
 
-def write_stub_draft(episodes, transcript_paths, date, issue):
-    # Title is a placeholder — there's no AI step to pick one. The slug is
-    # derived from the first episode so the file has a stable, readable name.
-    slug = slugify(f"needs-draft-{episodes[0]['show']}-{episodes[0]['title']}")
-    out_path = os.path.join(BANKED_DIR, f"{date}-{slug}.md")
-
-    episode_list = "\n".join(
-        f"- \"{ep['title']}\" ({ep['show']}) — {ep['link']}" for ep in episodes
-    )
-    transcript_list = "\n".join(
-        f"- {os.path.relpath(p, REPO_ROOT)}" for p in transcript_paths
-    )
-
-    body = f"""<!-- NEEDS DRAFT: no AI drafting step is configured for this routine (no API keys are used).
-Pick the strongest angle from the episode(s) below, then write the post yourself — or paste a
-transcript into an interactive Claude Code session and ask it to draft one, matching the format of
-an existing posts/*.md file (numbered "## 01 / ..." sections, a pull-quote blockquote, a numbered
-takeaway list, and a "## FAQ" section of **bolded question?** / answer pairs). Once written, fill in
-the frontmatter above properly and move this file into posts/ to publish it. -->
-
-TODO: draft this post.
-
-Episode(s) this could be drawn from:
-{episode_list}
-
-Full transcript(s):
-{transcript_list}
-"""
-
-    frontmatter = "\n".join([
-        "---",
-        "title: \"TODO — pick a title\"",
-        f"date: {date}",
-        "excerpt: \"TODO\"",
-        f'issue: "{issue}"',
-        "cta_text: Start a Project",
-        "---",
-        "",
-    ])
-
-    os.makedirs(BANKED_DIR, exist_ok=True)
-    with open(out_path, "w", encoding="utf-8") as f:
-        f.write(frontmatter)
-        f.write(body)
-
-    return out_path
-
-
 # ---------------------------------------------------------------------------
 # Weekly summary log (podcast-log.md) — never contains transcript text
 # ---------------------------------------------------------------------------
-def append_log(checked_count, skips, draft_path, transcript_paths):
+def append_log(checked_count, skips, transcript_paths):
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     skipped_str = "; ".join(skips) if skips else "none"
-    draft_str = os.path.relpath(draft_path, REPO_ROOT) if draft_path else "none"
     transcripts_str = ", ".join(os.path.relpath(p, REPO_ROOT) for p in transcript_paths) or "none"
 
     line = (
         f"- **{today}** — episodes checked: {checked_count}; "
-        f"skipped: {skipped_str}; transcripts: {transcripts_str}; needs-draft file: {draft_str}\n"
+        f"skipped: {skipped_str}; transcripts: {transcripts_str}\n"
     )
 
     is_new = not os.path.exists(LOG_PATH)
     with open(LOG_PATH, "a", encoding="utf-8") as f:
         if is_new:
             f.write("# Podcast-to-post run log\n\n")
-            f.write("One line per run. No AI drafting happens automatically — see README.\n\n")
+            f.write(
+                "One line per run. Drafting happens separately, in the Routine's own "
+                "live session — see README.\n\n"
+            )
         f.write(line)
 
 
@@ -352,7 +256,7 @@ def main():
     new_episodes, skips = find_new_episodes(config, state)
     if not new_episodes:
         print("No new episodes found. Nothing to transcribe.")
-        append_log(0, skips, None, [])
+        append_log(0, skips, [])
         return
 
     print(f"Found {len(new_episodes)} new episode(s). Transcribing locally (this can take a while)...")
@@ -367,26 +271,21 @@ def main():
 
     transcribed = [e for e in new_episodes if e.get("transcript")]
     if not transcribed:
-        print("No episodes transcribed successfully. Nothing to write.")
-        append_log(len(new_episodes), skips, None, [])
+        print("No episodes transcribed successfully.")
+        append_log(len(new_episodes), skips, [])
         return
 
-    existing_posts = load_existing_posts()
-    issue = next_issue_number(existing_posts)
-    date = next_draft_date(existing_posts)
-
-    transcript_paths = write_transcripts(transcribed, date)
-    print(f"Wrote {len(transcript_paths)} transcript(s) to {TRANSCRIPTS_DIR}/")
-
-    out_path = write_stub_draft(transcribed, transcript_paths, date, issue)
-    print(f"Wrote needs-draft stub: {out_path}")
+    transcript_paths = write_transcripts(transcribed)
+    print(f"Wrote {len(transcript_paths)} transcript(s):")
+    for p in transcript_paths:
+        print(f"  - {os.path.relpath(p, REPO_ROOT)}")
 
     # Only mark episodes as processed once transcripts were successfully produced.
     state["processed_episode_guids"].extend(e["guid"] for e in transcribed)
     save_state(state)
     print("Updated podcast_state.json")
 
-    append_log(len(new_episodes), skips, out_path, transcript_paths)
+    append_log(len(new_episodes), skips, transcript_paths)
 
 
 if __name__ == "__main__":

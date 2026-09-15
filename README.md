@@ -47,36 +47,32 @@ an email.
 - The workflow needs "Read and write permissions" enabled under
   Repo Settings > Actions > General > Workflow permissions.
 
-## Podcast-to-transcript routine (no API keys, no accounts — needs a manual writing step)
-`.github/workflows/podcast-to-post.yml` runs every Friday at 14:00 UTC (~10am
-US Eastern), plus on-demand via "Run workflow". It checks the podcast
-feed(s) in `config/podcasts.json` for episodes published in the last
-`lookback_days`, downloads the audio, and transcribes it **locally on the
-GitHub Actions runner** using [faster-whisper](https://github.com/SYSTRAN/faster-whisper)
-— an open-source speech-to-text model. No Deepgram, no Anthropic API, no
-signup anywhere. The model itself downloads once, anonymously, from Hugging
-Face's public model hub (no token needed) and is cached for later runs.
+## Podcast-to-Journal-post routine (no API keys — runs as a Claude Code Routine, not a GitHub Action)
+This one isn't a GitHub Actions workflow. It's a **Claude Code Routine**
+("Weekly Podcast Journal Draft") — a scheduled trigger, same mechanism as
+the existing "Twice-Weekly Journal Drafts" and "Daily Program" Routines on
+this account — that fires weekly (Fridays) into a live Claude Code session.
+That session does the whole job itself: no API key to manage, because the
+session doing the writing already has model access built in.
 
-**This intentionally does not write the blog post for you.** Picking the
-strongest topic and drafting copy in the site's voice needs an LLM, and an
-LLM cannot be called without an API key — which is exactly what was ruled
-out. So each run instead produces:
-- `transcripts/<date>-<slug>.txt` — the full local transcript of each new
-  episode, timestamped.
-- `posts/banked/<date>-needs-draft-<slug>.md` — a frontmatter skeleton with
-  the correct date and issue number already filled in, a `TODO` body, and
-  links to the transcript(s) it could be drawn from. It is **not** a real
-  post — nothing here ever reaches `posts/` or the live site on its own.
-- `podcast-log.md` at the repo root — one summary line per run either way
-  (episodes checked, anything skipped and why, which files were written).
-
-To actually turn a transcript into a post: open the `needs-draft` file,
-read the linked transcript(s), and either write the post yourself following
-the format of an existing `posts/*.md` file, or start an interactive Claude
-Code session, paste in (or point it at) the transcript, and ask it to draft
-one. Once it reads like the rest of the Journal, fill in the real
-title/excerpt/tags and move the file from `posts/banked/` into `posts/` —
-that's what actually publishes it, same as any other post.
+Each firing:
+1. Runs `python3 scripts/podcast_to_post.py`, which checks the podcast
+   feed(s) in `config/podcasts.json` for episodes published in the last
+   `lookback_days` and transcribes any new ones **locally** using
+   [faster-whisper](https://github.com/SYSTRAN/faster-whisper) (open-source,
+   downloads its model anonymously from Hugging Face's public hub — no
+   account, no key, no cost). Output: `transcripts/<date>-<slug>.txt` per
+   new episode, plus a line in `podcast-log.md`.
+2. If new transcripts came back, the session reads them, picks the single
+   strongest concrete idea a guest taught, and writes one **original**
+   Journal post connecting it to mindset/consistency, fitness, or gym
+   design — in the site's existing voice and frontmatter format. It never
+   quotes or paraphrases the transcript's actual sentences, and never
+   invents a specific client story or result that isn't real (same rule
+   the Gmail-based Routine follows).
+3. Saves the post to `posts/banked/<date>-<slug>.md`, commits, and pushes.
+   It still never reaches `posts/` or the live site on its own — that move
+   is yours to make after reading it.
 
 Shows currently configured in `config/podcasts.json` — real RSS feed URLs,
 confirmed live (fetched and parsed cleanly, real episodes with audio
@@ -93,21 +89,19 @@ real feed URL by opening
 browser (find the Apple Podcasts ID in the show's apple.com/podcast URL) and
 reading the `feedUrl` field from the JSON it returns.
 
-Before enabling the schedule:
-1. Nothing to sign up for — `config/podcasts.json` is already filled in
-   with the three shows above.
-2. `config/podcast_state.json` tracks which episode GUIDs have already been
-   transcribed, so the same episode is never processed twice. It's updated
-   automatically by the workflow — don't hand-edit it unless you're
-   deliberately resetting what counts as "already processed."
-3. Transcription runs on the Action's own (free) CPU runner, so it's slower
-   than a paid API — a ~1 hour episode can take a while on `WHISPER_MODEL_SIZE=base`
-   (the default). If runs are timing out or eating too many Action minutes,
-   either set `WHISPER_MODEL_SIZE=tiny` (faster, lower quality) as a repo
-   variable/env in the workflow, or lower `max_episodes_per_run` in
-   `config/podcasts.json`.
+Notes:
+- `config/podcast_state.json` tracks which episode GUIDs have already been
+  transcribed, so the same episode is never processed twice.
+- Transcription runs on whatever compute the Routine's session has, so it's
+  slower than a paid API on a long episode. `WHISPER_MODEL_SIZE` (default
+  `base`) can be set to `tiny` for speed over accuracy if that's ever an
+  issue, or lower `max_episodes_per_run` in `config/podcasts.json`.
+- To change the schedule, source shows, or drafting instructions, edit the
+  Routine itself (`update_trigger` on trigger id, or ask a Claude Code
+  session to do it) rather than a workflow file — there is no workflow file
+  for this one.
 
-Local testing (optional):
+Local testing of just the transcription step (optional):
 ```
 pip install -r scripts/requirements-podcast.txt
 python3 scripts/podcast_to_post.py
