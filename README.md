@@ -75,29 +75,24 @@ the topic chosen, and a link to the draft file. Transcripts themselves are
 never written to disk or logged anywhere; they only exist in memory for the
 run's duration.
 
-Shows currently configured in `config/podcasts.json` (identified by name,
-but their RSS feed URLs still need to be filled in — see below):
-- **Open Residency** (Mark Brazil) — openresidency.com
-- **Founders** (David Senra) — founderspodcast.com
-- **The Grant Owen Podcast** — grantowenpodcast.podbean.com
+Shows currently configured in `config/podcasts.json` — real RSS feed URLs,
+resolved via Apple's podcast lookup API and confirmed live (fetched and
+parsed cleanly, 0 errors, real episodes with audio enclosures):
+- **Open Residency** (Mark Brazil) — `https://anchor.fm/s/ffafb5b8/podcast/rss`
+- **Founders** (David Senra) — `https://feeds.megaphone.fm/DSLLC6297708582`
+- **The Grant Owen Podcast** — `https://feed.podbean.com/grantowenpodcast/feed.xml`
 
-None of the three looked Spotify-exclusive from what's publicly listed, so
-all three should have a real RSS feed somewhere — but this session's network
-access couldn't reach Apple Podcasts, Spotify, Listen Notes, or the podcast
-hosting pages directly to confirm the exact feed URL, so all three are still
-placeholders. To fill them in: open each show in a podcast app (e.g. Apple
-Podcasts on Mac/iOS has a "Copy Feed URL" option), or check the show's own
-website, or look it up on Podchaser/Listen Notes. The Grant Owen Podcast is
-hosted on Podbean, where feeds are usually at
-`https://feed.podbean.com/<subdomain>/feed.xml` — likely
-`https://feed.podbean.com/grantowenpodcast/feed.xml` — but that's an
-unverified guess and should be confirmed before relying on it. A feed left
-as a placeholder is skipped automatically and logged as skipped; it won't
-break the other shows' runs.
+None of the three are Spotify-exclusive — all three have a real public feed,
+which is what makes this routine possible for them in the first place. If
+you ever swap in a different show, the same lookup trick works for any show
+listed on Apple Podcasts: open
+`https://itunes.apple.com/lookup?id=<applePodcastsId>&entity=podcast` in a
+browser (find the Apple Podcasts ID in the show's apple.com/podcast URL) and
+read the `feedUrl` field from the JSON it returns.
 
 Before enabling the schedule:
-1. Edit `config/podcasts.json` and replace each `REPLACE_WITH_RSS_FEED_URL`
-   with the show's real public RSS feed URL.
+1. `config/podcasts.json` is already filled in with the three shows above —
+   no edit needed unless you're changing the show list.
 2. Add two repo secrets under Repo Settings > Secrets and variables > Actions:
    - `DEEPGRAM_API_KEY` — from https://deepgram.com
    - `ANTHROPIC_API_KEY` — from https://console.anthropic.com

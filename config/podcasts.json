@@ -1,20 +1,20 @@
 {
-  "_comment": "One entry per show. 'rss_url' must be a real public RSS feed URL (the actual .xml/.rss address, not a Spotify or Apple Podcasts page link) — Spotify does not expose a public feed for any show, exclusive or not. Get the real feed URL from the show's host (Apple Podcasts 'Copy Feed URL' via a podcast app, Libsyn, Podbean, Simplecast, etc.) or from Podchaser / Listen Notes. Entries with a REPLACE_WITH_ value are skipped automatically and logged as skipped in podcast-log.md until filled in.",
+  "_comment": "One entry per show. 'rss_url' is the real public RSS feed URL, resolved via Apple's podcast lookup API (itunes.apple.com/lookup?id=<applePodcastsId>) and confirmed live. If a show ever gets replaced or moves hosts, re-resolve its feedUrl the same way and update it here.",
   "feeds": [
     {
       "name": "Open Residency",
-      "rss_url": "REPLACE_WITH_RSS_FEED_URL",
-      "note": "Hosted by Mark Brazil. Site: openresidency.com. Apple Podcasts id 1791782856 — get the real feed URL from there or the show's site."
+      "rss_url": "https://anchor.fm/s/ffafb5b8/podcast/rss",
+      "note": "Hosted by Mark Brazil. Site: openresidency.com. Apple Podcasts id 1791782856."
     },
     {
       "name": "Founders",
-      "rss_url": "REPLACE_WITH_RSS_FEED_URL",
-      "note": "David Senra. Site: founderspodcast.com. Apple Podcasts id 1141877104 — get the real feed URL from there or the show's site."
+      "rss_url": "https://feeds.megaphone.fm/DSLLC6297708582",
+      "note": "David Senra. Site: founderspodcast.com. Apple Podcasts id 1141877104."
     },
     {
       "name": "The Grant Owen Podcast",
-      "rss_url": "REPLACE_WITH_RSS_FEED_URL",
-      "note": "Hosted on Podbean (grantowenpodcast.podbean.com). Podbean feeds are usually at https://feed.podbean.com/<subdomain>/feed.xml (so likely https://feed.podbean.com/grantowenpodcast/feed.xml) but this is an UNVERIFIED guess — confirm the real URL before relying on it."
+      "rss_url": "https://feed.podbean.com/grantowenpodcast/feed.xml",
+      "note": "Hosted on Podbean (grantowenpodcast.podbean.com). Apple Podcasts id 1699435419."
     }
   ],
   "lookback_days": 10,
