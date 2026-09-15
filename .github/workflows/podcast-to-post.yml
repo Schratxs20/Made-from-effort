@@ -2,7 +2,7 @@ name: Podcast to Draft Post
 
 on:
   schedule:
-    # Every Friday at 14:00 UTC (~10am US Eastern) — builds the draft for
+    # Every Friday at 14:00 UTC (~10am US Eastern) — preps the draft for
     # the following week. Adjust the hour to taste; day (the "5") is Friday.
     - cron: "0 14 * * 5"
   workflow_dispatch: {}
@@ -25,16 +25,17 @@ jobs:
       - name: Install dependencies
         run: pip install -r scripts/requirements-podcast.txt
 
-      - name: Fetch, transcribe, and draft
-        env:
-          DEEPGRAM_API_KEY: ${{ secrets.DEEPGRAM_API_KEY }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # No API keys anywhere in this job: feeds are public RSS, and
+      # transcription runs locally on the runner via faster-whisper (an
+      # open-source model pulled anonymously from Hugging Face's public
+      # hub on first use, then cached).
+      - name: Fetch and transcribe new episodes
         run: python3 scripts/podcast_to_post.py
 
-      - name: Commit draft (if any)
+      - name: Commit transcripts + needs-draft stub (if any)
         run: |
           git config user.name "podcast-draft-bot"
           git config user.email "podcast-draft-bot@users.noreply.github.com"
-          git add posts/banked/ config/podcast_state.json podcast-log.md
-          git diff --cached --quiet || git commit -m "Draft post from new podcast episode(s)"
+          git add posts/banked/ transcripts/ config/podcast_state.json podcast-log.md
+          git diff --cached --quiet || git commit -m "Transcribe new podcast episode(s), add needs-draft stub"
           git push

@@ -1,22 +1,25 @@
 #!/usr/bin/env python3
 """
-Made From Effort — Podcast-to-post drafting routine.
+Made From Effort — Podcast-to-draft routine (no API keys, no accounts).
 
-Runs weekly (Fridays, building the post for the following week). For each
-configured podcast RSS feed, finds episodes published since the last run,
-transcribes them (Deepgram, with speaker labels), and hands the transcripts
-to Claude to surface a handful of candidate topics, pick the single
-strongest one, and draft a full Journal post in the site's existing voice
-and frontmatter format.
+Runs weekly (Fridays, prepping for the following week). For each configured
+podcast RSS feed, finds episodes published since the last run, downloads
+the audio, and transcribes it LOCALLY on the runner using faster-whisper
+(an open-source model that downloads once from Hugging Face's public model
+hub — no account, no API key, no per-minute cost).
 
-The draft is written to posts/banked/ — NOT posts/ — so it never goes live
-on its own and never touches the existing build-journal workflow. A human
-has to read it and move it into posts/ before it publishes. A one-line
-summary (episodes checked, episodes skipped and why, topic chosen, draft
-link) is appended to podcast-log.md at the repo root on every run, whether
-or not a draft was produced. Transcripts themselves are never written to
-disk or logged anywhere — they exist only in memory for the duration of
-the run.
+There is no AI drafting step, deliberately: picking a topic and writing
+copy in the site's voice needs an LLM, and an LLM cannot be called without
+an API key. So this script stops short of that. What it produces instead,
+per run:
+  - transcripts/<date>-<slug>.txt — the full local transcript of each new
+    episode, timestamped, for a human (or an interactive Claude Code
+    session) to read and write from.
+  - posts/banked/<date>-needs-draft-<slug>.md — a frontmatter skeleton
+    (correct date/issue number, matching the site's format) with a TODO
+    body pointing at the transcript(s). Never auto-published — it isn't
+    even a real post until someone writes it.
+  - podcast-log.md — one summary line per run either way.
 
 Usage:
     python3 scripts/podcast_to_post.py
@@ -24,10 +27,9 @@ Usage:
 Requires:
     pip install -r scripts/requirements-podcast.txt
 
-Environment:
-    DEEPGRAM_API_KEY   - required
-    ANTHROPIC_API_KEY  - required
-    ANTHROPIC_MODEL    - optional, defaults to claude-sonnet-5
+Environment (all optional):
+    WHISPER_MODEL_SIZE  - defaults to "base" (tiny/base/small/medium/large-v3)
+    WHISPER_COMPUTE_TYPE - defaults to "int8" (fast on CPU)
 """
 
 import glob
@@ -35,31 +37,25 @@ import json
 import os
 import re
 import sys
+import tempfile
 from datetime import datetime, timedelta, timezone
 
 import feedparser
 import requests
+from faster_whisper import WhisperModel
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONFIG_PATH = os.path.join(REPO_ROOT, "config", "podcasts.json")
 STATE_PATH = os.path.join(REPO_ROOT, "config", "podcast_state.json")
 POSTS_DIR = os.path.join(REPO_ROOT, "posts")
 BANKED_DIR = os.path.join(POSTS_DIR, "banked")
+TRANSCRIPTS_DIR = os.path.join(REPO_ROOT, "transcripts")
 LOG_PATH = os.path.join(REPO_ROOT, "podcast-log.md")
 
-DEEPGRAM_API_KEY = os.environ.get("DEEPGRAM_API_KEY")
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
-ANTHROPIC_MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-5")
+WHISPER_MODEL_SIZE = os.environ.get("WHISPER_MODEL_SIZE", "base")
+WHISPER_COMPUTE_TYPE = os.environ.get("WHISPER_COMPUTE_TYPE", "int8")
 
 PLACEHOLDER_MARKERS = ("REPLACE_WITH_", "REPLACE-WITH-")
-
-# Cliches the brand voice avoids. Checked against the drafted title/excerpt/
-# body after generation; any hit gets flagged in podcast-log.md for review
-# rather than silently blocking the draft (the model can slip, review can't).
-BANNED_PHRASES = [
-    "grind", "beast mode", "hustle", "crush it", "dominate", "hack",
-    "biohack", "optimize everything", "transformation", "life-changing",
-]
 
 
 # ---------------------------------------------------------------------------
@@ -162,47 +158,47 @@ def find_new_episodes(config, state):
 
 
 # ---------------------------------------------------------------------------
-# Transcription (Deepgram) — with speaker labels + timestamps
+# Local transcription (faster-whisper) — no API key, no account
 # ---------------------------------------------------------------------------
-def transcribe_episode(audio_url):
-    resp = requests.post(
-        "https://api.deepgram.com/v1/listen",
-        params={
-            "model": "nova-2",
-            "smart_format": "true",
-            "punctuate": "true",
-            "diarize": "true",
-            "utterances": "true",
-        },
-        headers={
-            "Authorization": f"Token {DEEPGRAM_API_KEY}",
-            "Content-Type": "application/json",
-        },
-        json={"url": audio_url},
-        timeout=600,
-    )
+_whisper_model = None
+
+
+def get_whisper_model():
+    global _whisper_model
+    if _whisper_model is None:
+        # Downloads the model from Hugging Face's public hub on first run
+        # (anonymous, no token needed) and caches it for subsequent runs.
+        _whisper_model = WhisperModel(WHISPER_MODEL_SIZE, compute_type=WHISPER_COMPUTE_TYPE)
+    return _whisper_model
+
+
+def download_audio(audio_url):
+    resp = requests.get(audio_url, stream=True, timeout=600)
     resp.raise_for_status()
-    data = resp.json()
+    suffix = os.path.splitext(audio_url.split("?")[0])[1] or ".mp3"
+    fd, path = tempfile.mkstemp(suffix=suffix)
+    with os.fdopen(fd, "wb") as f:
+        for chunk in resp.iter_content(chunk_size=1 << 20):
+            f.write(chunk)
+    return path
 
-    utterances = data["results"].get("utterances")
-    if not utterances:
-        return data["results"]["channels"][0]["alternatives"][0]["transcript"]
 
-    lines = []
-    for u in utterances:
-        minutes, seconds = divmod(int(u.get("start", 0)), 60)
-        lines.append(f"[{minutes:02d}:{seconds:02d}] Speaker {u.get('speaker', 0)}: {u['transcript']}")
-
-    transcript = "\n".join(lines)
-    # Guard against extreme-length episodes blowing up the drafting prompt.
-    max_chars = 60000
-    if len(transcript) > max_chars:
-        transcript = transcript[:max_chars] + "\n[...transcript truncated for length...]"
-    return transcript
+def transcribe_episode(audio_url):
+    audio_path = download_audio(audio_url)
+    try:
+        model = get_whisper_model()
+        segments, _info = model.transcribe(audio_path, beam_size=5)
+        lines = []
+        for seg in segments:
+            minutes, seconds = divmod(int(seg.start), 60)
+            lines.append(f"[{minutes:02d}:{seconds:02d}] {seg.text.strip()}")
+        return "\n".join(lines)
+    finally:
+        os.remove(audio_path)
 
 
 # ---------------------------------------------------------------------------
-# Existing posts — used as few-shot voice/format examples and for numbering
+# Existing posts — used only for issue numbering / date sequencing
 # ---------------------------------------------------------------------------
 FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n(.*)$", re.DOTALL)
 
@@ -217,7 +213,7 @@ def load_existing_posts():
         m = FRONTMATTER_RE.match(raw)
         if not m:
             continue
-        fm_block, body = m.group(1), m.group(2)
+        fm_block = m.group(1)
         meta = {}
         for line in fm_block.splitlines():
             line = line.strip()
@@ -225,8 +221,6 @@ def load_existing_posts():
                 continue
             key, _, value = line.partition(":")
             meta[key.strip()] = value.strip().strip('"').strip("'")
-        meta["body"] = body.strip()
-        meta["path"] = path
         posts.append(meta)
     return posts
 
@@ -259,174 +253,69 @@ def slugify(text):
 
 
 # ---------------------------------------------------------------------------
-# Drafting (Claude)
+# Write transcript file(s) + the TODO draft skeleton
 # ---------------------------------------------------------------------------
-DRAFT_SYSTEM_PROMPT = """You are the ghostwriter for the Made From Effort Journal — the blog at \
-madefromeffort.com, run by Scott Schratwieser (Performance Edge Training + Gym Design, Long Island, NY).
-
-BRAND VOICE
-Write in Scott's voice: plain language, documentary structure (an observation, then curiosity about why
-it happens, then the insight that resolves it), told through one concrete story per post. Short punchy
-sentences mixed with longer ones. Brand pillars to draw on, don't just name them: wellness architecture,
-"the spaces we build shape the habits we keep," craftsmanship, quiet confidence, longevity, discipline, and
-how environment shapes outcomes.
-
-Never use these words/phrases: grind, beast mode, hustle, crush it, dominate, hack, biohack, optimize
-everything, transformation, life-changing. Use "elite" and "luxury" sparingly, only when they're earned by a
-specific detail, never as a generic descriptor.
-
-Treat the podcast transcript(s) as inspiration for ORIGINAL commentary in Scott's voice, not something to
-recap or summarize. You may include a direct quote from a transcript only if it is under 15 words and clearly
-attributed to the speaker by name or role (e.g. "as the show's host put it, '...'"). Everything else in the
-post must be Scott's own framing and ideas — never invent facts, figures, or client details that are not
-actually present in the transcript(s) you were given.
-
-YOUR JOB
-1. Read the transcript(s). Identify 3 to 5 candidate topics/angles that connect a specific moment or idea in
-   the transcript(s) to the Journal's beat (training, gym design/build, discipline and systems, environment
-   shaping behavior). Each candidate should be concrete, not a generic theme.
-2. Pick the single strongest candidate — the one with the most specific, well-supported story to tell — and
-   draft one full Journal post about it. Do not try to cover every candidate; one sharp angle beats a broad
-   summary.
-
-Output ONLY a single JSON object (no markdown fences, no commentary) with these fields:
-- "candidate_topics": array of 3-5 short strings, the candidate angles you considered.
-- "chosen_topic": string, a short phrase naming the one you picked and why it won (one sentence).
-- "title": string, a direct question or bold claim, matching the tone of existing titles.
-- "excerpt": string, 1-2 sentences, the RSS/email preview text.
-- "cta_text": string, either "Start a Project" or "Train With Me" (pick whichever fits the post's theme).
-- "tags": string, 3-5 comma-separated topical tags.
-- "stats": array of 0-4 objects {"number": string, "caption": string} — ONLY include real figures actually \
-stated in the transcript (a length, a dollar figure, a count, a duration). If no solid numbers exist in the \
-source material, return an empty array. Never invent a number.
-- "body_markdown": string, the full post body in Markdown, following this exact shape (this matches the
-  site's existing posts and its build script parses it with a strict regex, so the shape below is required):
-    - Opens with 1-3 short paragraphs setting up the hook (often a direct-answer style first line) —
-      this is the "observation."
-    - Then numbered "## 01 / <Section Title>" headers (typically 3 sections following the documentary arc:
-      the observation/mistake, the curiosity/why it gets missed, the insight/fix — adapt titles to the story).
-    - At least one "> pull quote" blockquote — a single punchy sentence in Scott's own voice, not a direct
-      transcript quote unless it meets the 15-word/attribution rule above.
-    - A numbered practical takeaway list ("What this means if you're planning ...:") of 3-5 items, each
-      starting with a **bolded lead-in phrase**.
-    - A short closing (1-2 paragraphs) that lands the "whole game" point.
-    - Ends with a "## FAQ" section: 3-4 question/answer pairs, each question as its own **bolded line ending
-      in a question mark**, followed immediately by a plain paragraph answer.
-
-Do not include frontmatter (title/date/etc as a --- block) in body_markdown — only the Markdown body itself,
-starting from the first paragraph after the (already-provided) title.
-"""
-
-
-def build_user_prompt(episodes, existing_posts):
-    example = existing_posts[-1] if existing_posts else None
-    parts = []
-    if example:
-        parts.append(
-            "Here is one existing Journal post, in full, as your voice/format reference "
-            "(do not reuse its content, only its structure and tone):\n\n"
-            f"TITLE: {example.get('title', '')}\n"
-            f"EXCERPT: {example.get('excerpt', '')}\n"
-            f"BODY:\n{example['body']}\n"
-        )
-
-    parts.append("Podcast episode transcript(s) to draw the post from (speaker-labeled, timestamped):\n")
+def write_transcripts(episodes, date):
+    os.makedirs(TRANSCRIPTS_DIR, exist_ok=True)
+    paths = []
     for ep in episodes:
-        parts.append(
-            f"--- Episode: \"{ep['title']}\" (show: {ep['show']}) ---\n"
-            f"{ep['transcript']}\n"
-        )
-
-    return "\n".join(parts)
-
-
-def draft_post(episodes, existing_posts):
-    resp = requests.post(
-        "https://api.anthropic.com/v1/messages",
-        headers={
-            "x-api-key": ANTHROPIC_API_KEY,
-            "anthropic-version": "2023-06-01",
-            "content-type": "application/json",
-        },
-        json={
-            "model": ANTHROPIC_MODEL,
-            "max_tokens": 4096,
-            "system": DRAFT_SYSTEM_PROMPT,
-            "messages": [
-                {"role": "user", "content": build_user_prompt(episodes, existing_posts)}
-            ],
-        },
-        timeout=300,
-    )
-    resp.raise_for_status()
-    data = resp.json()
-    text = data["content"][0]["text"].strip()
-
-    # Model is instructed to return raw JSON; strip accidental code fences just in case.
-    if text.startswith("```"):
-        text = re.sub(r"^```[a-zA-Z]*\n", "", text)
-        text = re.sub(r"\n```$", "", text)
-
-    return json.loads(text)
+        slug = slugify(f"{ep['show']}-{ep['title']}")
+        path = os.path.join(TRANSCRIPTS_DIR, f"{date}-{slug}.txt")
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(f"Show: {ep['show']}\n")
+            f.write(f"Episode: {ep['title']}\n")
+            f.write(f"Episode link: {ep['link']}\n")
+            f.write("\n---\n\n")
+            f.write(ep["transcript"])
+            f.write("\n")
+        paths.append(path)
+    return paths
 
 
-def find_banned_phrases(fields):
-    haystack = " ".join([
-        fields.get("title", ""),
-        fields.get("excerpt", ""),
-        fields.get("body_markdown", ""),
-    ]).lower()
-    return [p for p in BANNED_PHRASES if p in haystack]
-
-
-# ---------------------------------------------------------------------------
-# Assemble + write the .md draft
-# ---------------------------------------------------------------------------
-def assemble_frontmatter(fields, date, issue):
-    lines = [
-        "---",
-        f"title: {fields['title']}",
-        f"date: {date}",
-        f"excerpt: {fields['excerpt']}",
-        f'issue: "{issue}"',
-        f"cta_text: {fields.get('cta_text', 'Start a Project')}",
-    ]
-    if fields.get("stats"):
-        stats_str = "|".join(f"{s['number']}:{s['caption']}" for s in fields["stats"])
-        lines.append(f"stats: {stats_str}")
-    if fields.get("tags"):
-        lines.append(f"tags: {fields['tags']}")
-    lines.append("---")
-    lines.append("")
-    return "\n".join(lines)
-
-
-def write_draft(fields, date, issue, source_episodes, banned_hits):
-    slug = slugify(fields["title"])
+def write_stub_draft(episodes, transcript_paths, date, issue):
+    # Title is a placeholder — there's no AI step to pick one. The slug is
+    # derived from the first episode so the file has a stable, readable name.
+    slug = slugify(f"needs-draft-{episodes[0]['show']}-{episodes[0]['title']}")
     out_path = os.path.join(BANKED_DIR, f"{date}-{slug}.md")
 
-    notes = [
-        "Drafted automatically from podcast episode(s): "
-        + "; ".join(f"\"{e['title']}\" ({e['link']})" for e in source_episodes)
-        + " — review before moving to posts/.",
-        f"Chosen topic: {fields.get('chosen_topic', 'n/a')}",
-    ]
-    if banned_hits:
-        notes.append(f"FLAGGED: possible off-voice phrase(s) found: {', '.join(banned_hits)} — check before publishing.")
-
-    header_note = "".join(f"<!-- {n} -->\n" for n in notes)
-
-    content = (
-        assemble_frontmatter(fields, date, issue)
-        + "\n"
-        + fields["body_markdown"].strip()
-        + "\n"
+    episode_list = "\n".join(
+        f"- \"{ep['title']}\" ({ep['show']}) — {ep['link']}" for ep in episodes
     )
+    transcript_list = "\n".join(
+        f"- {os.path.relpath(p, REPO_ROOT)}" for p in transcript_paths
+    )
+
+    body = f"""<!-- NEEDS DRAFT: no AI drafting step is configured for this routine (no API keys are used).
+Pick the strongest angle from the episode(s) below, then write the post yourself — or paste a
+transcript into an interactive Claude Code session and ask it to draft one, matching the format of
+an existing posts/*.md file (numbered "## 01 / ..." sections, a pull-quote blockquote, a numbered
+takeaway list, and a "## FAQ" section of **bolded question?** / answer pairs). Once written, fill in
+the frontmatter above properly and move this file into posts/ to publish it. -->
+
+TODO: draft this post.
+
+Episode(s) this could be drawn from:
+{episode_list}
+
+Full transcript(s):
+{transcript_list}
+"""
+
+    frontmatter = "\n".join([
+        "---",
+        "title: \"TODO — pick a title\"",
+        f"date: {date}",
+        "excerpt: \"TODO\"",
+        f'issue: "{issue}"',
+        "cta_text: Start a Project",
+        "---",
+        "",
+    ])
 
     os.makedirs(BANKED_DIR, exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
-        f.write(header_note)
-        f.write(content)
+        f.write(frontmatter)
+        f.write(body)
 
     return out_path
 
@@ -434,24 +323,22 @@ def write_draft(fields, date, issue, source_episodes, banned_hits):
 # ---------------------------------------------------------------------------
 # Weekly summary log (podcast-log.md) — never contains transcript text
 # ---------------------------------------------------------------------------
-def append_log(checked_count, skips, topic, draft_path):
+def append_log(checked_count, skips, draft_path, transcript_paths):
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     skipped_str = "; ".join(skips) if skips else "none"
     draft_str = os.path.relpath(draft_path, REPO_ROOT) if draft_path else "none"
+    transcripts_str = ", ".join(os.path.relpath(p, REPO_ROOT) for p in transcript_paths) or "none"
 
     line = (
         f"- **{today}** — episodes checked: {checked_count}; "
-        f"skipped: {skipped_str}; topic chosen: {topic or 'none'}; draft: {draft_str}\n"
+        f"skipped: {skipped_str}; transcripts: {transcripts_str}; needs-draft file: {draft_str}\n"
     )
 
     is_new = not os.path.exists(LOG_PATH)
     with open(LOG_PATH, "a", encoding="utf-8") as f:
         if is_new:
             f.write("# Podcast-to-post run log\n\n")
-            f.write(
-                "One line per run. Transcripts are never stored here or anywhere else — "
-                "this is a summary only.\n\n"
-            )
+            f.write("One line per run. No AI drafting happens automatically — see README.\n\n")
         f.write(line)
 
 
@@ -459,23 +346,16 @@ def append_log(checked_count, skips, topic, draft_path):
 # Main
 # ---------------------------------------------------------------------------
 def main():
-    if not DEEPGRAM_API_KEY:
-        print("Error: DEEPGRAM_API_KEY is not set.", file=sys.stderr)
-        sys.exit(1)
-    if not ANTHROPIC_API_KEY:
-        print("Error: ANTHROPIC_API_KEY is not set.", file=sys.stderr)
-        sys.exit(1)
-
     config = load_config()
     state = load_state()
 
     new_episodes, skips = find_new_episodes(config, state)
     if not new_episodes:
-        print("No new episodes found. Nothing to draft.")
-        append_log(0, skips, None, None)
+        print("No new episodes found. Nothing to transcribe.")
+        append_log(0, skips, None, [])
         return
 
-    print(f"Found {len(new_episodes)} new episode(s). Transcribing...")
+    print(f"Found {len(new_episodes)} new episode(s). Transcribing locally (this can take a while)...")
     for ep in new_episodes:
         print(f"  - Transcribing \"{ep['title']}\" ({ep['show']})")
         try:
@@ -487,29 +367,26 @@ def main():
 
     transcribed = [e for e in new_episodes if e.get("transcript")]
     if not transcribed:
-        print("No episodes transcribed successfully. Nothing to draft.")
-        append_log(len(new_episodes), skips, None, None)
+        print("No episodes transcribed successfully. Nothing to write.")
+        append_log(len(new_episodes), skips, None, [])
         return
 
     existing_posts = load_existing_posts()
-    print("Drafting post with Claude...")
-    fields = draft_post(transcribed, existing_posts)
-
-    banned_hits = find_banned_phrases(fields)
-    if banned_hits:
-        print(f"Warning: draft contains flagged phrase(s): {', '.join(banned_hits)}")
-
     issue = next_issue_number(existing_posts)
     date = next_draft_date(existing_posts)
-    out_path = write_draft(fields, date, issue, transcribed, banned_hits)
-    print(f"Wrote draft: {out_path}")
 
-    # Only mark episodes as processed once a draft was successfully produced.
+    transcript_paths = write_transcripts(transcribed, date)
+    print(f"Wrote {len(transcript_paths)} transcript(s) to {TRANSCRIPTS_DIR}/")
+
+    out_path = write_stub_draft(transcribed, transcript_paths, date, issue)
+    print(f"Wrote needs-draft stub: {out_path}")
+
+    # Only mark episodes as processed once transcripts were successfully produced.
     state["processed_episode_guids"].extend(e["guid"] for e in transcribed)
     save_state(state)
     print("Updated podcast_state.json")
 
-    append_log(len(new_episodes), skips, fields.get("chosen_topic"), out_path)
+    append_log(len(new_episodes), skips, out_path, transcript_paths)
 
 
 if __name__ == "__main__":
