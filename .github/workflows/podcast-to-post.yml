@@ -1,0 +1,43 @@
+name: Podcast Fetch + Transcribe
+
+on:
+  schedule:
+    # Every Friday at 12:00 UTC — 2 hours before the "Weekly Podcast Journal
+    # Draft" Claude Code Routine fires, so transcripts are ready for it.
+    - cron: "0 12 * * 5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements-podcast.txt
+
+      # GitHub-hosted runners have normal unrestricted internet access, so
+      # this is the only place in the pipeline that talks to podcast feeds
+      # and audio CDNs directly. No API key involved — feedparser fetches
+      # the RSS, requests downloads the audio, faster-whisper transcribes
+      # it locally (open-source model, downloads anonymously from Hugging
+      # Face's public hub on first run).
+      - name: Fetch and transcribe new episodes
+        run: python3 scripts/podcast_to_post.py
+
+      - name: Commit new transcripts (if any)
+        run: |
+          git config user.name "podcast-fetch-bot"
+          git config user.email "podcast-fetch-bot@users.noreply.github.com"
+          git add transcripts/ config/podcast_state.json podcast-log.md
+          git diff --cached --quiet || git commit -m "Fetch + transcribe new podcast episode(s)"
+          git push
