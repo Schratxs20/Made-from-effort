@@ -28,9 +28,22 @@ from datetime import datetime, timezone
 SITE_URL = "https://www.madefromeffort.com"
 SITE_TITLE = "Made From Effort"
 SITE_DESCRIPTION = "Training, gym design, and systems that actually hold up."
+DEFAULT_OG_IMAGE = f"{SITE_URL}/og-image.jpg"
 POSTS_DIR = "posts"
 OUTPUT_DIR = "journal"
 ASSETS_DIR = "assets"
+
+# Static (non-journal) pages to include in sitemap.xml. Add a new page here
+# when one is added to the site so it doesn't silently fall out of the sitemap.
+STATIC_PAGES = [
+    ("", 1.0),                       # homepage
+    ("training.html", 0.8),
+    ("contact.html", 0.7),
+    ("estimator.html", 0.7),
+    ("project-jericho.html", 0.6),
+    ("project-jupiter-island.html", 0.6),
+    ("project-yacht.html", 0.6),
+]
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -293,6 +306,8 @@ def resolve_cta_link(post):
 
 
 def render_post_page(post):
+    canonical = f"{SITE_URL}/journal/{post['slug']}.html"
+    og_image = post.get("image") or DEFAULT_OG_IMAGE
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -300,8 +315,18 @@ def render_post_page(post):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{html.escape(post['title'])} — {SITE_TITLE}</title>
 <meta name="description" content="{html.escape(post.get('excerpt',''))}">
-<link rel="canonical" href="{SITE_URL}/journal/{post['slug']}.html">
-{render_schema(post, f"{SITE_URL}/journal/{post['slug']}.html")}
+<link rel="canonical" href="{canonical}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{canonical}">
+<meta property="og:title" content="{html.escape(post['title'])}">
+<meta property="og:description" content="{html.escape(post.get('excerpt',''))}">
+<meta property="og:site_name" content="{SITE_TITLE}">
+<meta property="og:image" content="{og_image}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{html.escape(post['title'])}">
+<meta name="twitter:description" content="{html.escape(post.get('excerpt',''))}">
+<meta name="twitter:image" content="{og_image}">
+{render_schema(post, canonical)}
 <style>{STYLE_BLOCK}</style>
 </head>
 <body>
@@ -451,6 +476,7 @@ def render_index_page(posts):
         <div class="post-item-excerpt">{html.escape(p.get('excerpt',''))}</div>
       </a>"""
 
+    index_url = f"{SITE_URL}/journal/"
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -458,7 +484,18 @@ def render_index_page(posts):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Journal — {SITE_TITLE}</title>
 <meta name="description" content="{html.escape(SITE_DESCRIPTION)}">
+<link rel="canonical" href="{index_url}">
 <link rel="alternate" type="application/rss+xml" title="{SITE_TITLE}" href="{SITE_URL}/journal/feed.xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{index_url}">
+<meta property="og:title" content="Journal — {SITE_TITLE}">
+<meta property="og:description" content="{html.escape(SITE_DESCRIPTION)}">
+<meta property="og:site_name" content="{SITE_TITLE}">
+<meta property="og:image" content="{DEFAULT_OG_IMAGE}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Journal — {SITE_TITLE}">
+<meta name="twitter:description" content="{html.escape(SITE_DESCRIPTION)}">
+<meta name="twitter:image" content="{DEFAULT_OG_IMAGE}">
 <style>{STYLE_BLOCK}</style>
 </head>
 <body>
@@ -557,6 +594,39 @@ def render_rss(posts):
 """
 
 
+def render_sitemap(posts):
+    """Full sitemap: static pages + journal index + every post, with lastmod.
+    Regenerated on every build so new posts never have to be added by hand."""
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    entries = []
+
+    for path, priority in STATIC_PAGES:
+        loc = f"{SITE_URL}/{path}"
+        entries.append((loc, today, "monthly", priority))
+
+    entries.append((f"{SITE_URL}/journal/", today, "weekly", 0.8))
+
+    for p in posts:
+        loc = f"{SITE_URL}/journal/{p['slug']}.html"
+        entries.append((loc, p["date"], "yearly", 0.6))
+
+    urls_xml = "\n".join(
+        f"""  <url>
+    <loc>{loc}</loc>
+    <lastmod>{lastmod}</lastmod>
+    <changefreq>{changefreq}</changefreq>
+    <priority>{priority}</priority>
+  </url>"""
+        for loc, lastmod, changefreq, priority in entries
+    )
+
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{urls_xml}
+</urlset>
+"""
+
+
 # ---------------------------------------------------------------------------
 # Build
 # ---------------------------------------------------------------------------
@@ -607,6 +677,12 @@ def main():
     with open(os.path.join(out_dir, "feed.xml"), "w", encoding="utf-8") as f:
         f.write(rss_xml)
     print(f"Built {os.path.join(out_dir, 'feed.xml')}")
+
+    sitemap_xml = render_sitemap(posts)
+    sitemap_path = os.path.join(REPO_ROOT, "sitemap.xml")
+    with open(sitemap_path, "w", encoding="utf-8") as f:
+        f.write(sitemap_xml)
+    print(f"Built {sitemap_path}")
 
 
 if __name__ == "__main__":

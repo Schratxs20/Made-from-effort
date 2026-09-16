@@ -1,0 +1,25 @@
+# Made From Effort
+
+> Made From Effort designs and builds bespoke home, estate, and yacht gyms, and provides private performance training. Based on Long Island, NY, working worldwide. Run by Scott Schratwieser.
+
+Made From Effort's Journal covers gym design, training consistency, and the systems that make both hold up — written from real projects, not generic fitness content.
+
+## Site
+
+- [Home](https://www.madefromeffort.com/): Overview of gym design and training services, portfolio, and contact.
+- [Training](https://www.madefromeffort.com/training.html): Private personal training programs.
+- [Start a Project](https://www.madefromeffort.com/contact.html): Contact and project inquiry form.
+- [Investment Estimator](https://www.madefromeffort.com/estimator.html): Directional cost estimator for a custom gym build.
+
+## Portfolio
+
+- [Private Yacht Gym](https://www.madefromeffort.com/project-yacht.html): Custom marine gym installation aboard a private yacht.
+- [Jericho Private Estate](https://www.madefromeffort.com/project-jericho.html): Home gym and cedar sauna built into a Long Island, NY estate.
+- [Jupiter Island Estate](https://www.madefromeffort.com/project-jupiter-island.html): Custom home gym inside a Jupiter Island, FL estate.
+
+## Journal
+
+- [Journal index](https://www.madefromeffort.com/journal/): All posts, updated regularly.
+- [RSS feed](https://www.madefromeffort.com/journal/feed.xml): Full-text feed of every post.
+
+Each Journal post is a real project story or a training/mindset lesson, in Scott Schratwieser's own voice, reviewed and approved by him before publishing — never syndicated or reposted content.
