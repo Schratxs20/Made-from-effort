@@ -1,3 +1,0 @@
-feedparser>=6.0
-requests>=2.31
-faster-whisper>=1.0
