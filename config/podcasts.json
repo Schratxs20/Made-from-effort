@@ -1,0 +1,22 @@
+{
+  "_comment": "One entry per show. 'rss_url' is the real public RSS feed URL, resolved via Apple's podcast lookup API (itunes.apple.com/lookup?id=<applePodcastsId>) and confirmed live. If a show ever gets replaced or moves hosts, re-resolve its feedUrl the same way and update it here.",
+  "feeds": [
+    {
+      "name": "Open Residency",
+      "rss_url": "https://anchor.fm/s/ffafb5b8/podcast/rss",
+      "note": "Hosted by Mark Brazil. Site: openresidency.com. Apple Podcasts id 1791782856."
+    },
+    {
+      "name": "Founders",
+      "rss_url": "https://feeds.megaphone.fm/DSLLC6297708582",
+      "note": "David Senra. Site: founderspodcast.com. Apple Podcasts id 1141877104."
+    },
+    {
+      "name": "The Grant Owen Podcast",
+      "rss_url": "https://feed.podbean.com/grantowenpodcast/feed.xml",
+      "note": "Hosted on Podbean (grantowenpodcast.podbean.com). Apple Podcasts id 1699435419."
+    }
+  ],
+  "lookback_days": 10,
+  "max_episodes_per_run": 5
+}
