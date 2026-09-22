@@ -256,6 +256,7 @@ STYLE_BLOCK = """
   .post-item { display:block; padding:28px 0; border-top:1px solid #E2E0D9; text-decoration:none; }
   .post-item:first-child { border-top:none; }
   .post-item-date { font-family:'Inter',sans-serif; font-weight:500; font-size:11px; letter-spacing:1.5px; color:#57677A; text-transform:uppercase; }
+  .post-item-category { color:#1C1C1A; font-weight:600; }
   .post-item-title { font-family:'Playfair Display',serif; font-weight:400; font-size:26px; color:#1C1C1A; margin:8px 0; }
   .post-item-excerpt { font-family:'Inter',sans-serif; font-weight:300; font-size:15px; color:#6B6B66; line-height:1.6; }
 """
@@ -316,7 +317,7 @@ def render_post_page(post):
     {'<img class="photo" src="' + post['image'] + '" alt="' + html.escape(post['title']) + '">' if post.get('image') else ''}
     <div class="eyebrow">Journal</div>
     <div class="headline">{html.escape(post['title'])}</div>
-    <div class="meta-row">{format_date_long(post['date'])}</div>
+    <div class="meta-row">{format_date_long(post['date'])}{f' &middot; {html.escape(post["category"])}' if post.get('category') else ''}</div>
     <div class="body-copy">
       {render_stat_bar_html(post)}
       {post['body_html']}
@@ -446,7 +447,7 @@ def render_index_page(posts):
     for p in posts:
         items += f"""
       <a class="post-item" href="{SITE_URL}/journal/{p['slug']}.html">
-        <div class="post-item-date">{format_date_long(p['date'])}</div>
+        <div class="post-item-date">{format_date_long(p['date'])}{f' &middot; <span class="post-item-category">{html.escape(p["category"])}</span>' if p.get('category') else ''}</div>
         <div class="post-item-title">{html.escape(p['title'])}</div>
         <div class="post-item-excerpt">{html.escape(p.get('excerpt',''))}</div>
       </a>"""

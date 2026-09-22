@@ -5,6 +5,7 @@ excerpt: Every developer asks what a gym adds to the rate or the rent roll. That
 issue: "021"
 cta_text: Start a Project
 tags: Hotel Gyms, Apartment & Multifamily, Amenity ROI, Gym Design Strategy
+category: Gym Design
 ---
 
 Every hotel GM and every multifamily developer eventually asks me a version of the same question: does spending more on the gym let us charge more for the room, or the unit?

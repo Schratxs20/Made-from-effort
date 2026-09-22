@@ -5,6 +5,7 @@ excerpt: A stalled result doesn't mean you're maxed out. It usually means you've
 issue: "022"
 cta_text: Train with Me
 tags: Mindset, Plateaus, Training Systems, Client Coaching
+category: Mindset
 ---
 
 Everyone eventually hits a point where it feels like there's nothing left.
