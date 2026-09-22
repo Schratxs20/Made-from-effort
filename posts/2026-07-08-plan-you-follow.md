@@ -1,5 +1,5 @@
 ---
-title: The plan you follow beats the plan you love
+title: The Plan You Follow Beats the Plan You Love
 date: 2026-07-08
 excerpt: Why the "perfect" plan usually fails, the compounding math of consistency, and the three levers that actually protect it.
 issue: "014"
