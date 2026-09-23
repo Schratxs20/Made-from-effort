@@ -1,10 +1,11 @@
 ---
 title: Is Waiting for the Perfect Plan the Real Thing Holding You Back?
-date: 2026-10-24
-excerpt: You don't need the perfect program, the perfect gym, or the perfect week. You need one that's good enough — because the one you're still perfecting is the one you never actually begin.
-issue: "023"
+date: 2026-09-25
+excerpt: You don't need the perfect program, the perfect gym, or the perfect week to start. You need one that's good enough — because the one you're still perfecting is the one you never actually begin.
+issue: "026"
 cta_text: Train with Me
 tags: Mindset, Consistency, Self-Discipline, Getting Started
+category: Consistency
 ---
 
 I've noticed a pattern in people who never start.
