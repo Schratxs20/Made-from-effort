@@ -306,6 +306,15 @@ select option { background: var(--white); }
 .upload-box input[type="file"] { border: 0; padding: 0; font-size: 12px; }
 .upload-box input[type="file"]::file-selector-button { border: 1px solid var(--ink); background: var(--ink); color: var(--white); padding: 9px 12px; margin-right: 12px; cursor: pointer; }
 .upload-note { font-size: 10px; line-height: 1.55; color: var(--slate); margin-top: 10px; }
+.file-summary { display: none; margin-top: 14px; border-top: 1px solid var(--border); padding-top: 10px; }
+.file-summary.active { display: block; }
+.file-warning { display: none; color: var(--error); font-size: 11px; line-height: 1.5; margin-bottom: 8px; }
+.file-warning.active { display: block; }
+.file-list { list-style: none; display: grid; gap: 6px; }
+.file-item { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 12px; align-items: center; font-size: 11px; color: var(--slate); padding: 8px 0; border-bottom: 1px solid var(--border); }
+.file-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-remove,.file-clear { border: 0; background: none; color: var(--error); font: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+.file-clear { margin-top: 10px; }
 
 /* ── TILE SELECTOR ───────────────────────────── */
 .tile-group {
@@ -638,7 +647,7 @@ select option { background: var(--white); }
           <div class="field"><label>What is prompting the review? <span style="text-transform:none;letter-spacing:0">(select all that apply)</span></label><div class="check-group"><label class="check-option"><input type="checkbox" name="auditNeed" value="Aging equipment">Aging or unreliable equipment</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Member feedback">Member feedback or complaints</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Underused space">Underused or poorly planned space</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Renovation or expansion">Renovation or expansion planning</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Recovery and wellness">Adding recovery or wellness</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Capital planning">Board or capital planning</label></div></div>
         </div>
         <div class="field-row single">
-          <div class="field"><label for="facilityMedia">Share Photos or Short Videos <span style="text-transform:none;letter-spacing:0">(optional)</span></label><div class="upload-box"><input type="file" id="facilityMedia" name="facilityMedia" accept="image/jpeg,image/png,image/heic,image/webp,video/mp4,video/quicktime" multiple><p class="upload-note">Up to 10 files. Each file must be 25 MB or less. Wide room views, equipment condition, storage, circulation, and recovery areas are most useful.</p></div></div>
+          <div class="field"><label for="facilityMedia">Share Photos or Short Videos <span style="text-transform:none;letter-spacing:0">(optional)</span></label><div class="upload-box"><input type="file" id="facilityMedia" name="facilityMedia" accept="image/jpeg,image/png,image/heic,image/webp,video/mp4,video/quicktime" multiple><p class="upload-note">Up to 10 files. Each file must be 25 MB or less. Wide room views, equipment condition, storage, circulation, and recovery areas are most useful.</p><div class="file-summary" id="fileSummary"><p class="file-warning" id="fileWarning"></p><ul class="file-list" id="fileList"></ul><button type="button" class="file-clear" id="fileClear">Remove all files</button></div></div></div>
         </div>
         <div class="field-row single">
           <div class="field"><label for="mediaLink">Or Share a Photo / Video Folder Link</label><input type="url" id="mediaLink" name="mediaLink" placeholder="Google Drive, Dropbox, iCloud, or another viewable link"><span class="field-note">Use this for larger videos or when you prefer to share a folder.</span></div>
@@ -829,6 +838,47 @@ select option { background: var(--white); }
     const requestedTile = document.getElementById(`tile-${requestedProject}`);
     if (requestedTile) selectTile('projectType', requestedProject, requestedTile);
   }
+
+  const facilityMedia = document.getElementById('facilityMedia');
+  const fileSummary = document.getElementById('fileSummary');
+  const fileList = document.getElementById('fileList');
+  const fileWarning = document.getElementById('fileWarning');
+
+  function updateSelectedFiles(files) {
+    const transfer = new DataTransfer();
+    files.forEach(file => transfer.items.add(file));
+    facilityMedia.files = transfer.files;
+    renderSelectedFiles();
+  }
+
+  function renderSelectedFiles() {
+    const files = Array.from(facilityMedia.files);
+    fileList.innerHTML = '';
+    fileSummary.classList.toggle('active', files.length > 0);
+    const oversized = files.filter(file => file.size > 25 * 1024 * 1024);
+    const warnings = [];
+    if (files.length > 10) warnings.push(`Remove ${files.length - 10} file${files.length - 10 === 1 ? '' : 's'} to continue. The maximum is 10.`);
+    if (oversized.length) warnings.push(`${oversized.length} file${oversized.length === 1 ? ' is' : 's are'} larger than 25 MB and must be removed or shared by folder link.`);
+    fileWarning.textContent = warnings.join(' ');
+    fileWarning.classList.toggle('active', warnings.length > 0);
+    files.forEach((file, index) => {
+      const item = document.createElement('li');
+      item.className = 'file-item';
+      const size = file.size < 1024 * 1024 ? `${Math.ceil(file.size / 1024)} KB` : `${(file.size / 1024 / 1024).toFixed(1)} MB`;
+      item.innerHTML = `<span class="file-name" title="${file.name.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')}">${file.name.replace(/&/g, '&amp;').replace(/</g, '&lt;')} · ${size}</span><button type="button" class="file-remove" data-index="${index}">Remove</button>`;
+      fileList.appendChild(item);
+    });
+  }
+
+  facilityMedia.addEventListener('change', renderSelectedFiles);
+  fileList.addEventListener('click', event => {
+    const button = event.target.closest('.file-remove');
+    if (!button) return;
+    const files = Array.from(facilityMedia.files);
+    files.splice(Number(button.dataset.index), 1);
+    updateSelectedFiles(files);
+  });
+  document.getElementById('fileClear').addEventListener('click', () => updateSelectedFiles([]));
 </script>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Start a Project with Performance Edge Training + Gym Design","url":"https://www.madefromeffort.com/contact.html","description":"Project inquiry for residential, yacht, commercial, boutique studio, and country club fitness design.","about":{"@id":"https://www.madefromeffort.com/#business"}}</script>
