@@ -60,6 +60,11 @@
     const payload = { event: eventName, ...window.peAttribution(), ...(details || {}) };
     window.dataLayer.push(payload);
     if (typeof window.gtag === 'function') window.gtag('event', eventName, payload);
+    if (eventName === 'lead_submit') {
+      const conversionPayload = { ...payload, event: 'close_convert_lead' };
+      window.dataLayer.push(conversionPayload);
+      if (typeof window.gtag === 'function') window.gtag('event', 'close_convert_lead', conversionPayload);
+    }
   };
 
   document.addEventListener('click', event => {
