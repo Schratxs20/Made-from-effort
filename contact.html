@@ -671,7 +671,7 @@ select option { background: var(--white); }
     <div class="success-panel" id="successPanel">
       <div class="success-mark">✓</div>
       <p class="success-heading">We'll be in <em>touch.</em></p>
-      <p class="success-text">Your inquiry has been received. Expect a response within one business day — we look forward to learning about your project.</p>
+      <p class="success-text" id="successText">Your inquiry has been received. Expect a response within one business day—we look forward to learning about your project.</p>
     </div>
 
   </div>
@@ -783,37 +783,58 @@ select option { background: var(--white); }
     submitBtn.disabled = true;
     submitBtn.querySelector('span').textContent = 'Sending…';
 
-    const data = new FormData();
-    data.append('firstName',   document.getElementById('firstName').value.trim());
-    data.append('lastName',    document.getElementById('lastName').value.trim());
-    data.append('email',       document.getElementById('email').value.trim());
-    data.append('phone',       document.getElementById('phone').value.trim());
-    data.append('projectType', selectedProjectType);
-    data.append('budget',      document.getElementById('budget').value);
-    data.append('timeline',    document.getElementById('timeline').value);
-    data.append('vision',      document.getElementById('vision').value.trim());
-    if (selectedProjectType === 'country-club') {
-      data.append('clubName', document.getElementById('clubName').value.trim());
-      data.append('clubRole', document.getElementById('clubRole').value);
-      data.append('facilitySize', document.getElementById('facilitySize').value || 'Not provided');
-      data.append('decisionStage', document.getElementById('decisionStage').value || 'Not provided');
-      data.append('auditNeeds', Array.from(document.querySelectorAll('input[name="auditNeed"]:checked')).map(el => el.value).join(', ') || 'Not provided');
-      data.append('mediaLink', document.getElementById('mediaLink').value.trim() || 'Not provided');
-      Array.from(document.getElementById('facilityMedia').files).forEach(file => data.append('facility_media', file));
-    }
-    data.append('source',      new URLSearchParams(window.location.search).get('source') || 'website');
-    data.append('_subject',    'New Inquiry — Performance Edge Gym Design');
+    const selectedFiles = selectedProjectType === 'country-club' ? Array.from(document.getElementById('facilityMedia').files) : [];
 
-    try {
-      const res = await fetch('https://formspree.io/f/mvzwwrzr', {
+    function buildSubmission(includeFiles, attachmentNote) {
+      const data = new FormData();
+      data.append('firstName', document.getElementById('firstName').value.trim());
+      data.append('lastName', document.getElementById('lastName').value.trim());
+      data.append('email', document.getElementById('email').value.trim());
+      data.append('phone', document.getElementById('phone').value.trim());
+      data.append('projectType', selectedProjectType);
+      data.append('budget', document.getElementById('budget').value);
+      data.append('timeline', document.getElementById('timeline').value);
+      data.append('vision', document.getElementById('vision').value.trim());
+      if (selectedProjectType === 'country-club') {
+        data.append('clubName', document.getElementById('clubName').value.trim());
+        data.append('clubRole', document.getElementById('clubRole').value);
+        data.append('facilitySize', document.getElementById('facilitySize').value || 'Not provided');
+        data.append('decisionStage', document.getElementById('decisionStage').value || 'Not provided');
+        data.append('auditNeeds', Array.from(document.querySelectorAll('input[name="auditNeed"]:checked')).map(el => el.value).join(', ') || 'Not provided');
+        data.append('mediaLink', document.getElementById('mediaLink').value.trim() || 'Not provided');
+        data.append('selectedFileNames', selectedFiles.map(file => file.name).join(', ') || 'No local files selected');
+        data.append('attachmentStatus', attachmentNote);
+        if (includeFiles) selectedFiles.forEach(file => data.append('facility_media', file));
+      }
+      data.append('source', new URLSearchParams(window.location.search).get('source') || 'website');
+      data.append('_subject', 'New Inquiry — Performance Edge Gym Design');
+      return data;
+    }
+
+    async function send(data) {
+      const response = await fetch('https://formspree.io/f/mvzwwrzr', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
         body: data
       });
-      if (!res.ok) throw new Error();
+      if (!response.ok) throw new Error(`Form service returned ${response.status}`);
+    }
+
+    try {
+      let attachmentsTransferred = true;
+      try {
+        await send(buildSubmission(selectedFiles.length > 0, selectedFiles.length ? 'Attachment upload attempted' : 'No attachments selected'));
+      } catch (uploadError) {
+        if (!selectedFiles.length) throw uploadError;
+        attachmentsTransferred = false;
+        await send(buildSubmission(false, 'IMPORTANT: The visitor selected local files, but Formspree rejected or timed out during attachment transfer. The inquiry was automatically resent without binary attachments. Follow up for a folder link.'));
+      }
 
       document.getElementById('stepBar').style.display = 'none';
       document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      if (!attachmentsTransferred) {
+        document.getElementById('successText').textContent = 'Your inquiry was received, but the selected files could not be transferred. We saved their filenames and will contact you for a folder link. You do not need to submit the form again.';
+      }
       document.getElementById('successPanel').classList.add('active');
     } catch {
       submitBtn.disabled = false;
