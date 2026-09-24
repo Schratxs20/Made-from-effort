@@ -738,6 +738,7 @@ select option { background: var(--white); }
     data.append('budget',      document.getElementById('budget').value);
     data.append('timeline',    document.getElementById('timeline').value);
     data.append('vision',      document.getElementById('vision').value.trim());
+    data.append('source',      new URLSearchParams(window.location.search).get('source') || 'website');
     data.append('_subject',    'New Inquiry — Performance Edge Gym Design');
 
     try {
@@ -768,6 +769,12 @@ select option { background: var(--white); }
       el.closest('.field')?.classList.remove('has-error');
     });
   });
+
+  const requestedProject = new URLSearchParams(window.location.search).get('project');
+  if (requestedProject) {
+    const requestedTile = document.getElementById(`tile-${requestedProject}`);
+    if (requestedTile) selectTile('projectType', requestedProject, requestedTile);
+  }
 </script>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Start a Project with Performance Edge Training + Gym Design","url":"https://www.madefromeffort.com/contact.html","description":"Project inquiry for residential, yacht, commercial, boutique studio, and country club fitness design.","about":{"@id":"https://www.madefromeffort.com/#business"}}</script>

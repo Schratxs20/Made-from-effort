@@ -42,6 +42,7 @@ STATIC_PAGES = [
     ("yacht-gym-design.html", 0.9),
     ("commercial-gym-design.html", 0.8),
     ("country-club-fitness-design.html", 0.8),
+    ("country-club-fitness-audit.html", 0.8),
     ("contact.html", 0.7),
     ("estimator.html", 0.7),
     ("project-jericho.html", 0.6),
