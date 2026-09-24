@@ -647,7 +647,7 @@ select option { background: var(--white); }
           <div class="field"><label>What is prompting the review? <span style="text-transform:none;letter-spacing:0">(select all that apply)</span></label><div class="check-group"><label class="check-option"><input type="checkbox" name="auditNeed" value="Aging equipment">Aging or unreliable equipment</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Member feedback">Member feedback or complaints</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Underused space">Underused or poorly planned space</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Renovation or expansion">Renovation or expansion planning</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Recovery and wellness">Adding recovery or wellness</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Capital planning">Board or capital planning</label></div></div>
         </div>
         <div class="field-row single">
-          <div class="field"><label for="facilityMedia">Share Photos or Short Videos <span style="text-transform:none;letter-spacing:0">(optional)</span></label><div class="upload-box"><input type="file" id="facilityMedia" name="facilityMedia" accept="image/jpeg,image/png,image/heic,image/webp,video/mp4,video/quicktime" multiple><p class="upload-note">Up to 10 files. Each file must be 25 MB or less. Wide room views, equipment condition, storage, circulation, and recovery areas are most useful.</p><div class="file-summary" id="fileSummary"><p class="file-warning" id="fileWarning"></p><ul class="file-list" id="fileList"></ul><button type="button" class="file-clear" id="fileClear">Remove all files</button></div></div></div>
+          <div class="field"><label for="facilityMedia">Share Photos or Short Videos <span style="text-transform:none;letter-spacing:0">(optional)</span></label><div class="upload-box"><input type="file" id="facilityMedia" name="attachments[]" accept="image/jpeg,image/png,image/heic,image/webp,video/mp4,video/quicktime" multiple><p class="upload-note">Up to 10 files, 25 MB per file and 80 MB total. Wide room views, equipment condition, storage, circulation, and recovery areas are most useful.</p><div class="file-summary" id="fileSummary"><p class="file-warning" id="fileWarning"></p><ul class="file-list" id="fileList"></ul><button type="button" class="file-clear" id="fileClear">Remove all files</button></div></div></div>
         </div>
         <div class="field-row single">
           <div class="field"><label for="mediaLink">Or Share a Photo / Video Folder Link</label><input type="url" id="mediaLink" name="mediaLink" placeholder="Google Drive, Dropbox, iCloud, or another viewable link"><span class="field-note">Use this for larger videos or when you prefer to share a folder.</span></div>
@@ -757,8 +757,9 @@ select option { background: var(--white); }
         check('clubName', document.getElementById('clubName').value.trim().length > 0);
         check('clubRole', document.getElementById('clubRole').value !== '');
         const files = Array.from(document.getElementById('facilityMedia').files);
-        if (files.length > 10 || files.some(file => file.size > 25 * 1024 * 1024)) {
-          alert('Please select no more than 10 files, with each file 25 MB or less. For larger videos, use the folder-link field.');
+        const totalFileSize = files.reduce((sum, file) => sum + file.size, 0);
+        if (files.length > 10 || files.some(file => file.size > 25 * 1024 * 1024) || totalFileSize > 80 * 1024 * 1024) {
+          alert('Please select no more than 10 files, with each file 25 MB or less and the full upload 80 MB or less. For larger videos, use the folder-link field.');
           valid = false;
         }
       }
@@ -785,7 +786,7 @@ select option { background: var(--white); }
 
     const selectedFiles = selectedProjectType === 'country-club' ? Array.from(document.getElementById('facilityMedia').files) : [];
 
-    function buildSubmission(includeFiles, attachmentNote) {
+    function buildSubmission() {
       const data = new FormData();
       data.append('firstName', document.getElementById('firstName').value.trim());
       data.append('lastName', document.getElementById('lastName').value.trim());
@@ -803,8 +804,7 @@ select option { background: var(--white); }
         data.append('auditNeeds', Array.from(document.querySelectorAll('input[name="auditNeed"]:checked')).map(el => el.value).join(', ') || 'Not provided');
         data.append('mediaLink', document.getElementById('mediaLink').value.trim() || 'Not provided');
         data.append('selectedFileNames', selectedFiles.map(file => file.name).join(', ') || 'No local files selected');
-        data.append('attachmentStatus', attachmentNote);
-        if (includeFiles) selectedFiles.forEach(file => data.append('facility_media', file));
+        selectedFiles.forEach(file => data.append('attachments[]', file));
       }
       data.append('source', new URLSearchParams(window.location.search).get('source') || 'website');
       data.append('_subject', 'New Inquiry — Performance Edge Gym Design');
@@ -812,7 +812,7 @@ select option { background: var(--white); }
     }
 
     async function send(data) {
-      const response = await fetch('https://formspree.io/f/mvzwwrzr', {
+      const response = await fetch('https://usebasin.com/f/7e871e35a6e1', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
         body: data
@@ -821,20 +821,10 @@ select option { background: var(--white); }
     }
 
     try {
-      let attachmentsTransferred = true;
-      try {
-        await send(buildSubmission(selectedFiles.length > 0, selectedFiles.length ? 'Attachment upload attempted' : 'No attachments selected'));
-      } catch (uploadError) {
-        if (!selectedFiles.length) throw uploadError;
-        attachmentsTransferred = false;
-        await send(buildSubmission(false, 'IMPORTANT: The visitor selected local files, but Formspree rejected or timed out during attachment transfer. The inquiry was automatically resent without binary attachments. Follow up for a folder link.'));
-      }
+      await send(buildSubmission());
 
       document.getElementById('stepBar').style.display = 'none';
       document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-      if (!attachmentsTransferred) {
-        document.getElementById('successText').textContent = 'Your inquiry was received, but the selected files could not be transferred. We saved their filenames and will contact you for a folder link. You do not need to submit the form again.';
-      }
       document.getElementById('successPanel').classList.add('active');
     } catch {
       submitBtn.disabled = false;
@@ -877,9 +867,11 @@ select option { background: var(--white); }
     fileList.innerHTML = '';
     fileSummary.classList.toggle('active', files.length > 0);
     const oversized = files.filter(file => file.size > 25 * 1024 * 1024);
+    const totalSize = files.reduce((sum, file) => sum + file.size, 0);
     const warnings = [];
     if (files.length > 10) warnings.push(`Remove ${files.length - 10} file${files.length - 10 === 1 ? '' : 's'} to continue. The maximum is 10.`);
     if (oversized.length) warnings.push(`${oversized.length} file${oversized.length === 1 ? ' is' : 's are'} larger than 25 MB and must be removed or shared by folder link.`);
+    if (totalSize > 80 * 1024 * 1024) warnings.push(`The selected files total ${(totalSize / 1024 / 1024).toFixed(1)} MB. Remove files until the total is 80 MB or less.`);
     fileWarning.textContent = warnings.join(' ');
     fileWarning.classList.toggle('active', warnings.length > 0);
     files.forEach((file, index) => {
