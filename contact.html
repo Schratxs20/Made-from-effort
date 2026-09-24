@@ -807,7 +807,6 @@ select option { background: var(--white); }
         selectedFiles.forEach(file => data.append('attachments[]', file));
       }
       data.append('source', new URLSearchParams(window.location.search).get('source') || 'website');
-      data.append('inquiryType', new URLSearchParams(window.location.search).get('inquiry') || 'design-project');
       data.append('_subject', 'New Inquiry — Performance Edge Gym Design');
       return data;
     }
@@ -849,21 +848,6 @@ select option { background: var(--white); }
   if (requestedProject) {
     const requestedTile = document.getElementById(`tile-${requestedProject}`);
     if (requestedTile) selectTile('projectType', requestedProject, requestedTile);
-  }
-
-  const inquiryType = new URLSearchParams(window.location.search).get('inquiry');
-  if (inquiryType === 'charter') {
-    document.title = 'Request a Canoe Canoe Charter Introduction | Performance Edge';
-    document.getElementById('pageLabel').textContent = 'Canoe Canoe · Charter Interest';
-    document.getElementById('pageHeading').innerHTML = 'Request a Charter <em>Introduction.</em>';
-    document.getElementById('pageSub').textContent = 'Tell us what you have in mind. Performance Edge will review the inquiry and, when appropriate, connect you with the yacht’s authorized charter representation.';
-    document.getElementById('projectPanelTitle').innerHTML = 'About your <span>trip.</span>';
-    document.getElementById('budgetLabel').textContent = 'Estimated Charter Budget';
-    document.getElementById('timelineLabel').textContent = 'Preferred Timing';
-    document.getElementById('visionPanelTitle').innerHTML = 'Share your <span>plans.</span>';
-    document.getElementById('visionLabel').textContent = 'Tell us about your charter interest';
-    document.getElementById('vision').placeholder = 'Include preferred dates or season, destination, party size, trip length, and any interest in onboard training or recovery...';
-    document.querySelector('#field-vision .field-note').textContent = 'Availability, rates, itineraries, contracts, and bookings are handled by the yacht’s authorized charter representative.';
   }
 
   const facilityMedia = document.getElementById('facilityMedia');
