@@ -500,9 +500,9 @@ select option { background: var(--white); }
 <body>
 
 <section class="section">
-  <p class="section-label">Get in Touch</p>
-  <h1 class="section-heading">Let's Build Something <em>Extraordinary.</em></h1>
-  <p class="section-sub">We take on a limited number of projects at a time. If you're serious about your training environment, we'd like to hear about it.</p>
+  <p class="section-label" id="pageLabel">Get in Touch</p>
+  <h1 class="section-heading" id="pageHeading">Let's Build Something <em>Extraordinary.</em></h1>
+  <p class="section-sub" id="pageSub">We take on a limited number of projects at a time. If you're serious about your training environment, we'd like to hear about it.</p>
 
   <div class="form-card">
 
@@ -559,7 +559,7 @@ select option { background: var(--white); }
 
     <!-- PANEL 2: Project Details -->
     <div class="panel" id="panel-2">
-      <p class="panel-title">About your <span>project.</span></p>
+      <p class="panel-title" id="projectPanelTitle">About your <span>project.</span></p>
 
       <div class="field-row single" style="margin-bottom: 28px;">
         <div class="field" id="field-projectType">
@@ -596,7 +596,7 @@ select option { background: var(--white); }
 
       <div class="field-row">
         <div class="field" id="field-budget">
-          <label for="budget">Approximate Budget</label>
+          <label for="budget" id="budgetLabel">Approximate Budget</label>
           <div class="select-wrap">
             <select id="budget" name="budget">
               <option value="" disabled selected>Select a range</option>
@@ -609,7 +609,7 @@ select option { background: var(--white); }
           <span class="error-msg">Please select a budget range.</span>
         </div>
         <div class="field" id="field-timeline">
-          <label for="timeline">When to Start</label>
+          <label for="timeline" id="timelineLabel">When to Start</label>
           <div class="select-wrap">
             <select id="timeline" name="timeline">
               <option value="" disabled selected>Select a window</option>
@@ -631,7 +631,7 @@ select option { background: var(--white); }
 
     <!-- PANEL 3: Vision -->
     <div class="panel" id="panel-3">
-      <p class="panel-title">Share your <span>vision.</span></p>
+      <p class="panel-title" id="visionPanelTitle">Share your <span>vision.</span></p>
       <div class="audit-fields" id="auditFields">
         <p class="audit-heading">Help us understand the club.</p>
         <p class="audit-intro">These details let us assess the opportunity before the first call. Estimates are fine if exact information is not yet available.</p>
@@ -655,7 +655,7 @@ select option { background: var(--white); }
       </div>
       <div class="field-row single">
         <div class="field" id="field-vision">
-          <label for="vision">Tell us about the space</label>
+          <label for="vision" id="visionLabel">Tell us about the space</label>
           <textarea id="vision" name="vision" placeholder="Describe your goals, the space you have in mind, how you train, and anything else that matters to you..."></textarea>
           <span class="field-note">The more specific you are, the better we can prepare for your discovery call.</span>
           <span class="error-msg">Please share a few details about your vision.</span>
@@ -807,6 +807,7 @@ select option { background: var(--white); }
         selectedFiles.forEach(file => data.append('attachments[]', file));
       }
       data.append('source', new URLSearchParams(window.location.search).get('source') || 'website');
+      data.append('inquiryType', new URLSearchParams(window.location.search).get('inquiry') || 'design-project');
       data.append('_subject', 'New Inquiry — Performance Edge Gym Design');
       return data;
     }
@@ -848,6 +849,21 @@ select option { background: var(--white); }
   if (requestedProject) {
     const requestedTile = document.getElementById(`tile-${requestedProject}`);
     if (requestedTile) selectTile('projectType', requestedProject, requestedTile);
+  }
+
+  const inquiryType = new URLSearchParams(window.location.search).get('inquiry');
+  if (inquiryType === 'charter') {
+    document.title = 'Request a Canoe Canoe Charter Introduction | Performance Edge';
+    document.getElementById('pageLabel').textContent = 'Canoe Canoe · Charter Interest';
+    document.getElementById('pageHeading').innerHTML = 'Request a Charter <em>Introduction.</em>';
+    document.getElementById('pageSub').textContent = 'Tell us what you have in mind. Performance Edge will review the inquiry and, when appropriate, connect you with the yacht’s authorized charter representation.';
+    document.getElementById('projectPanelTitle').innerHTML = 'About your <span>trip.</span>';
+    document.getElementById('budgetLabel').textContent = 'Estimated Charter Budget';
+    document.getElementById('timelineLabel').textContent = 'Preferred Timing';
+    document.getElementById('visionPanelTitle').innerHTML = 'Share your <span>plans.</span>';
+    document.getElementById('visionLabel').textContent = 'Tell us about your charter interest';
+    document.getElementById('vision').placeholder = 'Include preferred dates or season, destination, party size, trip length, and any interest in onboard training or recovery...';
+    document.querySelector('#field-vision .field-note').textContent = 'Availability, rates, itineraries, contracts, and bookings are handled by the yacht’s authorized charter representative.';
   }
 
   const facilityMedia = document.getElementById('facilityMedia');
