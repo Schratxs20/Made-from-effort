@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Start Your Project | Made From Effort</title>
+<title>Start a Gym Design Project | Performance Edge</title>
 <meta name="description" content="Ready to design your perfect training environment? Tell us about your project and we'll respond within one business day.">
 <link rel="canonical" href="https://www.madefromeffort.com/contact.html">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.madefromeffort.com/contact.html">
-<meta property="og:title" content="Start Your Project | Made From Effort">
+<meta property="og:title" content="Start a Gym Design Project | Performance Edge">
 <meta property="og:description" content="Ready to design your perfect training environment? Tell us about your project and we'll respond within one business day.">
 <meta property="og:site_name" content="Made From Effort">
 <meta property="og:image" content="https://www.madefromeffort.com/og-image.jpg">
@@ -19,7 +19,7 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Start Your Project | Made From Effort">
+<meta name="twitter:title" content="Start a Gym Design Project | Performance Edge">
 <meta name="twitter:description" content="Ready to design your perfect training environment? Tell us about your project and we'll respond within one business day.">
 <meta name="twitter:image" content="https://www.madefromeffort.com/og-image.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -297,7 +297,7 @@ select option { background: var(--white); }
 /* ── TILE SELECTOR ───────────────────────────── */
 .tile-group {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   margin-bottom: 0;
 }
@@ -554,6 +554,12 @@ select option { background: var(--white); }
               <span class="tile-name">Commercial</span>
               <span class="tile-desc">Boutique studio or facility</span>
             </label>
+            <label class="tile" id="tile-country-club" onclick="selectTile('projectType','country-club',this)">
+              <input type="radio" name="projectType" value="country-club">
+              <span class="tile-icon">♢</span>
+              <span class="tile-name">Country Club</span>
+              <span class="tile-desc">Member fitness or wellness facility</span>
+            </label>
             <label class="tile" id="tile-marine" onclick="selectTile('projectType','marine',this)">
               <input type="radio" name="projectType" value="marine">
               <span class="tile-icon">⚓</span>
@@ -732,7 +738,7 @@ select option { background: var(--white); }
     data.append('budget',      document.getElementById('budget').value);
     data.append('timeline',    document.getElementById('timeline').value);
     data.append('vision',      document.getElementById('vision').value.trim());
-    data.append('_subject',    'New Inquiry — Made From Effort');
+    data.append('_subject',    'New Inquiry — Performance Edge Gym Design');
 
     try {
       const res = await fetch('https://formspree.io/f/mvzwwrzr', {
