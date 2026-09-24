@@ -533,6 +533,7 @@ input[type="range"]::-moz-range-thumb {
   <p class="disclaimer">This is a directional estimate based on typical builds — your real number depends on your specific room, goals, and what's already there. Covers equipment, finishes, and installation only; any construction or build-out work is priced separately with your contractor. Typical equipment lead time at this tier: 8–16 weeks; install adds 1–3 weeks.</p>
 </div>
 
+<script src="site-events.js"></script>
 <script>
   // ── PRICING MODEL — PLACEHOLDER NUMBERS ──────────────────────────
   // These are illustrative, not Scott's real pricing. Replace every
@@ -706,6 +707,7 @@ input[type="range"]::-moz-range-thumb {
     data.append('recovery', state.recovery.join(', ') || 'none');
     data.append('estimate', rangeText);
     data.append('_subject', 'New Estimator Lead — Performance Edge Gym Design');
+    if (window.peAppendAttribution) window.peAppendAttribution(data);
 
     try {
       const res = await fetch('https://formspree.io/f/mvzwwrzr', {
@@ -720,6 +722,7 @@ input[type="range"]::-moz-range-thumb {
       document.getElementById('estimateRange').classList.remove('blurred');
       document.getElementById('gateForm').style.display = 'none';
       document.getElementById('resultPanel').classList.add('active');
+      if (window.peTrack) window.peTrack('lead_submit', { lead_type: 'estimator', investment_tier: state.tier });
     } catch {
       btn.disabled = false;
       btn.textContent = 'Send My Breakdown';

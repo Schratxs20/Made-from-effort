@@ -860,6 +860,7 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
   </div>
 </div>
 
+<script src="site-events.js"></script>
 <script>
 
 /* ── MOBILE NAV TOGGLE ────────────────────────── */
@@ -916,15 +917,18 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
     btn.disabled = true;
 
     try {
+      const formData = new FormData(form);
+      if (window.peAppendAttribution) window.peAppendAttribution(formData);
       const res = await fetch('https://formspree.io/f/mvzwwrzr', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
+        body: formData
       });
 
       if (res.ok) {
         btn.textContent = 'Sent ✓';
         btn.style.background = '#3a7a5a';
+        if (window.peTrack) window.peTrack('lead_submit', { lead_type: 'homepage_design_inquiry', project_type: document.getElementById('project-type').value || 'unspecified' });
         form.reset();
         setTimeout(() => { btn.textContent = 'Send Inquiry →'; btn.style.background = ''; btn.disabled = false; }, 4000);
       } else {
@@ -963,14 +967,17 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
     btn.textContent = 'Sending…';
     btn.disabled = true;
     try {
+      const formData = new FormData(form);
+      if (window.peAppendAttribution) window.peAppendAttribution(formData);
       const res = await fetch('https://formspree.io/f/mvzwwrzr', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
+        body: formData
       });
       if (res.ok) {
         btn.textContent = 'Sent ✓';
         btn.style.background = '#3a7a5a';
+        if (window.peTrack) window.peTrack('lead_submit', { lead_type: 'training_consultation', training_type: document.getElementById('t-type-hidden').value });
         form.reset();
         syncType('In-Person');
         setTimeout(() => { btn.textContent = 'Request Consultation →'; btn.style.background = ''; btn.disabled = false; }, 4000);
@@ -1078,16 +1085,19 @@ if (heroVid) {
     submitBtn.disabled = true;
 
     try {
+      const formData = new FormData(form);
+      if (window.peAppendAttribution) window.peAppendAttribution(formData);
       const res = await fetch('https://formspree.io/f/mvzwwrzr', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
+        body: formData
       });
       if (!res.ok) throw new Error();
 
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ submitted: true })); } catch(err) {}
       form.style.display = 'none';
       success.style.display = 'flex';
+      if (window.peTrack) window.peTrack('lead_submit', { lead_type: 'home_gym_guide' });
       setTimeout(function() { window.location.href = 'home-gym-guide.html?t=peg-7x2k-accs'; }, 2500);
     } catch {
       submitBtn.textContent = 'Try again';

@@ -677,6 +677,7 @@ select option { background: var(--white); }
   </div>
 </section>
 
+<script src="site-events.js"></script>
 <script>
   let currentStep = 1;
   const totalSteps = 3;
@@ -808,6 +809,7 @@ select option { background: var(--white); }
       }
       data.append('source', new URLSearchParams(window.location.search).get('source') || 'website');
       data.append('_subject', 'New Inquiry — Performance Edge Gym Design');
+      if (window.peAppendAttribution) window.peAppendAttribution(data);
       return data;
     }
 
@@ -826,6 +828,7 @@ select option { background: var(--white); }
       document.getElementById('stepBar').style.display = 'none';
       document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
       document.getElementById('successPanel').classList.add('active');
+      if (window.peTrack) window.peTrack('lead_submit', { lead_type: 'design_inquiry', project_type: selectedProjectType, has_attachments: selectedFiles.length > 0 });
     } catch {
       submitBtn.disabled = false;
       submitBtn.querySelector('span').textContent = 'Send Inquiry →';
