@@ -1,5 +1,5 @@
 (function () {
-  const measurementId = '';
+  const measurementId = 'G-MVF11QSSPG';
   const params = new URLSearchParams(window.location.search);
   const firstTouchKey = 'pe_first_touch';
   const campaignKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
