@@ -38,6 +38,10 @@ ASSETS_DIR = "assets"
 STATIC_PAGES = [
     ("", 1.0),                       # homepage
     ("training.html", 0.8),
+    ("residential-gym-design.html", 0.9),
+    ("yacht-gym-design.html", 0.9),
+    ("commercial-gym-design.html", 0.8),
+    ("country-club-fitness-design.html", 0.8),
     ("contact.html", 0.7),
     ("estimator.html", 0.7),
     ("project-jericho.html", 0.6),
@@ -641,6 +645,11 @@ def main():
 
     posts = [parse_post(p) for p in paths]
     posts.sort(key=lambda p: p["date"], reverse=True)
+    today = datetime.now(timezone.utc).date()
+    published_posts = [
+        p for p in posts
+        if datetime.strptime(p["date"], "%Y-%m-%d").date() <= today
+    ]
 
     out_dir = os.path.join(REPO_ROOT, OUTPUT_DIR)
     os.makedirs(out_dir, exist_ok=True)
@@ -669,17 +678,17 @@ def main():
             f.write(email_html)
         print(f"Built {email_out_path}  <-- open this one to copy/paste into Beehiiv")
 
-    index_html = render_index_page(posts)
+    index_html = render_index_page(published_posts)
     with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
         f.write(index_html)
     print(f"Built {os.path.join(out_dir, 'index.html')}")
 
-    rss_xml = render_rss(posts)
+    rss_xml = render_rss(published_posts)
     with open(os.path.join(out_dir, "feed.xml"), "w", encoding="utf-8") as f:
         f.write(rss_xml)
     print(f"Built {os.path.join(out_dir, 'feed.xml')}")
 
-    sitemap_xml = render_sitemap(posts)
+    sitemap_xml = render_sitemap(published_posts)
     sitemap_path = os.path.join(REPO_ROOT, "sitemap.xml")
     with open(sitemap_path, "w", encoding="utf-8") as f:
         f.write(sitemap_xml)
