@@ -294,6 +294,18 @@ select option { background: var(--white); }
 .field.has-error .error-msg { display: block; }
 .field.has-error label { color: var(--error); }
 
+.audit-fields { display: none; margin-bottom: 30px; padding: 26px; border: 1px solid var(--border); background: var(--ivory); }
+.audit-fields.active { display: block; }
+.audit-heading { font-family: 'Cormorant Garamond', serif; font-size: 25px; font-weight: 300; margin-bottom: 8px; }
+.audit-intro { font-size: 12px; line-height: 1.65; color: var(--slate); margin-bottom: 22px; }
+.check-group { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.check-option { display: flex; gap: 9px; align-items: flex-start; padding: 12px; border: 1px solid var(--border); background: var(--white); cursor: pointer; font-size: 12px; line-height: 1.45; color: var(--slate); }
+.check-option input { width: auto; margin-top: 2px; accent-color: var(--ink); }
+.upload-box { border: 1px dashed var(--slate); padding: 18px; background: var(--white); }
+.upload-box input[type="file"] { border: 0; padding: 0; font-size: 12px; }
+.upload-box input[type="file"]::file-selector-button { border: 1px solid var(--ink); background: var(--ink); color: var(--white); padding: 9px 12px; margin-right: 12px; cursor: pointer; }
+.upload-note { font-size: 10px; line-height: 1.55; color: var(--slate); margin-top: 10px; }
+
 /* ── TILE SELECTOR ───────────────────────────── */
 .tile-group {
   display: grid;
@@ -465,6 +477,7 @@ select option { background: var(--white); }
   .form-card { padding: 36px 28px; }
   .field-row { grid-template-columns: 1fr; }
   .tile-group { grid-template-columns: 1fr; }
+  .check-group { grid-template-columns: 1fr; }
   .step-label { display: none; }
   .step-line { min-width: 16px; }
 }
@@ -609,6 +622,27 @@ select option { background: var(--white); }
     <!-- PANEL 3: Vision -->
     <div class="panel" id="panel-3">
       <p class="panel-title">Share your <span>vision.</span></p>
+      <div class="audit-fields" id="auditFields">
+        <p class="audit-heading">Help us understand the club.</p>
+        <p class="audit-intro">These details let us assess the opportunity before the first call. Estimates are fine if exact information is not yet available.</p>
+        <div class="field-row">
+          <div class="field" id="field-clubName"><label for="clubName">Club Name</label><input type="text" id="clubName" name="clubName" placeholder="Club or property name"><span class="error-msg">Please enter the club name.</span></div>
+          <div class="field" id="field-clubRole"><label for="clubRole">Your Role</label><select id="clubRole" name="clubRole"><option value="" disabled selected>Select your role</option><option>General Manager</option><option>Fitness or Wellness Director</option><option>Facilities or Operations</option><option>Board or Committee Member</option><option>Owner or Developer</option><option>Architect or Designer</option><option>Other</option></select><span class="error-msg">Please select your role.</span></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="facilitySize">Approximate Fitness Space (sq. ft.)</label><input type="number" id="facilitySize" name="facilitySize" min="100" step="50" inputmode="numeric" placeholder="Example: 3,500"><span class="field-note">An estimate is fine. Leave blank if it is not yet known.</span></div>
+          <div class="field"><label for="decisionStage">Current Stage</label><select id="decisionStage" name="decisionStage"><option value="" selected>Choose the closest fit</option><option>Exploring the need</option><option>Building internal support</option><option>Budget planning</option><option>Project approved</option><option>Architect or designer engaged</option><option>Replacing equipment now</option></select></div>
+        </div>
+        <div class="field-row single">
+          <div class="field"><label>What is prompting the review?</label><div class="check-group"><label class="check-option"><input type="checkbox" name="auditNeed" value="Aging equipment">Aging or unreliable equipment</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Member feedback">Member feedback or complaints</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Underused space">Underused or poorly planned space</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Renovation or expansion">Renovation or expansion planning</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Recovery and wellness">Adding recovery or wellness</label><label class="check-option"><input type="checkbox" name="auditNeed" value="Capital planning">Board or capital planning</label></div></div>
+        </div>
+        <div class="field-row single">
+          <div class="field"><label for="facilityMedia">Share Photos or Short Videos <span style="text-transform:none;letter-spacing:0">(optional)</span></label><div class="upload-box"><input type="file" id="facilityMedia" name="facilityMedia" accept="image/jpeg,image/png,image/heic,image/webp,video/mp4,video/quicktime" multiple><p class="upload-note">Up to 10 files. Each file must be 25 MB or less. Wide room views, equipment condition, storage, circulation, and recovery areas are most useful.</p></div></div>
+        </div>
+        <div class="field-row single">
+          <div class="field"><label for="mediaLink">Or Share a Photo / Video Folder Link</label><input type="url" id="mediaLink" name="mediaLink" placeholder="Google Drive, Dropbox, iCloud, or another viewable link"><span class="field-note">Use this for larger videos or when you prefer to share a folder.</span></div>
+        </div>
+      </div>
       <div class="field-row single">
         <div class="field" id="field-vision">
           <label for="vision">Tell us about the space</label>
@@ -644,6 +678,7 @@ select option { background: var(--white); }
     el.classList.add('selected');
     el.querySelector('input[type="radio"]').checked = true;
     document.getElementById('field-projectType').classList.remove('has-error');
+    document.getElementById('auditFields')?.classList.toggle('active', value === 'country-club');
   }
 
   function setStep(n) {
@@ -708,6 +743,15 @@ select option { background: var(--white); }
     if (n === 3) {
       const v = document.getElementById('vision').value.trim();
       check('vision', v.length >= 20);
+      if (selectedProjectType === 'country-club') {
+        check('clubName', document.getElementById('clubName').value.trim().length > 0);
+        check('clubRole', document.getElementById('clubRole').value !== '');
+        const files = Array.from(document.getElementById('facilityMedia').files);
+        if (files.length > 10 || files.some(file => file.size > 25 * 1024 * 1024)) {
+          alert('Please select no more than 10 files, with each file 25 MB or less. For larger videos, use the folder-link field.');
+          valid = false;
+        }
+      }
     }
 
     return valid;
@@ -738,6 +782,15 @@ select option { background: var(--white); }
     data.append('budget',      document.getElementById('budget').value);
     data.append('timeline',    document.getElementById('timeline').value);
     data.append('vision',      document.getElementById('vision').value.trim());
+    if (selectedProjectType === 'country-club') {
+      data.append('clubName', document.getElementById('clubName').value.trim());
+      data.append('clubRole', document.getElementById('clubRole').value);
+      data.append('facilitySize', document.getElementById('facilitySize').value || 'Not provided');
+      data.append('decisionStage', document.getElementById('decisionStage').value || 'Not provided');
+      data.append('auditNeeds', Array.from(document.querySelectorAll('input[name="auditNeed"]:checked')).map(el => el.value).join(', ') || 'Not provided');
+      data.append('mediaLink', document.getElementById('mediaLink').value.trim() || 'Not provided');
+      Array.from(document.getElementById('facilityMedia').files).forEach(file => data.append('facility_media', file));
+    }
     data.append('source',      new URLSearchParams(window.location.search).get('source') || 'website');
     data.append('_subject',    'New Inquiry — Performance Edge Gym Design');
 
