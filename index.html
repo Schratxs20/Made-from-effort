@@ -107,6 +107,7 @@ h1 em { font-style: italic; color: var(--ink-mid); }
 .btn-outline:hover { border-color: var(--ink-light); color: var(--ink); }
 .hero-right { position: relative; background: var(--off); display: flex; align-items: center; justify-content: center; overflow: hidden; min-height: 500px; }
 #gym-video { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; pointer-events: none; }
+#gym-video-caption { position: absolute; left: 22px; bottom: 20px; z-index: 2; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(250,250,248,0.72); text-shadow: 0 1px 8px rgba(0,0,0,0.35); }
 #gym-video::-webkit-media-controls { display: none !important; }
 #gym-video::-webkit-media-controls-start-playback-button { display: none !important; }
 #gym-video::-webkit-media-controls-play-button { display: none !important; }
@@ -556,7 +557,8 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     </div>
   </div>
   <div class="hero-right">
-    <video id="gym-video" src="hf_20260316_190700_d21dac8c-e8fe-4c2a-b4b8-b8d08669933b.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
+    <video id="gym-video" src="hf_20260316_190700_d21dac8c-e8fe-4c2a-b4b8-b8d08669933b.mp4" poster="og-image.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="Performance Edge training environment in motion"></video>
+    <span id="gym-video-caption">A training environment in motion</span>
   </div>
 </section>
 
@@ -1063,6 +1065,7 @@ document.addEventListener('scroll',     function u(){ allAutoplayVideos.forEach(
 // IntersectionObserver for hero video specifically
 const heroVid = document.getElementById('gym-video');
 if (heroVid) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) heroVid.removeAttribute('autoplay');
   new IntersectionObserver(([entry]) => {
     if (entry.isIntersecting) { heroVid.muted = true; heroVid.play().catch(() => {}); }
   }, { threshold: 0.1 }).observe(heroVid);
