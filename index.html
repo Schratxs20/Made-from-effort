@@ -287,6 +287,11 @@ h1 em { font-style: italic; color: var(--ink-mid); }
 /* CONTACT */
 #contact { padding: 100px 64px; background: var(--white); border-top: 1px solid var(--rule); }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; }
+.next-steps { max-width: 1100px; margin: 0 auto 58px; padding: 28px 32px; background: var(--off); border: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+.next-step { display: flex; gap: 12px; align-items: flex-start; }
+.next-step-num { font-family: 'Cormorant', serif; font-size: 24px; color: var(--blue); font-style: italic; line-height: 1; }
+.next-step h3 { font-family: 'Cormorant', serif; font-size: 18px; font-weight: 400; margin-bottom: 4px; }
+.next-step p { font-size: 11px; line-height: 1.6; color: var(--ink-light); }
 .contact-left h2 { font-family: 'Cormorant', serif; font-size: clamp(30px, 3.5vw, 52px); font-weight: 300; line-height: 1.1; margin-bottom: 20px; margin-top: 14px; }
 .contact-left h2 em { font-style: italic; }
 .contact-left p { font-size: 14px; line-height: 1.85; color: var(--ink-light); margin-bottom: 36px; max-width: 380px; }
@@ -493,6 +498,7 @@ nav.nav-open .nav-links{display:flex}
 #services,#process,#testimonial,#statement{padding:64px 24px}
 #contact{padding:64px 24px}
 .contact-grid{grid-template-columns:1fr;gap:48px}
+.next-steps{grid-template-columns:1fr;gap:18px;margin-bottom:40px;padding:24px}
 #market-pathways{padding:56px 24px}
 .market-grid{grid-template-columns:1fr 1fr}
 .market-card{min-height:210px;padding:22px 18px}
@@ -791,6 +797,11 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
 <!-- CONTACT -->
 
 <section id="contact">
+  <div class="next-steps" aria-label="What happens after you inquire">
+    <div class="next-step"><span class="next-step-num">01</span><div><h3>Tell us about the room</h3><p>Share the space, stage, training goals, and rough scope.</p></div></div>
+    <div class="next-step"><span class="next-step-num">02</span><div><h3>We review the brief</h3><p>Scott reviews the details and replies within one business day.</p></div></div>
+    <div class="next-step"><span class="next-step-num">03</span><div><h3>Decide the right next step</h3><p>We recommend a call, site assessment, or project estimate.</p></div></div>
+  </div>
   <div class="contact-grid">
     <div class="contact-left reveal">
       <div class="sec-eyebrow">Get in Touch</div>
@@ -811,6 +822,10 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
       </div>
       <div class="f-group"><label for="email-field">Email</label><input type="email" name="email" id="email-field" placeholder="you@email.com"></div>
       <div class="f-group"><label for="project-type">Project Type</label><select id="project-type" name="project_type"><option value="" disabled selected>Select one</option><option>Private Residence / Estate Gym</option><option>Yacht or Marine Installation</option><option>Commercial Gym / Boutique Studio</option><option>Country Club / Private Membership Property</option><option>Other</option></select></div>
+      <div class="f-row" id="residential-details-row">
+        <div class="f-group"><label for="space-size">Approximate Space</label><select id="space-size" name="space_size"><option value="" selected>Select if known</option><option>Under 200 sq ft</option><option>200–500 sq ft</option><option>500–1,000 sq ft</option><option>1,000+ sq ft</option><option>Not sure yet</option></select></div>
+        <div class="f-group"><label for="project-stage">Project Stage</label><select id="project-stage" name="project_stage"><option value="" selected>Select one</option><option>Early idea</option><option>Design underway</option><option>Construction underway</option><option>Ready to source</option></select></div>
+      </div>
       <div class="f-row">
         <div class="f-group"><label for="budget">Budget Range</label><select id="budget" name="budget"><option value="" disabled selected>Approximate budget</option><option>$50K – $150K</option><option>$150K – $300K</option><option>$300K – $500K</option><option>$500K+</option></select></div>
         <div class="f-group"><label for="timeline">Timeline</label><select id="timeline" name="timeline"><option value="" disabled selected>When to start</option><option>ASAP</option><option>1–3 Months</option><option>3–6 Months</option><option>6+ Months</option></select></div>
