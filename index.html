@@ -119,6 +119,18 @@ h1 em { font-style: italic; color: var(--ink-mid); }
 .marquee-track .dot { color: var(--blue); padding: 0 4px; }
 @keyframes mscroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
+/* MARKET PATHWAYS */
+#market-pathways { padding: 74px 64px 80px; background: var(--off); border-bottom: 1px solid var(--rule); }
+.market-intro { max-width: 620px; margin-bottom: 34px; }
+.market-intro p { font-size: 14px; line-height: 1.8; color: var(--ink-light); margin-top: 14px; }
+.market-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; background: var(--rule); }
+.market-card { background: var(--white); padding: 28px 24px 26px; min-height: 220px; display: flex; flex-direction: column; transition: background .25s; }
+.market-card:hover { background: #fff; }
+.market-card-num { font-family: 'Cormorant', serif; font-size: 28px; font-style: italic; color: var(--blue); margin-bottom: 18px; }
+.market-card h3 { font-family: 'Cormorant', serif; font-size: 23px; font-weight: 300; line-height: 1.12; margin-bottom: 10px; }
+.market-card p { font-size: 12px; line-height: 1.65; color: var(--ink-light); margin-bottom: 18px; }
+.market-card a { margin-top: auto; font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--blue); padding-bottom: 4px; align-self: flex-start; }
+
 /* STATEMENT */
 #statement { padding: 100px 64px; max-width: 860px; margin: 0 auto; text-align: center; }
 .stmt-rule { width: 32px; height: 1px; background: var(--blue); margin: 0 auto 32px; }
@@ -128,7 +140,7 @@ h1 em { font-style: italic; color: var(--ink-mid); }
 /* FEATURED */
 #featured { display: grid; grid-template-columns: 55fr 45fr; background: var(--off); border-top: 1px solid var(--rule); }
 .feat-img { position: relative; overflow: hidden; min-height: 560px; background: #c8c4bc; }
-.feat-img-inner { position: absolute; inset: 0; background-image: url('https://images.northropandjohnson.com/yacht/48efItZiNi/AFDB4348-C612-4F72-972E-CA48FFE32A82/1763667693-dscf3494.jpg?auto=format&q=65&w=1470'); background-size: cover; background-position: center; transition: transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+.feat-img-inner { position: absolute; inset: 0; background-image: url('yacht-couch.png'); background-size: cover; background-position: center; transition: transform 0.8s cubic-bezier(0.22,1,0.36,1); }
 .feat-img:hover .feat-img-inner { transform: scale(1.03); }
 .feat-img-label { position: absolute; top: 20px; left: 20px; z-index: 2; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; background: var(--white); color: var(--ink); padding: 5px 11px; font-weight: 400; }
 .feat-content { padding: 72px 64px; display: flex; flex-direction: column; justify-content: center; }
@@ -481,6 +493,9 @@ nav.nav-open .nav-links{display:flex}
 #services,#process,#testimonial,#statement{padding:64px 24px}
 #contact{padding:64px 24px}
 .contact-grid{grid-template-columns:1fr;gap:48px}
+#market-pathways{padding:56px 24px}
+.market-grid{grid-template-columns:1fr 1fr}
+.market-card{min-height:210px;padding:22px 18px}
 .f-row{grid-template-columns:1fr}
 .training-layout{grid-template-columns:1fr;gap:48px}
 #training{padding:64px 24px}
@@ -527,11 +542,11 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
 <section id="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Performance Edge Training + Gym Design</div>
-    <h1>Spaces Built<br>for How You<br><em>Actually Train.</em></h1>
-    <p class="hero-desc">Performance Edge Training + Gym Design is a luxury gym design and project-management studio led by CSCS-certified performance professional Scott Schratwieser. We create high-performance training environments nationwide.</p>
+    <h1>Gym spaces built<br>for how you<br><em>actually live.</em></h1>
+    <p class="hero-desc">Performance Edge Training + Gym Design creates high-performance training environments for private residences, yachts, country clubs, and commercial spaces - from the first brief through the finished room.</p>
     <div class="hero-ctas">
-      <a href="#portfolio" class="btn btn-solid">View Our Work</a>
-      <a href="#contact" class="btn btn-outline">Start a Conversation</a>
+      <a href="#contact" class="btn btn-solid">Start a Gym Design Conversation</a>
+      <a href="project-yacht.html" class="btn btn-outline">Explore Canoe Canoe</a>
     </div>
   </div>
   <div class="hero-right">
@@ -547,6 +562,22 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     <span>Private Residences + Estates</span><span class="dot">·</span><span>Yacht Installations</span><span class="dot">·</span><span>Commercial Gyms + Studios</span><span class="dot">·</span><span>Country Clubs</span><span class="dot">·</span><span>CSCS Certified</span><span class="dot">·</span><span>Nationwide Projects</span><span class="dot">·</span><span>Made From Effort</span><span class="dot">·</span>
   </div>
 </div>
+
+<!-- MARKET PATHWAYS -->
+
+<section id="market-pathways">
+  <div class="market-intro reveal">
+    <div class="sec-eyebrow">Choose Your Starting Point</div>
+    <h2 class="sec-title">A better gym begins with the <em>right brief.</em></h2>
+    <p>Tell us what kind of space you are creating and we will start with the constraints, the training, and the way the room needs to live.</p>
+  </div>
+  <div class="market-grid">
+    <article class="market-card reveal d1"><div class="market-card-num">01</div><h3>Private Residence</h3><p>A high-performance home gym that feels fully integrated with the house.</p><a href="residential-gym-design.html">Explore residential design</a></article>
+    <article class="market-card reveal d2"><div class="market-card-num">02</div><h3>Yacht + Marine</h3><p>Convertible training and recovery systems designed around life at sea.</p><a href="yacht-gym-design.html">Explore marine design</a></article>
+    <article class="market-card reveal d3"><div class="market-card-num">03</div><h3>Country Club</h3><p>Fitness spaces upgraded to match the standard of the wider member experience.</p><a href="country-club-fitness-design.html">Explore club design</a></article>
+    <article class="market-card reveal d4"><div class="market-card-num">04</div><h3>Commercial Gym</h3><p>Programming, flow, equipment, and brand resolved as one operating environment.</p><a href="commercial-gym-design.html">Explore commercial design</a></article>
+  </div>
+</section>
 
 <!-- STATEMENT -->
 
