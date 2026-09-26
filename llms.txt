@@ -1,6 +1,6 @@
 # Made From Effort — Performance Edge Training + Gym Design
 
-> Made From Effort is the website and editorial platform of Performance Edge Training + Gym Design. Performance Edge is a luxury gym design and project-management company led by CSCS-certified performance professional Scott Schratwieser. The company creates high-performance training environments for private residences and estates, yachts, commercial gyms and boutique studios, and country clubs nationwide. Private and remote performance coaching is offered separately.
+> Made From Effort is the website and editorial platform of Performance Edge Training + Gym Design. Performance Edge is a gym design and project-management company led by Scott Schratwieser, a CSCS-certified performance professional. The firm is based on Long Island, New York, serves residential clients across Nassau and Suffolk counties, and accepts select projects nationwide. Its Long Island projects are in New York; Jupiter Island is in Florida. Private and remote performance coaching is offered separately from gym design.
 
 Made From Effort's Journal covers gym design, training consistency, and the systems that make both hold up — written from real projects, not generic fitness content.
 
@@ -20,6 +20,11 @@ Made From Effort's Journal covers gym design, training consistency, and the syst
 
 - [Private Yacht Gym](https://www.madefromeffort.com/project-yacht.html): Custom marine gym installation aboard a private yacht.
 - [Jericho Private Estate](https://www.madefromeffort.com/project-jericho.html): Home gym and cedar sauna built into a Long Island, NY estate.
+- [Sands Point Home Gym](https://www.madefromeffort.com/project-sands-point.html): Long Island residential gym documented across multiple layouts and equipment updates over time; gallery views are not a dated sequence.
+- [Caumsett Summer Cottage](https://www.madefromeffort.com/project-caumsett.html): Lloyd Harbor, NY residential training space in a historic summer cottage associated with Caumsett State Park.
+- [Oyster Bay Cove Home Gym](https://www.madefromeffort.com/project-oyster-bay-cove.html): Completed garage gym with cardio, strength equipment, free-weight storage, and open training floor.
+- [Dix Hills Garage Gym](https://www.madefromeffort.com/project-dix-hills.html): Completed Long Island garage gym with rack-based strength training and functional conditioning space.
+- [Glen Cove Restored Barn Gym Design Study](https://www.madefromeffort.com/project-glen-cove.html): Mid-project render study; equipment is planned to integrate with the restored barn architecture while preserving a light, airy feel.
 - [Jupiter Island Estate](https://www.madefromeffort.com/project-jupiter-island.html): Custom home gym and recovery environment inside a Jupiter Island, FL estate, including a cold plunge supplied by Australia-based Chill Bunny Wellness.
 
 ## Journal

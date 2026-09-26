@@ -2,4 +2,9 @@ User-agent: *
 Allow: /
 Disallow: /home-gym-guide.html
 
+# Permit ChatGPT Search discovery; GPTBot (training) is a separate crawler.
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /home-gym-guide.html
+
 Sitemap: https://www.madefromeffort.com/sitemap.xml
