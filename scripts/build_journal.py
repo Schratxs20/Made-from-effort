@@ -33,21 +33,27 @@ POSTS_DIR = "posts"
 OUTPUT_DIR = "journal"
 ASSETS_DIR = "assets"
 
-# Static (non-journal) pages to include in sitemap.xml. Add a new page here
-# when one is added to the site so it doesn't silently fall out of the sitemap.
+# Static (non-journal) pages to include in sitemap.xml. Keep each lastmod tied
+# to the page's content update, not the date the Journal happens to be rebuilt.
 STATIC_PAGES = [
-    ("", 1.0),                       # homepage
-    ("training.html", 0.8),
-    ("residential-gym-design.html", 0.9),
-    ("yacht-gym-design.html", 0.9),
-    ("commercial-gym-design.html", 0.8),
-    ("country-club-fitness-design.html", 0.8),
-    ("country-club-fitness-audit.html", 0.8),
-    ("contact.html", 0.7),
-    ("estimator.html", 0.7),
-    ("project-jericho.html", 0.6),
-    ("project-jupiter-island.html", 0.6),
-    ("project-yacht.html", 0.6),
+    ("", "2026-09-25", 1.0),  # homepage
+    ("training.html", "2026-09-24", 0.8),
+    ("residential-gym-design.html", "2026-09-25", 0.9),
+    ("yacht-gym-design.html", "2026-09-24", 0.9),
+    ("commercial-gym-design.html", "2026-09-24", 0.8),
+    ("country-club-fitness-design.html", "2026-09-24", 0.8),
+    ("country-club-fitness-audit.html", "2026-09-24", 0.8),
+    ("contact.html", "2026-09-24", 0.7),
+    ("estimator.html", "2026-09-24", 0.7),
+    ("project-jericho.html", "2026-09-25", 0.6),
+    ("project-glen-cove.html", "2026-09-25", 0.7),
+    ("project-sands-point.html", "2026-09-25", 0.7),
+    ("project-caumsett.html", "2026-09-25", 0.7),
+    ("project-oyster-bay-cove.html", "2026-09-25", 0.7),
+    ("project-dix-hills.html", "2026-09-25", 0.7),
+    ("referral-partners.html", "2026-09-25", 0.6),
+    ("project-jupiter-island.html", "2026-09-25", 0.6),
+    ("project-yacht.html", "2026-09-24", 0.6),
 ]
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -250,7 +256,7 @@ STYLE_BLOCK = """
   .nav-tag { font-family:'Inter',sans-serif; font-weight:500; font-size:11px; letter-spacing:1.5px; color:#57677A; text-transform:uppercase; border:1px solid #57677A; padding:6px 14px; }
   .photo { width:100%; display:block; }
   .eyebrow { padding:40px 40px 0; font-family:'Inter',sans-serif; font-weight:500; font-size:11px; letter-spacing:2px; color:#A6A39B; text-transform:uppercase; }
-  .headline { padding:10px 40px 30px; font-family:'Playfair Display',serif; font-weight:400; font-size:38px; line-height:1.2; color:#1C1C1A; }
+  .headline { margin:0; padding:10px 40px 30px; font-family:'Playfair Display',serif; font-weight:400; font-size:38px; line-height:1.2; color:#1C1C1A; }
   .headline em { font-style:italic; }
   .body-copy { padding:0 40px; font-family:'Inter',sans-serif; font-weight:300; font-size:17px; line-height:1.75; color:#4A4944; }
   .body-copy p { margin:0 0 22px; }
@@ -346,7 +352,7 @@ def render_post_page(post):
     </div>
     {'<img class="photo" src="' + post['image'] + '" alt="' + html.escape(post['title']) + '">' if post.get('image') else ''}
     <div class="eyebrow">Journal</div>
-    <div class="headline">{html.escape(post['title'])}</div>
+    <h1 class="headline">{html.escape(post['title'])}</h1>
     <div class="meta-row">{format_date_long(post['date'])}{f' &middot; {html.escape(post["category"])}' if post.get('category') else ''}</div>
     <div class="body-copy">
       {render_stat_bar_html(post)}
@@ -513,7 +519,7 @@ def render_index_page(posts):
       </a>
     </div>
     <div class="eyebrow">On Training &amp; Consistency</div>
-    <div class="headline">The Journal</div>
+    <h1 class="headline">The Journal</h1>
     <div class="post-list">{items}
     </div>
     {FOOTER_HTML.format(site_url=SITE_URL, site_url_display=SITE_URL.replace('https://',''))}
@@ -602,24 +608,28 @@ def render_rss(posts):
 
 def render_sitemap(posts):
     """Full sitemap: static pages + journal index + every post, with lastmod.
-    Regenerated on every build so new posts never have to be added by hand."""
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    Static-page dates are maintained with STATIC_PAGES; article dates use the
+    publish date unless frontmatter supplies an updated date."""
     entries = []
 
-    for path, priority in STATIC_PAGES:
+    for path, lastmod, priority in STATIC_PAGES:
         loc = f"{SITE_URL}/{path}"
-        entries.append((loc, today, "monthly", priority))
+        entries.append((loc, lastmod, "monthly", priority))
 
-    entries.append((f"{SITE_URL}/journal/", today, "weekly", 0.8))
+    latest_post_update = max(
+        (post.get("updated") or post["date"] for post in posts),
+        default=None,
+    )
+    entries.append((f"{SITE_URL}/journal/", latest_post_update, "weekly", 0.8))
 
     for p in posts:
         loc = f"{SITE_URL}/journal/{p['slug']}.html"
-        entries.append((loc, p["date"], "yearly", 0.6))
+        entries.append((loc, p.get("updated") or p["date"], "yearly", 0.6))
 
     urls_xml = "\n".join(
         f"""  <url>
     <loc>{loc}</loc>
-    <lastmod>{lastmod}</lastmod>
+    {f'<lastmod>{lastmod}</lastmod>' if lastmod else ''}
     <changefreq>{changefreq}</changefreq>
     <priority>{priority}</priority>
   </url>"""
