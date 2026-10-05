@@ -498,7 +498,6 @@ select option { background: var(--white); }
   max-width: 600px;
   padding: 24px;
   text-align: left;
-  scroll-margin-top: 24px;
 }
 .estimate-unlocked[hidden] { display: none; }
 .estimate-unlocked-label { color: var(--gold); font-size: 10px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; }
@@ -702,6 +701,7 @@ select option { background: var(--white); }
     <div class="success-panel" id="successPanel">
       <div class="success-mark">✓</div>
       <p class="success-heading">We'll be in <em>touch.</em></p>
+      <p class="success-text" id="successText">Your inquiry is in. You do not need to submit it again. Scott will review the details and reply within one business day with the right next step.</p>
       <section class="estimate-unlocked" id="estimateUnlocked" aria-live="polite" hidden>
         <p class="estimate-unlocked-label">Preliminary budget range</p>
         <p class="estimate-unlocked-total" id="estimateUnlockedTotal"></p>
@@ -709,7 +709,6 @@ select option { background: var(--white); }
         <ul class="estimate-unlocked-notes" id="estimateUnlockedNotes"></ul>
         <p class="estimate-unlocked-basis" id="estimateUnlockedBasis"></p>
       </section>
-      <p class="success-text" id="successText">Your inquiry is in. You do not need to submit it again. Scott will review the details and reply within one business day with the right next step.</p>
     </div>
 
   </div>
@@ -939,12 +938,6 @@ select option { background: var(--white); }
       document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
       if (pendingEstimator) revealEstimatorResult(estimateResult);
       document.getElementById('successPanel').classList.add('active');
-      requestAnimationFrame(() => {
-        const resultTarget = pendingEstimator && estimateResult?.available
-          ? document.getElementById('estimateUnlocked')
-          : document.getElementById('successPanel');
-        resultTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
       if (window.peTrack) window.peTrack('lead_submit', { lead_type: 'design_inquiry', project_type: selectedProjectType, has_attachments: selectedFiles.length > 0, has_estimator: Boolean(pendingEstimator) });
     } catch {
       submitBtn.disabled = false;
