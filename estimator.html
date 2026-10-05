@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Private Gym Investment Estimator | Made From Effort</title>
-<meta name="description" content="Answer a few questions about your space and vision and get a directional investment range — equipment, finishes, and installation included.">
+<title>Private Gym Planning Tool | Made From Effort</title>
+<meta name="description" content="Plan your private gym’s space and equipment, then submit an inquiry to unlock a preliminary budget range for the priced selections.">
 <link rel="canonical" href="https://www.madefromeffort.com/estimator.html">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.madefromeffort.com/estimator.html">
-<meta property="og:title" content="Private Gym Investment Estimator | Made From Effort">
-<meta property="og:description" content="Answer a few questions about your space and vision and get a directional investment range.">
+<meta property="og:title" content="Private Gym Planning Tool | Made From Effort">
+<meta property="og:description" content="Plan your private gym, submit an inquiry, and receive a preliminary budget range for the priced selections.">
 <meta property="og:site_name" content="Made From Effort">
 <meta property="og:image" content="https://www.madefromeffort.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -19,8 +19,8 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Private Gym Investment Estimator | Made From Effort">
-<meta name="twitter:description" content="Answer a few questions about your space and vision and get a directional investment range.">
+<meta name="twitter:title" content="Private Gym Planning Tool | Made From Effort">
+<meta name="twitter:description" content="Plan your private gym, submit an inquiry, and receive a preliminary budget range for the priced selections.">
 <meta name="twitter:image" content="https://www.madefromeffort.com/og-image.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -169,9 +169,17 @@ input[type="range"]::-moz-range-thumb {
 }
 .tile.selected .tile-check { background: var(--ink); border-color: var(--ink); color: var(--white); }
 
+.equipment-detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 26px; }
+.equipment-detail { display: grid; gap: 8px; }
+.equipment-detail label { color: var(--ink); font-size: 12px; font-weight: 500; letter-spacing: 0.04em; }
+.equipment-detail select { width: 100%; border: 1px solid var(--border); border-radius: 2px; background: var(--ivory); color: var(--ink); font: inherit; padding: 13px 14px; }
+.equipment-detail select:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
+.equipment-detail-note { color: var(--slate); font-size: 11px; line-height: 1.5; }
+
 @media (max-width: 560px) {
   .tile-group { grid-template-columns: 1fr 1fr; }
   .tile-group.tiles-4 { grid-template-columns: 1fr 1fr; }
+  .equipment-detail-grid { grid-template-columns: 1fr; }
   .form-card { padding: 32px 22px; }
 }
 
@@ -194,54 +202,22 @@ input[type="range"]::-moz-range-thumb {
 }
 .btn-next:hover { background: var(--gold); transform: translateY(-1px); }
 
-/* ESTIMATE (final panel) */
-.estimate-block { background: var(--ink); color: var(--ivory); border-radius: 2px; padding: 36px 28px; text-align: center; margin: -44px -40px 0; }
-@media (max-width: 560px) { .estimate-block { margin: -32px -22px 0; padding: 32px 22px; } }
-.estimate-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 14px; }
-.estimate-range {
-  font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 7vw, 54px); font-weight: 300;
-  color: var(--white); line-height: 1; margin-bottom: 10px; font-variant-numeric: tabular-nums;
-}
-.estimate-note { font-size: 12px; color: rgba(249,247,243,0.55); max-width: 380px; margin: 0 auto 24px; line-height: 1.6; }
-
-.breakdown { text-align: left; max-width: 380px; margin: 0 auto 8px; border-top: 1px solid rgba(249,247,243,0.15); padding-top: 18px; }
-.breakdown-row { display: flex; justify-content: space-between; font-size: 12.5px; padding: 9px 0; border-bottom: 1px solid rgba(249,247,243,0.08); }
-.breakdown-row .label { color: rgba(249,247,243,0.65); }
-.breakdown-row .value { color: var(--white); font-variant-numeric: tabular-nums; }
-.breakdown-locked { text-align: center; font-size: 11px; color: rgba(249,247,243,0.4); letter-spacing: 0.05em; margin-top: 14px; }
-
-.blurred { filter: blur(7px); user-select: none; pointer-events: none; transition: filter 0.4s ease; }
-
-/* GATE FORM */
-.gate { padding-top: 32px; }
-.gate-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; margin-bottom: 6px; }
-.gate-sub { font-size: 13px; color: var(--slate); margin-bottom: 22px; line-height: 1.6; }
-.gate .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
-.gate label { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--slate); }
-.gate input {
-  font-family: 'Jost', sans-serif; font-size: 15px; font-weight: 300; color: var(--ink);
-  background: var(--ivory); border: 1px solid var(--border); border-radius: 1px;
-  padding: 13px 15px; outline: none; width: 100%;
-}
-.gate input:focus { border-color: var(--ink); background: var(--white); }
-.gate input.error { border-color: var(--error); }
-.gate-error-msg { font-size: 10.5px; color: var(--error); display: none; }
-.field.has-error .gate-error-msg { display: block; }
-
-.btn-unlock {
-  width: 100%; background: var(--ink); border: none; font-family: 'Jost', sans-serif; font-size: 12px;
+/* PLANNING NOTE (final panel) */
+.planning-note { background: var(--ink); color: var(--ivory); border-radius: 2px; padding: 36px 28px; text-align: center; margin: -44px -40px 0; }
+@media (max-width: 560px) { .planning-note { margin: -32px -22px 0; padding: 32px 22px; } }
+.planning-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 14px; }
+.planning-copy { font-size: 12px; color: rgba(249,247,243,0.72); max-width: 440px; margin: 0 auto 24px; line-height: 1.6; }
+.planning-summary { max-width: 440px; margin: 24px auto; border-top: 1px solid rgba(249,247,243,0.18); text-align: left; }
+.planning-summary div { display: flex; justify-content: space-between; gap: 18px; padding: 10px 0; border-bottom: 1px solid rgba(249,247,243,0.1); font-size: 12px; line-height: 1.5; }
+.planning-summary dt { color: rgba(249,247,243,0.58); }
+.planning-summary dd { margin: 0; color: var(--white); text-align: right; }
+.planning-link {
+  display: inline-block; background: var(--ink); font-family: 'Jost', sans-serif; font-size: 12px;
   font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white);
-  cursor: pointer; padding: 16px; border-radius: 1px; margin-top: 6px; transition: background 0.25s;
+  padding: 16px 24px; border-radius: 1px; margin-top: 6px; text-decoration: none; transition: background 0.25s;
 }
-.btn-unlock:hover { background: var(--gold); }
-.btn-unlock:disabled { opacity: 0.6; cursor: default; }
-
-.result-panel { display: none; padding-top: 28px; text-align: center; }
-.result-panel.active { display: block; animation: fadeUp 0.4s ease both; }
-.result-mark { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: var(--gold); font-size: 18px; }
-.result-cta { display: inline-block; margin-top: 20px; color: var(--gold); font-size: 12px; letter-spacing: 0.1em; text-decoration: underline; }
-
-.gate-hidden { display: none; }
+.planning-link:hover { background: var(--gold); }
+.planning-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .disclaimer { text-align: center; font-size: 11px; color: var(--slate-light); margin-top: 28px; line-height: 1.6; }
 </style>
 </head>
@@ -249,9 +225,9 @@ input[type="range"]::-moz-range-thumb {
 
 <div class="page">
   <a class="back-home" href="index.html">← Made From Effort</a>
-  <p class="section-label">Private Gym Investment Estimator</p>
-  <h1 class="section-heading">What Would Your <em>Gym</em> Actually Cost?</h1>
-  <p class="section-sub">Answer seven questions about your space and vision. We'll give you a directional range — equipment, finishes, installation, and design — in under a minute.</p>
+  <p class="section-label">Private Gym Planning Tool</p>
+  <h1 class="section-heading">Plan Your Private <em>Gym</em></h1>
+  <p class="section-sub">Outline your space and priorities. Submit a project inquiry to receive a preliminary budget range for the selections with usable pricing.</p>
 
   <div class="form-card">
 
@@ -295,6 +271,31 @@ input[type="range"]::-moz-range-thumb {
           <span class="tile-name">Custom &amp; Signature</span>
           <span class="tile-desc">Design-led. Custom logo, color, and rack configurations built to your brand.</span>
         </label>
+      </div>
+      <div class="equipment-detail-grid">
+        <div class="equipment-detail">
+          <label for="cardioCount">How many cardio pieces are you considering?</label>
+          <select id="cardioCount" name="cardioCount">
+            <option value="0">None</option>
+            <option value="1" selected>1 piece</option>
+            <option value="2">2 pieces</option>
+            <option value="3">3 pieces</option>
+            <option value="4">4 pieces</option>
+            <option value="5">5 pieces</option>
+            <option value="6">6 pieces</option>
+          </select>
+          <p class="equipment-detail-note">A planning allowance per treadmill, bike, elliptical, rower, or similar machine.</p>
+        </div>
+        <div class="equipment-detail">
+          <label for="strengthPackage">What strength setup should we include?</label>
+          <select id="strengthPackage" name="strengthPackage">
+            <option value="none" selected>No dedicated strength package</option>
+            <option value="dumbbells">Dumbbell set</option>
+            <option value="rack">Rack / rig, with optional wall cable</option>
+            <option value="complete">Dumbbells + rack / rig and wall cable</option>
+          </select>
+          <p class="equipment-detail-note">Choose the closest starting point. Final equipment and storage details are confirmed during design.</p>
+        </div>
       </div>
       <div class="form-nav">
         <button class="btn-back" onclick="goTo(1)">← Back</button>
@@ -473,54 +474,20 @@ input[type="range"]::-moz-range-thumb {
       </div>
       <div class="form-nav">
         <button class="btn-back" onclick="goTo(6)">← Back</button>
-        <button class="btn-next" onclick="goTo(8)">See My Estimate →</button>
+        <button class="btn-next" onclick="goTo(8)">See Next Step →</button>
       </div>
     </div>
 
-    <!-- 08 ESTIMATE + GATE -->
+    <!-- 08 PLANNING NOTE -->
     <div class="panel" id="panel-8">
-      <div class="estimate-block">
-        <p class="estimate-label">Estimated Investment</p>
-        <p class="estimate-range blurred" id="estimateRange">$— – $—</p>
-        <p class="estimate-note">Equipment, finishes, and installation are built into every figure. Any structural or construction work is scoped separately with your contractor.</p>
-
-        <div class="breakdown blurred" id="fullBreakdown">
-          <div class="breakdown-row"><span class="label">Equipment — delivered &amp; installed</span><span class="value" id="rowEquipment">$—</span></div>
-          <div class="breakdown-row"><span class="label">Flooring — installed</span><span class="value" id="rowFlooring">$—</span></div>
-          <div class="breakdown-row"><span class="label">Wall finishes</span><span class="value" id="rowWalls">$—</span></div>
-          <div class="breakdown-row"><span class="label">Mirrors</span><span class="value" id="rowMirrors">$—</span></div>
-          <div class="breakdown-row"><span class="label">Lighting</span><span class="value" id="rowLighting">$—</span></div>
-          <div class="breakdown-row" id="rowRecoveryWrap"><span class="label">Recovery &amp; wellness</span><span class="value" id="rowRecovery">$—</span></div>
-        </div>
-        <p class="breakdown-locked" id="lockedNote">Breakdown locked — unlock it free below ↓</p>
-      </div>
-
-      <!-- GATE -->
-      <div class="gate" id="gateForm">
-        <p class="gate-title">Unlock your full breakdown</p>
-        <p class="gate-sub">Category-by-category figures and a complimentary 20-minute consultation with Scott.</p>
-        <div class="field" id="field-name">
-          <label for="name">Name</label>
-          <input type="text" id="name" placeholder="James Worthington" autocomplete="name">
-          <span class="gate-error-msg">Please enter your name.</span>
-        </div>
-        <div class="field" id="field-email">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="james@example.com" autocomplete="email">
-          <span class="gate-error-msg">Please enter a valid email.</span>
-        </div>
-        <div class="field" id="field-phone">
-          <label for="phone">Phone (optional)</label>
-          <input type="tel" id="phone" placeholder="+1 (917) 000 0000" autocomplete="tel">
-        </div>
-        <button class="btn-unlock" id="unlockBtn">Send My Breakdown</button>
-      </div>
-
-      <!-- POST-UNLOCK RESULT -->
-      <div class="result-panel" id="resultPanel">
-        <div class="result-mark">✓</div>
-        <p style="font-size:13px;color:var(--slate);line-height:1.6;">Full breakdown unlocked above. We'll follow up directly to set up your consultation — expect to hear from us within one business day.</p>
-        <a class="result-cta" href="contact.html">Or start your project now →</a>
+      <div class="planning-note">
+        <p class="planning-label">Planning tool</p>
+        <p class="q-title" style="color:var(--white);margin-bottom:14px;">A useful budget starts with your actual room.</p>
+        <p class="planning-copy">Your selections create a preliminary range for the equipment and flooring allowances we can price. Custom design and site-specific work may need separate quotes.</p>
+        <dl class="planning-summary" id="planningSummary" aria-live="polite"></dl>
+        <p class="planning-copy">Your selections will be included with the inquiry. The budget range appears only after the inquiry is submitted successfully.</p>
+        <a class="planning-link" href="contact.html?project=residence&amp;source=estimator" onclick="prepareEstimateInquiry()">Submit an inquiry to unlock the estimate</a>
+        <p class="equipment-detail-note" style="color:rgba(249,247,243,0.62);margin-top:14px">Taxes and selected custom scope without a verified price are excluded. This is a planning estimate, not a vendor quote.</p>
       </div>
 
       <div class="form-nav" style="border-top:none;margin-top:20px;padding-top:0;justify-content:flex-start;">
@@ -530,29 +497,11 @@ input[type="range"]::-moz-range-thumb {
 
   </div>
 
-  <p class="disclaimer">This is a directional estimate based on typical builds — your real number depends on your specific room, goals, and what's already there. Covers equipment, finishes, and installation only; any construction or build-out work is priced separately with your contractor. Typical equipment lead time at this tier: 8–16 weeks; install adds 1–3 weeks.</p>
+  <p class="disclaimer">The estimate is a preliminary range for priced selections, shown after a successful inquiry. Final scope, equipment, delivery, installation, taxes, and construction costs vary by project.</p>
 </div>
 
 <script src="site-events.js?v=1"></script>
 <script>
-  // ── PRICING MODEL — PLACEHOLDER NUMBERS ──────────────────────────
-  // These are illustrative, not Scott's real pricing. Replace every
-  // range below with real figures before sending traffic to this page.
-  const EQUIPMENT_RATE   = { functional: [30, 50], premium: [60, 95], custom: [110, 175] };   // $/sqft
-  const FLOORING_RATE    = { performance: [8, 13], tile: [14, 20], designer: [22, 35] };       // $/sqft
-  const WALL_FINISH      = { paint: [1200, 2800], accent: [4000, 8500], designer: [9500, 20000] }; // flat
-  const MIRRORS          = { none: [0, 0], single: [1200, 2500], wraparound: [3500, 7000] };   // flat
-  const LIGHTING         = { existing: [0, 0], upgraded: [2000, 4200], statement: [4800, 11000] }; // flat
-  const RECOVERY         = {
-    sauna_prefab: [8000, 14000],
-    sauna_custom: [16000, 28000],
-    coldplunge_prefab: [6000, 11000],
-    coldplunge_custom: [12000, 20000],
-    redlight: [3200, 6500],
-    toolcharging: [2500, 5000],
-    massageroom: [6000, 12000],
-  }; // flat, additive
-
   const state = {
     sqft: 800,
     tier: 'premium',
@@ -561,8 +510,11 @@ input[type="range"]::-moz-range-thumb {
     lighting: 'existing',
     walls: 'paint',
     recovery: [],
+    cardioCount: 1,
+    strengthPackage: 'none',
   };
 
+  const ESTIMATOR_STORAGE_KEY = 'mfe_estimator_pending_v1';
   const TOTAL_STEPS = 8;
   const STEP_LABELS = ['Space', 'Equipment', 'Recovery', 'Flooring', 'Mirrors', 'Lighting', 'Walls', 'You'];
   let currentStep = 1;
@@ -591,16 +543,57 @@ input[type="range"]::-moz-range-thumb {
       else if (i === n) dot.classList.add('active');
     }
     currentStep = n;
-    if (n === TOTAL_STEPS) recalc();
+    if (n === TOTAL_STEPS) updatePlanSummary();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function fmt(n) {
-    if (n === 0) return '$0';
-    return '$' + Math.round(n).toLocaleString('en-US');
+  function selectedLabel(groupId) {
+    const name = document.querySelector(`#${groupId} .tile.selected .tile-name`);
+    return name ? name.textContent.trim() : 'Not selected';
   }
-  function fmtK(n) {
-    return '$' + Math.round(n / 1000) + 'K';
+
+  function selectedRecoveryLabels() {
+    const tiles = Array.from(document.querySelectorAll('#group-recovery .tile'));
+    return state.recovery.map(value => {
+      const tile = tiles.find(item => item.dataset.value === value);
+      return tile?.querySelector('.tile-name')?.textContent.trim();
+    }).filter(Boolean);
+  }
+
+  function updatePlanSummary() {
+    const summary = document.getElementById('planningSummary');
+    const rows = [
+      ['Space', `${state.sqft.toLocaleString('en-US')} sq ft`],
+      ['Equipment', selectedLabel('group-tier')],
+      ['Cardio', `${state.cardioCount} ${state.cardioCount === 1 ? 'piece' : 'pieces'}`],
+      ['Strength setup', document.querySelector(`#strengthPackage option[value="${state.strengthPackage}"]`)?.textContent || 'Not selected'],
+      ['Flooring', selectedLabel('group-flooring')],
+      ['Mirrors', selectedLabel('group-mirrors')],
+      ['Lighting', selectedLabel('group-lighting')],
+      ['Wall finish', selectedLabel('group-walls')],
+      ['Recovery', selectedRecoveryLabels().join(', ') || 'None selected'],
+    ];
+
+    summary.replaceChildren(...rows.map(([label, value]) => {
+      const row = document.createElement('div');
+      const term = document.createElement('dt');
+      const detail = document.createElement('dd');
+      term.textContent = label;
+      detail.textContent = value;
+      row.append(term, detail);
+      return row;
+    }));
+  }
+
+  function prepareEstimateInquiry() {
+    try {
+      sessionStorage.setItem(ESTIMATOR_STORAGE_KEY, JSON.stringify({
+        createdAt: Date.now(),
+        plan: { ...state, recovery: [...state.recovery] }
+      }));
+    } catch (error) {
+      console.warn('Unable to carry estimator selections into inquiry.', error);
+    }
   }
 
   function initTileGroup(groupId, key, multi) {
@@ -642,102 +635,17 @@ input[type="range"]::-moz-range-thumb {
     sqftValue.textContent = state.sqft.toLocaleString('en-US');
   });
 
-  function recalc() {
-    const eq = EQUIPMENT_RATE[state.tier];
-    const fl = FLOORING_RATE[state.flooring];
-    const wl = WALL_FINISH[state.walls];
-    const mr = MIRRORS[state.mirrors];
-    const lt = LIGHTING[state.lighting];
-
-    const eqCost = [state.sqft * eq[0], state.sqft * eq[1]];
-    const flCost = [state.sqft * fl[0], state.sqft * fl[1]];
-    const recCost = state.recovery.reduce((acc, item) => {
-      const r = RECOVERY[item];
-      return [acc[0] + r[0], acc[1] + r[1]];
-    }, [0, 0]);
-
-    const totalLow = eqCost[0] + flCost[0] + wl[0] + mr[0] + lt[0] + recCost[0];
-    const totalHigh = eqCost[1] + flCost[1] + wl[1] + mr[1] + lt[1] + recCost[1];
-
-    document.getElementById('estimateRange').textContent = `${fmtK(totalLow)} – ${fmtK(totalHigh)}`;
-    document.getElementById('rowEquipment').textContent = `${fmt(eqCost[0])} – ${fmt(eqCost[1])}`;
-    document.getElementById('rowFlooring').textContent = `${fmt(flCost[0])} – ${fmt(flCost[1])}`;
-    document.getElementById('rowWalls').textContent = wl[1] === 0 ? '—' : `${fmt(wl[0])} – ${fmt(wl[1])}`;
-    document.getElementById('rowMirrors').textContent = mr[1] === 0 ? '—' : `${fmt(mr[0])} – ${fmt(mr[1])}`;
-    document.getElementById('rowLighting').textContent = lt[1] === 0 ? '—' : `${fmt(lt[0])} – ${fmt(lt[1])}`;
-    const recoveryRow = document.getElementById('rowRecoveryWrap');
-    if (state.recovery.length === 0) {
-      recoveryRow.style.display = 'none';
-    } else {
-      recoveryRow.style.display = 'flex';
-      document.getElementById('rowRecovery').textContent = `${fmt(recCost[0])} – ${fmt(recCost[1])}`;
-    }
-  }
-
-  // ── GATE SUBMIT ──────────────────────────────────────────────────
-  document.getElementById('unlockBtn').addEventListener('click', async () => {
-    const nameField = document.getElementById('field-name');
-    const emailField = document.getElementById('field-email');
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-
-    let valid = true;
-    if (name.length === 0) { nameField.classList.add('has-error'); document.getElementById('name').classList.add('error'); valid = false; }
-    else { nameField.classList.remove('has-error'); document.getElementById('name').classList.remove('error'); }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { emailField.classList.add('has-error'); document.getElementById('email').classList.add('error'); valid = false; }
-    else { emailField.classList.remove('has-error'); document.getElementById('email').classList.remove('error'); }
-    if (!valid) return;
-
-    const btn = document.getElementById('unlockBtn');
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-
-    const rangeText = document.getElementById('estimateRange').textContent;
-    const data = new FormData();
-    data.append('name', name);
-    data.append('email', email);
-    data.append('phone', phone);
-    data.append('sqft', state.sqft);
-    data.append('tier', state.tier);
-    data.append('flooring', state.flooring);
-    data.append('mirrors', state.mirrors);
-    data.append('lighting', state.lighting);
-    data.append('walls', state.walls);
-    data.append('recovery', state.recovery.join(', ') || 'none');
-    data.append('estimate', rangeText);
-    data.append('_subject', 'New Estimator Lead — Performance Edge Gym Design');
-    if (window.peAppendAttribution) window.peAppendAttribution(data);
-
-    try {
-      const res = await fetch('https://formspree.io/f/mvzwwrzr', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: data,
-      });
-      if (!res.ok) throw new Error();
-
-      document.getElementById('lockedNote').style.display = 'none';
-      document.getElementById('fullBreakdown').classList.remove('blurred');
-      document.getElementById('estimateRange').classList.remove('blurred');
-      document.getElementById('gateForm').style.display = 'none';
-      document.getElementById('resultPanel').classList.add('active');
-      if (window.peTrack) window.peTrack('lead_submit', { lead_type: 'estimator', investment_tier: state.tier });
-    } catch {
-      btn.disabled = false;
-      btn.textContent = 'Send My Breakdown';
-      alert('Something went wrong. Please try again.');
-    }
+  document.getElementById('cardioCount').addEventListener('change', event => {
+    state.cardioCount = Number(event.target.value);
+    updatePlanSummary();
+  });
+  document.getElementById('strengthPackage').addEventListener('change', event => {
+    state.strengthPackage = event.target.value;
+    updatePlanSummary();
   });
 
-  [document.getElementById('name'), document.getElementById('email')].forEach(el => {
-    el.addEventListener('input', () => {
-      el.classList.remove('error');
-      el.closest('.field')?.classList.remove('has-error');
-    });
-  });
 </script>
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Private Gym Investment Estimator","url":"https://www.madefromeffort.com/estimator.html","applicationCategory":"BusinessApplication","operatingSystem":"Any","description":"A directional private-gym investment estimator covering equipment, finishes, and installation.","provider":{"@id":"https://www.madefromeffort.com/#business"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Private Gym Planning Tool","url":"https://www.madefromeffort.com/estimator.html","applicationCategory":"BusinessApplication","operatingSystem":"Any","description":"An interactive planning tool for outlining the space, equipment, flooring, lighting, and wellness priorities of a private gym project.","provider":{"@id":"https://www.madefromeffort.com/#business"}}</script>
 </body>
 </html>
