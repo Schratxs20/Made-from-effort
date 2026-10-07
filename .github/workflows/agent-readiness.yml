@@ -1,0 +1,40 @@
+name: Agent readiness checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "about.html"
+      - "privacy.html"
+      - "404.html"
+      - "agent-instructions.md"
+      - "functions/**"
+      - "llms.txt"
+      - "sitemap.xml"
+      - "scripts/build_journal.py"
+      - "tests/agent-readiness.test.mjs"
+      - ".github/workflows/agent-readiness.yml"
+  pull_request:
+    paths:
+      - "index.html"
+      - "about.html"
+      - "privacy.html"
+      - "404.html"
+      - "agent-instructions.md"
+      - "functions/**"
+      - "llms.txt"
+      - "sitemap.xml"
+      - "scripts/build_journal.py"
+      - "tests/agent-readiness.test.mjs"
+      - ".github/workflows/agent-readiness.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test tests/agent-readiness.test.mjs

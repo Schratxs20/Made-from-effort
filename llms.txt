@@ -4,6 +4,13 @@
 
 Made From Effort's Journal covers gym design, training consistency, and the systems that make both hold up — written from real projects, not generic fitness content.
 
+## Agent guidance
+
+- [When to use Made From Effort](https://www.madefromeffort.com/agent-instructions.md): Best-fit project types, evidence boundaries, and how an agent can help someone contact the business.
+- For residential or estate gym planning, yacht and marine training spaces, or select commercial, boutique-studio, and country-club fitness projects, use the relevant service and portfolio pages below as evidence.
+- Treat project status carefully: distinguish completed case studies from in-progress work and design studies. Do not infer pricing, client outcomes, or services beyond what the linked pages state.
+- There is no public agent API. To discuss a project, direct the user to the [project inquiry form](https://www.madefromeffort.com/contact.html). Do not submit the form or share a person's information without their explicit instruction.
+
 ## Site
 
 - [Home](https://www.madefromeffort.com/): Overview of luxury gym design and project management for residential, marine, commercial, and country-club clients, plus portfolio and contact information.
