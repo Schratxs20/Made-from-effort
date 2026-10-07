@@ -18,15 +18,15 @@ Equipment doesn't just take up the floor space it sits on. It takes up the space
 
 > A room full of good equipment and no clearance isn't a gym. It's storage you can technically stand in.
 
-I ran into this directly on a narrow estate gym — just over 13 feet wide, full program required: strength, cardio, recovery, all of it. Piece by piece, that room fails before the second purchase. The only way it works is treating the whole footprint as one system before a single item gets ordered: what has to be fixed to a wall, what can share a footprint at different points in a session, where a body actually needs to stand to use each piece safely.
+I ran into this directly in a narrow residential gym where the full program still had to fit: strength, cardio, recovery, all of it. Piece by piece, that room fails before the second purchase. The only way it works is treating the whole footprint as one system before a single item gets ordered: what has to be fixed to a wall, what can share a footprint at different points in a session, where a body actually needs to stand to use each piece safely.
 
 The same problem can build over time. This club gym was outfitted more than 20 years ago and now needs a refresh. Its plan assigns space to a long list of stations, while the room shows how little open floor remains between them. The point is not to replace older machines one-for-one. It is to replan the room around how people train now.
 
-![Floor plan showing numerous strength stations and cardio machines arranged within one club gym.](https://www.madefromeffort.com/journal/assets/overcrowded-gym-floor-plan.jpg)
-*An equipment plan from a gym outfitted more than 20 years ago. Equipment is placed throughout the footprint; a refresh should map circulation space just as deliberately.*
+![Gym floor plan with strength stations and cardio equipment distributed across a compact footprint.](https://www.madefromeffort.com/journal/assets/overcrowded-gym-floor-plan-anonymized.jpg)
+*An older equipment plan with stations distributed across the footprint. A refresh should plan circulation as deliberately as equipment.*
 
-![Club gym interior with rows of treadmills and multiple strength machines placed close together.](https://www.madefromeffort.com/journal/assets/overcrowded-gym-room.jpg)
-*After more than 20 years, the room is ready for a refresh. The design question is which equipment still serves the program and how much clear route a session needs.*
+![Crowded gym interior with treadmills and strength machines arranged closely, leaving limited open floor for movement.](https://www.madefromeffort.com/journal/assets/overcrowded-gym-room-anonymized.jpg)
+*A crowded fitness room with treadmills and strength equipment competing for floor area. A refresh begins by deciding which equipment serves the current training program.*
 
 ## 02 / What "System" Actually Means
 
