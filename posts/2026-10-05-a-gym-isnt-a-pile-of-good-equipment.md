@@ -20,6 +20,14 @@ Equipment doesn't just take up the floor space it sits on. It takes up the space
 
 I ran into this directly on a narrow estate gym — just over 13 feet wide, full program required: strength, cardio, recovery, all of it. Piece by piece, that room fails before the second purchase. The only way it works is treating the whole footprint as one system before a single item gets ordered: what has to be fixed to a wall, what can share a footprint at different points in a session, where a body actually needs to stand to use each piece safely.
 
+The same problem can build over time. This club gym was outfitted more than 20 years ago and now needs a refresh. Its plan assigns space to a long list of stations, while the room shows how little open floor remains between them. The point is not to replace older machines one-for-one. It is to replan the room around how people train now.
+
+![Floor plan showing numerous strength stations and cardio machines arranged within one club gym.](https://www.madefromeffort.com/journal/assets/overcrowded-gym-floor-plan.jpg)
+*An equipment plan from a gym outfitted more than 20 years ago. Equipment is placed throughout the footprint; a refresh should map circulation space just as deliberately.*
+
+![Club gym interior with rows of treadmills and multiple strength machines placed close together.](https://www.madefromeffort.com/journal/assets/overcrowded-gym-room.jpg)
+*After more than 20 years, the room is ready for a refresh. The design question is which equipment still serves the program and how much clear route a session needs.*
+
 ## 02 / What "System" Actually Means
 
 It's not a style choice. It means every piece earns its spot based on what it does for the room as a whole, not how it looks on its own.
