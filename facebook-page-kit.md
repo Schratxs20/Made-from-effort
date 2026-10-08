@@ -99,3 +99,30 @@ What's missing, in order:
 - [ ] Business Manager set up, payment method added
 - [ ] Pixel created, ID sent to Claude for site install
 - [ ] First ad campaign drafted
+
+## 9. Status of the live Page (from the Codex session log)
+
+Done by Codex in the browser: bio updated to current gym-design work, design markets and the separate coaching offer listed, fixed "$$" price label removed.
+
+Still open, and what to do:
+
+1. **Page name.** Meta accepted "Performance Edge Training + Gym Design" for review but needs your Facebook password to submit. Re-open Page settings > Page name and confirm.
+2. **Cover photo.** Upload `social/facebook-cover-jupiter.jpg` (1640x624, recommended). Alternates: `facebook-cover-jericho.jpg`, `facebook-cover-oyster-bay.jpg` (Scott in the garage gym; better as a profile/about image).
+3. **Action button and website link.** They still point to the old online coaching offer. Set the button to "Send message" or "Learn more" and use the contact URL in section 1.
+4. **Contacts.** The Page still shows 516-330-1348 and performanceedge.ny@gmail.com. Keep them only if they are current public business contacts.
+5. **Intro post** (below), then pin it.
+
+### Intro post
+
+> Performance Edge Training + Gym Design has a new look, and a clearer focus.
+>
+> We plan private home and estate gyms, yacht and marine training spaces, and select commercial, boutique-studio and country-club fitness projects. Based on Long Island, NY, led by Scott Schratwieser, CSCS.
+>
+> Private and remote performance coaching is still available, as a separate service.
+>
+> See the work: https://www.madefromeffort.com/residential-gym-design.html?utm_source=facebook&utm_medium=organic&utm_campaign=intro_post
+> Start a project: https://www.madefromeffort.com/contact.html?utm_source=facebook&utm_medium=organic&utm_campaign=intro_post
+>
+> Photo: Jupiter Island, FL estate gym.
+
+Attach `jupiter-island-room-wide.jpg` or a 3-image carousel from the Jericho, Jupiter Island and Sands Point projects.
