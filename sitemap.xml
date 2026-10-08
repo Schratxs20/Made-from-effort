@@ -122,9 +122,15 @@
   </url>
   <url>
     <loc>https://www.madefromeffort.com/journal/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.madefromeffort.com/journal/you-don-t-need-more-hours-you-need-an-audit.html</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.madefromeffort.com/journal/a-gym-isn-t-a-pile-of-good-equipment.html</loc>
