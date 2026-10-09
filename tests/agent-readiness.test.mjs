@@ -32,6 +32,25 @@ test("homepage has substantial raw content and sequential heading levels", async
   }
 });
 
+test("homepage explains installation coordination without claiming construction", async () => {
+  const html = await read("index.html");
+  assert.match(html, /<h3>Installation Coordination<\/h3>/);
+  assert.match(html, /Physical construction is handled by appropriately licensed project partners/);
+  assert.doesNotMatch(html, /Every trade, timeline, and delivery handled/);
+});
+
+test("service pages connect room planning to a published example", async () => {
+  const article = "journal/a-gym-isn-t-a-pile-of-good-equipment.html";
+  assert.match(await read(article), /<h1\b/i);
+  for (const page of ["residential-gym-design.html", "country-club-fitness-audit.html"]) {
+    const html = await read(page);
+    assert.ok(html.includes(`class="editorial-link" href="${article}"`), `${page} is missing a visible related article link`);
+  }
+  for (const stylesheet of ["residential-gym-design.html", "market-service.css"]) {
+    assert.match(await read(stylesheet), /\.editorial-link\{[^}]*text-decoration:underline/);
+  }
+});
+
 test("trust pages provide substantive content and contact routes", async () => {
   for (const path of ["about.html", "privacy.html", "contact.html"]) {
     const html = await read(path);
