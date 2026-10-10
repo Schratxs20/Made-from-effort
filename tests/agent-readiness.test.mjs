@@ -36,8 +36,8 @@ test("homepage leads with Jupiter Island photography and one primary project inq
   const html = await read("index.html");
   const hero = html.match(/<section id="hero">([\s\S]*?)<\/section>/)?.[1];
   assert.ok(hero, "homepage hero is missing");
-  assert.match(hero, /<picture class="hero-media">\s*<img src="jupiter-island-room-wide\.jpg"/);
-  assert.doesNotMatch(hero, /<source\b|hero-eyebrow|hero-desc|hero-project-link/, "keep only the first project photo and inquiry button visible");
+  assert.match(hero, /<picture class="hero-media">\s*<source media="\(max-width: 680px\)" srcset="jupiter-island-hero\.jpg">\s*<img src="jupiter-island-room-wide\.jpg"/);
+  assert.doesNotMatch(hero, /hero-eyebrow|hero-desc|hero-project-link/, "keep visible copy limited to the inquiry button");
   assert.match(html, /#hero h1 \{ position: absolute; width: 1px; height: 1px;/, "retain an accessible H1 without overlaying the photograph");
   assert.ok(hero.indexOf("<picture") < hero.indexOf("<h1"), "project image should precede the copy");
   assert.match(hero, /href="#inquiry-form" class="btn btn-solid">Start Your Gym Project/);
