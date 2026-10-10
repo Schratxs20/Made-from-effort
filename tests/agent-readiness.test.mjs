@@ -36,7 +36,7 @@ test("homepage leads with Jupiter Island photography and one primary project inq
   const html = await read("index.html");
   const hero = html.match(/<section id="hero">([\s\S]*?)<\/section>/)?.[1];
   assert.ok(hero, "homepage hero is missing");
-  assert.match(hero, /<picture class="hero-media">\s*<source media="\(max-width: 680px\)" srcset="jupiter-island-hero\.jpg">\s*<img src="jupiter-island-room-wide\.jpg"/);
+  assert.match(hero, /<picture class="hero-media">\s*<img src="jupiter-island-hero\.jpg"/);
   assert.doesNotMatch(hero, /hero-eyebrow|hero-desc|hero-project-link/, "keep visible copy limited to the inquiry button");
   assert.match(html, /#hero h1 \{ position: absolute; width: 1px; height: 1px;/, "retain an accessible H1 without overlaying the photograph");
   assert.ok(hero.indexOf("<picture") < hero.indexOf("<h1"), "project image should precede the copy");
@@ -44,10 +44,19 @@ test("homepage leads with Jupiter Island photography and one primary project inq
   assert.equal((hero.match(/class="btn btn-solid"/g) || []).length, 1, "hero should have one primary CTA");
   assert.doesNotMatch(hero, /<video\b/);
   assert.match(html, /id="inquiry-form"/);
-  assert.match(html, /<meta property="og:image" content="https:\/\/www\.madefromeffort\.com\/jupiter-island-room-wide\.jpg">/);
+  assert.match(html, /<meta property="og:image" content="https:\/\/www\.madefromeffort\.com\/jupiter-island-hero\.jpg">/);
   assert.match(html, /id="guide-link">Free Guide<\/a>/);
   assert.match(html, /if \(opened \|\| inquiryIntent \|\| \['#contact', '#inquiry-form'\]\.includes\(window\.location\.hash\)\) return/);
   assert.doesNotMatch(html, /setTimeout\(showOnce, 6000\)/);
+});
+
+test("Jupiter Island pages avoid the later expanded wide images", async () => {
+  for (const page of ["index.html", "project-jupiter-island.html", "residential-gym-design.html"]) {
+    const html = await read(page);
+    assert.doesNotMatch(html, /jupiter-island-(?:room-wide|card-wide)\.jpg/, `${page} still uses an expanded image`);
+  }
+  const project = await read("project-jupiter-island.html");
+  assert.match(project, /jupiter-island-rack-detail\.jpg/);
 });
 
 test("homepage explains installation coordination without claiming construction", async () => {
