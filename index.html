@@ -15,15 +15,15 @@
 <meta property="og:title" content="Made From Effort Gym Design | Performance Edge">
 <meta property="og:description" content="Made From Effort shares gym design by Scott Schratwieser and Performance Edge: private home gyms across Long Island, plus select yacht, studio, commercial, and country-club projects.">
 <meta property="og:site_name" content="Made From Effort">
-<meta property="og:image" content="https://www.madefromeffort.com/og-image.jpg">
+<meta property="og:image" content="https://www.madefromeffort.com/jupiter-island-room-wide.jpg">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image:height" content="896">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Made From Effort Gym Design | Performance Edge">
 <meta name="twitter:description" content="Made From Effort shares gym design by Scott Schratwieser and Performance Edge: private home gyms across Long Island, plus select yacht, studio, commercial, and country-club projects.">
-<meta name="twitter:image" content="https://www.madefromeffort.com/og-image.jpg">
+<meta name="twitter:image" content="https://www.madefromeffort.com/jupiter-island-room-wide.jpg">
 
 <script>if(history.scrollRestoration)history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname);window.scrollTo(0,0);</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,27 +94,28 @@ nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) rotat
 .nav-dropdown-menu a + a { border-top: 1px solid var(--rule); }
 
 /* HERO */
-#hero { margin-top: 60px; min-height: calc(100vh - 60px); display: grid; grid-template-columns: 1fr 1fr; background: var(--white); overflow: hidden; }
-.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; position: relative; }
-.hero-left::after { content: ''; position: absolute; right: 0; top: 10%; bottom: 10%; width: 1px; background: var(--rule); }
-.hero-eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--blue); font-weight: 400; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
-.hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--blue); }
+#hero { margin-top: 60px; min-height: 620px; min-height: max(620px, calc(100svh - 60px)); position: relative; display: flex; align-items: flex-end; overflow: hidden; background: #24221d; }
+.hero-media, .hero-media img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.hero-media img { object-fit: cover; object-position: center 53%; }
+#hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,13,12,0.04) 18%, rgba(11,13,12,0.12) 44%, rgba(11,13,12,0.82) 100%); pointer-events: none; }
+.hero-content { position: relative; z-index: 1; width: 100%; padding: 80px clamp(24px, 5vw, 80px) 70px; }
+.hero-eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #f3eee4; font-weight: 400; margin-bottom: 19px; display: flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: #f3eee4; }
 h1 { font-family: 'Cormorant', serif; font-size: clamp(46px, 5.5vw, 80px); font-weight: 300; line-height: 1.05; color: var(--ink); margin-bottom: 28px; letter-spacing: -0.5px; }
 h1 em { font-style: italic; color: var(--ink-mid); }
-.hero-desc { font-size: 15px; line-height: 1.8; color: var(--ink-light); max-width: 420px; margin-bottom: 44px; font-weight: 300; }
-.hero-ctas { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+#hero h1 { color: var(--white); max-width: 850px; margin-bottom: 18px; font-size: clamp(50px, 6.6vw, 94px); line-height: .98; text-shadow: 0 2px 24px rgba(0,0,0,.18); }
+#hero h1 em { color: #f3eee4; }
+.hero-desc { font-size: 15px; line-height: 1.6; color: rgba(250,250,248,.9); max-width: 490px; margin-bottom: 28px; font-weight: 300; }
+.hero-ctas { display: flex; align-items: center; }
 .btn { display: inline-block; text-decoration: none; font-family: 'Outfit', sans-serif; font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 400; transition: all 0.25s; }
 .btn-solid { background: var(--ink); color: var(--white); padding: 13px 30px; }
 .btn-solid:hover { background: var(--blue); }
 .btn-outline { border: 1px solid var(--rule); color: var(--ink-light); padding: 12px 30px; }
 .btn-outline:hover { border-color: var(--ink-light); color: var(--ink); }
-.hero-right { position: relative; background: var(--off); display: flex; align-items: center; justify-content: center; overflow: hidden; min-height: 500px; }
-#gym-video { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; pointer-events: none; }
-#gym-video-caption { position: absolute; left: 22px; bottom: 20px; z-index: 2; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(250,250,248,0.72); text-shadow: 0 1px 8px rgba(0,0,0,0.35); }
-#gym-video::-webkit-media-controls { display: none !important; }
-#gym-video::-webkit-media-controls-start-playback-button { display: none !important; }
-#gym-video::-webkit-media-controls-play-button { display: none !important; }
-#gym-video::-webkit-media-controls-overlay-play-button { display: none !important; }
+#hero .btn-solid { background: var(--white); color: var(--ink); padding: 16px 29px; font-weight: 500; }
+#hero .btn-solid:hover { background: #e9e2d5; }
+.hero-project-link { position: absolute; z-index: 2; right: clamp(24px, 5vw, 80px); bottom: 38px; color: rgba(250,250,248,.9); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid rgba(250,250,248,.6); padding-bottom: 5px; }
+.hero-project-link:hover { color: #fff; border-color: #fff; }
 
 /* MARQUEE */
 .marquee-bar { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 14px 0; overflow: hidden; background: var(--white); }
@@ -492,9 +493,10 @@ nav.nav-open .nav-links{display:flex}
 .nav-links .nav-cta{margin:16px 24px; text-align:center; display:block}
 .nav-dropdown-menu{display:block!important; position:static; transform:none; border:none; box-shadow:none; background:var(--off); min-width:0}
 .nav-dropdown>a::after{display:none}
-#hero{grid-template-columns:1fr}
-.hero-left{padding:60px 24px} .hero-left::after{display:none}
-.hero-right{min-height:340px}
+#hero{min-height:calc(100svh - 60px)}
+.hero-content{padding:72px 24px 42px}
+#hero h1{font-size:clamp(43px,8vw,64px);max-width:620px}
+.hero-project-link{display:none}
 #featured,#about{grid-template-columns:1fr}
 .feat-content,.about-text{padding:48px 24px}
 #why{grid-template-columns:1fr;gap:48px;padding:64px 24px}
@@ -553,19 +555,19 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
 <!-- HERO -->
 
 <section id="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Long Island Gym Designer · Performance Edge</div>
-    <h1>Gym design built<br>for how you<br><em>actually live.</em></h1>
-    <p class="hero-desc">Based on Long Island, Performance Edge plans private and estate gyms across Nassau and Suffolk counties, plus select yacht, boutique studio, commercial, and country-club fitness projects nationwide.</p>
+  <picture class="hero-media">
+    <source media="(max-width: 680px)" srcset="jupiter-island-hero.jpg">
+    <img src="jupiter-island-room-wide.jpg" alt="Jupiter Island private gym with wood-lined architecture, strength equipment, and garden-facing windows" width="1200" height="896" fetchpriority="high">
+  </picture>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Private Residential + Estate Gym Design</div>
+    <h1>Private gym design<br><em>made to belong.</em></h1>
+    <p class="hero-desc">A training space planned around your home, your goals, and the way you actually use it.</p>
     <div class="hero-ctas">
-      <a href="#contact" class="btn btn-solid">Start a Gym Design Conversation</a>
-      <a href="yacht-gym-design.html" class="btn btn-outline">Explore Yacht Design</a>
+      <a href="#inquiry-form" class="btn btn-solid">Start Your Gym Project →</a>
     </div>
   </div>
-  <div class="hero-right">
-    <video id="gym-video" src="hf_20260316_190700_d21dac8c-e8fe-4c2a-b4b8-b8d08669933b.mp4" poster="og-image.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="Performance Edge training environment in motion"></video>
-    <span id="gym-video-caption">A training environment in motion</span>
-  </div>
+  <a class="hero-project-link" href="project-jupiter-island.html">Jupiter Island Estate · View Project ↗</a>
 </section>
 
 <!-- MARQUEE -->
@@ -851,7 +853,7 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
 <footer>
   <div class="foot-brand">Made From Effort<span>Performance Edge Training + Gym Design</span></div>
   <ul class="foot-links">
-    <li><a href="#portfolio">Portfolio</a></li><li><a href="#services">Services</a></li><li><a href="#process">Process</a></li><li><a href="about.html">About</a></li><li><a href="#contact">Contact</a></li><li><a href="privacy.html">Privacy</a></li>
+    <li><a href="#portfolio">Portfolio</a></li><li><a href="#services">Services</a></li><li><a href="#process">Process</a></li><li><a href="about.html">About</a></li><li><a href="#contact">Contact</a></li><li><a href="#home-gym-guide" id="guide-link">Free Guide</a></li><li><a href="privacy.html">Privacy</a></li>
   </ul>
   <div class="foot-social">
     <a href="https://instagram.com/scottschrat" target="_blank" rel="noopener" aria-label="Follow on Instagram">
@@ -1080,15 +1082,6 @@ document.addEventListener('click',      function u(){ allAutoplayVideos.forEach(
 document.addEventListener('touchstart', function u(){ allAutoplayVideos.forEach(v=>{ if(v.paused){v.muted=true;v.play().catch(()=>{});} }); document.removeEventListener('touchstart',u); }, { passive:true });
 document.addEventListener('scroll',     function u(){ allAutoplayVideos.forEach(v=>{ if(v.paused){v.muted=true;v.play().catch(()=>{});} }); document.removeEventListener('scroll',u); }, { passive:true });
 
-// IntersectionObserver for hero video specifically
-const heroVid = document.getElementById('gym-video');
-if (heroVid) {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) heroVid.removeAttribute('autoplay');
-  new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) { heroVid.muted = true; heroVid.play().catch(() => {}); }
-  }, { threshold: 0.1 }).observe(heroVid);
-}
-
 /* ── POPUP ───────────────────────────────────── */
 (function() {
   const STORAGE_KEY = 'mfe_popup_v1';
@@ -1124,21 +1117,25 @@ if (heroVid) {
     // No dismissal stored — popup will show again next visit until signup
   }
 
-  // Triggers: 6 seconds after load, or exit intent on desktop
+  // Keep the design inquiry path clear; offer the guide by choice or on desktop exit intent.
   let opened = false;
-  const showOnce = () => { if (!opened) { opened = true; openPopup(); } };
-
-  setTimeout(showOnce, 6000);
-
-  document.addEventListener('mouseleave', e => {
-    if (e.clientY <= 0) showOnce();
+  let inquiryIntent = false;
+  document.querySelectorAll('a[href="#contact"], a[href="#inquiry-form"]').forEach(link => {
+    link.addEventListener('click', () => { inquiryIntent = true; });
+  });
+  const showOnce = () => {
+    if (opened || inquiryIntent || ['#contact', '#inquiry-form'].includes(window.location.hash)) return;
+    opened = true;
+    openPopup();
+  };
+  document.getElementById('guide-link')?.addEventListener('click', e => {
+    e.preventDefault();
+    openPopup();
   });
 
-  // Scroll 55% trigger
-  window.addEventListener('scroll', function onScroll() {
-    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-    if (pct >= 0.55) { showOnce(); window.removeEventListener('scroll', onScroll); }
-  }, { passive: true });
+  document.addEventListener('mouseleave', e => {
+    if (e.clientY <= 0 && window.matchMedia('(hover: hover) and (pointer: fine)').matches) showOnce();
+  });
 
   // Close
   closeBtn.addEventListener('click', closePopup);

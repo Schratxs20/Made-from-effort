@@ -14,10 +14,11 @@ Performance Edge plans private residential and estate gyms across Nassau and Suf
 
 ## Explore
 
+- [Jupiter Island estate gym](https://www.madefromeffort.com/project-jupiter-island.html) — a private gym designed as part of the home's architecture.
 - [Selected projects](https://www.madefromeffort.com/#portfolio)
 - [Journal](https://www.madefromeffort.com/journal/)
 - [About Scott Schratwieser](https://www.madefromeffort.com/about.html)
-- [Contact and project inquiry](https://www.madefromeffort.com/contact.html)
+- [Start a gym design project](https://www.madefromeffort.com/#inquiry-form)
 - [Sitemap](https://www.madefromeffort.com/sitemap.xml)
 - [Agent guidance](https://www.madefromeffort.com/agent-instructions.md)
 `;

@@ -23,13 +23,29 @@ test("homepage has substantial raw content and sequential heading levels", async
   const html = await read("index.html");
   const text = visibleText(html);
   assert.ok(text.length >= 500, `homepage raw text is only ${text.length} characters`);
-  assert.match(html, /<h1\b[^>]*>[^<]*Gym design built/s);
+  assert.match(html, /<h1\b[^>]*>Private gym design/s);
   const levels = [...html.matchAll(/<h([1-6])\b[^>]*>/gi)].map((match) => Number(match[1]));
   assert.ok(levels.length > 1, "homepage should have a useful heading structure");
   assert.equal(levels[0], 1, "first heading should be H1");
   for (let index = 1; index < levels.length; index += 1) {
     assert.ok(levels[index] <= levels[index - 1] + 1, `heading level jumps from H${levels[index - 1]} to H${levels[index]}`);
   }
+});
+
+test("homepage leads with Jupiter Island photography and one primary project inquiry", async () => {
+  const html = await read("index.html");
+  const hero = html.match(/<section id="hero">([\s\S]*?)<\/section>/)?.[1];
+  assert.ok(hero, "homepage hero is missing");
+  assert.match(hero, /<picture class="hero-media">[\s\S]*?srcset="jupiter-island-hero\.jpg"[\s\S]*?<img src="jupiter-island-room-wide\.jpg"/);
+  assert.ok(hero.indexOf("<picture") < hero.indexOf("<h1"), "project image should precede the copy");
+  assert.match(hero, /href="#inquiry-form" class="btn btn-solid">Start Your Gym Project/);
+  assert.equal((hero.match(/class="btn btn-solid"/g) || []).length, 1, "hero should have one primary CTA");
+  assert.doesNotMatch(hero, /<video\b/);
+  assert.match(html, /id="inquiry-form"/);
+  assert.match(html, /<meta property="og:image" content="https:\/\/www\.madefromeffort\.com\/jupiter-island-room-wide\.jpg">/);
+  assert.match(html, /id="guide-link">Free Guide<\/a>/);
+  assert.match(html, /if \(opened \|\| inquiryIntent \|\| \['#contact', '#inquiry-form'\]\.includes\(window\.location\.hash\)\) return/);
+  assert.doesNotMatch(html, /setTimeout\(showOnce, 6000\)/);
 });
 
 test("homepage explains installation coordination without claiming construction", async () => {
@@ -99,6 +115,8 @@ test("Accept: text/markdown returns Markdown at the homepage with Vary: Accept",
   const body = await response.text();
   assert.ok(body.length >= 500);
   assert.match(body, /^# Made From Effort Gym Design/m);
+  assert.match(body, /Jupiter Island estate gym/);
+  assert.match(body, /Start a gym design project/);
 });
 
 test("HTML remains HTML while varying on Accept", async () => {
