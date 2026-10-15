@@ -82,6 +82,8 @@ nav {
 .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
 .hero-meta-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(250,250,248,0.4); }
 .hero-meta-value { font-size: 13px; color: rgba(250,250,248,0.85); font-weight: 400; }
+.hero-cta { display: inline-block; margin-top: 24px; padding: 13px 20px; background: var(--white); color: var(--ink); text-decoration: none; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 400; }
+.hero-cta:hover, .hero-cta:focus-visible { background: #dce6f2; }
 
 /* SCROLL INDICATOR */
 .scroll-hint {
@@ -256,10 +258,12 @@ footer { padding: 32px 48px; border-top: 1px solid var(--rule); display: flex; j
   footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
 }
 @media (max-width: 480px) {
+  .scroll-hint { display: none; }
   .gallery-grid { grid-template-columns: 1fr; }
   .system-grid { grid-template-columns: 1fr; }
 }
 </style>
+<script src="site-events.js?v=2" defer></script>
 </head>
 <body>
 
@@ -292,6 +296,7 @@ footer { padding: 32px 48px; border-top: 1px solid var(--rule); display: flex; j
         <span class="hero-meta-value">Complete</span>
       </div>
     </div>
+    <a class="hero-cta" href="contact.html?project=residence&amp;source=jupiter-island-case-study">Inquire About Your Gym →</a>
   </div>
   <div class="scroll-hint">
     <div class="scroll-line"></div>
@@ -448,7 +453,6 @@ footer { padding: 32px 48px; border-top: 1px solid var(--rule); display: flex; j
   <div class="foot-copy">© 2026 Performance Edge Training + Gym Design</div>
 </footer>
 
-<script src="site-events.js?v=1"></script>
 <script>
 // Reveal on scroll
 const reveals = document.querySelectorAll('.reveal');

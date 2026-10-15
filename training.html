@@ -84,6 +84,8 @@
   .ph-right { padding-bottom: 6px; }
   .ph-desc { font-size: 15px; line-height: 1.85; color: rgba(250,250,248,0.5); max-width: 400px; margin-bottom: 32px; }
   .ph-stats { display: flex; gap: 36px; }
+  .ph-cta { display: inline-block; margin-top: 28px; padding: 13px 20px; background: var(--white); color: var(--ink); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; font-weight: 400; }
+  .ph-cta:hover, .ph-cta:focus-visible { background: #dce6f2; }
   .ph-stat-n { font-family: 'Cormorant', serif; font-size: 36px; font-style: italic; color: var(--blue-light); line-height: 1; margin-bottom: 4px; }
   .ph-stat-l { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(250,250,248,0.3); }
 
@@ -125,6 +127,7 @@
 
   /* FORM SECTION */
   .form-section { padding: 80px 64px; background: var(--white); }
+  #training-form { scroll-margin-top: 80px; }
   .form-section-header { margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid var(--rule); }
   .form-section-header .sec-eyebrow { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-faint); font-weight: 400; margin-bottom: 8px; }
   .form-section-header h2 { font-family: 'Cormorant', serif; font-size: clamp(26px, 3vw, 40px); font-weight: 300; color: var(--ink); }
@@ -192,12 +195,13 @@
     .page-header { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px 56px; }
     .options-section { padding: 56px 24px; }
     .options-grid { grid-template-columns: 1fr; }
-    .form-section { padding: 56px 24px; }
+    .form-section { padding: 56px 24px 104px; }
     .form-layout { grid-template-columns: 1fr; gap: 40px; }
     .f-row { grid-template-columns: 1fr; }
     footer { padding: 32px 24px; flex-direction: column; text-align: center; }
   }
 </style>
+<script src="site-events.js?v=2" defer></script>
 </head>
 <body>
 
@@ -228,6 +232,7 @@
   </div>
   <div class="ph-right reveal d1">
     <p class="ph-desc">Train one-on-one with Scott Schratwieser on Long Island, New York, or work together through online and virtual training. Coaching combines programming, nutrition habits, video review, and behavioral change support to help you build a routine you can keep using.</p>
+    <a class="ph-cta" href="#training-form">Request a Consultation →</a>
     <div class="ph-stats">
       <div><div class="ph-stat-n">15</div><div class="ph-stat-l">Years Experience</div></div>
       <div><div class="ph-stat-n">~10</div><div class="ph-stat-l">Years at Equinox</div></div>
@@ -290,11 +295,11 @@
       <input type="hidden" name="_subject" value="New Training Inquiry — Performance Edge">
       <input type="hidden" id="t-type-hidden" name="training_type" value="In-Person">
       <div class="f-row">
-        <div class="f-group"><label for="t-first">First Name</label><input type="text" id="t-first" name="first_name" placeholder="First"></div>
+        <div class="f-group"><label for="t-first">First Name</label><input type="text" id="t-first" name="first_name" placeholder="First" required></div>
         <div class="f-group"><label for="t-last">Last Name</label><input type="text" id="t-last" name="last_name" placeholder="Last"></div>
       </div>
       <div class="f-row">
-        <div class="f-group"><label for="t-email">Email</label><input type="email" id="t-email" name="email" placeholder="you@email.com"></div>
+        <div class="f-group"><label for="t-email">Email</label><input type="email" id="t-email" name="email" placeholder="you@email.com" required></div>
         <div class="f-group"><label for="t-phone">Phone</label><input type="tel" id="t-phone" name="phone" placeholder="+1 (917) 000 0000"></div>
       </div>
       <div class="f-group">
@@ -390,9 +395,10 @@ document.querySelectorAll('.t-type').forEach(btn => {
       const res = await fetch('https://formspree.io/f/mvzwwrzr', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
+        body: window.peAppendAttribution ? window.peAppendAttribution(new FormData(form)) : new FormData(form)
       });
       if (res.ok) {
+        if (window.peTrack) window.peTrack('lead_submit', { lead_type: 'training_consultation', training_type: document.getElementById('t-type-hidden').value });
         btn.textContent = 'Sent ✓';
         btn.style.background = '#3a7a5a';
         form.reset();
