@@ -341,6 +341,7 @@ def render_post_page(post):
 <meta name="twitter:description" content="{html.escape(post.get('excerpt',''))}">
 <meta name="twitter:image" content="{og_image}">
 {render_schema(post, canonical)}
+<script src="/site-events.js?v=2" defer></script>
 <style>{STYLE_BLOCK}</style>
 </head>
 <body>
@@ -498,6 +499,7 @@ def render_index_page(posts):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Journal — {SITE_TITLE}</title>
 <meta name="description" content="{html.escape(SITE_DESCRIPTION)}">
+<script src="/site-events.js?v=2" defer></script>
 <link rel="canonical" href="{index_url}">
 <link rel="alternate" type="application/rss+xml" title="{SITE_TITLE}" href="{SITE_URL}/journal/feed.xml">
 <meta property="og:type" content="website">
