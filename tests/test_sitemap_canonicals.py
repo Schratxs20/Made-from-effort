@@ -14,6 +14,17 @@ NS = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 
 
 class SitemapCanonicalTests(unittest.TestCase):
+    def test_journal_index_links_directly_to_canonical_articles(self):
+        html = (ROOT / "journal" / "index.html").read_text(encoding="utf-8")
+        links = re.findall(r'<a class="post-item" href="([^"]+)"', html)
+        self.assertTrue(links)
+        for url in links:
+            with self.subTest(url=url):
+                self.assertTrue(url.startswith(f"{SITE_ORIGIN}/journal/"))
+                self.assertFalse(url.endswith(".html"), url)
+                article = ROOT / f"{urllib.parse.urlparse(url).path.lstrip('/')}.html"
+                self.assertTrue(article.is_file(), f"Missing article for {url}")
+
     def test_sitemap_urls_are_final_public_pages(self):
         tree = ET.parse(ROOT / "sitemap.xml")
         urls = [node.text for node in tree.findall(".//s:loc", NS)]

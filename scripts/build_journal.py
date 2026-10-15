@@ -484,7 +484,7 @@ def render_index_page(posts):
     items = ""
     for p in posts:
         items += f"""
-      <a class="post-item" href="{SITE_URL}/journal/{p['slug']}.html">
+      <a class="post-item" href="{SITE_URL}/journal/{p['slug']}">
         <div class="post-item-date">{format_date_long(p['date'])}{f' &middot; <span class="post-item-category">{html.escape(p["category"])}</span>' if p.get('category') else ''}</div>
         <div class="post-item-title">{html.escape(p['title'])}</div>
         <div class="post-item-excerpt">{html.escape(p.get('excerpt',''))}</div>
