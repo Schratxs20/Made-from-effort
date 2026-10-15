@@ -29,6 +29,9 @@ jobs:
       - name: Build journal (posts, index, RSS feed)
         run: python3 scripts/build_journal.py
 
+      - name: Check sitemap and canonical URLs
+        run: python3 -m unittest discover -s tests
+
       - name: Commit generated files
         run: |
           git config user.name "journal-bot"

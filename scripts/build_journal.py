@@ -320,7 +320,7 @@ def resolve_cta_link(post):
 
 
 def render_post_page(post):
-    canonical = f"{SITE_URL}/journal/{post['slug']}.html"
+    canonical = f"{SITE_URL}/journal/{post['slug']}"
     og_image = post.get("image") or DEFAULT_OG_IMAGE
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -615,7 +615,10 @@ def render_sitemap(posts):
     entries = []
 
     for path, lastmod, priority in STATIC_PAGES:
-        loc = f"{SITE_URL}/{path}"
+        # Cloudflare Pages redirects .html routes to extensionless URLs. A
+        # sitemap should list the final, indexable URL instead of a redirect.
+        canonical_path = path.removesuffix(".html")
+        loc = f"{SITE_URL}/{canonical_path}"
         entries.append((loc, lastmod, "monthly", priority))
 
     latest_post_update = max(
@@ -625,7 +628,7 @@ def render_sitemap(posts):
     entries.append((f"{SITE_URL}/journal/", latest_post_update, "weekly", 0.8))
 
     for p in posts:
-        loc = f"{SITE_URL}/journal/{p['slug']}.html"
+        loc = f"{SITE_URL}/journal/{p['slug']}"
         entries.append((loc, p.get("updated") or p["date"], "yearly", 0.6))
 
     urls_xml = "\n".join(
