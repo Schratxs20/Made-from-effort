@@ -1,6 +1,7 @@
 """Keep XML sitemap entries aligned with Cloudflare Pages' public URLs."""
 
 import pathlib
+import json
 import re
 import unittest
 import urllib.parse
@@ -38,6 +39,21 @@ class SitemapCanonicalTests(unittest.TestCase):
                 match = re.search(r'<link rel="canonical" href="([^"]+)"', html)
                 self.assertIsNotNone(match, f"Missing canonical in {source}")
                 self.assertEqual(match.group(1), url)
+
+    def test_structured_data_uses_final_public_urls(self):
+        for source in ROOT.glob("*.html"):
+            html = source.read_text(encoding="utf-8")
+            blocks = re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>', html, re.DOTALL
+            )
+            for block in blocks:
+                with self.subTest(source=source.name):
+                    data = json.loads(block)
+                    self.assertNotRegex(
+                        json.dumps(data),
+                        r"https://www\.madefromeffort\.com/[^\"\s]+\.html(?:[\"#?]|$)",
+                        "Structured data points to a redirecting .html URL",
+                    )
 
 
 if __name__ == "__main__":

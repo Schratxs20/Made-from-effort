@@ -94,7 +94,7 @@ test("homepage Person JSON-LD has a description and URL", async () => {
   const person = graph["@graph"].find((entry) => entry.founder?.["@type"] === "Person")?.founder;
   assert.ok(person, "Person entity is missing");
   assert.ok(person.description?.length > 30, "Person description is missing or too short");
-  assert.equal(person.url, "https://www.madefromeffort.com/about.html");
+  assert.equal(person.url, "https://www.madefromeffort.com/about");
 });
 
 test("llms.txt and agent instructions state specific fit and safe contact guidance", async () => {
