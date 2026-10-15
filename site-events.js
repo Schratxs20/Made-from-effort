@@ -60,7 +60,7 @@
     const payload = { event: eventName, ...window.peAttribution(), ...(details || {}) };
     window.dataLayer.push(payload);
     if (typeof window.gtag === 'function') window.gtag('event', eventName, payload);
-    if (eventName === 'lead_submit') {
+    if (eventName === 'lead_submit' && ['design_inquiry', 'homepage_design_inquiry'].includes(payload.lead_type)) {
       const conversionPayload = { ...payload, event: 'close_convert_lead' };
       window.dataLayer.push(conversionPayload);
       if (typeof window.gtag === 'function') window.gtag('event', 'close_convert_lead', conversionPayload);
@@ -73,7 +73,7 @@
     const href = link.getAttribute('href') || '';
     if (href.startsWith('mailto:')) {
       window.peTrack('charter_email_click', { link_text: link.textContent.trim(), destination: 'scott' });
-    } else if (href.includes('contact.html')) {
+    } else if (new URL(link.href, window.location.href).pathname.replace(/\.html$/, '') === '/contact') {
       const destination = new URL(link.href, window.location.href);
       window.peTrack('inquiry_cta_click', {
         link_text: link.textContent.trim(),
