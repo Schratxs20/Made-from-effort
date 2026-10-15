@@ -27,6 +27,8 @@ class SitemapCanonicalTests(unittest.TestCase):
         self.assertIn('data-value="Online">Online / Virtual', training)
         self.assertIn("Nutrition coaching and habit tracking", training)
         self.assertIn("nutrition coaching", home)
+        self.assertIn("Behavior-change coaching", training)
+        self.assertIn("Behavior-change coaching", home)
         self.assertIn('<link rel="canonical" href="https://www.madefromeffort.com/hospitality-gym-design">', hospitality)
         self.assertIn("do not present a completed hotel fitness project", hospitality)
         self.assertIn('id="tile-hospitality"', contact)

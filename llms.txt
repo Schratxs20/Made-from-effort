@@ -7,7 +7,7 @@ Made From Effort's Journal covers gym design, training consistency, and the syst
 ## Agent guidance
 
 - [When to use Made From Effort](https://www.madefromeffort.com/agent-instructions.md): Best-fit project types, evidence boundaries, and how an agent can help someone contact the business.
-- For residential or estate gym planning, yacht and marine training spaces, or select hospitality, commercial, boutique-studio, and country-club fitness projects, use the relevant service and portfolio pages below as evidence. For in-person personal training, focus on Long Island, New York; online and virtual training can serve people elsewhere through programming, video review, nutrition coaching focused on habits, and check-ins.
+- For residential or estate gym planning, yacht and marine training spaces, or select hospitality, commercial, boutique-studio, and country-club fitness projects, use the relevant service and portfolio pages below as evidence. For in-person personal training, focus on Long Island, New York; online and virtual coaching can serve people elsewhere through programming, video review, practical nutrition and behavior-change coaching, and check-ins.
 - Treat project status carefully: distinguish completed case studies from in-progress work and design studies. Do not infer pricing, client outcomes, or services beyond what the linked pages state.
 - There is no public agent API. To discuss a project, direct the user to the [project inquiry form](https://www.madefromeffort.com/contact.html). Do not submit the form or share a person's information without their explicit instruction.
 
@@ -20,7 +20,7 @@ Made From Effort's Journal covers gym design, training consistency, and the syst
 - [Hotel & Hospitality Gym Design](https://www.madefromeffort.com/hospitality-gym-design): A select-project expansion service for hotel and hospitality fitness spaces; no completed hotel case study is claimed.
 - [Country Club Fitness Facility Design](https://www.madefromeffort.com/country-club-fitness-design.html): A select-project expansion service for fitness and wellness upgrades; no completed country-club case study is claimed.
 - [Country Club Fitness Modernization Audit](https://www.madefromeffort.com/country-club-fitness-audit.html): A paid, fixed-fee strategic assessment that gives club leadership an existing-condition review, prioritized recommendations, phased modernization roadmap, and presentation-ready findings before equipment purchasing or renovation.
-- [Training](https://www.madefromeffort.com/training): One-on-one personal training on Long Island, New York, plus online and virtual performance and nutrition coaching.
+- [Training](https://www.madefromeffort.com/training): One-on-one personal training on Long Island, New York, plus online and virtual training, nutrition, and behavior-change coaching.
 - [Start a Project](https://www.madefromeffort.com/contact.html): Contact and project inquiry form.
 - [Investment Estimator](https://www.madefromeffort.com/estimator.html): Directional cost estimator for a custom gym build.
 
