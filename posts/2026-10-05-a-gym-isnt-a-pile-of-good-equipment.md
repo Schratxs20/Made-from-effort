@@ -6,6 +6,8 @@ issue: "030"
 cta_text: Start a Project
 tags: Equipment Planning, Gym Layout, Residential Gym Design, Space Planning
 category: Gym Design
+related_service_path: /residential-gym-design
+related_service_label: Residential gym design
 ---
 
 Most of the "bad gym" calls I get don't start with bad equipment. They start with good equipment that was bought one piece at a time.

@@ -14,6 +14,20 @@ NS = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 
 
 class SitemapCanonicalTests(unittest.TestCase):
+    def test_design_articles_link_to_matching_service_pages(self):
+        matches = {
+            "can-you-put-a-real-gym-on-a-yacht-without-it-taking-over-the-deck": "yacht-gym-design",
+            "nobody-asks-about-the-floor-until-it-s-already-a-problem": "residential-gym-design",
+            "your-gym-doesn-t-need-to-impress-anyone-but-you": "residential-gym-design",
+            "a-gym-isn-t-a-pile-of-good-equipment": "residential-gym-design",
+            "a-gym-doesn-t-have-to-look-like-a-gym-to-train-like-one": "residential-gym-design",
+        }
+        for slug, service in matches.items():
+            with self.subTest(article=slug):
+                html = (ROOT / "journal" / f"{slug}.html").read_text(encoding="utf-8")
+                self.assertIn(f'href="{SITE_ORIGIN}/{service}"', html)
+                self.assertIn('class="related-service"', html)
+
     def test_journal_index_links_directly_to_canonical_articles(self):
         html = (ROOT / "journal" / "index.html").read_text(encoding="utf-8")
         links = re.findall(r'<a class="post-item" href="([^"]+)"', html)

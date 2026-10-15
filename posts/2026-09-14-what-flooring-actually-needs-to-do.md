@@ -6,6 +6,8 @@ issue: "023"
 cta_text: Start a Project
 tags: Gym Flooring, Home Gym Design, Materials & Finishes, Construction Sequencing
 category: Gym Design
+related_service_path: /residential-gym-design
+related_service_label: Residential gym design
 ---
 
 Every consultation I run starts the same way. The client has a Pinterest board of equipment, a color palette, maybe a mirror wall they've already fallen in love with. Nobody opens with "what should the floor be."
