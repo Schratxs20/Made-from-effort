@@ -14,6 +14,22 @@ NS = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 
 
 class SitemapCanonicalTests(unittest.TestCase):
+    def test_long_island_training_and_hospitality_paths(self):
+        training = (ROOT / "training.html").read_text(encoding="utf-8")
+        hospitality = (ROOT / "hospitality-gym-design.html").read_text(encoding="utf-8")
+        contact = (ROOT / "contact.html").read_text(encoding="utf-8")
+        home = (ROOT / "index.html").read_text(encoding="utf-8")
+        sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+
+        self.assertIn("<title>Private Personal Training on Long Island, NY", training)
+        self.assertIn("<h1>Private Personal Training<br>on <em>Long Island, NY.</em></h1>", training)
+        self.assertIn('<link rel="canonical" href="https://www.madefromeffort.com/hospitality-gym-design">', hospitality)
+        self.assertIn("do not present a completed hotel fitness project", hospitality)
+        self.assertIn('id="tile-hospitality"', contact)
+        self.assertIn('value="hospitality"', contact)
+        self.assertIn('href="hospitality-gym-design.html"', home)
+        self.assertIn('<loc>https://www.madefromeffort.com/hospitality-gym-design</loc>', sitemap)
+
     def test_design_articles_link_to_matching_service_pages(self):
         matches = {
             "can-you-put-a-real-gym-on-a-yacht-without-it-taking-over-the-deck": "yacht-gym-design",
@@ -21,6 +37,7 @@ class SitemapCanonicalTests(unittest.TestCase):
             "your-gym-doesn-t-need-to-impress-anyone-but-you": "residential-gym-design",
             "a-gym-isn-t-a-pile-of-good-equipment": "residential-gym-design",
             "a-gym-doesn-t-have-to-look-like-a-gym-to-train-like-one": "residential-gym-design",
+            "is-the-gym-really-about-the-room-rate": "hospitality-gym-design",
         }
         for slug, service in matches.items():
             with self.subTest(article=slug):

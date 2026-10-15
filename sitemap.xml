@@ -20,7 +20,7 @@
   </url>
   <url>
     <loc>https://www.madefromeffort.com/training</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -39,6 +39,12 @@
   <url>
     <loc>https://www.madefromeffort.com/commercial-gym-design</loc>
     <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.madefromeffort.com/hospitality-gym-design</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
