@@ -6,6 +6,8 @@ issue: "025"
 cta_text: Start a Project
 tags: Home Gym Design, Design Philosophy, Client Coaching, Materials & Finishes
 category: Gym Design
+related_service_path: /residential-gym-design
+related_service_label: Residential gym design
 ---
 
 I hear the same worry from almost every client at the start of a project: "What will people think when they see it?"

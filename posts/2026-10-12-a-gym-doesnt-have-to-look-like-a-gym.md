@@ -6,6 +6,8 @@ issue: "033"
 cta_text: Start a Project
 tags: Residential Gym Design, Architecture, Renovation, Gym Design Strategy
 category: Gym Design
+related_service_path: /residential-gym-design
+related_service_label: Residential gym design
 ---
 
 The default move, almost every time, is to treat the room as a blank slate. Strip it down, pick a finish palette that reads "gym" — rubber flooring, black steel, mirrors wall to wall — and build the same commercial-feeling space you'd get in any building, regardless of what the room actually was before you got there.

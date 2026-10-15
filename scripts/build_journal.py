@@ -268,6 +268,8 @@ STYLE_BLOCK = """
   .body-copy img { width:100%; display:block; margin:0 0 30px; }
   .body-copy ol, .body-copy ul { padding-left: 22px; }
   .body-copy li { margin-bottom: 12px; }
+  .body-copy .related-service { border-top:1px solid #E2E0D9; padding-top:22px; margin-top:32px; font-size:14px; }
+  .related-service a { color:#1C1C1A; text-decoration:underline; text-underline-offset:3px; }
   .meta-row { padding:0 40px 24px; font-family:'Inter',sans-serif; font-weight:400; font-size:12px; letter-spacing:1px; color:#A6A39B; text-transform:uppercase; }
   .divider { border:none; border-top:1px solid #E2E0D9; margin:8px 40px 32px; }
   .cta-wrap { padding:8px 40px 44px; }
@@ -319,6 +321,17 @@ def resolve_cta_link(post):
     return CTA_LINK_FALLBACK
 
 
+def render_related_service(post):
+    path = post.get("related_service_path", "")
+    label = post.get("related_service_label", "")
+    if not path and not label:
+        return ""
+    allowed = {"/residential-gym-design", "/yacht-gym-design", "/commercial-gym-design", "/country-club-fitness-design"}
+    if path not in allowed or not label:
+        raise ValueError(f"{post['source_path']}: invalid related service")
+    return f'\n      <p class="related-service">Related service: <a href="{SITE_URL}{path}">{html.escape(label)}</a></p>'
+
+
 def render_post_page(post):
     canonical = f"{SITE_URL}/journal/{post['slug']}"
     og_image = post.get("image") or DEFAULT_OG_IMAGE
@@ -359,7 +372,7 @@ def render_post_page(post):
     <div class="meta-row">{format_date_long(post['date'])}{f' &middot; {html.escape(post["category"])}' if post.get('category') else ''}</div>
     <div class="body-copy">
       {render_stat_bar_html(post)}
-      {post['body_html']}
+      {post['body_html']}{render_related_service(post)}
     </div>
     <div class="cta-wrap">
       <a href="{resolve_cta_link(post)}" class="cta">{html.escape(post.get('cta_text', 'Start a Project'))}</a>
