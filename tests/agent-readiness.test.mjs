@@ -110,8 +110,8 @@ test("llms.txt and agent instructions state specific fit and safe contact guidan
 
 test("sitemap includes the new trust pages", async () => {
   const sitemap = await read("sitemap.xml");
-  assert.match(sitemap, /https:\/\/www\.madefromeffort\.com\/about\.html/);
-  assert.match(sitemap, /https:\/\/www\.madefromeffort\.com\/privacy\.html/);
+  assert.match(sitemap, /<loc>https:\/\/www\.madefromeffort\.com\/about<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/www\.madefromeffort\.com\/privacy<\/loc>/);
 });
 
 test("Accept: text/markdown returns Markdown at the homepage with Vary: Accept", async () => {
