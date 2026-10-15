@@ -577,6 +577,12 @@ select option { background: var(--white); }
               <span class="tile-name">Commercial</span>
               <span class="tile-desc">Boutique studio or facility</span>
             </label>
+            <label class="tile" id="tile-hospitality" onclick="selectTile('projectType','hospitality',this)">
+              <input type="radio" name="projectType" value="hospitality">
+              <span class="tile-icon">◇</span>
+              <span class="tile-name">Hospitality</span>
+              <span class="tile-desc">Hotel or resort fitness space</span>
+            </label>
             <label class="tile" id="tile-country-club" onclick="selectTile('projectType','country-club',this)">
               <input type="radio" name="projectType" value="country-club">
               <span class="tile-icon">♢</span>
@@ -897,6 +903,6 @@ select option { background: var(--white); }
   document.getElementById('fileClear').addEventListener('click', () => updateSelectedFiles([]));
 </script>
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Start a Project with Performance Edge Training + Gym Design","url":"https://www.madefromeffort.com/contact","description":"Project inquiry for residential, yacht, commercial, boutique studio, and country club fitness design.","about":{"@id":"https://www.madefromeffort.com/#business"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Start a Project with Performance Edge Training + Gym Design","url":"https://www.madefromeffort.com/contact","description":"Project inquiry for residential, yacht, hospitality, commercial, boutique studio, and country club fitness design.","about":{"@id":"https://www.madefromeffort.com/#business"}}</script>
 </body>
 </html>

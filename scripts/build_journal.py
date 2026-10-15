@@ -39,10 +39,11 @@ STATIC_PAGES = [
     ("", "2026-10-07", 1.0),  # homepage
     ("about.html", "2026-10-07", 0.7),
     ("privacy.html", "2026-10-07", 0.5),
-    ("training.html", "2026-09-24", 0.8),
+    ("training.html", "2026-10-15", 0.8),
     ("residential-gym-design.html", "2026-09-25", 0.9),
     ("yacht-gym-design.html", "2026-09-24", 0.9),
     ("commercial-gym-design.html", "2026-09-24", 0.8),
+    ("hospitality-gym-design.html", "2026-10-15", 0.8),
     ("country-club-fitness-design.html", "2026-09-24", 0.8),
     ("country-club-fitness-audit.html", "2026-09-24", 0.8),
     ("contact.html", "2026-09-24", 0.7),
@@ -326,7 +327,7 @@ def render_related_service(post):
     label = post.get("related_service_label", "")
     if not path and not label:
         return ""
-    allowed = {"/residential-gym-design", "/yacht-gym-design", "/commercial-gym-design", "/country-club-fitness-design"}
+    allowed = {"/residential-gym-design", "/yacht-gym-design", "/commercial-gym-design", "/country-club-fitness-design", "/hospitality-gym-design"}
     if path not in allowed or not label:
         raise ValueError(f"{post['source_path']}: invalid related service")
     return f'\n      <p class="related-service">Related service: <a href="{SITE_URL}{path}">{html.escape(label)}</a></p>'
