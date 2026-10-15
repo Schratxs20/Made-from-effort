@@ -122,9 +122,15 @@
   </url>
   <url>
     <loc>https://www.madefromeffort.com/journal/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.madefromeffort.com/journal/the-only-thing-that-can-t-be-copied.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.madefromeffort.com/journal/a-gym-doesn-t-have-to-look-like-a-gym-to-train-like-one.html</loc>
