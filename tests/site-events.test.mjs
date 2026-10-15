@@ -57,3 +57,44 @@ test('residential and Journal entry pages load the measurement script', () => {
     assert.match(html, /site-events\.js\?v=2/, path);
   }
 });
+
+test('About, Training, and project entry pages capture first touch', () => {
+  for (const path of [
+    'about.html', 'training.html', 'project-jupiter-island.html',
+    'project-yacht.html', 'project-jericho.html', 'project-caumsett.html',
+    'project-dix-hills.html', 'project-glen-cove.html',
+    'project-oyster-bay-cove.html', 'project-sands-point.html',
+  ]) {
+    const html = readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
+    assert.equal((html.match(/site-events\.js\?v=2/g) || []).length, 1, path);
+  }
+});
+
+test('Training inquiry includes attribution and tracks only a successful submission', () => {
+  const html = readFileSync(new URL('../training.html', import.meta.url), 'utf8');
+  assert.match(html, /body: window\.peAppendAttribution \? window\.peAppendAttribution\(new FormData\(form\)\)/);
+  assert.match(html, /if \(res\.ok\) \{\s*if \(window\.peTrack\) window\.peTrack\('lead_submit', \{ lead_type: 'training_consultation'/);
+  const site = setup();
+  site.window.peTrack('lead_submit', { lead_type: 'training_consultation' });
+  assert.deepEqual(site.events(), ['lead_submit']);
+});
+
+test('featured case studies expose an inquiry link in the hero', () => {
+  for (const [path, project] of [
+    ['project-jupiter-island.html', 'residence'],
+    ['project-yacht.html', 'marine'],
+  ]) {
+    const html = readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
+    assert.match(html, new RegExp(`<div class="hero-content">[\\s\\S]*?<a class="hero-cta" href="contact\\.html\\?project=${project}&amp;source=`), path);
+  }
+});
+
+test('mobile entry CTAs reach forms with visible required contact fields', () => {
+  const home = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const training = readFileSync(new URL('../training.html', import.meta.url), 'utf8');
+  assert.match(home, /id="inquiry-form"[^>]*scroll-margin-top: 80px/);
+  assert.match(training, /href="#training-form">Request a Consultation/);
+  assert.match(training, /#training-form \{ scroll-margin-top: 80px; \}/);
+  assert.match(training, /id="t-first"[^>]*required/);
+  assert.match(training, /id="t-email"[^>]*required/);
+});
