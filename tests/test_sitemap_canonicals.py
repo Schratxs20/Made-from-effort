@@ -21,8 +21,12 @@ class SitemapCanonicalTests(unittest.TestCase):
         home = (ROOT / "index.html").read_text(encoding="utf-8")
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
 
-        self.assertIn("<title>Private Personal Training on Long Island, NY", training)
+        self.assertIn("<title>Long Island Personal Training &amp; Online Coaching", training)
         self.assertIn("<h1>Private Personal Training<br>on <em>Long Island, NY.</em></h1>", training)
+        self.assertIn("<h2>Online &amp; Virtual <em>Training</em></h2>", training)
+        self.assertIn('data-value="Online">Online / Virtual', training)
+        self.assertIn("Nutrition coaching and habit tracking", training)
+        self.assertIn("nutrition coaching", home)
         self.assertIn('<link rel="canonical" href="https://www.madefromeffort.com/hospitality-gym-design">', hospitality)
         self.assertIn("do not present a completed hotel fitness project", hospitality)
         self.assertIn('id="tile-hospitality"', contact)
