@@ -93,6 +93,7 @@ test('mobile entry CTAs reach forms with visible required contact fields', () =>
   const home = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
   const training = readFileSync(new URL('../training.html', import.meta.url), 'utf8');
   assert.match(home, /id="inquiry-form"[^>]*scroll-margin-top: 80px/);
+  assert.match(home, /@media\(max-width:860px\)\{[\s\S]*?#inquiry-form\.reveal\{transform:none\}/);
   assert.match(training, /href="#training-form">Request a Consultation/);
   assert.match(training, /#training-form \{ scroll-margin-top: 80px; \}/);
   assert.match(training, /id="t-first"[^>]*required/);
