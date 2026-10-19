@@ -1,0 +1,659 @@
+<title>Made From Effort Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: sticky masthead with view tabs over a single working column; the studio splits into story + sidebar. Brand tokens from madefromeffort.com. */
+:root {
+  --bg: #fafaf8;
+  --surface: #f4f2ee;
+  --card: #ffffff;
+  --rule: #e2dfd8;
+  --ink: #181816;
+  --ink-mid: #3a3a36;
+  --ink-light: #6f6d66;
+  --ink-faint: #a9a69e;
+  --accent: #3a6ea8;
+  --accent-faint: #eef2f7;
+  --mindset: #a8741f;
+  --mindset-faint: #f6eedf;
+  --coaching: #4c7a50;
+  --coaching-faint: #e9f1e8;
+  --design: #3a6ea8;
+  --design-faint: #e8eef6;
+  --good: #3f7d4a;
+  --warn: #a36a12;
+  --danger: #a43d32;
+  --display: "Cormorant", "Cormorant Garamond", Georgia, serif;
+  --body: "Outfit", "Helvetica Neue", Arial, sans-serif;
+  --radius: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131312; --surface: #1b1b19; --card: #20201e; --rule: #33322e;
+    --ink: #edebe5; --ink-mid: #cfccc4; --ink-light: #9a978f; --ink-faint: #67645e;
+    --accent: #84aedc; --accent-faint: #1d2733;
+    --mindset: #d6a656; --mindset-faint: #2c2417;
+    --coaching: #8dbb90; --coaching-faint: #1c271d;
+    --design: #84aedc; --design-faint: #1b2430;
+    --good: #84c08e; --warn: #dca253; --danger: #e08378;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131312; --surface: #1b1b19; --card: #20201e; --rule: #33322e;
+  --ink: #edebe5; --ink-mid: #cfccc4; --ink-light: #9a978f; --ink-faint: #67645e;
+  --accent: #84aedc; --accent-faint: #1d2733;
+  --mindset: #d6a656; --mindset-faint: #2c2417;
+  --coaching: #8dbb90; --coaching-faint: #1c271d;
+  --design: #84aedc; --design-faint: #1b2430;
+  --good: #84c08e; --warn: #dca253; --danger: #e08378;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; font-weight: 400; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* Masthead */
+header.mast { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--rule); }
+.mast .wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; padding-block: 14px 0; }
+.brand { display: flex; flex-direction: column; gap: 0; margin-right: auto; }
+.brand b { font-family: var(--display); font-weight: 500; font-size: 26px; letter-spacing: .02em; line-height: 1.05; }
+.brand span { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-light); }
+nav.tabs { display: flex; gap: 2px; width: 100%; overflow-x: auto; scrollbar-width: none; }
+nav.tabs a { padding: 10px 14px 12px; color: var(--ink-light); text-decoration: none; font-size: 14px; border-bottom: 2px solid transparent; white-space: nowrap; }
+nav.tabs a:hover { color: var(--ink); }
+nav.tabs a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); font-weight: 500; }
+.btn { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--rule); background: var(--card); padding: 8px 14px; border-radius: var(--radius); cursor: pointer; font-size: 14px; white-space: nowrap; }
+.btn:hover { border-color: var(--ink-faint); }
+.btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn.primary:hover { opacity: .88; }
+.btn.ghost { background: transparent; }
+.btn.small { padding: 5px 10px; font-size: 13px; }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+
+main { padding-block: 28px 64px; }
+.banner { border: 1px solid var(--rule); background: var(--surface); padding: 12px 16px; border-radius: var(--radius); margin-bottom: 20px; font-size: 14px; color: var(--ink-mid); }
+h1.view-title { font-family: var(--display); font-weight: 500; font-size: clamp(30px, 4vw, 40px); line-height: 1.1; margin: 0 0 4px; text-wrap: balance; }
+.lede { color: var(--ink-light); margin: 0 0 24px; max-width: 68ch; }
+h2.sec { font-family: var(--display); font-weight: 500; font-size: 24px; margin: 0 0 12px; }
+.eyebrow { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-light); font-weight: 500; }
+.muted { color: var(--ink-light); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Pillar chips */
+.chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 2px 8px; border-radius: 99px; white-space: nowrap; font-weight: 500; }
+.chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.chip.mindset { color: var(--mindset); background: var(--mindset-faint); }
+.chip.coaching { color: var(--coaching); background: var(--coaching-faint); }
+.chip.design { color: var(--design); background: var(--design-faint); }
+.status { font-size: 12px; color: var(--ink-mid); border: 1px solid var(--rule); padding: 1px 8px; border-radius: 4px; white-space: nowrap; }
+.status.published { color: var(--good); border-color: currentColor; }
+.status.scheduled { color: var(--accent); border-color: currentColor; }
+
+/* Overview */
+.week { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 32px; }
+.slot { border: 1px solid var(--rule); border-radius: var(--radius); padding: 14px 16px; background: var(--card); display: flex; flex-direction: column; gap: 8px; min-height: 132px; }
+.slot.open { border-style: dashed; background: transparent; }
+.slot .day { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.slot .day b { font-family: var(--display); font-size: 22px; font-weight: 500; }
+.slot .t { font-weight: 500; line-height: 1.35; cursor: pointer; }
+.slot .t:hover { text-decoration: underline; }
+.slot .foot { margin-top: auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 32px; }
+.stat { padding: 16px 16px 16px 0; }
+.stat + .stat { padding-left: 16px; border-left: 1px solid var(--rule); }
+.stat b { display: block; font-family: var(--display); font-size: 38px; font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat small { display: block; color: var(--ink-light); font-size: 13px; margin-top: 6px; }
+.grid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px 40px; margin-bottom: 32px; }
+.panel { min-width: 0; }
+.mix-row { display: grid; grid-template-columns: 96px minmax(0, 1fr) 84px; gap: 12px; align-items: center; margin-bottom: 12px; font-size: 14px; }
+.bar { position: relative; height: 10px; background: var(--surface); border-radius: 99px; overflow: visible; }
+.bar i { position: absolute; inset: 0 auto 0 0; border-radius: 99px; }
+.bar u { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink); text-decoration: none; }
+.mix-row .v { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-mid); }
+.stages { display: flex; gap: 0; border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
+.stage { flex: 1; padding: 10px 12px; min-width: 0; cursor: pointer; background: var(--card); }
+.stage + .stage { border-left: 1px solid var(--rule); }
+.stage:hover { background: var(--surface); }
+.stage b { display: block; font-size: 22px; font-family: var(--display); font-weight: 500; font-variant-numeric: tabular-nums; }
+.stage span { font-size: 12px; color: var(--ink-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.sys { border: 1px solid var(--rule); border-radius: var(--radius); padding: 14px 16px; background: var(--card); }
+.sys + .sys { margin-top: 12px; }
+.sys h3 { margin: 0 0 2px; font-size: 15px; font-weight: 500; }
+.sys p { margin: 0 0 10px; font-size: 13px; color: var(--ink-light); }
+.sys dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 0; }
+.sys dt { font-size: 12px; color: var(--ink-light); }
+.sys dd { margin: 0; font-size: 20px; font-variant-numeric: tabular-nums; }
+.list { list-style: none; margin: 0; padding: 0; }
+.list li { display: flex; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); cursor: pointer; min-width: 0; }
+.list li:hover .lt { text-decoration: underline; }
+.list .lt { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.list .ld { font-size: 13px; color: var(--ink-light); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.empty { color: var(--ink-light); font-size: 14px; padding: 12px 0; }
+
+/* Pipeline */
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
+.seg button { border: 0; background: var(--card); padding: 6px 12px; cursor: pointer; font-size: 13px; }
+.seg button + button { border-left: 1px solid var(--rule); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.board { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(230px, 1fr); gap: 12px; overflow-x: auto; padding-bottom: 8px; }
+.col { background: var(--surface); border-radius: var(--radius); padding: 10px; min-height: 200px; display: flex; flex-direction: column; gap: 8px; }
+.col.drop { outline: 2px dashed var(--accent); outline-offset: -2px; }
+.col h3 { margin: 2px 4px 4px; font-size: 13px; font-weight: 500; display: flex; justify-content: space-between; color: var(--ink-mid); }
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 10px 12px; cursor: grab; display: flex; flex-direction: column; gap: 6px; }
+.card:hover { border-color: var(--ink-faint); }
+.card .t { font-size: 14px; font-weight: 500; line-height: 1.3; }
+.card .m { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; font-size: 12px; color: var(--ink-light); }
+.card select { font-size: 12px; border: 1px solid var(--rule); background: var(--card); border-radius: 4px; padding: 2px 4px; }
+
+/* Calendar */
+.cal-head { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+.cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border-left: 1px solid var(--rule); border-top: 1px solid var(--rule); }
+.cal .dow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-light); padding: 6px 8px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--surface); }
+.cell { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); min-height: 118px; padding: 6px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.cell.today { background: var(--accent-faint); }
+.cell .d { font-size: 12px; color: var(--ink-light); font-variant-numeric: tabular-nums; display: flex; justify-content: space-between; }
+.cell .d em { font-style: normal; display: none; }
+.ev { font-size: 12px; line-height: 1.3; padding: 4px 6px; border-radius: 4px; cursor: pointer; border-left: 3px solid; background: var(--card); overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+.ev.mindset { border-color: var(--mindset); }
+.ev.coaching { border-color: var(--coaching); }
+.ev.design { border-color: var(--design); }
+.ev.done { opacity: .62; }
+.plan { font-size: 12px; color: var(--ink-light); border: 1px dashed var(--rule); border-radius: 4px; padding: 4px 6px; background: transparent; cursor: pointer; text-align: left; }
+.plan:hover { color: var(--ink); border-color: var(--ink-faint); }
+
+/* Brain table */
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.filters select, .filters input, .field input, .field select, .field textarea { border: 1px solid var(--rule); background: var(--card); border-radius: var(--radius); padding: 7px 10px; font-size: 14px; min-width: 0; }
+.filters input { flex: 1 1 200px; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: var(--radius); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+th { font-size: 12px; font-weight: 500; color: var(--ink-light); background: var(--surface); cursor: pointer; user-select: none; }
+th.r, td.r { text-align: right; font-variant-numeric: tabular-nums; }
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: var(--surface); }
+td.title { white-space: normal; min-width: 260px; font-weight: 500; }
+td.title small { display: block; font-weight: 400; color: var(--ink-light); }
+.insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.insight { border: 1px solid var(--rule); border-radius: var(--radius); padding: 12px 14px; background: var(--card); font-size: 14px; }
+.insight b { display: block; font-size: 12px; font-weight: 500; color: var(--ink-light); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+
+/* Studio */
+.studio { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 32px; align-items: start; }
+.studio-top { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+.studio-top .save-state { font-size: 13px; color: var(--ink-light); margin-right: auto; }
+.title-input { width: 100%; border: 0; border-bottom: 1px solid var(--rule); background: transparent; font-family: var(--display); font-size: clamp(26px, 3.4vw, 36px); font-weight: 500; padding: 4px 0 8px; margin-bottom: 18px; }
+.title-input:focus { outline: none; border-bottom-color: var(--ink); }
+.pillar-pick { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 20px; }
+.pillar-pick button { text-align: left; border: 1px solid var(--rule); background: var(--card); border-radius: var(--radius); padding: 10px 12px; cursor: pointer; }
+.pillar-pick button b { display: block; font-weight: 500; }
+.pillar-pick button span { font-size: 12px; color: var(--ink-light); }
+.pillar-pick button[aria-pressed="true"].mindset { border-color: var(--mindset); background: var(--mindset-faint); }
+.pillar-pick button[aria-pressed="true"].coaching { border-color: var(--coaching); background: var(--coaching-faint); }
+.pillar-pick button[aria-pressed="true"].design { border-color: var(--design); background: var(--design-faint); }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; margin-bottom: 24px; }
+.field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+.field label { font-size: 12px; color: var(--ink-light); font-weight: 500; }
+.field textarea { resize: vertical; min-height: 76px; line-height: 1.5; }
+.field textarea.long { min-height: 220px; }
+.beats { border-left: 2px solid var(--rule); padding-left: 16px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 14px; }
+.beat label { display: flex; gap: 8px; align-items: baseline; }
+.beat label i { font-style: normal; font-family: var(--display); font-size: 18px; color: var(--ink-faint); }
+.side { display: flex; flex-direction: column; gap: 20px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 110px); }
+.box { border: 1px solid var(--rule); border-radius: var(--radius); padding: 14px 16px; background: var(--card); display: flex; flex-direction: column; gap: 10px; }
+.box h3 { margin: 0; font-size: 14px; font-weight: 500; }
+.box .hint { font-size: 13px; color: var(--ink-light); margin: 0; }
+.checks label { display: flex; gap: 8px; align-items: center; font-size: 14px; padding: 2px 0; cursor: pointer; }
+.metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.metrics input { width: 100%; }
+.ai-out { font-size: 13px; color: var(--ink-mid); }
+.ai-err { font-size: 13px; color: var(--danger); }
+.toast { position: fixed; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: var(--radius); font-size: 14px; z-index: 20; }
+.danger { color: var(--danger); }
+
+@media (max-width: 960px) {
+  .studio { grid-template-columns: minmax(0, 1fr); }
+  .side { position: static; }
+  .grid2 { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 720px) {
+  .week { grid-template-columns: minmax(0, 1fr); }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat:nth-child(3) { padding-left: 0; border-left: 0; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .fields { grid-template-columns: minmax(0, 1fr); }
+  .pillar-pick { grid-template-columns: minmax(0, 1fr); }
+  .cal { grid-template-columns: minmax(0, 1fr); }
+  .cal .dow { display: none; }
+  .cell { min-height: 0; }
+  .cell .d em { display: inline; }
+  .sys dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stages { flex-wrap: wrap; }
+  .stage { flex: 1 1 33%; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="brand"><b>Made From Effort</b><span>Founder-led content studio</span></div>
+    <button class="btn primary" id="new-story" type="button">+ New story</button>
+    <nav class="tabs" aria-label="Views">
+      <a href="#overview" data-view="overview">Overview</a>
+      <a href="#pipeline" data-view="pipeline">Pipeline</a>
+      <a href="#calendar" data-view="calendar">Calendar</a>
+      <a href="#brain" data-view="brain">Content Brain</a>
+      <a href="#studio" data-view="studio">Studio</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div id="banner" class="banner" hidden></div>
+  <div id="view"></div>
+</main>
+<div id="toast" class="toast" hidden></div>
+
+<script>
+const PILLARS = {
+  mindset:  { label: "Mindset",    target: 40, series: "Things I'm Learning",    day: 1, system: "A", tag: "The person behind the work" },
+  coaching: { label: "Coaching",   target: 30, series: "From the Coaching Floor", day: 3, system: "A", tag: "The experience behind your advice" },
+  design:   { label: "Gym Design", target: 30, series: "Designed With Intent",    day: 5, system: "B", tag: "Expertise expressed through spaces" }
+};
+const BEATS = {
+  mindset: [["moment","A real moment"],["difficulty","What made it difficult"],["question","The question it raised"],["learned","What you learned"],["reflection","A closing reflection"]],
+  coaching: [["observation","A real observation"],["assumption","The common assumption"],["experience","What experience taught you"],["approach","How that changes the approach"]],
+  design: [["challenge","The project challenge"],["constraint","The constraint"],["decision","Your decision"],["why","Why it matters"],["result","The result or current status"]]
+};
+const STATUSES = [["idea","Idea"],["discovery","Story discovery"],["drafting","Drafting"],["production","Production"],["scheduled","Scheduled"],["published","Published"]];
+const CATEGORIES = ["The Build","The Belief","The Work","The Coaching","The Life"];
+const FORMATS = ["Reflective reel","Cinematic voiceover","Photo essay","Carousel","Training footage + voiceover","Client case study","Architectural film","Project journal","Site footage","Journal article","Instagram Stories","LinkedIn post","Newsletter issue"];
+const CHANNELS = ["Instagram","Instagram Stories","Journal","Notes from the Work","LinkedIn"];
+const WATERFALL = [["reel","Flagship reel"],["carousel","Carousel"],["stories","Stories"],["followup","Follow-up post"],["linkedin","LinkedIn post"],["newsletter","Notes from the Work"],["casestudy","Case study / portfolio"]];
+const METRICS = [["views","Views"],["likes","Likes"],["reach","Reach"],["saves","Saves"],["shares","Shares"],["comments","Meaningful comments"],["follows","Follows"],["inquiries","Inquiries"],["pro","Pro engagements"]];
+const AUDIT_TARGET = 40;
+
+const S = { db: null, sample: null, stories: [], loaded: false, view: "overview", cur: null, dirty: false,
+  pipe: "all", calStart: null, f: { pillar: "all", status: "all", category: "all", channel: "all", q: "" }, sort: { k: "date", d: -1 } };
+
+const $ = (s, r = document) => r.querySelector(s);
+const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const pad = n => String(n).padStart(2, "0");
+const iso = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const parse = s => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+const monday = d => { const x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); const w = (x.getDay() + 6) % 7; return addDays(x, -w); };
+const today = () => iso(new Date());
+const fmtDate = s => s ? parse(s).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "";
+const chip = p => PILLARS[p] ? `<span class="chip ${p}">${PILLARS[p].label}</span>` : "";
+const statusLabel = s => (STATUSES.find(x => x[0] === s) || ["", s])[1];
+const statusTag = s => `<span class="status ${esc(s)}">${esc(statusLabel(s))}</span>`;
+const m = (st, k) => Number(st.metrics?.[k]) || 0;
+const hasMetrics = st => METRICS.some(([k]) => m(st, k) > 0);
+// Weighted engagement: saves and shares signal depth, comments conversation, likes the lightest touch.
+const score = s => m(s, "saves") * 3 + m(s, "shares") * 3 + m(s, "comments") * 2 + m(s, "likes");
+S.calStart = monday(new Date());
+
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2200); }
+function banner(msg) { const b = $("#banner"); b.hidden = !msg; b.textContent = msg || ""; }
+
+function blank(extra = {}) {
+  return { title: "", pillar: "mindset", category: "The Life", series: PILLARS.mindset.series, themes: "", format: "Reflective reel",
+    channel: "Instagram", evidence: "", status: "idea", date: "", beats: {}, interview: "", hook: "", script: "", caption: "",
+    waterfall: {}, metrics: {}, notes: "", ...extra };
+}
+
+/* ---------- Routing ---------- */
+function go(view) { if (S.view === "studio" && view !== "studio" && S.dirty && !confirmLeave()) return; S.view = view; try { history.replaceState(null, "", "#" + view); } catch (e) {} render(); window.scrollTo(0, 0); }
+function confirmLeave() { toast("Unsaved changes kept in the Studio. Save or discard first."); return false; }
+document.querySelectorAll("nav.tabs a").forEach(a => a.addEventListener("click", e => { e.preventDefault(); go(a.dataset.view); }));
+$("#new-story").addEventListener("click", () => openStory(null, {}));
+
+function openStory(id, extra) {
+  if (S.view === "studio" && S.dirty && !confirmLeave()) return;
+  const found = id && S.stories.find(s => s.id === id);
+  S.cur = found ? JSON.parse(JSON.stringify(found)) : { ...blank(), ...extra, id: null };
+  if (!found && extra.pillar) { S.cur.series = PILLARS[extra.pillar].series; if (extra.pillar === "design") { S.cur.category = "The Build"; S.cur.format = "Project journal"; } if (extra.pillar === "coaching") { S.cur.category = "The Coaching"; S.cur.format = "Training footage + voiceover"; } }
+  S.dirty = false; S.view = "studio"; try { history.replaceState(null, "", "#studio"); } catch (e) {} render(); window.scrollTo(0, 0);
+}
+
+function render() {
+  document.querySelectorAll("nav.tabs a").forEach(a => { if (a.dataset.view === S.view) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+  const v = $("#view");
+  if (S.view === "pipeline") v.innerHTML = vPipeline();
+  else if (S.view === "calendar") v.innerHTML = vCalendar();
+  else if (S.view === "brain") v.innerHTML = vBrain();
+  else if (S.view === "studio") { if (!S.cur) S.cur = { ...blank(), id: null }; v.innerHTML = vStudio(); bindStudio(); return; }
+  else v.innerHTML = vOverview();
+  bind();
+}
+
+/* ---------- Overview ---------- */
+function vOverview() {
+  const st = S.stories, t = today(), mon = monday(new Date());
+  const slots = Object.entries(PILLARS).map(([p, P]) => {
+    const day = iso(addDays(mon, P.day - 1));
+    const item = st.find(s => s.date === day && s.pillar === p) || st.find(s => s.date === day);
+    const dname = parse(day).toLocaleDateString(undefined, { weekday: "long" });
+    if (item) return `<div class="slot"><div class="day"><b>${dname}</b><span class="muted num">${fmtDate(day)}</span></div>
+      <div class="t" data-open="${item.id}">${esc(item.title || "Untitled story")}</div>
+      <div class="foot">${chip(item.pillar)}${statusTag(item.status)}<span class="muted" style="font-size:12px">${esc(item.format)}</span></div></div>`;
+    return `<div class="slot open"><div class="day"><b>${dname}</b><span class="muted num">${fmtDate(day)}</span></div>
+      <div class="muted" style="font-size:14px">Open ${P.label.toLowerCase()} slot. ${esc(P.series)}.</div>
+      <div class="foot"><button class="btn small" data-plan="${p}" data-date="${day}">Plan this post</button>${ideaCount(p) ? `<span class="muted" style="font-size:12px">${ideaCount(p)} ideas banked</span>` : ""}</div></div>`;
+  }).join("");
+
+  const pipeline = st.filter(s => s.status !== "published").length;
+  const monthStart = t.slice(0, 8) + "01";
+  const pubMonth = st.filter(s => s.status === "published" && s.date >= monthStart && s.date <= t).length;
+  const ideas = st.filter(s => s.status === "idea").length;
+  const audited = st.filter(s => s.status === "published" && s.channel === "Instagram" && hasMetrics(s)).length;
+
+  // Pillar mix: dated items in the 4 weeks either side of today
+  const lo = iso(addDays(new Date(), -28)), hi = iso(addDays(new Date(), 28));
+  const win = st.filter(s => s.date && s.date >= lo && s.date <= hi);
+  const mix = Object.entries(PILLARS).map(([p, P]) => {
+    const n = win.filter(s => s.pillar === p).length, pct = win.length ? Math.round(n / win.length * 100) : 0;
+    return `<div class="mix-row"><span>${chip(p)}</span><div class="bar" title="Target ${P.target}%"><i style="width:${pct}%;background:var(--${p})"></i><u style="left:${P.target}%"></u></div><span class="v">${pct}% <span class="muted">/ ${P.target}</span></span></div>`;
+  }).join("");
+
+  const stages = STATUSES.map(([k, l]) => `<div class="stage" data-pipe-stage="${k}"><b>${st.filter(s => s.status === k).length}</b><span>${l}</span></div>`).join("");
+
+  const sum = (arr, k) => arr.reduce((a, s) => a + m(s, k), 0);
+  const A = st.filter(s => s.pillar !== "design" && hasMetrics(s)), B = st.filter(s => s.pillar === "design" && hasMetrics(s));
+
+  const upcoming = st.filter(s => s.date && s.date >= t && s.status !== "published").sort((a, b) => a.date.localeCompare(b.date)).slice(0, 6);
+  const top = st.filter(hasMetrics).sort((a, b) => score(b) - score(a)).slice(0, 5);
+
+  return `<h1 class="view-title">This week</h1>
+  <p class="lede">Three thoughtful posts beat seven manufactured ones. Monday is mindset, Wednesday is coaching, Friday is gym design.</p>
+  <div class="week">${slots}</div>
+  <div class="stats">
+    <div class="stat"><b>${pipeline}</b><small>Stories in the pipeline</small></div>
+    <div class="stat"><b>${pubMonth}</b><small>Published this month</small></div>
+    <div class="stat"><b>${ideas}</b><small>Ideas waiting for a real story</small></div>
+    <div class="stat"><b>${audited}<span class="muted" style="font-size:20px"> / ${AUDIT_TARGET}</span></b><small>Instagram posts audited</small></div>
+  </div>
+  <div class="grid2">
+    <section class="panel"><h2 class="sec">Pillar mix</h2><p class="muted" style="margin:-6px 0 14px;font-size:13px">Dated stories from 4 weeks back to 4 weeks ahead (${win.length}). The line marks the target.</p>${mix}
+      <h2 class="sec" style="margin-top:28px">Pipeline</h2><div class="stages">${stages}</div></section>
+    <section class="panel"><h2 class="sec">Two growth systems</h2>
+      <div class="sys"><h3>A · Personal brand and community</h3><p>Mindset + Coaching. Connection, trust, a recognizable philosophy. ${A.length} posts with numbers logged.</p>
+        <dl><div><dt>Likes</dt><dd>${sum(A, "likes")}</dd></div><div><dt>Comments</dt><dd>${sum(A, "comments")}</dd></div><div><dt>Saves + shares</dt><dd>${sum(A, "saves") + sum(A, "shares")}</dd></div><div><dt>Follows</dt><dd>${sum(A, "follows")}</dd></div></dl></div>
+      <div class="sys"><h3>B · Professional authority</h3><p>Gym Design. Architects, designers, developers and homeowners. ${B.length} posts with numbers logged.</p>
+        <dl><div><dt>Views</dt><dd>${sum(B, "views")}</dd></div><div><dt>Pro engagements</dt><dd>${sum(B, "pro")}</dd></div><div><dt>Inquiries</dt><dd>${sum(B, "inquiries")}</dd></div><div><dt>Comments</dt><dd>${sum(B, "comments")}</dd></div></dl></div>
+    </section>
+  </div>
+  <div class="grid2">
+    <section class="panel"><h2 class="sec">Up next</h2>${upcoming.length ? `<ul class="list">${upcoming.map(rowLi).join("")}</ul>` : `<p class="empty">Nothing dated yet. Give a story a date in the Studio and it lands here and on the calendar.</p>`}</section>
+    <section class="panel"><h2 class="sec">What's resonating</h2>${top.length ? `<ul class="list">${top.map(s => `<li data-open="${s.id}">${chip(s.pillar)}<span class="lt">${esc(s.title)}</span><span class="ld">${score(s)} engagement</span></li>`).join("")}</ul>` : `<p class="empty">No performance numbers yet. Start the audit: open a published Instagram post in the Studio and log its reach, saves, shares and comments.</p>`}</section>
+  </div>`;
+}
+const ideaCount = p => S.stories.filter(s => s.pillar === p && s.status === "idea").length;
+const rowLi = s => `<li data-open="${s.id}">${chip(s.pillar)}<span class="lt">${esc(s.title || "Untitled story")}</span><span class="ld">${fmtDate(s.date)}</span></li>`;
+
+/* ---------- Pipeline ---------- */
+function vPipeline() {
+  const items = S.stories.filter(s => S.pipe === "all" || s.pillar === S.pipe);
+  const segs = [["all", "All"], ...Object.entries(PILLARS).map(([k, P]) => [k, P.label])].map(([k, l]) => `<button type="button" data-pipe="${k}" aria-pressed="${S.pipe === k}">${l}</button>`).join("");
+  const cols = STATUSES.map(([k, l]) => {
+    let list = items.filter(s => s.status === k);
+    list.sort((a, b) => k === "published" ? (b.date || "").localeCompare(a.date || "") : (a.date || "9").localeCompare(b.date || "9"));
+    const shown = k === "published" ? list.slice(0, 12) : list;
+    return `<div class="col" data-col="${k}"><h3><span>${l}</span><span class="num">${list.length}</span></h3>
+      ${shown.map(s => `<div class="card" draggable="true" data-card="${s.id}"><div class="t" data-open="${s.id}">${esc(s.title || "Untitled story")}</div>
+        <div class="m">${chip(s.pillar)}${s.date ? `<span class="num">${fmtDate(s.date)}</span>` : ""}<span>${esc(s.format)}</span></div>
+        <div class="m"><label class="muted" for="mv-${s.id}">Move to</label><select id="mv-${s.id}" data-move="${s.id}">${STATUSES.map(([sk, sl]) => `<option value="${sk}"${sk === s.status ? " selected" : ""}>${sl}</option>`).join("")}</select></div></div>`).join("")}
+      ${list.length > shown.length ? `<p class="muted" style="font-size:12px;margin:4px">+ ${list.length - shown.length} older in the Content Brain</p>` : ""}
+      ${k === "idea" ? `<button class="plan" type="button" data-plan="${S.pipe === "all" ? "mindset" : S.pipe}">+ Add idea</button>` : ""}</div>`;
+  }).join("");
+  return `<h1 class="view-title">Pipeline</h1><p class="lede">Every story moves from a real moment to a published piece. Drag a card, or use its menu, to move it along.</p>
+    <div class="toolbar"><div class="seg">${segs}</div></div><div class="board">${cols}</div>`;
+}
+
+/* ---------- Calendar ---------- */
+function vCalendar() {
+  const start = S.calStart, t = today();
+  const days = Array.from({ length: 28 }, (_, i) => addDays(start, i));
+  const dows = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(d => `<div class="dow">${d}</div>`).join("");
+  const slotFor = { 1: "mindset", 3: "coaching", 5: "design" };
+  const cells = days.map(d => {
+    const k = iso(d), items = S.stories.filter(s => s.date === k);
+    const wd = d.getDay(), slotP = slotFor[wd];
+    const needsSlot = slotP && !items.some(s => s.pillar === slotP) && k >= t;
+    return `<div class="cell${k === t ? " today" : ""}"><div class="d"><span><em>${d.toLocaleDateString(undefined, { weekday: "short" })} </em>${d.getDate() === 1 || d === days[0] ? d.toLocaleDateString(undefined, { month: "short" }) + " " : ""}${d.getDate()}</span></div>
+      ${items.map(s => `<div class="ev ${s.pillar}${s.status === "published" ? " done" : ""}" data-open="${s.id}" title="${esc(statusLabel(s.status))}">${esc(s.title || "Untitled story")}</div>`).join("")}
+      ${needsSlot ? `<button class="plan" type="button" data-plan="${slotP}" data-date="${k}">+ ${PILLARS[slotP].label}</button>` : ""}</div>`;
+  }).join("");
+  const end = addDays(start, 27);
+  return `<h1 class="view-title">Publishing calendar</h1><p class="lede">Four weeks at a time. Open Monday, Wednesday and Friday slots show what still needs a story.</p>
+    <div class="cal-head"><button class="btn small" type="button" data-cal="-28">← Earlier</button><button class="btn small" type="button" data-cal="0">This week</button><button class="btn small" type="button" data-cal="28">Later →</button>
+    <span class="muted num" style="font-size:14px">${start.toLocaleDateString(undefined, { month: "short", day: "numeric" })} – ${end.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}</span></div>
+    <div class="cal">${dows}${cells}</div>`;
+}
+
+/* ---------- Content Brain ---------- */
+function filtered() {
+  const f = S.f, q = f.q.trim().toLowerCase();
+  let list = S.stories.filter(s => (f.pillar === "all" || s.pillar === f.pillar) && (f.status === "all" || s.status === f.status) &&
+    (f.category === "all" || s.category === f.category) && (f.channel === "all" || s.channel === f.channel) &&
+    (!q || [s.title, s.themes, s.series, s.format, s.notes, s.evidence].join(" ").toLowerCase().includes(q)));
+  const { k, d } = S.sort;
+  list.sort((a, b) => {
+    const va = METRICS.some(x => x[0] === k) ? m(a, k) : (a[k] || ""), vb = METRICS.some(x => x[0] === k) ? m(b, k) : (b[k] || "");
+    return (va > vb ? 1 : va < vb ? -1 : 0) * d;
+  });
+  return list;
+}
+function vBrain() {
+  const list = filtered(), f = S.f;
+  const sel = (id, key, opts, all) => `<select id="${id}" data-f="${key}" aria-label="${all}"><option value="all">${all}</option>${opts.map(([v, l]) => `<option value="${esc(v)}"${f[key] === v ? " selected" : ""}>${esc(l)}</option>`).join("")}</select>`;
+  const cols = [["date", "Date"], ["title", "Story"], ["pillar", "Pillar"], ["category", "Category"], ["format", "Format"], ["status", "Status"], ["views", "Views", 1], ["likes", "Likes", 1], ["comments", "Comments", 1], ["saves", "Saves", 1], ["shares", "Shares", 1]];
+  const th = cols.map(([k, l, r]) => `<th class="${r ? "r" : ""}" data-sort="${k}">${l}${S.sort.k === k ? (S.sort.d > 0 ? " ↑" : " ↓") : ""}</th>`).join("");
+  const rows = list.map(s => `<tr data-open="${s.id}"><td class="num">${fmtDate(s.date)}</td><td class="title">${esc(s.title || "Untitled story")}${s.themes ? `<small>${esc(s.themes)}</small>` : ""}</td>
+    <td>${chip(s.pillar)}</td><td>${esc(s.category)}</td><td>${esc(s.format)}</td><td>${statusTag(s.status)}</td>
+    ${["views", "likes", "comments", "saves", "shares"].map(k => `<td class="r">${m(s, k) || "<span class='muted'>–</span>"}</td>`).join("")}</tr>`).join("");
+  return `<h1 class="view-title">Content Brain</h1><p class="lede">Every story, tagged by pillar, category, themes and format, with its performance. Over time this shows which themes and structures build connection, trust and business. Not just what went viral.</p>
+    ${insights()}
+    <div class="filters"><input id="f-q" type="search" placeholder="Search titles, themes, notes" value="${esc(f.q)}" aria-label="Search">
+      ${sel("f-pillar", "pillar", Object.entries(PILLARS).map(([k, P]) => [k, P.label]), "All pillars")}
+      ${sel("f-category", "category", CATEGORIES.map(c => [c, c]), "All categories")}
+      ${sel("f-status", "status", STATUSES, "All statuses")}
+      ${sel("f-channel", "channel", CHANNELS.map(c => [c, c]), "All channels")}</div>
+    <p class="muted" style="font-size:13px;margin:0 0 8px">${list.length} of ${S.stories.length} stories</p>
+    <div class="table-wrap"><table><thead><tr>${th}</tr></thead><tbody>${rows || `<tr><td colspan="11" class="empty">No stories match these filters.</td></tr>`}</tbody></table></div>`;
+}
+function insights() {
+  const logged = S.stories.filter(hasMetrics);
+  if (logged.length < 3) return `<div class="insights"><div class="insight"><b>The audit</b>Engagement score weights saves and shares ×3, comments ×2, likes ×1. Log numbers for your last 30–50 Instagram posts to unlock patterns here. ${logged.length} logged so far.</div>
+    <div class="insight"><b>Questions it will answer</b>Which mindset stories earn meaningful engagement? Which coaching subjects build authority? Which design stories reach people who could hire or refer you?</div></div>`;
+  const best = (key, vals) => vals.map(v => { const g = logged.filter(s => s[key] === v); return [v, g.length ? g.reduce((a, s) => a + score(s), 0) / g.length : -1, g.length]; }).filter(x => x[2]).sort((a, b) => b[1] - a[1])[0];
+  const themes = {}; logged.forEach(s => (s.themes || "").split(",").map(x => x.trim().toLowerCase()).filter(Boolean).forEach(t => { themes[t] = themes[t] || [0, 0]; themes[t][0] += score(s); themes[t][1]++; }));
+  const topThemes = Object.entries(themes).filter(([, v]) => v[1] >= 2).sort((a, b) => b[1][0] / b[1][1] - a[1][0] / a[1][1]).slice(0, 4);
+  const bf = best("format", FORMATS), bc = best("category", CATEGORIES), bp = best("pillar", Object.keys(PILLARS));
+  return `<div class="insights">
+    <div class="insight"><b>Strongest pillar</b>${bp ? `${esc(PILLARS[bp[0]].label)}: ${Math.round(bp[1])} engagement per post (${bp[2]} posts)` : "Not enough data"}</div>
+    <div class="insight"><b>Strongest format</b>${bf ? `${esc(bf[0])}: ${Math.round(bf[1])} per post (${bf[2]} posts)` : "Not enough data"}</div>
+    <div class="insight"><b>Strongest category</b>${bc ? `${esc(bc[0])}: ${Math.round(bc[1])} per post (${bc[2]} posts)` : "Not enough data"}</div>
+    <div class="insight"><b>Themes that travel</b>${topThemes.length ? topThemes.map(([t, v]) => `${esc(t)} (${Math.round(v[0] / v[1])})`).join(", ") : "Tag themes on 2+ logged posts to compare"}</div></div>`;
+}
+
+/* ---------- Studio ---------- */
+function vStudio() {
+  const c = S.cur, isNew = !c.id;
+  const opt = (arr, v) => arr.map(x => { const [k, l] = Array.isArray(x) ? x : [x, x]; return `<option value="${esc(k)}"${k === v ? " selected" : ""}>${esc(l)}</option>`; }).join("");
+  const beats = BEATS[c.pillar].map(([k, l], i) => `<div class="field beat"><label for="b-${k}"><i>${i + 1}</i>${l}</label><textarea id="b-${k}" data-beat="${k}" rows="2">${esc(c.beats?.[k])}</textarea></div>`).join("");
+  return `<div class="studio-top"><span class="save-state" id="save-state">${isNew ? "New story, not saved yet" : "Saved"}</span>
+      ${!isNew ? `<button class="btn ghost small danger" type="button" id="del">Delete</button>` : ""}
+      <button class="btn ghost" type="button" id="discard">${isNew ? "Cancel" : "Discard changes"}</button>
+      <button class="btn primary" type="button" id="save">Save story</button></div>
+    <input class="title-input" id="s-title" placeholder="Working title: the moment, not the topic" value="${esc(c.title)}" aria-label="Story title">
+    <div class="pillar-pick" role="group" aria-label="Pillar">${Object.entries(PILLARS).map(([k, P]) => `<button type="button" class="${k}" data-pillar="${k}" aria-pressed="${c.pillar === k}"><b>${P.label}</b><span>${P.tag}</span></button>`).join("")}</div>
+    <div class="studio">
+      <div>
+        <div class="fields">
+          <div class="field"><label for="s-category">Story category</label><select id="s-category" data-k="category">${opt(CATEGORIES, c.category)}</select></div>
+          <div class="field"><label for="s-series">Series</label><input id="s-series" data-k="series" list="series-list" value="${esc(c.series)}"><datalist id="series-list">${Object.values(PILLARS).map(P => `<option value="${esc(P.series)}">`).join("")}</datalist></div>
+          <div class="field"><label for="s-format">Format</label><select id="s-format" data-k="format">${opt(FORMATS, c.format)}</select></div>
+          <div class="field"><label for="s-channel">Primary channel</label><select id="s-channel" data-k="channel">${opt(CHANNELS, c.channel)}</select></div>
+          <div class="field full"><label for="s-themes">Underlying themes (comma separated)</label><input id="s-themes" data-k="themes" value="${esc(c.themes)}" placeholder="fatherhood, commitment, example"></div>
+          <div class="field full"><label for="s-evidence">Evidence you have</label><input id="s-evidence" data-k="evidence" value="${esc(c.evidence)}" placeholder="Race footage, approved plans, client permission…"></div>
+        </div>
+        <p class="eyebrow" style="margin:0 0 10px">Story structure · ${PILLARS[c.pillar].label}</p>
+        <div class="beats">${beats}</div>
+        <div class="fields">
+          <div class="field full"><label for="s-interview">Story discovery notes</label><textarea id="s-interview" data-k="interview" placeholder="Interview answers: the specific moments, what was said, what you felt.">${esc(c.interview)}</textarea></div>
+          <div class="field full"><label for="s-hook">Opening line</label><input id="s-hook" data-k="hook" value="${esc(c.hook)}" placeholder="Open on the moment, not on advice"></div>
+          <div class="field full"><label for="s-script">Script / voiceover</label><textarea class="long" id="s-script" data-k="script">${esc(c.script)}</textarea></div>
+          <div class="field full"><label for="s-caption">Caption (extends the story, doesn't repeat it)</label><textarea class="long" id="s-caption" data-k="caption">${esc(c.caption)}</textarea></div>
+          <div class="field full"><label for="s-notes">Production notes</label><textarea id="s-notes" data-k="notes">${esc(c.notes)}</textarea></div>
+        </div>
+      </div>
+      <aside class="side">
+        <div class="box"><h3>Status</h3>
+          <div class="field"><label for="s-status">Stage</label><select id="s-status" data-k="status">${opt(STATUSES, c.status)}</select></div>
+          <div class="field"><label for="s-date">Publish date</label><input id="s-date" type="date" data-k="date" value="${esc(c.date)}"></div></div>
+        <div class="box"><h3>Create with Claude</h3><p class="hint">Uses only what you've written above. Anything missing comes back as a [bracketed gap] for you to fill, never an invented detail.</p>
+          <button class="btn" type="button" id="ai-questions">Interview me for this story</button>
+          <button class="btn" type="button" id="ai-draft">Draft opening, script and caption</button>
+          <button class="btn" type="button" id="ai-waterfall">Plan the waterfall</button>
+          <div id="ai-status" class="ai-out" aria-live="polite"></div></div>
+        <div class="box"><h3>Waterfall</h3><p class="hint">One real story, several pieces.</p><div class="checks">${WATERFALL.map(([k, l]) => `<label><input type="checkbox" id="w-${k}" data-w="${k}"${c.waterfall?.[k] ? " checked" : ""}> ${l}</label>`).join("")}</div></div>
+        <div class="box"><h3>Performance</h3><p class="hint">${PILLARS[c.pillar].system === "A" ? "Growth system A: judge by shares, saves, comments and returning viewers." : "Growth system B: judge by professional engagement and qualified inquiries, not reach."}</p>
+          <div class="metrics">${METRICS.map(([k, l]) => `<div class="field"><label for="m-${k}">${l}</label><input id="m-${k}" type="number" min="0" inputmode="numeric" data-m="${k}" value="${c.metrics?.[k] ?? ""}"></div>`).join("")}</div></div>
+      </aside>
+    </div>`;
+}
+function setDirty() { S.dirty = true; const el = $("#save-state"); if (el) el.textContent = "Unsaved changes"; }
+function bindStudio() {
+  const c = S.cur, v = $("#view");
+  $("#s-title").addEventListener("input", e => { c.title = e.target.value; setDirty(); });
+  v.querySelectorAll("[data-k]").forEach(el => el.addEventListener("input", () => { c[el.dataset.k] = el.value; setDirty(); }));
+  v.querySelectorAll("[data-beat]").forEach(el => el.addEventListener("input", () => { c.beats = c.beats || {}; c.beats[el.dataset.beat] = el.value; setDirty(); }));
+  v.querySelectorAll("[data-w]").forEach(el => el.addEventListener("change", () => { c.waterfall = c.waterfall || {}; c.waterfall[el.dataset.w] = el.checked; setDirty(); }));
+  v.querySelectorAll("[data-m]").forEach(el => el.addEventListener("input", () => { c.metrics = c.metrics || {}; c.metrics[el.dataset.m] = el.value === "" ? null : Number(el.value); setDirty(); }));
+  v.querySelectorAll("[data-pillar]").forEach(el => el.addEventListener("click", () => {
+    const p = el.dataset.pillar; if (p === c.pillar) return;
+    if (Object.values(PILLARS).some(P => P.series === c.series) || !c.series) c.series = PILLARS[p].series;
+    c.pillar = p; S.dirty = true; v.innerHTML = vStudio(); bindStudio(); setDirty();
+  }));
+  $("#save").addEventListener("click", save);
+  $("#discard").addEventListener("click", () => { S.dirty = false; if (c.id) { openStory(c.id, {}); toast("Changes discarded"); } else { S.cur = null; go("overview"); } });
+  const del = $("#del"); if (del) del.addEventListener("click", () => {
+    if (del.dataset.armed) { removeStory(c.id); return; }
+    del.dataset.armed = "1"; del.textContent = "Click again to delete"; setTimeout(() => { if (del.isConnected) { delete del.dataset.armed; del.textContent = "Delete"; } }, 3000);
+  });
+  $("#ai-questions").addEventListener("click", () => ai("questions"));
+  $("#ai-draft").addEventListener("click", () => ai("draft"));
+  $("#ai-waterfall").addEventListener("click", () => ai("waterfall"));
+  if (!S.sample) v.querySelectorAll("#ai-questions,#ai-draft,#ai-waterfall").forEach(b => b.disabled = true), $("#ai-status").textContent = S.sampleChecked ? "Claude drafting isn't available in this view." : "Connecting to Claude…";
+}
+
+async function save() {
+  const c = S.cur;
+  if (!c.title.trim()) { toast("Give the story a working title first"); $("#s-title").focus(); return; }
+  if (!S.db) { toast("Can't save: sign in to claude.ai to use your Content Brain"); return; }
+  const { id, ...data } = c; data.updatedAt = new Date().toISOString(); if (!id) data.createdAt = data.updatedAt;
+  const btn = $("#save"); btn.disabled = true;
+  try {
+    const ref = id ? S.db.collection("stories").doc(id) : S.db.collection("stories").doc();
+    await ref.set(data); c.id = ref.id; S.dirty = false;
+    const i = S.stories.findIndex(s => s.id === ref.id); const rec = { ...data, id: ref.id }; if (i >= 0) S.stories[i] = rec; else S.stories.push(rec);
+    toast("Saved"); render();
+  } catch (e) { toast("Couldn't save: " + (e?.message || "try again")); btn.disabled = false; }
+}
+async function removeStory(id) {
+  try { await S.db.collection("stories").doc(id).delete(); S.stories = S.stories.filter(s => s.id !== id); S.dirty = false; S.cur = null; toast("Story deleted"); go("brain"); }
+  catch (e) { toast("Couldn't delete: " + (e?.message || "try again")); }
+}
+async function setStatus(id, status) {
+  const s = S.stories.find(x => x.id === id); if (!s || s.status === status || !S.db) return;
+  const prev = s.status; s.status = status; render();
+  try { await S.db.collection("stories").doc(id).update({ status, updatedAt: new Date().toISOString() }); toast("Moved to " + statusLabel(status)); }
+  catch (e) { s.status = prev; render(); toast("Couldn't move: " + (e?.message || "try again")); }
+}
+
+/* ---------- Claude drafting ---------- */
+const VOICE = `You are the editorial partner for a founder-led brand called Made From Effort. The founder is a coach of roughly 15 years, a hybrid athlete, a father and husband, and the founder of Performance Edge, a luxury gym design business (residential, yacht, hospitality). The philosophy connecting everything: the things we build in life are a reflection of the effort, decisions and attention we put into them.
+Voice: first person, reflective, blog-style storytelling that starts from a specific real moment and opens out to a larger principle. Plain, warm, specific. No aggressive hooks, no trendy phrasing, no hashtags, no emojis, no listicle advice, no motivational clichés. Mindset posts don't end with a call to action. Coaching and design posts may point gently to services only when it fits. Captions extend the story rather than repeating the script.
+Hard rule: never invent experiences, names, numbers, dialogue or client details. Use only what the story notes contain. Where a specific detail is missing, write a bracketed gap like [what your daughter said at the finish line].`;
+function storyBrief(c) {
+  const beats = BEATS[c.pillar].map(([k, l]) => `${l}: ${c.beats?.[k] || "(empty)"}`).join("\n");
+  return `Story notes:\nTitle: ${c.title || "(none)"}\nPillar: ${PILLARS[c.pillar].label} (series: ${c.series})\nCategory: ${c.category}\nFormat: ${c.format}\nChannel: ${c.channel}\nThemes: ${c.themes || "(none)"}\nEvidence available: ${c.evidence || "(none)"}\nStructure:\n${beats}\nDiscovery notes: ${c.interview || "(none)"}\nExisting opening line: ${c.hook || "(none)"}\nExisting script: ${c.script || "(none)"}`;
+}
+async function ai(kind) {
+  const c = S.cur, out = $("#ai-status"), btns = document.querySelectorAll("#ai-questions,#ai-draft,#ai-waterfall");
+  if (!S.sample) return;
+  btns.forEach(b => b.disabled = true); out.className = "ai-out"; out.textContent = "Claude is working on it…";
+  try {
+    if (kind === "questions") {
+      const r = await S.sample.json(`${VOICE}\n\n${storyBrief(c)}\n\nYou are running Story Discovery. Write 6 interview questions that would draw out the specific moments, dialogue, sensory details and lessons this story still needs. Focus on gaps in the notes. Return JSON: {"questions": ["..."]}`, { modelTier: "default" });
+      const qs = (r?.questions || []).map((q, i) => `Q${i + 1}. ${q}\nA: `).join("\n\n");
+      c.interview = (c.interview ? c.interview.trim() + "\n\n" : "") + qs; $("#s-interview").value = c.interview;
+      out.textContent = "Questions added to Story discovery notes. Answer them, then draft.";
+    } else if (kind === "draft") {
+      const r = await S.sample.json(`${VOICE}\n\n${storyBrief(c)}\n\nWrite this post. Follow the ${PILLARS[c.pillar].label} structure in order. Return JSON: {"hook": "one opening line, under 20 words", "script": "the ${c.format} script or voiceover, 120-220 words, in short paragraphs", "caption": "an Instagram caption of 120-250 words that extends the story with a further reflection or detail, not a summary"}`, { modelTier: "complex" });
+      ["hook", "script", "caption"].forEach(k => { if (r?.[k]) { c[k] = r[k]; $("#s-" + k).value = r[k]; } });
+      if (c.status === "idea" || c.status === "discovery") { c.status = "drafting"; $("#s-status").value = "drafting"; }
+      out.textContent = "Draft added below. Edit it in your own words, fill any [bracketed gaps], then save.";
+    } else {
+      const r = await S.sample.json(`${VOICE}\n\n${storyBrief(c)}\n\nPlan the Waterfall Method for this one story: how the same authentic material becomes several pieces. Only use pieces this material can honestly support. Choose from: reel, carousel, stories, followup, linkedin, newsletter, casestudy. Return JSON: {"pieces": [{"key": "carousel", "idea": "one sentence on what this piece covers and what footage or material it uses"}]}`, { modelTier: "default" });
+      const pieces = r?.pieces || []; c.waterfall = c.waterfall || {};
+      pieces.forEach(p => { if (WATERFALL.some(w => w[0] === p.key)) { c.waterfall[p.key] = true; const cb = $("#w-" + p.key); if (cb) cb.checked = true; } });
+      const plan = pieces.map(p => `• ${(WATERFALL.find(w => w[0] === p.key) || [0, p.key])[1]}: ${p.idea}`).join("\n");
+      c.notes = (c.notes ? c.notes.trim() + "\n\n" : "") + "Waterfall plan\n" + plan; $("#s-notes").value = c.notes;
+      out.textContent = "Waterfall pieces ticked and the plan added to Production notes.";
+    }
+    setDirty();
+  } catch (e) {
+    out.className = "ai-err";
+    out.textContent = e?.code === "not_granted" ? "Claude access wasn't allowed for this page. You can allow it from the artifact's Permissions menu." :
+      e?.code === "rate_limited" ? "Too many requests just now. Wait a minute and try again." : "Claude couldn't finish that draft. " + (e?.message || "");
+  } finally { btns.forEach(b => b.disabled = false); }
+}
+
+/* ---------- Shared event binding for non-studio views ---------- */
+function bind() {
+  const v = $("#view");
+  v.querySelectorAll("[data-open]").forEach(el => el.addEventListener("click", e => { if (e.target.closest("select,label")) return; openStory(el.dataset.open, {}); }));
+  v.querySelectorAll("[data-plan]").forEach(el => el.addEventListener("click", () => openStory(null, { pillar: el.dataset.plan, date: el.dataset.date || "", status: el.dataset.date ? "idea" : "idea" })));
+  v.querySelectorAll("[data-pipe]").forEach(el => el.addEventListener("click", () => { S.pipe = el.dataset.pipe; render(); }));
+  v.querySelectorAll("[data-pipe-stage]").forEach(el => el.addEventListener("click", () => { S.f.status = el.dataset.pipeStage; go("brain"); }));
+  v.querySelectorAll("[data-move]").forEach(el => el.addEventListener("change", () => setStatus(el.dataset.move, el.value)));
+  v.querySelectorAll("[data-cal]").forEach(el => el.addEventListener("click", () => { const n = Number(el.dataset.cal); S.calStart = n ? addDays(S.calStart, n) : monday(new Date()); render(); }));
+  v.querySelectorAll("[data-f]").forEach(el => el.addEventListener("change", () => { S.f[el.dataset.f] = el.value; render(); }));
+  const q = $("#f-q"); if (q) q.addEventListener("input", () => { S.f.q = q.value; const pos = q.selectionStart; render(); const n = $("#f-q"); n.focus(); n.setSelectionRange(pos, pos); });
+  v.querySelectorAll("[data-sort]").forEach(el => el.addEventListener("click", () => { const k = el.dataset.sort; S.sort = { k, d: S.sort.k === k ? -S.sort.d : (k === "title" ? 1 : -1) }; render(); }));
+  // Drag between pipeline columns
+  v.querySelectorAll("[data-card]").forEach(el => el.addEventListener("dragstart", e => { e.dataTransfer.setData("text/plain", el.dataset.card); }));
+  v.querySelectorAll("[data-col]").forEach(col => {
+    col.addEventListener("dragover", e => { e.preventDefault(); col.classList.add("drop"); });
+    col.addEventListener("dragleave", () => col.classList.remove("drop"));
+    col.addEventListener("drop", e => { e.preventDefault(); col.classList.remove("drop"); setStatus(e.dataTransfer.getData("text/plain"), col.dataset.col); });
+  });
+}
+
+/* ---------- Boot ---------- */
+(function boot() {
+  const h = (location.hash || "").slice(1);
+  if (["overview", "pipeline", "calendar", "brain", "studio"].includes(h)) S.view = h;
+  render();
+  if (!window.claude?.use) { banner("Open this page on claude.ai to load and save your Content Brain."); return; }
+  claude.use("db").then(db => {
+    if (!db) { banner("Sign in to claude.ai to load and save your Content Brain."); return; }
+    S.db = db;
+    db.collection("stories").onSnapshot(snap => {
+      S.stories = snap.docs.map(d => ({ ...blank(), ...d.data(), id: d.id })); S.loaded = true; banner("");
+      if (S.view !== "studio") render();
+      else if (!S.dirty && S.cur?.id) { const f = S.stories.find(s => s.id === S.cur.id); if (f) { S.cur = JSON.parse(JSON.stringify(f)); render(); } }
+    }, err => banner("Couldn't load your Content Brain: " + (err?.message || err?.code)));
+  });
+  claude.use("sample").then(s => { S.sample = s; S.sampleChecked = true; if (S.view === "studio" && !S.dirty) render(); else if (S.view === "studio") { document.querySelectorAll("#ai-questions,#ai-draft,#ai-waterfall").forEach(b => b.disabled = !s); const st = $("#ai-status"); if (st) st.textContent = s ? "" : "Claude drafting isn't available in this view."; } });
+})();
+</script>
