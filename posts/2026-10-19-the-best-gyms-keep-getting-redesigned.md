@@ -1,20 +1,25 @@
 ---
 title: The Best Gyms Keep Getting Redesigned
 date: 2026-10-19
+updated: 2026-10-20
 excerpt: Most people treat a gym design as a single finished decision. The rooms that actually hold up are the ones built to be changed — because the training inside them never stays the same.
 issue: "036"
 cta_text: Start a Project
 tags: Gym Design, Long-Term Planning, Residential Gyms, Equipment Layout
 category: Gym Design
+related_service_path: /residential-gym-design
+related_service_label: Residential gym design
 ---
 
 Almost every client wants the same thing out of a design process: one final layout, locked in, done. Pick the equipment, place it, never touch it again. It's a reasonable instinct — nobody wants to pay for a room twice. It's also not how the gyms that actually keep getting used tend to work.
+
+That flexibility belongs in the [residential gym design](https://www.madefromeffort.com/residential-gym-design) brief from the start.
 
 ## 01 / A Training Room Has a Lifespan, Not a Finish Date
 
 Someone's training changes. A client who built their room around heavy barbell work adds a cardio piece two years in because their goals shifted. A kettlebell setup that worked for one phase gets swapped out when the next phase calls for something else. A room gets re-arranged because a new piece of equipment earned a spot and something else lost one.
 
-One of the residential gyms we've worked on in Sands Point is a clean example of this. It's been through multiple rounds of new layouts and equipment updates over the years — not because the original design failed, but because the training inside it kept evolving, the way real training actually does. Treating any one of those stages as the "final" version would have missed the point. The room was never supposed to be finished. It was supposed to keep working.
+One of the [residential gyms we've worked on in Sands Point](https://www.madefromeffort.com/project-sands-point) is a clean example of this. It's been through multiple rounds of new layouts and equipment updates over the years — not because the original design failed, but because the training inside it kept evolving, the way real training actually does. Treating any one of those stages as the "final" version would have missed the point. The room was never supposed to be finished. It was supposed to keep working.
 
 > A gym that can't change with your training was only ever designed for the person you were on day one.
 

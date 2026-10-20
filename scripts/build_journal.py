@@ -40,7 +40,7 @@ STATIC_PAGES = [
     ("about.html", "2026-10-07", 0.7),
     ("privacy.html", "2026-10-07", 0.5),
     ("training.html", "2026-10-15", 0.8),
-    ("residential-gym-design.html", "2026-09-25", 0.9),
+    ("residential-gym-design.html", "2026-10-20", 0.9),
     ("yacht-gym-design.html", "2026-09-24", 0.9),
     ("commercial-gym-design.html", "2026-09-24", 0.8),
     ("hospitality-gym-design.html", "2026-10-15", 0.8),
@@ -48,15 +48,15 @@ STATIC_PAGES = [
     ("country-club-fitness-audit.html", "2026-09-24", 0.8),
     ("contact.html", "2026-09-24", 0.7),
     ("estimator.html", "2026-09-24", 0.7),
-    ("project-jericho.html", "2026-09-25", 0.6),
-    ("project-glen-cove.html", "2026-09-25", 0.7),
-    ("project-sands-point.html", "2026-09-25", 0.7),
-    ("project-caumsett.html", "2026-09-25", 0.7),
-    ("project-oyster-bay-cove.html", "2026-09-25", 0.7),
-    ("project-dix-hills.html", "2026-09-25", 0.7),
-    ("referral-partners.html", "2026-09-25", 0.6),
-    ("project-jupiter-island.html", "2026-09-25", 0.6),
-    ("project-yacht.html", "2026-09-24", 0.6),
+    ("project-jericho.html", "2026-10-20", 0.6),
+    ("project-glen-cove.html", "2026-10-20", 0.7),
+    ("project-sands-point.html", "2026-10-20", 0.7),
+    ("project-caumsett.html", "2026-10-20", 0.7),
+    ("project-oyster-bay-cove.html", "2026-10-20", 0.7),
+    ("project-dix-hills.html", "2026-10-20", 0.7),
+    ("referral-partners.html", "2026-10-20", 0.6),
+    ("project-jupiter-island.html", "2026-10-20", 0.6),
+    ("project-yacht.html", "2026-10-20", 0.6),
 ]
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -293,7 +293,8 @@ STYLE_BLOCK = """
 FOOTER_HTML = """
     <div class="footer">
       <div class="footer-links">
-        <a href="{site_url}/training.html">TRAINING</a>
+        <a href="{site_url}/residential-gym-design">GYM DESIGN</a>
+        <a href="{site_url}/training">TRAINING</a>
         <a href="{site_url}/#portfolio">PORTFOLIO</a>
         <a href="{site_url}/#services">SERVICES</a>
       </div>
@@ -307,15 +308,24 @@ FOOTER_HTML = """
 # Fallback CTA destinations if a post doesn't set cta_link explicitly.
 # Matched against cta_text (case-insensitive, substring match).
 CTA_LINK_DEFAULTS = {
-    "train with me": f"{SITE_URL}/training.html",
-    "start a project": f"{SITE_URL}/#contact",
+    "train with me": f"{SITE_URL}/training",
+    "start a project": f"{SITE_URL}/contact",
 }
-CTA_LINK_FALLBACK = f"{SITE_URL}/#contact"
+CTA_LINK_FALLBACK = f"{SITE_URL}/contact"
 
 def resolve_cta_link(post):
     if post.get("cta_link"):
         return post["cta_link"]
     cta_text = post.get("cta_text", "Start a Project").lower()
+    if "start a project" in cta_text and post.get("related_service_path"):
+        project_type = {
+            "/residential-gym-design": "residence",
+            "/yacht-gym-design": "marine",
+            "/commercial-gym-design": "commercial",
+            "/country-club-fitness-design": "country-club",
+            "/hospitality-gym-design": "hospitality",
+        }[post["related_service_path"]]
+        return f"{SITE_URL}/contact?project={project_type}&amp;source=journal-{post['slug']}"
     for key, link in CTA_LINK_DEFAULTS.items():
         if key in cta_text:
             return link
@@ -599,7 +609,7 @@ def render_email_footer(post, link):
 def render_rss(posts):
     items_xml = ""
     for p in posts:
-        link = f"{SITE_URL}/journal/{p['slug']}.html"
+        link = f"{SITE_URL}/journal/{p['slug']}"
         email_body = render_hero_image_html(p) + render_stat_bar_html(p) + p['body_html'] + render_email_footer(p, link)
         items_xml += f"""
     <item>
@@ -696,7 +706,7 @@ def main():
             print(f"Built {os.path.join(assets_dir, stat_filename)}")
 
     for p in posts:
-        link = f"{SITE_URL}/{OUTPUT_DIR}/{p['slug']}.html"
+        link = f"{SITE_URL}/{OUTPUT_DIR}/{p['slug']}"
 
         page_html = render_post_page(p)
         out_path = os.path.join(out_dir, f"{p['slug']}.html")

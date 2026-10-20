@@ -6,18 +6,18 @@ Performance Edge plans private residential and estate gyms across Nassau and Suf
 
 ## Services
 
-- [Residential and estate gym design](https://www.madefromeffort.com/residential-gym-design.html)
-- [Yacht and marine gym design](https://www.madefromeffort.com/yacht-gym-design.html)
-- [Commercial gym and boutique studio design](https://www.madefromeffort.com/commercial-gym-design.html)
-- [Country-club fitness design](https://www.madefromeffort.com/country-club-fitness-design.html)
-- [Private and remote coaching](https://www.madefromeffort.com/training.html)
+- [Residential and estate gym design](https://www.madefromeffort.com/residential-gym-design)
+- [Yacht and marine gym design](https://www.madefromeffort.com/yacht-gym-design)
+- [Commercial gym and boutique studio design](https://www.madefromeffort.com/commercial-gym-design)
+- [Country-club fitness design](https://www.madefromeffort.com/country-club-fitness-design)
+- [Private and remote coaching](https://www.madefromeffort.com/training)
 
 ## Explore
 
-- [Jupiter Island estate gym](https://www.madefromeffort.com/project-jupiter-island.html) — a private gym designed as part of the home's architecture.
+- [Jupiter Island estate gym](https://www.madefromeffort.com/project-jupiter-island) — a private gym designed as part of the home's architecture.
 - [Selected projects](https://www.madefromeffort.com/#portfolio)
 - [Journal](https://www.madefromeffort.com/journal/)
-- [About Scott Schratwieser](https://www.madefromeffort.com/about.html)
+- [About Scott Schratwieser](https://www.madefromeffort.com/about)
 - [Start a gym design project](https://www.madefromeffort.com/#inquiry-form)
 - [Sitemap](https://www.madefromeffort.com/sitemap.xml)
 - [Agent guidance](https://www.madefromeffort.com/agent-instructions.md)
@@ -60,7 +60,7 @@ export async function onRequest(context) {
   if (response.status === 404 && wantsMarkdown) {
     headers.set("Content-Type", "text/markdown; charset=utf-8");
     headers.delete("Content-Length");
-    return new Response(`# Page not found\n\nThe requested page does not exist. Browse the [site index](https://www.madefromeffort.com/llms.txt), [sitemap](https://www.madefromeffort.com/sitemap.xml), or [contact page](https://www.madefromeffort.com/contact.html).\n`, { status: 404, headers });
+    return new Response(`# Page not found\n\nThe requested page does not exist. Browse the [site index](https://www.madefromeffort.com/llms.txt), [sitemap](https://www.madefromeffort.com/sitemap.xml), or [contact page](https://www.madefromeffort.com/contact).\n`, { status: 404, headers });
   }
 
   return new Response(response.body, {

@@ -1,5 +1,6 @@
 ---
 title: A Gym Isn't a Pile of Good Equipment
+updated: 2026-10-20
 date: 2026-10-05
 excerpt: Buy enough individually impressive pieces and you don't get a great gym — you get a room nobody can move through. Equipment has to be specified as one system, not collected one purchase at a time.
 issue: "030"
@@ -13,6 +14,8 @@ related_service_label: Residential gym design
 Most of the "bad gym" calls I get don't start with bad equipment. They start with good equipment that was bought one piece at a time.
 
 A rack because it looked right in a photo. A cable machine because a friend has one. A sled, because why not — there's a corner for it. Taken individually, every piece is a reasonable choice. Taken together, they add up to a room nobody can actually move through.
+
+A [residential gym design](https://www.madefromeffort.com/residential-gym-design) plan has to account for the space around each piece before anything is ordered.
 
 ## 01 / The Math Nobody Does Up Front
 

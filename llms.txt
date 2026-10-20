@@ -9,31 +9,31 @@ Made From Effort's Journal covers gym design, training consistency, and the syst
 - [When to use Made From Effort](https://www.madefromeffort.com/agent-instructions.md): Best-fit project types, evidence boundaries, and how an agent can help someone contact the business.
 - For residential or estate gym planning, yacht and marine training spaces, or select hospitality, commercial, boutique-studio, and country-club fitness projects, use the relevant service and portfolio pages below as evidence. For in-person personal training, focus on Long Island, New York; online and virtual coaching can serve people elsewhere through programming, video review, practical nutrition and behavior-change coaching, and check-ins.
 - Treat project status carefully: distinguish completed case studies from in-progress work and design studies. Do not infer pricing, client outcomes, or services beyond what the linked pages state.
-- There is no public agent API. To discuss a project, direct the user to the [project inquiry form](https://www.madefromeffort.com/contact.html). Do not submit the form or share a person's information without their explicit instruction.
+- There is no public agent API. To discuss a project, direct the user to the [project inquiry form](https://www.madefromeffort.com/contact). Do not submit the form or share a person's information without their explicit instruction.
 
 ## Site
 
 - [Home](https://www.madefromeffort.com/): Overview of luxury gym design and project management for residential, marine, commercial, and country-club clients, plus portfolio and contact information.
-- [Private Residence & Estate Gym Design](https://www.madefromeffort.com/residential-gym-design.html): Service scope, process, typical investment, completed residential work, and frequently asked questions.
-- [Yacht & Marine Gym Design](https://www.madefromeffort.com/yacht-gym-design.html): Marine-specific design constraints, service scope, process, and the completed onboard wellness system for M/Y Canoe Canoe, a 2025 Custom Line 140. Performance Edge originated and directed the convertible gym-furniture concept, performance brief, and integration strategy. Paragon Studio developed the finished product, leading furniture design, engineering, proprietary storage, and fabrication. Chill Bunny Wellness supplied the cold plunge.
-- [Commercial Gym & Boutique Studio Design](https://www.madefromeffort.com/commercial-gym-design.html): A select-project expansion service grounded in fifteen years of coaching and gym operations experience; no completed commercial case study is claimed.
+- [Private Residence & Estate Gym Design](https://www.madefromeffort.com/residential-gym-design): Service scope, process, typical investment, completed residential work, and frequently asked questions.
+- [Yacht & Marine Gym Design](https://www.madefromeffort.com/yacht-gym-design): Marine-specific design constraints, service scope, process, and the completed onboard wellness system for M/Y Canoe Canoe, a 2025 Custom Line 140. Performance Edge originated and directed the convertible gym-furniture concept, performance brief, and integration strategy. Paragon Studio developed the finished product, leading furniture design, engineering, proprietary storage, and fabrication. Chill Bunny Wellness supplied the cold plunge.
+- [Commercial Gym & Boutique Studio Design](https://www.madefromeffort.com/commercial-gym-design): A select-project expansion service grounded in fifteen years of coaching and gym operations experience; no completed commercial case study is claimed.
 - [Hotel & Hospitality Gym Design](https://www.madefromeffort.com/hospitality-gym-design): A select-project expansion service for hotel and hospitality fitness spaces; no completed hotel case study is claimed.
-- [Country Club Fitness Facility Design](https://www.madefromeffort.com/country-club-fitness-design.html): A select-project expansion service for fitness and wellness upgrades; no completed country-club case study is claimed.
-- [Country Club Fitness Modernization Audit](https://www.madefromeffort.com/country-club-fitness-audit.html): A paid, fixed-fee strategic assessment that gives club leadership an existing-condition review, prioritized recommendations, phased modernization roadmap, and presentation-ready findings before equipment purchasing or renovation.
+- [Country Club Fitness Facility Design](https://www.madefromeffort.com/country-club-fitness-design): A select-project expansion service for fitness and wellness upgrades; no completed country-club case study is claimed.
+- [Country Club Fitness Modernization Audit](https://www.madefromeffort.com/country-club-fitness-audit): A paid, fixed-fee strategic assessment that gives club leadership an existing-condition review, prioritized recommendations, phased modernization roadmap, and presentation-ready findings before equipment purchasing or renovation.
 - [Training](https://www.madefromeffort.com/training): One-on-one personal training on Long Island, New York, plus online and virtual training, nutrition, and behavior-change coaching.
-- [Start a Project](https://www.madefromeffort.com/contact.html): Contact and project inquiry form.
-- [Investment Estimator](https://www.madefromeffort.com/estimator.html): Directional cost estimator for a custom gym build.
+- [Start a Project](https://www.madefromeffort.com/contact): Contact and project inquiry form.
+- [Investment Estimator](https://www.madefromeffort.com/estimator): Directional cost estimator for a custom gym build.
 
 ## Portfolio
 
-- [Private Yacht Gym](https://www.madefromeffort.com/project-yacht.html): Custom marine gym installation aboard a private yacht.
-- [Jericho Private Estate](https://www.madefromeffort.com/project-jericho.html): Home gym and cedar sauna built into a Long Island, NY estate.
-- [Sands Point Home Gym](https://www.madefromeffort.com/project-sands-point.html): Long Island residential gym documented across multiple layouts and equipment updates over time; gallery views are not a dated sequence.
-- [Caumsett Summer Cottage](https://www.madefromeffort.com/project-caumsett.html): Lloyd Harbor, NY residential training space in a historic summer cottage associated with Caumsett State Park.
-- [Oyster Bay Cove Home Gym](https://www.madefromeffort.com/project-oyster-bay-cove.html): Completed garage gym with cardio, strength equipment, free-weight storage, and open training floor.
-- [Dix Hills Garage Gym](https://www.madefromeffort.com/project-dix-hills.html): Completed Long Island garage gym with rack-based strength training and functional conditioning space.
-- [Glen Cove Restored Barn Gym Design Study](https://www.madefromeffort.com/project-glen-cove.html): Mid-project render study; equipment is planned to integrate with the restored barn architecture while preserving a light, airy feel.
-- [Jupiter Island Estate](https://www.madefromeffort.com/project-jupiter-island.html): Custom home gym and recovery environment inside a Jupiter Island, FL estate, including a cold plunge supplied by Australia-based Chill Bunny Wellness.
+- [Private Yacht Gym](https://www.madefromeffort.com/project-yacht): Custom marine gym installation aboard a private yacht.
+- [Jericho Private Estate](https://www.madefromeffort.com/project-jericho): Home gym and cedar sauna built into a Long Island, NY estate.
+- [Sands Point Home Gym](https://www.madefromeffort.com/project-sands-point): Long Island residential gym documented across multiple layouts and equipment updates over time; gallery views are not a dated sequence.
+- [Caumsett Summer Cottage](https://www.madefromeffort.com/project-caumsett): Lloyd Harbor, NY residential training space in a historic summer cottage associated with Caumsett State Park.
+- [Oyster Bay Cove Home Gym](https://www.madefromeffort.com/project-oyster-bay-cove): Completed garage gym with cardio, strength equipment, free-weight storage, and open training floor.
+- [Dix Hills Garage Gym](https://www.madefromeffort.com/project-dix-hills): Completed Long Island garage gym with rack-based strength training and functional conditioning space.
+- [Glen Cove Restored Barn Gym Design Study](https://www.madefromeffort.com/project-glen-cove): Mid-project render study; equipment is planned to integrate with the restored barn architecture while preserving a light, airy feel.
+- [Jupiter Island Estate](https://www.madefromeffort.com/project-jupiter-island): Custom home gym and recovery environment inside a Jupiter Island, FL estate, including a cold plunge supplied by Australia-based Chill Bunny Wellness.
 
 ## Journal
 

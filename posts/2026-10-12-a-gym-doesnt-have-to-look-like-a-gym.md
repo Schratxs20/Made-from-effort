@@ -1,5 +1,6 @@
 ---
 title: A Gym Doesn't Have to Look Like a Gym to Train Like One
+updated: 2026-10-20
 date: 2026-10-12
 excerpt: Most gyms get designed by starting with the equipment and working outward — which is how you end up with a room that was dropped into a house instead of grown out of it. Start with what the space already is instead.
 issue: "033"
@@ -17,6 +18,8 @@ That's the fast way to a gym. It's rarely the right way.
 > A room doesn't stop being what it is just because you put a rack in it. Design like it does, and you'll fight the space for the life of the project.
 
 I'm working on a space right now in a converted barn — original beams, warm materials, a character that took decades to earn. The easy version of this project treats all of that as a problem to solve: cover it, flatten it, make it look like every other serious training facility. The actual job is the opposite. Full training capacity, real equipment, a program that can support a genuinely demanding session — inside a room that still feels like the building it always was.
+
+This is the work behind [residential gym design](https://www.madefromeffort.com/residential-gym-design) in an existing home: start with the room's character and plan the training around it.
 
 ## 01 / The Trade Nobody Has to Make
 
