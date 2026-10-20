@@ -1,5 +1,6 @@
 ---
 title: Is the Gym Really About the Room Rate?
+updated: 2026-10-20
 date: 2026-09-28
 excerpt: Every developer asks what a gym adds to the rate or the rent roll. That's the wrong question — the real return is differentiation and retention, and it rarely shows up where you're looking for it.
 issue: "021"
@@ -15,6 +16,8 @@ Every hotel GM and every multifamily developer eventually asks me a version of t
 Fair question. Somebody has to justify the line item, and "it'll just feel nicer" won't survive a budget review.
 
 It's still the wrong question to be asking.
+
+That is why [hospitality gym design](https://www.madefromeffort.com/hospitality-gym-design) has to begin with how the space will be used and judged, not a promise of a higher room rate.
 
 ## 01 / What the Rate Question Misses
 

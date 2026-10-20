@@ -22,6 +22,8 @@ journal/                        <- generated output (created automatically, don'
    - `excerpt` (shows in the RSS feed / index list / email preview text)
    - `issue` (optional — the "NO. 0XX" tag)
    - `image` (optional — path to a hero image, e.g. /assets/journal/hero-015.jpg)
+   - `category: Gym Design` plus `related_service_path` and `related_service_label` for design articles. Use the matching clean service URL path (for example `/yacht-gym-design`); the article renders an in-page related-service link.
+   - `cta_text: Start a Project` for design articles with a related service. The article button then opens the matching contact form project type and records the article as its source. Use `cta_text: Train with Me` for coaching articles.
 4. Write the body in Markdown below the frontmatter. Use:
    - `## Heading` for section headers
    - `> quote` for pull-quotes
@@ -43,7 +45,7 @@ as an RSS source in Beehiiv's automation settings so each new post auto-sends as
 an email.
 
 ## One-time setup notes
-- Make sure GitHub Pages is serving from the branch this workflow pushes to (main).
+- Confirm Cloudflare Pages is serving the branch this workflow pushes to (main). Cloudflare redirects `.html` page URLs to the clean URLs used by the sitemap and internal links.
 - The workflow needs "Read and write permissions" enabled under
   Repo Settings > Actions > General > Workflow permissions.
 

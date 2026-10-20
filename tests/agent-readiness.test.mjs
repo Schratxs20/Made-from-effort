@@ -71,7 +71,7 @@ test("service pages connect room planning to a published example", async () => {
   assert.match(await read(article), /<h1\b/i);
   for (const page of ["residential-gym-design.html", "country-club-fitness-audit.html"]) {
     const html = await read(page);
-    assert.ok(html.includes(`class="editorial-link" href="${article}"`), `${page} is missing a visible related article link`);
+    assert.ok(html.includes(`class="editorial-link" href="/${article.replace(/\.html$/, '')}"`), `${page} is missing a visible related article link`);
   }
   for (const stylesheet of ["residential-gym-design.html", "market-service.css"]) {
     assert.match(await read(stylesheet), /\.editorial-link\{[^}]*text-decoration:underline/);

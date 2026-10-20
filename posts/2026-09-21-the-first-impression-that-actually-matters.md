@@ -1,5 +1,6 @@
 ---
 title: Your Gym Doesn't Need to Impress Anyone but You
+updated: 2026-10-20
 date: 2026-09-21
 excerpt: Commercial gyms design their entrance to convert a stranger walking in. Your home gym has a different job — and designing it like a showroom for guests is how you end up with a room you stop using by March.
 issue: "025"
@@ -13,6 +14,8 @@ related_service_label: Residential gym design
 I hear the same worry from almost every client at the start of a project: "What will people think when they see it?"
 
 Wrong question. Nobody living with a private home gym needs to convert a stranger into a member. There's no walk-in guest deciding whether to sign up. The only person whose reaction to that room matters is the person who has to walk into it alone, at 6am, in February, for the next ten years.
+
+That daily-use question belongs at the start of a [private residential gym design](https://www.madefromeffort.com/residential-gym-design) brief.
 
 ## 01 / Who You're Actually Designing For
 

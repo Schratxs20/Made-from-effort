@@ -33,7 +33,7 @@ class SitemapCanonicalTests(unittest.TestCase):
         self.assertIn("do not present a completed hotel fitness project", hospitality)
         self.assertIn('id="tile-hospitality"', contact)
         self.assertIn('value="hospitality"', contact)
-        self.assertIn('href="hospitality-gym-design.html"', home)
+        self.assertIn('href="/hospitality-gym-design"', home)
         self.assertIn('<loc>https://www.madefromeffort.com/hospitality-gym-design</loc>', sitemap)
 
     def test_design_articles_link_to_matching_service_pages(self):
@@ -44,12 +44,42 @@ class SitemapCanonicalTests(unittest.TestCase):
             "a-gym-isn-t-a-pile-of-good-equipment": "residential-gym-design",
             "a-gym-doesn-t-have-to-look-like-a-gym-to-train-like-one": "residential-gym-design",
             "is-the-gym-really-about-the-room-rate": "hospitality-gym-design",
+            "the-best-gyms-keep-getting-redesigned": "residential-gym-design",
         }
         for slug, service in matches.items():
             with self.subTest(article=slug):
                 html = (ROOT / "journal" / f"{slug}.html").read_text(encoding="utf-8")
                 self.assertIn(f'href="{SITE_ORIGIN}/{service}"', html)
                 self.assertIn('class="related-service"', html)
+                self.assertRegex(html, r'href="https://www\.madefromeffort\.com/contact\?project=[^" ]+&amp;source=journal-')
+
+    def test_public_internal_links_use_canonical_paths(self):
+        for source in [*ROOT.glob('*.html'), *(ROOT / 'journal').glob('*.html')]:
+            html = source.read_text(encoding='utf-8')
+            for href in re.findall(r'href="([^"]+)"', html):
+                if href.startswith(('http://', 'https://')) and not href.startswith(SITE_ORIGIN + '/'):
+                    continue
+                with self.subTest(source=source.name, href=href):
+                    self.assertNotRegex(href.split('?', 1)[0].split('#', 1)[0], r'\.html$')
+
+    def test_noindex_guide_is_crawlable_so_crawlers_can_read_noindex(self):
+        robots = (ROOT / 'robots.txt').read_text(encoding='utf-8')
+        guide = (ROOT / 'home-gym-guide.html').read_text(encoding='utf-8')
+        self.assertIn('name="robots" content="noindex', guide)
+        self.assertNotIn('Disallow: /home-gym-guide', robots)
+
+    def test_contact_prefill_values_match_available_form_tiles(self):
+        contact = (ROOT / 'contact.html').read_text(encoding='utf-8')
+        available = set(re.findall(r'id="tile-([a-z-]+)"', contact))
+        for source in [*ROOT.glob('*.html'), *(ROOT / 'journal').glob('*.html')]:
+            html = source.read_text(encoding='utf-8').replace('&amp;', '&')
+            for href in re.findall(r'href="([^"]+)"', html):
+                if '/contact?' not in href:
+                    continue
+                project = urllib.parse.parse_qs(urllib.parse.urlparse(href).query).get('project')
+                if project:
+                    with self.subTest(source=source.name, href=href):
+                        self.assertIn(project[0], available)
 
     def test_journal_index_links_directly_to_canonical_articles(self):
         html = (ROOT / "journal" / "index.html").read_text(encoding="utf-8")

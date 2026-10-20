@@ -64,6 +64,7 @@ test('About, Training, and project entry pages capture first touch', () => {
     'project-yacht.html', 'project-jericho.html', 'project-caumsett.html',
     'project-dix-hills.html', 'project-glen-cove.html',
     'project-oyster-bay-cove.html', 'project-sands-point.html',
+    'referral-partners.html', 'privacy.html',
   ]) {
     const html = readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
     assert.equal((html.match(/site-events\.js\?v=2/g) || []).length, 1, path);
@@ -85,7 +86,23 @@ test('featured case studies expose an inquiry link in the hero', () => {
     ['project-yacht.html', 'marine'],
   ]) {
     const html = readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
-    assert.match(html, new RegExp(`<div class="hero-content">[\\s\\S]*?<a class="hero-cta" href="contact\\.html\\?project=${project}&amp;source=`), path);
+    assert.match(html, new RegExp(`<div class="hero-content">[\\s\\S]*?<a class="hero-cta" href="/contact\\?project=${project}&amp;source=`), path);
+  }
+});
+
+test('every project has a persistent mobile inquiry route with a recognized project type', () => {
+  const pages = [
+    'project-caumsett.html', 'project-dix-hills.html', 'project-glen-cove.html',
+    'project-jericho.html', 'project-jupiter-island.html',
+    'project-oyster-bay-cove.html', 'project-sands-point.html', 'project-yacht.html',
+  ];
+  const css = readFileSync(new URL('../project-mobile-cta.css', import.meta.url), 'utf8');
+  assert.match(css, /position: fixed/);
+  assert.match(css, /env\(safe-area-inset-bottom\)/);
+  for (const path of pages) {
+    const html = readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
+    assert.match(html, /href="\/project-mobile-cta\.css"/, path);
+    assert.match(html, /class="mobile-project-cta" href="\/contact\?project=(residence|marine)&amp;source=[^"]+"/, path);
   }
 });
 

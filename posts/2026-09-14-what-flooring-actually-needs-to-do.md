@@ -1,5 +1,6 @@
 ---
 title: Nobody Asks About the Floor Until It's Already a Problem
+updated: 2026-10-20
 date: 2026-09-14
 excerpt: Clients spend an hour on equipment finishes and color. Almost nobody asks what's underneath it — and it's the one decision in the whole room you can't undo later.
 issue: "023"
@@ -13,6 +14,8 @@ related_service_label: Residential gym design
 Every consultation I run starts the same way. The client has a Pinterest board of equipment, a color palette, maybe a mirror wall they've already fallen in love with. Nobody opens with "what should the floor be."
 
 That's backwards. The floor is the one material in the room doing three jobs at once — protecting the equipment, protecting the structure underneath it, and protecting the client's joints — and it's the one decision you genuinely can't revisit once the rest of the room is built around it.
+
+In [residential gym design](https://www.madefromeffort.com/residential-gym-design), the floor needs to be planned with the equipment, layout, and existing structure, not chosen at the end.
 
 ## 01 / Why It Gets Skipped
 

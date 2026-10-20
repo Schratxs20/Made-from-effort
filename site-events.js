@@ -80,7 +80,7 @@
         project_type: destination.searchParams.get('project') || 'unspecified',
         inquiry_source: destination.searchParams.get('source') || window.location.pathname
       });
-    } else if (href.includes('estimator.html')) {
+    } else if (new URL(link.href, window.location.href).pathname.replace(/\.html$/, '') === '/estimator') {
       window.peTrack('estimator_start', { link_text: link.textContent.trim() });
     }
   });

@@ -23,8 +23,8 @@
       var d = JSON.parse(localStorage.getItem(STORE));
       if (d && d.submitted) return;
       // Neither condition met — redirect to home
-      window.location.replace('index.html');
-    } catch(e) { window.location.replace('index.html'); }
+      window.location.replace('/');
+    } catch(e) { window.location.replace('/'); }
   })();
 </script>
 
