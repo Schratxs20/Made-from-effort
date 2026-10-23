@@ -71,17 +71,33 @@
     const link = event.target.closest('a');
     if (!link) return;
     const href = link.getAttribute('href') || '';
+    const destination = new URL(link.href, window.location.href);
+    const destinationPath = destination.pathname.replace(/\.html$/, '');
     if (href.startsWith('mailto:')) {
       window.peTrack('charter_email_click', { link_text: link.textContent.trim(), destination: 'scott' });
-    } else if (new URL(link.href, window.location.href).pathname.replace(/\.html$/, '') === '/contact') {
-      const destination = new URL(link.href, window.location.href);
+    } else if (destinationPath === '/contact') {
       window.peTrack('inquiry_cta_click', {
         link_text: link.textContent.trim(),
         project_type: destination.searchParams.get('project') || 'unspecified',
         inquiry_source: destination.searchParams.get('source') || window.location.pathname
       });
-    } else if (new URL(link.href, window.location.href).pathname.replace(/\.html$/, '') === '/estimator') {
+    } else if (destinationPath === '/estimator') {
       window.peTrack('estimator_start', { link_text: link.textContent.trim() });
+    } else {
+      const sourcePath = window.location.pathname.replace(/\.html$/, '');
+      const isJournalArticle = /^\/journal\/[^/]+$/.test(sourcePath) &&
+        sourcePath !== '/journal/index' && !sourcePath.endsWith('-email');
+      const servicePaths = new Set([
+        '/residential-gym-design', '/yacht-gym-design', '/commercial-gym-design',
+        '/country-club-fitness-design', '/hospitality-gym-design'
+      ]);
+      if (isJournalArticle && destination.origin === window.location.origin && servicePaths.has(destinationPath)) {
+        window.peTrack('journal_service_click', {
+          journal_article: sourcePath,
+          service_page: destinationPath,
+          link_text: link.textContent.trim()
+        });
+      }
     }
   });
 })();

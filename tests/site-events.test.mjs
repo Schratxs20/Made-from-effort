@@ -5,9 +5,9 @@ import { runInNewContext } from 'node:vm';
 
 const script = readFileSync(new URL('../site-events.js', import.meta.url), 'utf8');
 
-function setup() {
+function setup(path = '/journal/example') {
   let onClick;
-  const window = { location: new URL('https://www.madefromeffort.com/journal/example') };
+  const window = { location: new URL(path, 'https://www.madefromeffort.com') };
   const document = {
     referrer: '',
     head: { appendChild() {} },
@@ -49,6 +49,39 @@ test('contact CTA tracking works for clean and legacy URLs', () => {
     site.click(href);
     assert.ok(site.events().includes('inquiry_cta_click'), href);
   }
+});
+
+test('Journal article clicks to internal design services have their own event', () => {
+  for (const href of [
+    '/residential-gym-design', '/yacht-gym-design.html',
+    '/commercial-gym-design', '/country-club-fitness-design',
+    '/hospitality-gym-design?source=journal',
+  ]) {
+    const site = setup('/journal/example.html');
+    site.click(href);
+    assert.deepEqual(site.events(), ['journal_service_click'], href);
+    const payload = site.window.dataLayer.find(item => item?.event === 'journal_service_click');
+    assert.equal(payload.journal_article, '/journal/example');
+    assert.equal(payload.service_page, new URL(href, site.window.location.href).pathname.replace(/\.html$/, ''));
+  }
+});
+
+test('Journal service clicks exclude listing, email, off-site, and non-service links', () => {
+  for (const [page, href] of [
+    ['/journal/', '/residential-gym-design'],
+    ['/journal/index.html', '/residential-gym-design'],
+    ['/journal/example-email.html', '/residential-gym-design'],
+    ['/residential-gym-design', '/yacht-gym-design'],
+    ['/journal/example', 'https://other.example/residential-gym-design'],
+    ['/journal/example', '/training'],
+  ]) {
+    const site = setup(page);
+    site.click(href);
+    assert.deepEqual(site.events(), [], `${page} → ${href}`);
+  }
+  const site = setup();
+  site.click('/contact?project=residence');
+  assert.deepEqual(site.events(), ['inquiry_cta_click']);
 });
 
 test('residential and Journal entry pages load the measurement script', () => {
