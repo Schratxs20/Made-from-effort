@@ -128,9 +128,15 @@
   </url>
   <url>
     <loc>https://www.madefromeffort.com/journal/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.madefromeffort.com/journal/the-first-minute-can-t-contradict-itself</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.madefromeffort.com/journal/training-needs-an-edge</loc>
