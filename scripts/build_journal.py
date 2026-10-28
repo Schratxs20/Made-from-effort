@@ -39,6 +39,7 @@ STATIC_PAGES = [
     ("", "2026-10-07", 1.0),  # homepage
     ("about.html", "2026-10-07", 0.7),
     ("privacy.html", "2026-10-07", 0.5),
+    ("llm-info.html", "2026-10-28", 0.5),
     ("training.html", "2026-10-15", 0.8),
     ("residential-gym-design.html", "2026-10-20", 0.9),
     ("yacht-gym-design.html", "2026-09-24", 0.9),
@@ -735,6 +736,10 @@ def main():
     with open(sitemap_path, "w", encoding="utf-8") as f:
         f.write(sitemap_xml)
     print(f"Built {sitemap_path}")
+
+    # Every publication keeps the public text alternatives and facts current.
+    from build_ai_assets import build as build_ai_assets
+    build_ai_assets()
 
 
 if __name__ == "__main__":

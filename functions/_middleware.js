@@ -1,40 +1,16 @@
-const HOME_MARKDOWN = `# Made From Effort Gym Design
-
-> Made From Effort is the website and Journal of Performance Edge Training + Gym Design, led by Scott Schratwieser, a gym designer and CSCS-certified performance professional based on Long Island, New York.
-
-Performance Edge plans private residential and estate gyms across Nassau and Suffolk counties, and accepts select yacht and marine, commercial, boutique-studio, and country-club fitness projects. Its design perspective connects the room, equipment, materials, and project decisions to real training use. Private and remote performance coaching is offered separately.
-
-## Services
-
-- [Residential and estate gym design](https://www.madefromeffort.com/residential-gym-design)
-- [Yacht and marine gym design](https://www.madefromeffort.com/yacht-gym-design)
-- [Commercial gym and boutique studio design](https://www.madefromeffort.com/commercial-gym-design)
-- [Country-club fitness design](https://www.madefromeffort.com/country-club-fitness-design)
-- [Private and remote coaching](https://www.madefromeffort.com/training)
-
-## Explore
-
-- [Jupiter Island estate gym](https://www.madefromeffort.com/project-jupiter-island) — a private gym designed as part of the home's architecture.
-- [Selected projects](https://www.madefromeffort.com/#portfolio)
-- [Journal](https://www.madefromeffort.com/journal/)
-- [About Scott Schratwieser](https://www.madefromeffort.com/about)
-- [Start a gym design project](https://www.madefromeffort.com/#inquiry-form)
-- [Sitemap](https://www.madefromeffort.com/sitemap.xml)
-- [Agent guidance](https://www.madefromeffort.com/agent-instructions.md)
-`;
+import { PAGE_MARKDOWN } from "../_ai-page-data.js";
 
 function preferredMarkdown(acceptHeader = "") {
   const ranges = acceptHeader.split(",").map((item) => {
     const [type, ...parameters] = item.trim().toLowerCase().split(";");
-    const qualityParameter = parameters.find((parameter) => parameter.trim().startsWith("q="));
-    const quality = qualityParameter ? Number(qualityParameter.trim().slice(2)) : 1;
-    return { type: type.trim(), quality: Number.isFinite(quality) ? quality : 0 };
+    const parameter = parameters.find((value) => value.trim().startsWith("q="));
+    const quality = parameter ? Number(parameter.trim().slice(2)) : 1;
+    return { type: type.trim(), quality: Number.isFinite(quality) && quality >= 0 && quality <= 1 ? quality : 0 };
   });
   const markdownQuality = Math.max(0, ...ranges.filter((range) => range.type === "text/markdown").map((range) => range.quality));
   const exactHtml = ranges.find((range) => range.type === "text/html");
   const wildcard = ranges.find((range) => range.type === "*/*");
-  const htmlQuality = exactHtml ? exactHtml.quality : (wildcard?.quality ?? 0);
-  return markdownQuality > 0 && markdownQuality > htmlQuality;
+  return markdownQuality > 0 && markdownQuality > (exactHtml ? exactHtml.quality : (wildcard?.quality ?? 0));
 }
 
 function addVaryAccept(headers) {
@@ -48,24 +24,23 @@ export async function onRequest(context) {
   const response = await context.next();
   const { pathname } = new URL(context.request.url);
   const wantsMarkdown = preferredMarkdown(context.request.headers.get("Accept"));
+  const safeMethod = ["GET", "HEAD"].includes(context.request.method);
   const headers = new Headers(response.headers);
-  addVaryAccept(headers);
+  const copy = Object.hasOwn(PAGE_MARKDOWN, pathname) ? PAGE_MARKDOWN[pathname] : null;
+  if (copy || response.status === 404) addVaryAccept(headers);
 
-  if (pathname === "/" && wantsMarkdown) {
-    headers.set("Content-Type", "text/markdown; charset=utf-8");
-    headers.delete("Content-Length");
-    return new Response(HOME_MARKDOWN, { status: response.status, headers });
+  let body;
+  if (copy && response.status === 200 && wantsMarkdown && safeMethod) {
+    body = copy;
+    headers.set("Link", "<https://www.madefromeffort.com" + pathname + ">; rel=\"canonical\"");
+  } else if (response.status === 404 && wantsMarkdown && safeMethod) {
+    body = "# Page not found\n\nThe requested page does not exist. Browse the [site index](https://www.madefromeffort.com/llms.txt), [sitemap](https://www.madefromeffort.com/sitemap.xml), or [contact page](https://www.madefromeffort.com/contact).\n";
   }
-
-  if (response.status === 404 && wantsMarkdown) {
+  if (body !== undefined) {
     headers.set("Content-Type", "text/markdown; charset=utf-8");
-    headers.delete("Content-Length");
-    return new Response(`# Page not found\n\nThe requested page does not exist. Browse the [site index](https://www.madefromeffort.com/llms.txt), [sitemap](https://www.madefromeffort.com/sitemap.xml), or [contact page](https://www.madefromeffort.com/contact).\n`, { status: 404, headers });
+    // HTML representation validators and encodings no longer apply.
+    for (const name of ["Content-Length", "Content-Encoding", "Content-Range", "ETag", "Last-Modified"]) headers.delete(name);
+    return new Response(context.request.method === "HEAD" ? null : body, { status: response.status, headers });
   }
-
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers
-  });
+  return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
 }

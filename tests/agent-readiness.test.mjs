@@ -4,9 +4,7 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 const read = (path) => readFile(new URL(path, root), "utf8");
-const middlewareSource = await read("functions/_middleware.js");
-const middlewareUrl = `data:text/javascript;base64,${Buffer.from(middlewareSource).toString("base64")}`;
-const { onRequest } = await import(middlewareUrl);
+const { onRequest } = await import(new URL("functions/_middleware.js", root));
 
 function visibleText(html) {
   return html
@@ -126,8 +124,8 @@ test("Accept: text/markdown returns Markdown at the homepage with Vary: Accept",
   const body = await response.text();
   assert.ok(body.length >= 500);
   assert.match(body, /^# Made From Effort Gym Design/m);
-  assert.match(body, /Jupiter Island estate gym/);
-  assert.match(body, /Start a gym design project/);
+  assert.match(body, /Jupiter Island/i);
+  assert.match(body, /Source: \[https:\/\/www\.madefromeffort\.com\//);
 });
 
 test("HTML remains HTML while varying on Accept", async () => {
@@ -159,4 +157,35 @@ test("Markdown is not selected when HTML has a higher Accept quality", async () 
   }) });
   assert.match(response.headers.get("Content-Type"), /^text\/html/);
   assert.equal(await response.text(), "<html>HTML</html>");
+});
+
+test("every public URL negotiates its own exact copy and preserves security headers", async () => {
+  const manifest = JSON.parse(await read("ai-pages/manifest.json"));
+  for (const page of manifest.pages) {
+    const response = await onRequest({
+      request: new Request(page.url, { headers: { Accept: "text/markdown", "User-Agent": "Googlebot" } }),
+      next: async () => new Response("<p>original HTML</p>", {headers: {
+        "Content-Type": "text/html", "Content-Security-Policy": "default-src 'self'",
+        "ETag": '"html-etag"', "Last-Modified": "Wed, 28 Oct 2026 00:00:00 GMT"
+      }})
+    });
+    assert.equal(await response.text(), await read(page.markdown.slice(1)), page.url);
+    assert.equal(response.headers.get("Content-Security-Policy"), "default-src 'self'");
+    assert.equal(response.headers.get("ETag"), null);
+    assert.equal(response.headers.get("Last-Modified"), null);
+    assert.match(response.headers.get("Link"), /rel="canonical"/);
+  }
+});
+
+test("gated pages, redirects, HEAD requests, and POST submissions retain correct behavior", async () => {
+  const gated = await onRequest({request: new Request("https://example.test/home-gym-guide", {headers:{Accept:"text/markdown"}}), next: async()=>new Response("<p>gated HTML</p>", {headers:{"Content-Type":"text/html"}})});
+  assert.equal(await gated.text(), "<p>gated HTML</p>");
+  const redirect = await onRequest({request: new Request("https://example.test/training", {headers:{Accept:"text/markdown"}}), next: async()=>new Response(null, {status:302,headers:{Location:"/training/"}})});
+  assert.equal(redirect.status, 302);
+  assert.equal(redirect.headers.get("Location"), "/training/");
+  const head = await onRequest({request: new Request("https://example.test/training", {method:"HEAD",headers:{Accept:"text/markdown"}}), next:async()=>new Response(null,{headers:{"Content-Type":"text/html"}})});
+  assert.equal(await head.text(), "");
+  assert.match(head.headers.get("Content-Type"), /text\/markdown/);
+  const post = await onRequest({request: new Request("https://example.test/contact", {method:"POST",body:"test",headers:{Accept:"text/markdown"}}), next:async()=>new Response("submission result")});
+  assert.equal(await post.text(), "submission result");
 });
