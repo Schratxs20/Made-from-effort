@@ -1,0 +1,12 @@
+/ai-pages/*
+  Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex
+
+/ai-pages/manifest.json
+  Content-Type: application/json; charset=utf-8
+
+/api/facts.json
+  Content-Type: application/json; charset=utf-8
+
+/_ai-page-data.js
+  X-Robots-Tag: noindex

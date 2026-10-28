@@ -1,0 +1,25 @@
+name: Public-page AI checklist
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: pip install -r requirements-build.txt
+      - name: Regenerate all public page alternatives
+        run: python scripts/build_ai_assets.py
+      - name: Check faithful extraction and every public page
+        run: python -m unittest discover -s tests
+      - name: Check content negotiation and inquiry measurement
+        run: node --test tests/*.test.mjs

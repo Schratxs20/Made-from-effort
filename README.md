@@ -1,5 +1,17 @@
 # Journal build system — Made From Effort
 
+## Required public-page checks
+
+All public pages follow [the four-part AI/search routine](docs/ai-search-checklist.md).
+Install `pip install -r requirements-build.txt`. The Journal build generates
+faithful Markdown copies, the public-page inventory, and sourced business facts.
+After static HTML edits, run `python scripts/build_ai_assets.py`. New static
+pages must be listed in `STATIC_PAGES` in `scripts/build_journal.py`. Cloudflare
+also runs the generator during every deployment, so new pages are covered.
+Weekly crawler checks and controlled title-test eligibility are part of the
+existing Friday search review. Current titles stay unchanged until measurable
+testing is justified. Business facts are public at `/llm-info` and `/api/facts.json`.
+
 ## What this is
 A lightweight static blog system for madefromeffort.com. Write posts in Markdown,
 push to GitHub, and everything else (HTML pages, index listing, RSS feed) builds

@@ -6,6 +6,12 @@ on:
     paths:
       - "posts/**"
       - "scripts/build_journal.py"
+      - "scripts/build_ai_assets.py"
+      - "requirements-build.txt"
+      - "config/business-facts.json"
+      - "*.html"
+      - "llms.txt"
+      - "sitemap.xml"
   workflow_dispatch: {}
 
 permissions:
@@ -24,7 +30,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install markdown pillow
+        run: pip install -r requirements-build.txt
 
       - name: Build journal (posts, index, RSS feed)
         run: python3 scripts/build_journal.py
@@ -36,6 +42,6 @@ jobs:
         run: |
           git config user.name "journal-bot"
           git config user.email "journal-bot@users.noreply.github.com"
-          git add journal/ sitemap.xml
+          git add journal/ sitemap.xml ai-pages/ api/facts.json llm-info.html _ai-page-data.js llms.txt '*.html'
           git diff --cached --quiet || git commit -m "Auto-build journal"
           git push

@@ -1,0 +1,434 @@
+{
+  "pages": [
+    {
+      "url": "https://www.madefromeffort.com/",
+      "source": "index.html",
+      "markdown": "/ai-pages/index.md",
+      "title": "Made From Effort Gym Design | Performance Edge",
+      "content_sha256": "a0b6a92814c4f88d75329a8122d1e6ec6ba2364df2aaccdf8c95ef2bef684022",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/about",
+      "source": "about.html",
+      "markdown": "/ai-pages/about.md",
+      "title": "About Scott Schratwieser | Made From Effort Gym Design",
+      "content_sha256": "77b8f56e32fbb3513833569c1ff1c5d19b9dfef7bb6cad4032ace5ac96214739",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/privacy",
+      "source": "privacy.html",
+      "markdown": "/ai-pages/privacy.md",
+      "title": "Privacy | Made From Effort",
+      "content_sha256": "3f5dda93344357a8294827fd04f70df4a42488e485f2adc442c01541bb526921",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/llm-info",
+      "source": "llm-info.html",
+      "markdown": "/ai-pages/llm-info.md",
+      "title": "Business Facts | Made From Effort",
+      "content_sha256": "27fd1b58a29e2f8099bc9dc68b3c8fc6a2bfe71ac100f294ee0f0805677d6997",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/training",
+      "source": "training.html",
+      "markdown": "/ai-pages/training.md",
+      "title": "Long Island Personal Training & Online Coaching | Performance Edge",
+      "content_sha256": "c09f123c1dc915c228e4b6f680b7271b4f477600a7b646780f4a1670839bb243",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/residential-gym-design",
+      "source": "residential-gym-design.html",
+      "markdown": "/ai-pages/residential-gym-design.md",
+      "title": "Long Island Home Gym Designer | Performance Edge",
+      "content_sha256": "ab8155f300df1d2e3cd24ee223827aa7e05526317588a31023752f917fafe8f0",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/yacht-gym-design",
+      "source": "yacht-gym-design.html",
+      "markdown": "/ai-pages/yacht-gym-design.md",
+      "title": "Yacht & Marine Gym Design | Performance Edge",
+      "content_sha256": "14bbc31bdce453bbac095f9b541ec87ae75a4e6ea2ff4e005e42f135f74367a8",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/commercial-gym-design",
+      "source": "commercial-gym-design.html",
+      "markdown": "/ai-pages/commercial-gym-design.md",
+      "title": "Commercial Gym & Boutique Studio Design | Performance Edge",
+      "content_sha256": "cbfc71af9ecb2766d19201eb6a68eff56e906bac16c724f61c1c1a03dc855f2e",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/hospitality-gym-design",
+      "source": "hospitality-gym-design.html",
+      "markdown": "/ai-pages/hospitality-gym-design.md",
+      "title": "Hotel & Hospitality Gym Design | Performance Edge",
+      "content_sha256": "b28380e32e1a37e42fab3796dd0e66fd2d5e1fed88ee1f2b08e8731ea4cf32d7",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/country-club-fitness-design",
+      "source": "country-club-fitness-design.html",
+      "markdown": "/ai-pages/country-club-fitness-design.md",
+      "title": "Country Club Fitness Facility Design | Performance Edge",
+      "content_sha256": "2d800886c50021bfdcec087eed9dcd68d1c3ce8cde5c0646d0c9e57841f58c8b",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/country-club-fitness-audit",
+      "source": "country-club-fitness-audit.html",
+      "markdown": "/ai-pages/country-club-fitness-audit.md",
+      "title": "Country Club Fitness Modernization Audit | Performance Edge",
+      "content_sha256": "a0f235fbf7d098fccf355a48e9ab2c9762df97c0ef0441b290e3ed1b23271455",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/contact",
+      "source": "contact.html",
+      "markdown": "/ai-pages/contact.md",
+      "title": "Start a Gym Design Project | Performance Edge",
+      "content_sha256": "10e956b92b7773d13b23044ed70405fd18596dfbf9af800d30a1e61132b87be8",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/estimator",
+      "source": "estimator.html",
+      "markdown": "/ai-pages/estimator.md",
+      "title": "Private Gym Investment Estimator | Made From Effort",
+      "content_sha256": "f7c36246b84cd718233b25a7c3ff3ba2456c81384775c0defa5e147157ac2181",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/project-jericho",
+      "source": "project-jericho.html",
+      "markdown": "/ai-pages/project-jericho.md",
+      "title": "Jericho Private Estate Gym + Sauna | Performance Edge",
+      "content_sha256": "61b80583b22bbaf61b3e02bd0371ab7736c7a355c4d98e96c44b47ab15858f5b",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/project-glen-cove",
+      "source": "project-glen-cove.html",
+      "markdown": "/ai-pages/project-glen-cove.md",
+      "title": "Glen Cove Residence Gym Design | Performance Edge",
+      "content_sha256": "5e0b7a06381d3c32b59e7f24961ea8db708f0f46daa5e9035b9ab0e03e156a35",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/project-sands-point",
+      "source": "project-sands-point.html",
+      "markdown": "/ai-pages/project-sands-point.md",
+      "title": "Sands Point Home Gym Design | Long Island, NY | Performance Edge",
+      "content_sha256": "71e14d2b944845f3ca5e53aaa8f88bcd61ce390b2dfd51939336a0a76b56cf78",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/project-caumsett",
+      "source": "project-caumsett.html",
+      "markdown": "/ai-pages/project-caumsett.md",
+      "title": "Lloyd Harbor Home Gym at Caumsett Summer Cottage | Performance Edge",
+      "content_sha256": "90ba9abf4769d6fc0fea3ff82163f5bd262f5482ad621c649caacb1e1ba2cf7e",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/project-oyster-bay-cove",
+      "source": "project-oyster-bay-cove.html",
+      "markdown": "/ai-pages/project-oyster-bay-cove.md",
+      "title": "Oyster Bay Cove Garage Gym Design | Performance Edge",
+      "content_sha256": "30dfe74a0b70ce2bdd570235e534d0d9aae993220cccb638dbad93ad725f5c28",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/project-dix-hills",
+      "source": "project-dix-hills.html",
+      "markdown": "/ai-pages/project-dix-hills.md",
+      "title": "Dix Hills Garage Gym | Home Gym Design | Performance Edge",
+      "content_sha256": "0c8ab5300b31df86b639bef9e2166d56748e1ef9243b573b4f0fc5994d5c5609",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/referral-partners",
+      "source": "referral-partners.html",
+      "markdown": "/ai-pages/referral-partners.md",
+      "title": "Referral Partners | Performance Edge Training + Gym Design",
+      "content_sha256": "fdb35520a8ad3cf7888d051ae6d9450fbf02b9acc8917fc3cd10d5b3f21fce47",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/project-jupiter-island",
+      "source": "project-jupiter-island.html",
+      "markdown": "/ai-pages/project-jupiter-island.md",
+      "title": "Jupiter Island Estate Gym | Performance Edge",
+      "content_sha256": "ca804f4ea3079325cffeb11c94263481d4ed1c4539185ac96a2cdb91732a7114",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/project-yacht",
+      "source": "project-yacht.html",
+      "markdown": "/ai-pages/project-yacht.md",
+      "title": "M/Y Canoe Canoe Gym — Custom Line 140 | Performance Edge",
+      "content_sha256": "01fcf614955f42262ec9d41afd5fad2e65a5ce35121450eb26156bb3998a6922",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/",
+      "source": "journal/index.html",
+      "markdown": "/ai-pages/journal.md",
+      "title": "Journal — Made From Effort",
+      "content_sha256": "4da5f7fc2b6b248b71f2af4e80fcf01b92ec1bc1549c8138f35efa4cc6b7e1bc",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/recovery-needs-its-own-room",
+      "source": "journal/recovery-needs-its-own-room.html",
+      "markdown": "/ai-pages/journal/recovery-needs-its-own-room.md",
+      "title": "Recovery Needs Its Own Room — Made From Effort",
+      "content_sha256": "cf8e186749d1b0195a4c303070814bb3aa02014d38a66236ee9c19c16b8c77d6",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/the-first-minute-can-t-contradict-itself",
+      "source": "journal/the-first-minute-can-t-contradict-itself.html",
+      "markdown": "/ai-pages/journal/the-first-minute-can-t-contradict-itself.md",
+      "title": "The First Minute Can't Contradict Itself — Made From Effort",
+      "content_sha256": "c96bcab99c87c0dab5cfb9f166a8e21082a29729b51aeb82886b64204cc1af13",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/training-needs-an-edge",
+      "source": "journal/training-needs-an-edge.html",
+      "markdown": "/ai-pages/journal/training-needs-an-edge.md",
+      "title": "Training Needs an Edge — Made From Effort",
+      "content_sha256": "00ff08e350ccfe29a069335353792149fa6768009bc20b2801f44833d349731d",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/the-best-gyms-keep-getting-redesigned",
+      "source": "journal/the-best-gyms-keep-getting-redesigned.html",
+      "markdown": "/ai-pages/journal/the-best-gyms-keep-getting-redesigned.md",
+      "title": "The Best Gyms Keep Getting Redesigned — Made From Effort",
+      "content_sha256": "f0fda22e252200debcf73f64abfd850f78140ce75b988d2ad9e133b5ca080819",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/the-pressure-comes-second",
+      "source": "journal/the-pressure-comes-second.html",
+      "markdown": "/ai-pages/journal/the-pressure-comes-second.md",
+      "title": "The Pressure Comes Second — Made From Effort",
+      "content_sha256": "8a5105c44794477950ded442b1e8203a288035db9faad7e581ece1d4318bccaa",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/the-only-thing-that-can-t-be-copied",
+      "source": "journal/the-only-thing-that-can-t-be-copied.html",
+      "markdown": "/ai-pages/journal/the-only-thing-that-can-t-be-copied.md",
+      "title": "The Only Thing That Can't Be Copied — Made From Effort",
+      "content_sha256": "163dcb87144b71c1ea26507659c1c4e10a50e84949e3b170b96c8917d5f9d768",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/a-gym-doesn-t-have-to-look-like-a-gym-to-train-like-one",
+      "source": "journal/a-gym-doesn-t-have-to-look-like-a-gym-to-train-like-one.html",
+      "markdown": "/ai-pages/journal/a-gym-doesn-t-have-to-look-like-a-gym-to-train-like-one.md",
+      "title": "A Gym Doesn't Have to Look Like a Gym to Train Like One — Made From Effort",
+      "content_sha256": "bbecfd725a714e7eaccbcc0dedf3647a7d5deaacf8e72c83d5e051e7b9992403",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/the-limit-is-the-method",
+      "source": "journal/the-limit-is-the-method.html",
+      "markdown": "/ai-pages/journal/the-limit-is-the-method.md",
+      "title": "The Limit Is the Method — Made From Effort",
+      "content_sha256": "27d0653994cd82b5593e6d565e3bbeba4a2343030f50df91861b4eee265524cf",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/you-don-t-need-more-hours-you-need-an-audit",
+      "source": "journal/you-don-t-need-more-hours-you-need-an-audit.html",
+      "markdown": "/ai-pages/journal/you-don-t-need-more-hours-you-need-an-audit.md",
+      "title": "You Don't Need More Hours. You Need an Audit. — Made From Effort",
+      "content_sha256": "8325607649c6fb046ae0272170ea2e9004cc18e71489ea80ea4477f229c589a1",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/a-gym-isn-t-a-pile-of-good-equipment",
+      "source": "journal/a-gym-isn-t-a-pile-of-good-equipment.html",
+      "markdown": "/ai-pages/journal/a-gym-isn-t-a-pile-of-good-equipment.md",
+      "title": "A Gym Isn't a Pile of Good Equipment — Made From Effort",
+      "content_sha256": "f5805920d1ac2bf0f068fa137e6ce925f760839d2752a935ee7eae54f570ec6a",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/the-restlessness-that-builds-something",
+      "source": "journal/the-restlessness-that-builds-something.html",
+      "markdown": "/ai-pages/journal/the-restlessness-that-builds-something.md",
+      "title": "The Restlessness That Builds Something — Made From Effort",
+      "content_sha256": "67f90def0d3503363e141c043fbe68ad58e16fde5f3f0324513a713873813b01",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/you-don-t-need-to-suffer-harder-you-need-a-better-plan",
+      "source": "journal/you-don-t-need-to-suffer-harder-you-need-a-better-plan.html",
+      "markdown": "/ai-pages/journal/you-don-t-need-to-suffer-harder-you-need-a-better-plan.md",
+      "title": "You Don't Need to Suffer Harder. You Need a Better Plan. — Made From Effort",
+      "content_sha256": "b9002d94edd141daf3a3358c0ea8b7692aee042abe547cb76d8d158f33346625",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/is-the-gym-really-about-the-room-rate",
+      "source": "journal/is-the-gym-really-about-the-room-rate.html",
+      "markdown": "/ai-pages/journal/is-the-gym-really-about-the-room-rate.md",
+      "title": "Is the Gym Really About the Room Rate? — Made From Effort",
+      "content_sha256": "01e319c194c0989c677c88a3b8f25951a94e8304c5282d39083df0b67e2df14d",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/is-waiting-for-the-perfect-plan-the-real-thing-holding-you-back",
+      "source": "journal/is-waiting-for-the-perfect-plan-the-real-thing-holding-you-back.html",
+      "markdown": "/ai-pages/journal/is-waiting-for-the-perfect-plan-the-real-thing-holding-you-back.md",
+      "title": "Is Waiting for the Perfect Plan the Real Thing Holding You Back? — Made From Effort",
+      "content_sha256": "733b7b4dfe96f5392266ec8e17755461530fcff726c9a9828fb1389912c900d6",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/you-re-not-out-of-progress-you-re-out-of-levers-you-ve-tried",
+      "source": "journal/you-re-not-out-of-progress-you-re-out-of-levers-you-ve-tried.html",
+      "markdown": "/ai-pages/journal/you-re-not-out-of-progress-you-re-out-of-levers-you-ve-tried.md",
+      "title": "You're Not Out of Progress. You're Out of Levers You've Tried. — Made From Effort",
+      "content_sha256": "21650c1204ee609149d2bc8d014200668e6440834b546714df7e86165f0f78b3",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/your-gym-doesn-t-need-to-impress-anyone-but-you",
+      "source": "journal/your-gym-doesn-t-need-to-impress-anyone-but-you.html",
+      "markdown": "/ai-pages/journal/your-gym-doesn-t-need-to-impress-anyone-but-you.md",
+      "title": "Your Gym Doesn't Need to Impress Anyone but You — Made From Effort",
+      "content_sha256": "8eaa1e3c10259915f2a8207d0aff8271f30e6ae9cc25ab2ac8e5901ad0ab1c19",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/the-program-isn-t-the-product",
+      "source": "journal/the-program-isn-t-the-product.html",
+      "markdown": "/ai-pages/journal/the-program-isn-t-the-product.md",
+      "title": "The Program Isn't the Product — Made From Effort",
+      "content_sha256": "c03fdb9bc21e2afdedf8bdd16a918fa4d3a4bf7a2867a98d9ce199d6de148b7c",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/nobody-asks-about-the-floor-until-it-s-already-a-problem",
+      "source": "journal/nobody-asks-about-the-floor-until-it-s-already-a-problem.html",
+      "markdown": "/ai-pages/journal/nobody-asks-about-the-floor-until-it-s-already-a-problem.md",
+      "title": "Nobody Asks About the Floor Until It's Already a Problem — Made From Effort",
+      "content_sha256": "300274e611a855aa7b214590a4ec76ddc6a8b40df11c0d514fd8492336b9682d",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/can-you-put-a-real-gym-on-a-yacht-without-it-taking-over-the-deck",
+      "source": "journal/can-you-put-a-real-gym-on-a-yacht-without-it-taking-over-the-deck.html",
+      "markdown": "/ai-pages/journal/can-you-put-a-real-gym-on-a-yacht-without-it-taking-over-the-deck.md",
+      "title": "Can You Put a Real Gym on a Yacht Without It Taking Over the Deck? — Made From Effort",
+      "content_sha256": "1241cc37cbd4325372f749e3515bb2a013c9ea6740b152b7ad9da5d35b5e6ff6",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/the-plan-you-follow-beats-the-plan-you-love",
+      "source": "journal/the-plan-you-follow-beats-the-plan-you-love.html",
+      "markdown": "/ai-pages/journal/the-plan-you-follow-beats-the-plan-you-love.md",
+      "title": "The Plan You Follow Beats the Plan You Love — Made From Effort",
+      "content_sha256": "ab6bb1c5bc06b28196a1b75a387f2fa34e52995430f1b08e9894bb8c07c01097",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    }
+  ]
+}
