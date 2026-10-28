@@ -10,13 +10,13 @@ from bs4 import BeautifulSoup
 
 
 def fetch(origin, path, accept):
-    with urlopen(Request(origin + path, headers={"Accept": accept}), timeout=30) as r:
+    with urlopen(Request(origin + path, headers={"Accept": accept, "User-Agent": "MadeFromEffort-PublicationCheck/1.0"}), timeout=30) as r:
         return r.status, r.headers, r.read().decode(), r.url
 
 
 def verify(origin):
     status, headers, raw, _ = fetch(origin, "/ai-pages/manifest.json", "application/json")
-    assert status == 200 and "application/json" in headers.get("Content-Type", "")
+    assert status == 200 and headers.get("Content-Type", "").split(";", 1)[0] == "application/json"
     pages = json.loads(raw)["pages"]
 
     def check(page):
