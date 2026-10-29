@@ -1,7 +1,7 @@
 ---
 title: The Best Gyms Keep Getting Redesigned
 date: 2026-10-19
-updated: 2026-10-20
+updated: 2026-10-29
 excerpt: Most people treat a gym design as a single finished decision. The rooms that actually hold up are the ones built to be changed — because the training inside them never stays the same.
 issue: "036"
 cta_text: Start a Project
@@ -27,9 +27,9 @@ One of the [residential gyms we've worked on in Sands Point](https://www.madefro
 
 This changes what actually matters at the design stage. The goal isn't picking the perfect equipment for right now — it's building a room where equipment can come and go without the whole layout falling apart. A few things make that possible:
 
-**Leave real circulation, not just enough for the current equipment.** A room specified tightly around exactly what's being installed today has no slack left when something new needs to fit in later. Extra floor space isn't waste. It's where next year's equipment goes.
+**Reserve expansion space separately from required circulation.** Accessible routes, access spaces, and equipment clearances have a purpose. Keep them available when planning future additions rather than treating them as spare equipment positions.
 
-**Keep the anchor points flexible.** Whatever's fixed to a wall or bolted to the floor is the hardest thing to move later, so it deserves the most scrutiny up front — not just "does this work for the current program" but "does this still make sense if the program changes in two years."
+**Plan changes without compromising required anchoring.** Before adding or moving equipment, check the replacement model's instructions, loads, and fixing details with the responsible installer and technical team. Flexibility does not mean leaving required anchors out. [NSCA equipment setup standard](https://www.nsca.com/contentassets/02c840516b524d29917677a7dcdcbf6b/nsca_strength_and_conditioning_professional_standards_and_guidelines.pdf).
 
 **Plan storage for equipment that doesn't exist yet.** Every room we've seen evolve well had slack storage capacity nobody was using on day one. The rooms that get cramped fast are the ones where every inch of storage was already spoken for at the ribbon-cutting.
 
@@ -40,8 +40,10 @@ This isn't only true for a brand-new gym. A training room built inside an existi
 **What this means if you're planning a room, whether it's new construction or an existing space:**
 
 1. **Design for the training you'll be doing in three years, not just the training you're doing now.** The program you're starting with isn't the program you'll finish with.
-2. **Leave real slack in floor space and storage.** A room with no give in it treats every future change as a renovation instead of an adjustment.
-3. **Scrutinize anything permanent harder than anything movable.** What's bolted down is what locks in a decision — give it the most thought, not the least.
+2. **Leave expansion capacity in floor space and storage.** Keep it separate from required circulation, access, and operating clearances.
+3. **Review each equipment change before use.** Check layout, loads, access, installation, and required anchoring again. The original review does not automatically approve a different machine or position.
 4. **An evolving room isn't a sign the first design was wrong.** It's a sign the room is still doing its job.
 
 The gyms that stay useful for a decade aren't the ones that got the layout perfectly right on the first try. They're the ones designed to keep being right as everything inside them keeps changing.
+
+For covered facilities, preserve the [accessible route](https://www.access-board.gov/ada/chapter/ch02/) and [equipment access space](https://www.access-board.gov/ada/chapter/ch10/#1004-exercise-machines-and-equipment) through layout changes. Establish applicability with the responsible project team; a private home and a public-facing facility may have different requirements. [ADA scope guidance](https://www.access-board.gov/ada/guides/chapter-1-using-the-ada-standards/).

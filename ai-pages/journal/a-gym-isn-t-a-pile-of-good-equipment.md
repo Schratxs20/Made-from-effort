@@ -36,9 +36,13 @@ It's not a style choice. It means every piece earns its spot based on what it do
 
 **The anchor piece gets placed first**, and everything else gets arranged around the clearance it needs — not the other way around.
 
-**Equipment that can share a footprint gets planned to share it.** A bench that tucks away, storage built into the rack itself, anything doing double duty buys back floor space a standalone piece would've eaten permanently.
+**Shared space needs an operating plan.** Show where equipment sits during use and where it goes afterward. Stored equipment must not obstruct required routes or access; active stations must retain manufacturer-required clearances. Where ADA provisions apply, check the accessible route and the space for transfer or seated use. Permitted overlap of some accessibility spaces does not authorize an obstruction in a manufacturer's safety zone. [ADA Sections 206.2.13 and 236](https://www.access-board.gov/ada/chapter/ch02/); [Section 1004](https://www.access-board.gov/ada/chapter/ch10/#1004-exercise-machines-and-equipment).
 
 **The walking path gets decided before the equipment does.** If you can't move from one station to the next without turning sideways, the room was planned backwards — equipment first, person second.
+
+For coached sessions, show the trainer's sightline and access for assistance as well as the client's movement. Those are practical supervision considerations in the [NSCA Professional Standards and Guidelines](https://www.nsca.com/contentassets/02c840516b524d29917677a7dcdcbf6b/nsca_strength_and_conditioning_professional_standards_and_guidelines.pdf). A circulation line on a plan is not the whole review.
+
+ADA applicability depends on the facility's use. A solely private home is generally outside its coverage, while inclusive access can still be part of the brief. [U.S. Access Board scope guidance](https://www.access-board.gov/ada/guides/chapter-1-using-the-ada-standards/).
 
 ## 03 / Why This Gets Skipped
 
