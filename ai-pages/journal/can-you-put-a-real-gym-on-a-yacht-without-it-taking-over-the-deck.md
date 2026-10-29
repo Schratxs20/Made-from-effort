@@ -34,18 +34,18 @@ I'd designed for how the space would be used, but not for everything it would be
 
 ## 03 / The Fix
 
-Build the equipment into the furniture instead of placing furniture around the equipment. The rack, the bench, the storage — all of it now lives inside custom-built outdoor couches and loungers. Train in the morning; by evening it's a couch that seats three or four with drinks on it. Nobody at cocktail hour would guess what's underneath.
+The revised concept placed the strength collection inside convertible furniture so the deck could return to hospitality. Performance Edge originated and directed the concept, performance brief, and integration strategy. Paragon Studio developed the furniture design, engineering, drawer integration, equipment fitment, proprietary storage solutions, and fabrication with the vessel team. The couch incorporates dedicated storage; the wider training arrangement includes other equipment. [See the Canoe Canoe project and collaborator credits](https://www.madefromeffort.com/project-yacht).
 
 ![The actual couch — full dumbbell set, TRX bands, and a kettlebell inside, cushions on top](https://www.madefromeffort.com/journal/assets/yacht-gym-that-disappears-couch.jpg)
 
-And because nothing needs to be moved, stored, or staged, crew never touch it. No setting up equipment before a session, no breaking it down and stowing it after, no gym gear competing with everything else on their list. It's ready, or it's hidden. There's no in-between state for anyone to manage.
+The design gives equipment a place to return between sessions. It still needs to be retrieved, put away, cleaned, and checked. Those tasks belong in the operating plan, with responsibility agreed between the owner and vessel team.
 
 **What this means if you're planning a gym for your own yacht:**
 
 1. **Ask what else the space needs to be, and at what hour.** A dedicated gym room below deck can just be a gym. A rooftop, a beach club, or any multi-use deck can't — design for the second use before you spec a single piece of equipment.
-2. **Weight and placement are a naval architecture question before they're a fitness question.** Equipment on an upper deck affects stability and structural load in ways a home gym never has to consider — this gets decided with your builder or naval architect, not after equipment is already ordered.
-3. **Salt air changes what "good equipment" means.** Corrosion-resistant frames, marine-grade upholstery, and finishes rated for humidity and salt exposure aren't optional upgrades on a yacht — standard commercial equipment will corrode faster than you'd expect.
-4. **It should reduce crew workload, not add to it.** Portable equipment means someone on crew is setting it up and breaking it down around every session and every guest changeover. Built-in equipment removes that job entirely.
+2. **Weight and placement are a naval architecture question before they're a fitness question.** Residential gyms also need appropriate structural assessment. A yacht adds vessel-specific stability, load distribution, and fastening questions for the naval architect and responsible technical team to resolve before equipment is ordered.
+3. **Salt air changes what "good equipment" means.** Confirm the selected products' suitability, exposure limits, care instructions, and warranties for their actual onboard location. A commercial-use label alone does not establish marine suitability.
+4. **It should reduce crew workload, not add to it.** Plan retrieval, reset, inspection, and cleaning with the vessel team. Integrated storage can organize that work; it does not eliminate it.
 5. **If it can't disappear when it's not in use, it's not finished** — for any shared deck space, that's the actual test, not how it photographs mid-workout.
 
 None of this is complicated. It's just not what gets pitched, because "equipment package" sells easier than "a space that has to do two jobs at once."
@@ -56,19 +56,23 @@ But if you want the gym to actually get used and never get in the way, this is t
 
 **How much deck space does a real yacht gym need?**
 
-Enough for one full range-of-motion lift — typically a 6x8ft footprint minimum — plus clearance to move around it. On a shared deck, plan the storage or disappearing mechanism into that footprint from day one, not as an afterthought.
+There is no universal minimum footprint. The space depends on the equipment, movements, and users. Draw equipment in its operating position, include manufacturer-required clearances, and show storage opening, circulation, and the transition back to hospitality. Confirm loads, fastening, access, and marine suitability with the vessel's responsible technical team before ordering.
 
 **Can gym equipment go on an upper deck without affecting the yacht's balance?**
 
-It can, but weight and placement need sign-off from the naval architect or builder before equipment is chosen. This is a structural conversation, not just a design one.
+That requires a vessel-specific assessment of weight, placement, structural loads, stability, and fastening by the responsible naval architect and technical team. A layout alone cannot establish suitability.
 
 **Does regular home gym equipment work on a yacht?**
 
-Not well for long. Salt air and humidity accelerate corrosion on standard frames and upholstery. Marine-rated equipment costs more upfront and outlasts standard gear by years.
+Check the exact model and installation conditions with its manufacturer and the vessel team. Confirm environmental limits, care, storage, fastening, and warranty coverage. Neither a home-use nor commercial-use label establishes suitability for a yacht, and a service-life comparison needs product-specific evidence.
 
 **Does the crew need to set up the gym before guests use it?**
 
-Not if it's designed correctly. Portable equipment requires crew to deploy and stow it around every use. Equipment built into the furniture itself needs none of that — it's either in active use or completely out of sight, with nobody's job attached to the transition.
+That depends on the equipment, users, and vessel's operating plan. Agree who retrieves and returns equipment, checks it, and prepares the area. Integrated storage can make the sequence clearer, but it does not prove that no setup or crew involvement is needed.
+
+## Planning reference
+
+[NSCA Standard 4.1](https://www.nsca.com/contentassets/02c840516b524d29917677a7dcdcbf6b/nsca_strength_and_conditioning_professional_standards_and_guidelines.pdf) supports following manufacturer setup instructions. Marine engineering and any applicable vessel accessibility requirements need separate project-specific review; this article is not a vessel compliance assessment.
 
 Related service: [Yacht and marine gym design](https://www.madefromeffort.com/yacht-gym-design)
 

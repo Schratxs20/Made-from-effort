@@ -1,6 +1,6 @@
 ---
 title: A Gym Doesn't Have to Look Like a Gym to Train Like One
-updated: 2026-10-20
+updated: 2026-10-29
 date: 2026-10-12
 excerpt: Most gyms get designed by starting with the equipment and working outward — which is how you end up with a room that was dropped into a house instead of grown out of it. Start with what the space already is instead.
 issue: "033"
@@ -23,9 +23,13 @@ This is the work behind [residential gym design](https://www.madefromeffort.com/
 
 ## 01 / The Trade Nobody Has to Make
 
-The assumption is that you choose: either the space keeps its character and the training gets compromised, or you get a real gym and the character gets sacrificed. That trade is almost never actually necessary.
+The assumption is that you choose: either the space keeps its character and the training gets compromised, or you get a real gym and the character gets sacrificed. I would test whether the two can work together before accepting that trade. The room's physical and technical limits still matter.
 
-Equipment doesn't have to dominate a room to be effective in it. A rack integrated into the existing structure, finishes chosen to sit alongside original materials instead of fighting them, a layout that respects the room's proportions instead of maximizing floor coverage — none of that reduces what the space can do. It just means the performance capacity gets built around what's already there instead of erasing it first.
+Equipment doesn't have to dominate a room to be effective in it. Finishes can sit alongside original materials, and a layout can respect the room's proportions while accommodating the intended training.
+
+Where equipment attaches to an existing wall, floor, or beam, confirm the substrate, loads, and fixing requirements with the responsible technical professionals and the equipment manufacturer. Preserve working height, operating clearances, and the users' access needs as part of that review. [NSCA equipment setup guidance](https://www.nsca.com/contentassets/02c840516b524d29917677a7dcdcbf6b/nsca_strength_and_conditioning_professional_standards_and_guidelines.pdf).
+
+The room may require a different equipment choice or a narrower training brief. Preserving its character is a design goal, not evidence that every activity will fit.
 
 ## 02 / Why This Gets Skipped Anyway
 

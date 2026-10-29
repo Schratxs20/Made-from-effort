@@ -75,7 +75,7 @@ Grinding harder feels like progress — right up until it isn't. The clients who
 
 Is the Gym Really About the Room Rate?
 
-Every developer asks what a gym adds to the rate or the rent roll. That's the wrong question — the real return is differentiation and retention, and it rarely shows up where you're looking for it.](https://www.madefromeffort.com/journal/is-the-gym-really-about-the-room-rate)
+A fitness amenity may influence how guests and residents value a property. Start with usefulness, then measure the response rather than promising a rate or retention premium.](https://www.madefromeffort.com/journal/is-the-gym-really-about-the-room-rate)
 [September 25, 2026 · Consistency
 
 Is Waiting for the Perfect Plan the Real Thing Holding You Back?
@@ -100,7 +100,7 @@ Clients think what I hand them is the workout. It's not. The workout is what's l
 
 Nobody Asks About the Floor Until It's Already a Problem
 
-Clients spend an hour on equipment finishes and color. Almost nobody asks what's underneath it — and it's the one decision in the whole room you can't undo later.](https://www.madefromeffort.com/journal/nobody-asks-about-the-floor-until-it-s-already-a-problem)
+Flooring needs to be planned with the equipment and supporting construction. Replacing it later can mean moving equipment and revisiting the room's details.](https://www.madefromeffort.com/journal/nobody-asks-about-the-floor-until-it-s-already-a-problem)
 [September 11, 2026 · Gym Design
 
 Can You Put a Real Gym on a Yacht Without It Taking Over the Deck?
