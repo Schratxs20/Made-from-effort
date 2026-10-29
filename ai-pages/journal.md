@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[October 29, 2026 · Consistency
+
+The Day That Matters Was Decided Weeks Ago
+
+People treat the big day — the event, the test, the session that counts — as the thing that determines the outcome. It almost never is. By the time it arrives, most of the outcome has already been decided.](https://www.madefromeffort.com/journal/the-day-that-matters-was-decided-weeks-ago)
 [October 26, 2026 · Gym Design
 
 Recovery Needs Its Own Room

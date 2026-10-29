@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "4da5f7fc2b6b248b71f2af4e80fcf01b92ec1bc1549c8138f35efa4cc6b7e1bc",
+      "content_sha256": "dc5ed4b37de80378985c35304a0a684aa58dc59352305095d562af9172d36b38",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/the-day-that-matters-was-decided-weeks-ago",
+      "source": "journal/the-day-that-matters-was-decided-weeks-ago.html",
+      "markdown": "/ai-pages/journal/the-day-that-matters-was-decided-weeks-ago.md",
+      "title": "The Day That Matters Was Decided Weeks Ago — Made From Effort",
+      "content_sha256": "047b6e6bac2c124a990d4f4b139227b6e0b30c630ffb1162f12bf1ea197ee168",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"
