@@ -6,7 +6,7 @@ Journal
 
 # Is the Gym Really About the Room Rate?
 
-September 28, 2026 · Gym Design
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published September 28, 2026 · Updated October 29, 2026
 
 Every hotel GM and every multifamily developer eventually asks me a version of the same question: does spending more on the gym let us charge more for the room, or the unit?
 

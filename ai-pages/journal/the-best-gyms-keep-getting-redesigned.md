@@ -6,7 +6,7 @@ Journal
 
 # The Best Gyms Keep Getting Redesigned
 
-October 19, 2026 · Gym Design
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published October 19, 2026 · Updated October 29, 2026
 
 Almost every client wants the same thing out of a design process: one final layout, locked in, done. Pick the equipment, place it, never touch it again. It's a reasonable instinct — nobody wants to pay for a room twice. It's also not how the gyms that actually keep getting used tend to work.
 

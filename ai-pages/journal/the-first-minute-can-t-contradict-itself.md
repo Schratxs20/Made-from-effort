@@ -6,7 +6,7 @@ Journal
 
 # The First Minute Can't Contradict Itself
 
-October 25, 2026 · Mindset
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published October 25, 2026
 
 A new client's first minute is usually treated as one thing: an introduction. It's actually three separate things happening at once — what they're looking at, what they're hearing, and anything they're reading, whether that's an intake form, a program outline, or a text from the night before. Most of the time nobody designs those three to say the same thing. They just happen simultaneously and hope they line up.
 

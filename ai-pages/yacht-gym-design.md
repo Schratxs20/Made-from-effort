@@ -154,7 +154,7 @@ Before equipment is ordered—and ideally while structure, interiors, electrical
 
 Can the gym share another function?
 
-Yes. Canoe Canoe demonstrates how training equipment can be integrated into bespoke furniture so a deck can change functions without daily equipment handling.
+Yes. Canoe Canoe demonstrates how training equipment can be integrated into bespoke furniture to support different uses of the deck. Movable pieces still need a practical handling and storage plan with the crew.
 
 Do you work with the existing yacht team?
 

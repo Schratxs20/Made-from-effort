@@ -107,3 +107,18 @@ Primary references, checked October 28, 2026:
 - https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/
 - https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/
 - https://developers.cloudflare.com/ai-crawl-control/reference/graphql-api/
+
+## Evidence-based answer visibility standard (October 29, 2026)
+
+Apply `research/aeo-2026-10-29/README.md` to new and revised public pages.
+Keep visible author identity and structured data aligned. Journal `updated` is an
+editorial date, never a build timestamp. Related reading must resolve to live
+canonical pages, not drafts or future releases. Service answers should explain
+scope, fit, useful inputs and next steps without inventing claims. Preserve the
+owner's educational voice and cite primary evidence at the relevant claim.
+
+In the existing Friday review, inspect GSC generative-AI inclusion/report when
+available and Bing AI Performance alongside indexing. Record their actual windows
+and availability; do not sum overlapping search/AI totals or equate citations,
+crawler requests, visits and leads. Track the October 29 robots redirect incident
+until GSC shows a successful fetch. No duplicate monitoring job is required.

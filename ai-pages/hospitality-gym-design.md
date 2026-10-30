@@ -80,6 +80,26 @@ We are a fit for hotel owners and operators, development teams, and their archit
 
 Licensed architectural, engineering, accessibility, and code decisions remain with the appropriate project professionals. Performance Edge contributes the fitness-programming, equipment, and use perspective to that wider team.
 
+Common Questions
+
+## Before We *Plan the Room.*
+
+When should a gym specialist join the project?
+
+Before the room layout and equipment package are fixed. That leaves time to coordinate guest use, circulation, storage, maintenance access, and equipment requirements with the architect and operator.
+
+What should we bring to the first conversation?
+
+A room plan or dimensions, the property location, project stage, expected users, and the people responsible for design and operations. Include any existing equipment list so we can understand what is already decided.
+
+Does gym planning include accessibility and engineering approval?
+
+Performance Edge contributes fitness-use, layout, and equipment planning. The project's licensed professionals determine applicable accessibility, building-code, structural, and engineering requirements. Those decisions need coordination before equipment is ordered.
+
+Can we review a completed hotel project?
+
+We are accepting select hospitality projects and do not currently present a completed hotel case study. You can review our [residential and yacht portfolio](https://www.madefromeffort.com/#portfolio) for examples of Scott's planning approach, with each project's status identified.
+
 Start a Conversation
 
 ## Plan the Gym Before *the Room Is Locked.*

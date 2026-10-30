@@ -6,7 +6,7 @@ Journal
 
 # A Gym Isn't a Pile of Good Equipment
 
-October 5, 2026 · Gym Design
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published October 5, 2026 · Updated October 29, 2026
 
 Most of the "bad gym" calls I get don't start with bad equipment. They start with good equipment that was bought one piece at a time.
 

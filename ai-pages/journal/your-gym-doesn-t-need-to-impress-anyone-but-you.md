@@ -6,7 +6,7 @@ Journal
 
 # Your Gym Doesn't Need to Impress Anyone but You
 
-September 21, 2026 · Gym Design
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published September 21, 2026 · Updated October 29, 2026
 
 I hear the same worry from almost every client at the start of a project: "What will people think when they see it?"
 

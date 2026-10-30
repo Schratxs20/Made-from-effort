@@ -6,7 +6,7 @@ Journal
 
 # The Only Thing That Can't Be Copied
 
-October 15, 2026 · Mindset
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published October 15, 2026
 
 Every few months a client shows up holding someone else's program. A split they found online. Something a friend swears by. A PDF from someone who got visibly great results running it. They want to know if they should just run it too.
 

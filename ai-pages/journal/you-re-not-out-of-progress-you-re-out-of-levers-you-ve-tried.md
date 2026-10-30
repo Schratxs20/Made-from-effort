@@ -6,7 +6,7 @@ Journal
 
 # You're Not Out of Progress. You're Out of Levers You've Tried.
 
-September 24, 2026 · Mindset
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published September 24, 2026
 
 Everyone eventually hits a point where it feels like there's nothing left.
 

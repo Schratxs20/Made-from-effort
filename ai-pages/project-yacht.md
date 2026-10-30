@@ -159,7 +159,7 @@ The furniture was matched to the yacht's existing design language using Iroko jo
 
 The Problem
 
-Weight and placement on an upper deck affect stability and structural load in ways a home gym never has to consider — this isn't a decision a designer can make alone after equipment is already ordered.
+Weight and placement on an upper deck affect stability and structural load alongside marine-specific stability considerations — this isn't a decision a designer can make alone after equipment is already ordered.
 
 The Fix
 

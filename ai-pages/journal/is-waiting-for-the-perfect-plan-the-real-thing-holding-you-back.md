@@ -6,7 +6,7 @@ Journal
 
 # Is Waiting for the Perfect Plan the Real Thing Holding You Back?
 
-September 25, 2026 · Consistency
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published September 25, 2026
 
 I've noticed a pattern in people who never start.
 

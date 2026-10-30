@@ -6,7 +6,7 @@ Journal
 
 # Training Needs an Edge
 
-October 22, 2026 · Mindset
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published October 22, 2026
 
 Ask most people why a session fell apart and they'll point at the clock — not enough time, got interrupted, had to cut it short. Almost nobody points at the real cause: the session never had a real edge to begin with. It was something squeezed into whatever gap showed up that day, in whatever space was available, with everything else still running in the background.
 

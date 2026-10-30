@@ -6,7 +6,7 @@ Journal
 
 # The Day That Matters Was Decided Weeks Ago
 
-October 29, 2026 · Consistency
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published October 29, 2026
 
 Ask someone how they're preparing for something that actually matters — a race, a test, a session they've been building toward — and most of the answer is about the day itself. What they'll eat that morning, what they'll wear, what time they'll show up. Almost nobody leads with the weeks before it, even though that's where the outcome actually gets decided.
 

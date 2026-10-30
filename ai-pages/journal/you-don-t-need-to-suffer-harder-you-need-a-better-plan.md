@@ -6,7 +6,7 @@ Journal
 
 # You Don't Need to Suffer Harder. You Need a Better Plan.
 
-October 1, 2026 · Mindset
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published October 1, 2026
 
 Every time someone commits to a real goal — a race, a transformation, a number on the bar they've never hit — the instinct is the same: go harder, starting now.
 

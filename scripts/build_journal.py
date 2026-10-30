@@ -37,14 +37,14 @@ ASSETS_DIR = "assets"
 # to the page's content update, not the date the Journal happens to be rebuilt.
 STATIC_PAGES = [
     ("", "2026-10-07", 1.0),  # homepage
-    ("about.html", "2026-10-07", 0.7),
+    ("about.html", "2026-10-29", 0.7),
     ("privacy.html", "2026-10-07", 0.5),
     ("llm-info.html", "2026-10-28", 0.5),
-    ("training.html", "2026-10-15", 0.8),
+    ("training.html", "2026-10-29", 0.8),
     ("residential-gym-design.html", "2026-10-20", 0.9),
-    ("yacht-gym-design.html", "2026-09-24", 0.9),
+    ("yacht-gym-design.html", "2026-10-29", 0.9),
     ("commercial-gym-design.html", "2026-09-24", 0.8),
-    ("hospitality-gym-design.html", "2026-10-15", 0.8),
+    ("hospitality-gym-design.html", "2026-10-29", 0.8),
     ("country-club-fitness-design.html", "2026-09-24", 0.8),
     ("country-club-fitness-audit.html", "2026-09-24", 0.8),
     ("contact.html", "2026-09-24", 0.7),
@@ -57,7 +57,7 @@ STATIC_PAGES = [
     ("project-dix-hills.html", "2026-10-20", 0.7),
     ("referral-partners.html", "2026-10-20", 0.6),
     ("project-jupiter-island.html", "2026-10-20", 0.6),
-    ("project-yacht.html", "2026-10-20", 0.6),
+    ("project-yacht.html", "2026-10-29", 0.6),
 ]
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -214,7 +214,7 @@ def render_stat_bar_image(stats, out_path):
 
 
 def render_schema(post, canonical_url):
-    """Article + (if present) FAQPage JSON-LD — every post, no exceptions."""
+    """Describe visible authorship and actual editorial dates, never build time."""
     article = {
         "@context": "https://schema.org",
         "@type": "Article",
@@ -222,9 +222,14 @@ def render_schema(post, canonical_url):
         "description": post.get("excerpt", ""),
         "datePublished": post["date"],
         "url": canonical_url,
-        "author": {"@type": "Person", "name": "Scott Schratwieser"},
-        "publisher": {"@type": "Organization", "name": SITE_TITLE, "url": SITE_URL},
+        "author": {"@type": "Person", "@id": f"{SITE_URL}/#scott-schratwieser", "name": "Scott Schratwieser", "url": f"{SITE_URL}/about"},
+        "mainEntityOfPage": canonical_url,
+        "publisher": {"@type": "Organization", "@id": f"{SITE_URL}/#business", "name": "Performance Edge Training + Gym Design", "url": SITE_URL},
     }
+    if post.get("updated"):
+        article["dateModified"] = post["updated"]
+    if post.get("image"):
+        article["image"] = post["image"]
     blocks = [f'<script type="application/ld+json">{json.dumps(article)}</script>']
 
     if post.get("faq"):
@@ -344,7 +349,34 @@ def render_related_service(post):
     return f'\n      <p class="related-service">Related service: <a href="{SITE_URL}{path}">{html.escape(label)}</a></p>'
 
 
-def render_post_page(post):
+def render_post_metadata(post):
+    published = f'<time datetime="{html.escape(post["date"])}">{format_date_long(post["date"])}</time>'
+    updated = ""
+    if post.get("updated"):
+        if datetime.strptime(post["updated"], "%Y-%m-%d") < datetime.strptime(post["date"], "%Y-%m-%d"):
+            raise ValueError(f"{post['slug']}: update precedes publication")
+        updated = f' &middot; Updated <time datetime="{html.escape(post["updated"])}">{format_date_long(post["updated"])}</time>'
+    return f'By <a rel="author" href="{SITE_URL}/about">Scott Schratwieser</a> &middot; Published {published}{updated}'
+
+
+def render_related_reading(post, published_posts):
+    # Restrict suggestions to live articles addressing the same service or category.
+    service = post.get("related_service_path")
+    candidates = [p for p in published_posts if p["slug"] != post["slug"] and
+                  (p.get("related_service_path") == service if service else
+                   p.get("category") == post.get("category"))]
+    if not candidates:
+        return ""
+    # Neighbouring articles within the topic keep the whole collection connected.
+    group = [p for p in published_posts if p["slug"] == post["slug"] or p in candidates]
+    if post in group:
+        index = group.index(post)
+        candidates = [group[(index + offset) % len(group)] for offset in range(1, min(3, len(group)))]
+    links = "".join(f'<li><a href="{SITE_URL}/journal/{p["slug"]}">{html.escape(p["title"])}</a></li>' for p in candidates[:2])
+    return f'<nav class="related-reading" aria-label="Related articles"><h2>Keep reading</h2><ul>{links}</ul></nav>'
+
+
+def render_post_page(post, published_posts=()):
     canonical = f"{SITE_URL}/journal/{post['slug']}"
     og_image = post.get("image") or DEFAULT_OG_IMAGE
     return f"""<!DOCTYPE html>
@@ -381,10 +413,10 @@ def render_post_page(post):
     {'<img class="photo" src="' + post['image'] + '" alt="' + html.escape(post['title']) + '">' if post.get('image') else ''}
     <div class="eyebrow">Journal</div>
     <h1 class="headline">{html.escape(post['title'])}</h1>
-    <div class="meta-row">{format_date_long(post['date'])}{f' &middot; {html.escape(post["category"])}' if post.get('category') else ''}</div>
+    <div class="meta-row">{render_post_metadata(post)}</div>
     <div class="body-copy">
       {render_stat_bar_html(post)}
-      {post['body_html']}{render_related_service(post)}
+      {post['body_html']}{render_related_service(post)}{render_related_reading(post, published_posts)}
     </div>
     <div class="cta-wrap">
       <a href="{resolve_cta_link(post)}" class="cta">{html.escape(post.get('cta_text', 'Start a Project'))}</a>
@@ -709,7 +741,7 @@ def main():
     for p in posts:
         link = f"{SITE_URL}/{OUTPUT_DIR}/{p['slug']}"
 
-        page_html = render_post_page(p)
+        page_html = render_post_page(p, published_posts)
         out_path = os.path.join(out_dir, f"{p['slug']}.html")
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(page_html)

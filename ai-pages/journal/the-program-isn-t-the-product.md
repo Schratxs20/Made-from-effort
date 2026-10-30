@@ -6,7 +6,7 @@ Journal
 
 # The Program Isn't the Product
 
-September 17, 2026 · Mindset
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published September 17, 2026
 
 Every new client assumes the program is the thing. I write it, they follow it, results happen. That's the transaction as they see it.
 

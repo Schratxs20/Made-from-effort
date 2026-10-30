@@ -6,7 +6,7 @@ Journal
 
 # You Don't Need More Hours. You Need an Audit.
 
-October 8, 2026 · Mindset
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published October 8, 2026
 
 Almost every client who feels stuck says some version of the same thing: "I just need to find more time" or "I need to want it more." As if the fix is adding something that isn't there yet.
 

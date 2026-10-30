@@ -53,6 +53,32 @@ Remote coaching through individual programming, video form review, practical nut
 - Weekly check-in calls or messages
 - Available worldwide
 
+Before you start
+
+## Questions about working together
+
+### Where do in-person sessions happen?
+
+I train clients on Long Island, New York, at their homes or at a facility I use. We confirm the location, available equipment, schedule, and fit during the consultation.
+
+### Is online coaching the same as a live video workout?
+
+Online coaching includes individual programming, video form review, and check-ins. Live virtual sessions are a separate scheduling question; tell me if you need real-time coaching so we can agree on the format before you start.
+
+### What if I know what to do but struggle to stay consistent?
+
+That is part of the coaching conversation. I use motivational interviewing techniques to explore what matters to you, what gets in the way, and which change you are ready to try. We can work on a manageable training or nutrition habit and review how it fits your actual week.
+
+### What does nutrition coaching cover?
+
+The focus is practical nutrition habits and behavior change alongside training. We discuss routines and follow-through. Medical nutrition treatment and condition-specific diets belong with an appropriately qualified healthcare professional.
+
+### Can you help me plan the gym as well?
+
+Yes. [Residential gym design](https://www.madefromeffort.com/residential-gym-design) is a separate service. We can discuss the room, equipment, and layout alongside how you intend to train, then define the coaching and design scopes separately.
+
+Read more: [The Pressure Comes Second](https://www.madefromeffort.com/journal/the-pressure-comes-second) and [The Plan You Follow Beats the Plan You Love](https://www.madefromeffort.com/journal/the-plan-you-follow-beats-the-plan-you-love).
+
 Get Started
 
 ## Book a *Consultation.*
