@@ -6,7 +6,7 @@ Journal
 
 # The Pressure Comes Second
 
-October 18, 2026 · Mindset
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published October 18, 2026
 
 Every coach eventually works with a client who understands what needs to change and still does not change it. The client knows the workouts are inconsistent. They know dinner is being decided at the end of a long day. They can explain the pattern perfectly and keep repeating it anyway.
 

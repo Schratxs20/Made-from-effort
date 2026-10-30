@@ -6,7 +6,7 @@ Journal
 
 # Recovery Needs Its Own Room
 
-October 26, 2026 · Gym Design
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published October 26, 2026
 
 Walk through most home gym plans and they stop at the same place: the last piece of equipment gets specified, the layout gets finalized, and the project is considered done. Nobody asks what happens in the fifteen minutes after the workout ends. That's usually where the room's real potential gets left on the table.
 

@@ -8,7 +8,7 @@ Journal
 
 # Can You Put a Real Gym on a Yacht Without It Taking Over the Deck?
 
-September 11, 2026 · Gym Design
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published September 11, 2026 · Updated October 29, 2026
 
 ![Key numbers from this post](https://www.madefromeffort.com/journal/assets/can-you-put-a-real-gym-on-a-yacht-without-it-taking-over-the-deck-stats.png)
 

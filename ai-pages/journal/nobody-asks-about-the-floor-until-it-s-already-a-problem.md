@@ -6,7 +6,7 @@ Journal
 
 # Nobody Asks About the Floor Until It's Already a Problem
 
-September 14, 2026 · Gym Design
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published September 14, 2026 · Updated October 29, 2026
 
 Every consultation I run starts the same way. The client has a Pinterest board of equipment, a color palette, maybe a mirror wall they've already fallen in love with. Nobody opens with "what should the floor be."
 

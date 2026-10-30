@@ -8,7 +8,7 @@ Journal
 
 # The Plan You Follow Beats the Plan You Love
 
-July 8, 2026 · Consistency
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published July 8, 2026
 
 ![Key numbers from this post](https://www.madefromeffort.com/journal/assets/the-plan-you-follow-beats-the-plan-you-love-stats.png)
 

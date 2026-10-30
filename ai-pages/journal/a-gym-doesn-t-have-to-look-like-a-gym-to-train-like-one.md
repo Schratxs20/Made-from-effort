@@ -6,7 +6,7 @@ Journal
 
 # A Gym Doesn't Have to Look Like a Gym to Train Like One
 
-October 12, 2026 · Gym Design
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published October 12, 2026 · Updated October 29, 2026
 
 The default move, almost every time, is to treat the room as a blank slate. Strip it down, pick a finish palette that reads "gym" — rubber flooring, black steel, mirrors wall to wall — and build the same commercial-feeling space you'd get in any building, regardless of what the room actually was before you got there.
 

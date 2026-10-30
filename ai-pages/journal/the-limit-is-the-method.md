@@ -6,7 +6,7 @@ Journal
 
 # The Limit Is the Method
 
-October 11, 2026 · Consistency
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published October 11, 2026
 
 Give someone an unlimited amount of time for a workout and watch what happens: the warm-up stretches, the rest periods drift, the phone comes out between sets "just to check something." Nothing wrong gets done. Nothing gets done particularly well either. It just spreads to fill whatever space you gave it.
 

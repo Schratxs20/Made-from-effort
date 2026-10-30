@@ -16,4 +16,4 @@ Performance Edge is based on Long Island, New York. The firm plans private home 
 
 Made From Effort is where I share project context and practical ideas about gym design and training. Portfolio pages identify whether a project is complete, in progress, or a design study. The Journal adds perspective, but a project still needs its own brief, site information, and professional review. I don't treat one room or equipment list as a universal template.
 
-[Explore residential gym design](https://www.madefromeffort.com/residential-gym-design)[See the yacht project](https://www.madefromeffort.com/project-yacht)[Read the Journal](https://www.madefromeffort.com/journal/)[Discuss a project](https://www.madefromeffort.com/contact)
+[Explore residential gym design](https://www.madefromeffort.com/residential-gym-design)[See the yacht project](https://www.madefromeffort.com/project-yacht)[Read the Journal](https://www.madefromeffort.com/journal/)[Discuss a project](https://www.madefromeffort.com/contact)[For architects, builders, and referral partners](https://www.madefromeffort.com/referral-partners)

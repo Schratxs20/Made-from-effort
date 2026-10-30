@@ -6,7 +6,7 @@ Journal
 
 # The Restlessness That Builds Something
 
-October 4, 2026 · Consistency
+By [Scott Schratwieser](https://www.madefromeffort.com/about) · Published October 4, 2026
 
 Watch the people who actually keep getting better, year after year, and you'll notice something that doesn't fit the usual story about motivation.
 
