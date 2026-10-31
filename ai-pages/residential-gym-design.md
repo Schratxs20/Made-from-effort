@@ -4,9 +4,9 @@ Source: [https://www.madefromeffort.com/residential-gym-design](https://www.made
 
 Private Residence + Estate Gym Design
 
-# A Home Gym That *Belongs* in Your Home.
+# A Private Gym, *Designed* Around You.
 
-Performance Edge is a Long Island home gym designer creating private training and recovery environments around the way you live, move, and train—then coordinating the details from early planning through final installation.
+We design private gyms around how you train and the home you’re building. From the first layout to equipment selection and installation, we help you and your design team make the room work.
 
 [Discuss Your Residence](https://www.madefromeffort.com/contact?project=residence&source=residential-service-page)
 

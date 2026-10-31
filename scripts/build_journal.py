@@ -41,7 +41,7 @@ STATIC_PAGES = [
     ("privacy.html", "2026-10-07", 0.5),
     ("llm-info.html", "2026-10-28", 0.5),
     ("training.html", "2026-10-29", 0.8),
-    ("residential-gym-design.html", "2026-10-20", 0.9),
+    ("residential-gym-design.html", "2026-10-30", 0.9),
     ("yacht-gym-design.html", "2026-10-29", 0.9),
     ("commercial-gym-design.html", "2026-09-24", 0.8),
     ("hospitality-gym-design.html", "2026-10-29", 0.8),
