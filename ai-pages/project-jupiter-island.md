@@ -83,9 +83,9 @@ The matching adjustable bench carries the same Bentley-stitched finish, creating
 
 04 · RECOVERY
 
-#### Chill Bunny Cold Plunge
+#### Sauna, Cold Plunge + Outdoor Shower
 
-A cold plunge supplied by [Chill Bunny Wellness](https://chillbunny.com/en-us) and delivered from Australia anchors the recovery program alongside the hybrid sauna and outdoor shower.
+A custom hybrid sauna combines traditional heat and infrared, with Wi-Fi control for both. A cold plunge supplied by [Chill Bunny Wellness](https://chillbunny.com/en-us) and delivered from Australia completes the indoor recovery program. An outdoor shower on the balcony overlooks the Intracoastal Waterway.
 
 05 · INDOOR + OUTDOOR
 
@@ -153,7 +153,7 @@ Recovery deserved the same level of design as the training space—including out
 
 The Solution
 
-An outdoor shower overlooking the Intracoastal Waterway, designed with privacy built in from the start—extending recovery outdoors while protecting the client from views back toward the property.
+A custom hybrid sauna combines traditional heat and infrared, with Wi-Fi control for both. Outside, a balcony shower overlooks the Intracoastal Waterway, with privacy considered from the start.
 
 Watson Gym Equipment
 
