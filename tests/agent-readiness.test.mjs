@@ -21,7 +21,8 @@ test("homepage has substantial raw content and sequential heading levels", async
   const html = await read("index.html");
   const text = visibleText(html);
   assert.ok(text.length >= 500, `homepage raw text is only ${text.length} characters`);
-  assert.match(html, /<h1\b[^>]*>Private gym design/s);
+  assert.equal((html.match(/<h1\b/gi) || []).length, 1, "homepage should have one primary heading");
+  assert.match(html, /<h1\b[^>]*>Private Gyms, Designed for the Way You Train\./s);
   const levels = [...html.matchAll(/<h([1-6])\b[^>]*>/gi)].map((match) => Number(match[1]));
   assert.ok(levels.length > 1, "homepage should have a useful heading structure");
   assert.equal(levels[0], 1, "first heading should be H1");
@@ -36,9 +37,13 @@ test("homepage leads with Jupiter Island photography and one primary project inq
   assert.ok(hero, "homepage hero is missing");
   assert.match(hero, /<picture class="hero-media">\s*<img src="jupiter-island-hero\.jpg"/);
   assert.doesNotMatch(hero, /hero-eyebrow|hero-desc|hero-project-link/, "keep visible copy limited to the inquiry button");
-  assert.match(html, /#hero h1 \{ position: absolute; width: 1px; height: 1px;/, "retain an accessible H1 without overlaying the photograph");
-  assert.ok(hero.indexOf("<picture") < hero.indexOf("<h1"), "project image should precede the copy");
-  assert.match(hero, /href="#inquiry-form" class="btn btn-solid">Start Your Gym Project/);
+  assert.doesNotMatch(hero, /<h1\b/, "keep the photograph free of headline overlays");
+  const intro = html.match(/<section id="gym-design-introduction"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+  assert.ok(intro, "visible introduction should follow the photo");
+  assert.ok(html.indexOf('id="gym-design-introduction"') > html.indexOf('id="hero"'));
+  assert.match(intro, /<h1\b/);
+  assert.match(intro, /href="#inquiry-form"/);
+  assert.match(hero, /href="#inquiry-form" class="btn btn-solid">Discuss Your Gym Project/);
   assert.equal((hero.match(/class="btn btn-solid"/g) || []).length, 1, "hero should have one primary CTA");
   assert.doesNotMatch(hero, /<video\b/);
   assert.match(html, /id="inquiry-form"/);
