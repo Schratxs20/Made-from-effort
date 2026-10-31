@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[October 30, 2026 · Equipment & Design Trends
+
+Planning a Private Gym Before the Floor Plan Is Finished
+
+Before the gym becomes a room on a finished plan, work out what a training session needs from it.](https://www.madefromeffort.com/journal/planning-a-private-gym-before-the-floor-plan-is-finished)
 [October 29, 2026 · Consistency
 
 The Day That Matters Was Decided Weeks Ago

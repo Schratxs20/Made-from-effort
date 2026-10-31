@@ -55,7 +55,7 @@
       "source": "residential-gym-design.html",
       "markdown": "/ai-pages/residential-gym-design.md",
       "title": "Long Island Home Gym Designer | Performance Edge",
-      "content_sha256": "ab8155f300df1d2e3cd24ee223827aa7e05526317588a31023752f917fafe8f0",
+      "content_sha256": "4ec1c661bd7fd96e28eddedb1dfcc4411bb9343bae14c072a125b5a81b4c60fb",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"
@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "0d1696a2a26d87638c0efa677d88f37703d3b7e1464ee0669577dd966976a06c",
+      "content_sha256": "7ed5d1a8449a51754693ea97b2c2e6789c45474ac13e3e4fac3633059dbcbf9f",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/planning-a-private-gym-before-the-floor-plan-is-finished",
+      "source": "journal/planning-a-private-gym-before-the-floor-plan-is-finished.html",
+      "markdown": "/ai-pages/journal/planning-a-private-gym-before-the-floor-plan-is-finished.md",
+      "title": "Planning a Private Gym Before the Floor Plan Is Finished — Made From Effort",
+      "content_sha256": "6df72a6f536a8fe3c3849773569721bb67ec7e70389faa2f7f85f439b50842e9",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"
