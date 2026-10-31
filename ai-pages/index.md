@@ -4,9 +4,15 @@ Source: [https://www.madefromeffort.com/](https://www.madefromeffort.com/)
 
 ![Jupiter Island private gym with wood-lined architecture, strength equipment, and garden-facing windows](https://www.madefromeffort.com/jupiter-island-hero.jpg)
 
-# Private gym design *made to belong.*
+[Discuss Your Gym Project](https://www.madefromeffort.com/#inquiry-form)
 
-[Start Your Gym Project →](https://www.madefromeffort.com/#inquiry-form)
+Private Gym Design & Consulting
+
+# Private Gyms, Designed for the Way You Train.
+
+Drawing on more than 15 years of coaching and fitness industry experience, Scott Schratwieser works with homeowners, architects, and interior designers to create thoughtfully planned training spaces. From layout and equipment selection to procurement and installation coordination, every decision is informed by how the space will actually be used.
+
+[Discuss Your Gym Project](https://www.madefromeffort.com/#inquiry-form)
 
 Private Residences + Estates·Yacht Installations·Commercial Gyms + Studios·Country Clubs·CSCS Certified·Nationwide Projects·Made From Effort·
 Private Residences + Estates·Yacht Installations·Commercial Gyms + Studios·Country Clubs·CSCS Certified·Nationwide Projects·Made From Effort·
@@ -50,10 +56,6 @@ Programming, flow, equipment, and brand resolved as one operating environment.
 [Explore commercial design](https://www.madefromeffort.com/commercial-gym-design)
 
 [Planning a hotel or hospitality fitness space? Explore hospitality gym design →](https://www.madefromeffort.com/hospitality-gym-design)
-
-"Most gym designers have never trained a single client. We've spent 15 years doing nothing else."
-
-Every space we design is built by someone who has spent thousands of hours on the training floor — understanding load paths, recovery flow, sightlines, spacing, and the psychology of performance environments. The result is a gym that doesn't just look extraordinary. It performs that way.
 
 Completed · M/Y Canoe Canoe · Custom Line 140
 

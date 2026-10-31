@@ -100,7 +100,11 @@ nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) rotat
 .hero-content { position: relative; z-index: 1; width: 100%; padding: 60px clamp(24px, 5vw, 80px); }
 h1 { font-family: 'Cormorant', serif; font-size: clamp(46px, 5.5vw, 80px); font-weight: 300; line-height: 1.05; color: var(--ink); margin-bottom: 28px; letter-spacing: -0.5px; }
 h1 em { font-style: italic; color: var(--ink-mid); }
-#hero h1 { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.hero-intro { scroll-margin-top: 60px; padding: 72px clamp(24px, 5vw, 80px); background: var(--white); }
+.hero-intro-inner { max-width: 1050px; margin: 0 auto; }
+.hero-intro h1 { max-width: 900px; }
+.hero-intro-copy { max-width: 780px; font-size: 18px; line-height: 1.75; color: var(--ink-light); margin-bottom: 28px; }
+@media (max-width: 600px) { .hero-intro { scroll-margin-top: 60px; padding: 48px 24px; } .hero-intro-copy { font-size: 16px; } }
 .hero-ctas { display: flex; align-items: center; }
 .btn { display: inline-block; text-decoration: none; font-family: 'Outfit', sans-serif; font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 400; transition: all 0.25s; }
 .btn-solid { background: var(--ink); color: var(--white); padding: 13px 30px; }
@@ -554,10 +558,18 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     <img src="jupiter-island-hero.jpg" alt="Jupiter Island private gym with wood-lined architecture, strength equipment, and garden-facing windows" width="896" height="1200" fetchpriority="high">
   </picture>
   <div class="hero-content">
-    <h1>Private gym design<br><em>made to belong.</em></h1>
     <div class="hero-ctas">
-      <a href="#inquiry-form" class="btn btn-solid">Start Your Gym Project →</a>
+      <a href="#inquiry-form" class="btn btn-solid">Discuss Your Gym Project</a>
     </div>
+  </div>
+</section>
+
+<section id="gym-design-introduction" class="hero-intro" aria-labelledby="hero-title">
+  <div class="hero-intro-inner">
+    <div class="proj-eyebrow">Private Gym Design &amp; Consulting</div>
+    <h1 id="hero-title">Private Gyms, Designed for the Way You Train.</h1>
+    <p class="hero-intro-copy">Drawing on more than 15 years of coaching and fitness industry experience, Scott Schratwieser works with homeowners, architects, and interior designers to create thoughtfully planned training spaces. From layout and equipment selection to procurement and installation coordination, every decision is informed by how the space will actually be used.</p>
+    <a href="#inquiry-form" class="btn btn-solid">Discuss Your Gym Project</a>
   </div>
 </section>
 
@@ -585,14 +597,6 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     <article class="market-card reveal d4"><div class="market-card-num">04</div><h3>Commercial Gym</h3><p>Programming, flow, equipment, and brand resolved as one operating environment.</p><a href="/commercial-gym-design">Explore commercial design</a></article>
   </div>
   <p class="market-hospitality-link" style="margin-top:24px;font-size:12px;line-height:1.7"><a href="/hospitality-gym-design" style="color:var(--blue);text-decoration:underline;text-underline-offset:3px">Planning a hotel or hospitality fitness space? Explore hospitality gym design →</a></p>
-</section>
-
-<!-- STATEMENT -->
-
-<section id="statement">
-  <div class="stmt-rule"></div>
-  <p class="stmt-text reveal">"Most gym designers have never trained a single client. We've spent 15 years doing nothing else."</p>
-  <p class="stmt-body reveal d1">Every space we design is built by someone who has spent thousands of hours on the training floor — understanding load paths, recovery flow, sightlines, spacing, and the psychology of performance environments. The result is a gym that doesn't just look extraordinary. It performs that way.</p>
 </section>
 
 <!-- FEATURED -->

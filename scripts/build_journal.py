@@ -36,7 +36,7 @@ ASSETS_DIR = "assets"
 # Static (non-journal) pages to include in sitemap.xml. Keep each lastmod tied
 # to the page's content update, not the date the Journal happens to be rebuilt.
 STATIC_PAGES = [
-    ("", "2026-10-07", 1.0),  # homepage
+    ("", "2026-10-30", 1.0),  # homepage
     ("about.html", "2026-10-29", 0.7),
     ("privacy.html", "2026-10-07", 0.5),
     ("llm-info.html", "2026-10-28", 0.5),
