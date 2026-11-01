@@ -122,3 +122,25 @@ available and Bing AI Performance alongside indexing. Record their actual window
 and availability; do not sum overlapping search/AI totals or equate citations,
 crawler requests, visits and leads. Track the October 29 robots redirect incident
 until GSC shows a successful fetch. No duplicate monitoring job is required.
+
+## Internal links and structured data (November 1, 2026)
+
+For new or revised public pages, check the reader's next useful step: relevant
+service, supporting project or article, and the appropriate inquiry route.
+Use contextual links and canonical destinations, without a fixed link quota.
+Do not link to held or unpublished articles. Check inbound links as well as
+outbound links; navigation alone does not establish a useful reading path.
+
+Reuse `/#business` for Performance Edge Training + Gym Design and
+`/#scott-schratwieser` for Scott. Made From Effort remains the website/brand,
+not a second invented service provider. Services use their canonical URL plus
+`#service`; the Journal builder connects design articles to their visible
+related service. Keep prices, dates, credits and claims consistent with visible
+content. A directional `$500K+` budget is not a maximum price.
+
+Run `tests/test_schema_links.py` with the existing test suite to check JSON-LD
+parsing, local entity references, canonical service URLs, and the residential
+reader journey. These checks are not Google rich-result eligibility certification.
+Use the Google Rich Results Test for supported features and Schema.org validation
+when making broader vocabulary changes. No schema or linking change guarantees
+indexing, citations, rankings, or inquiries.

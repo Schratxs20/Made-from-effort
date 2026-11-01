@@ -229,7 +229,7 @@ Common Questions
 
 When should Performance Edge join the project?
 
-As early as possible. Joining during architectural or interior-design planning allows equipment clearances, structure, power, lighting, acoustics, flooring, storage, and delivery access to be resolved before they become expensive changes.
+As early as possible. Joining during architectural or interior-design planning allows equipment clearances, structure, power, lighting, acoustics, flooring, storage, and delivery access to be resolved before they become expensive changes. Read [Planning a Private Gym Before the Floor Plan Is Finished](https://www.madefromeffort.com/journal/planning-a-private-gym-before-the-floor-plan-is-finished) for the questions to resolve with your project team.
 
 Do you handle the physical construction?
 
