@@ -91,7 +91,7 @@ A custom hybrid sauna combines traditional heat and infrared, with Wi-Fi control
 
 #### Training Beyond the Room
 
-The wraparound balcony is part of the programming. Farmers carries and other loaded movements extend outside without breaking the flow of a session.
+A thoughtfully designed wraparound balcony provides space for long farmer’s carries and other loaded movements, extending training outdoors without breaking the flow of a session.
 
 06 · COACHING
 
@@ -133,7 +133,7 @@ A gym confined to four walls limits what training can actually look like, even i
 
 The Solution
 
-A wraparound balcony connects directly to the gym, so indoor-outdoor movements like farmers carries are part of the actual training flow, not a separate trip outside.
+The thoughtfully designed wraparound balcony connects directly to the gym, making long farmer’s carries part of the training session.
 
 04
 
