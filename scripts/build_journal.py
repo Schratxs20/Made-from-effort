@@ -218,6 +218,7 @@ def render_schema(post, canonical_url):
     article = {
         "@context": "https://schema.org",
         "@type": "Article",
+        "@id": canonical_url + "#article",
         "headline": post["title"],
         "description": post.get("excerpt", ""),
         "datePublished": post["date"],
@@ -226,6 +227,8 @@ def render_schema(post, canonical_url):
         "mainEntityOfPage": canonical_url,
         "publisher": {"@type": "Organization", "@id": f"{SITE_URL}/#business", "name": "Performance Edge Training + Gym Design", "url": SITE_URL},
     }
+    if post.get("related_service_path"):
+        article["about"] = {"@id": SITE_URL + post["related_service_path"] + "#service"}
     if post.get("updated"):
         article["dateModified"] = post["updated"]
     if post.get("image"):

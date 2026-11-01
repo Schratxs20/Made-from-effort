@@ -155,6 +155,12 @@ The Solution
 
 A custom hybrid sauna combines traditional heat and infrared, with Wi-Fi control for both. Outside, a balcony shower overlooks the Intracoastal Waterway, with privacy considered from the start.
 
+Plan Your Own Space
+
+Explore our [residential gym design and consulting service](https://www.madefromeffort.com/residential-gym-design), from layout and equipment selection to project coordination.
+
+Still working on the drawings? Read [Planning a Private Gym Before the Floor Plan Is Finished](https://www.madefromeffort.com/journal/planning-a-private-gym-before-the-floor-plan-is-finished) for the training and access questions to bring to your project team.
+
 Watson Gym Equipment
 
 ### Shared by the Maker

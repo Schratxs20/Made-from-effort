@@ -204,6 +204,10 @@ nav {
 .system-card a { color: inherit; text-decoration-color: var(--blue); text-underline-offset: 3px; }
 
 /* RECOGNITION */
+.planning-links { padding: 48px clamp(24px, 5vw, 64px); max-width: 960px; margin: 0 auto; }
+.planning-links p { font-size: 15px; line-height: 1.8; margin-top: 18px; color: var(--ink); }
+.planning-links a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
 .recognition { display: grid; grid-template-columns: 1fr 1fr; background: var(--ink); color: var(--white); }
 .recognition-copy { padding: 68px 64px; }
 .recognition-copy + .recognition-copy { border-left: 1px solid rgba(250,250,248,.14); }
@@ -420,6 +424,12 @@ footer { padding: 32px 48px; border-top: 1px solid var(--rule); display: flex; j
   </div>
 </section>
 
+<section class="planning-links">
+  <div class="section-eyebrow">Plan Your Own Space</div>
+  <p>Explore our <a href="/residential-gym-design">residential gym design and consulting service</a>, from layout and equipment selection to project coordination.</p>
+  <p>Still working on the drawings? Read <a href="/journal/planning-a-private-gym-before-the-floor-plan-is-finished">Planning a Private Gym Before the Floor Plan Is Finished</a> for the training and access questions to bring to your project team.</p>
+</section>
+
 <!-- THIRD-PARTY RECOGNITION -->
 <section class="recognition reveal">
   <div class="recognition-copy">
@@ -500,7 +510,42 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') shiftLightbox(1);
 });
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Jupiter Island Estate Gym","url":"https://www.madefromeffort.com/project-jupiter-island","description":"A completed private gym and recovery environment within a Jupiter Island, Florida estate.","creator":{"@id":"https://www.madefromeffort.com/#business"},"contributor":[{"@type":"Organization","name":"Watson Gym Equipment","url":"https://watsongym.co.uk/","description":"Custom Glute Blaster and matching adjustable bench with Bentley stitching."},{"@type":"Organization","name":"Chill Bunny Wellness","url":"https://chillbunny.com/en-us","description":"Cold plunge supplier for the Jupiter Island recovery environment."}],"about":["Residential gym design","Private estate gym","Custom Watson gym equipment","Eleiko strength equipment","Cold plunge recovery","Jupiter Island Florida"]}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Jupiter Island Estate Gym",
+  "url": "https://www.madefromeffort.com/project-jupiter-island",
+  "description": "A completed private gym and recovery environment within a Jupiter Island, Florida estate.",
+  "creator": {
+    "@id": "https://www.madefromeffort.com/#business"
+  },
+  "contributor": [
+    {
+      "@type": "Organization",
+      "name": "Watson Gym Equipment",
+      "url": "https://watsongym.co.uk/",
+      "description": "Custom Glute Blaster and matching adjustable bench with Bentley stitching."
+    },
+    {
+      "@type": "Organization",
+      "name": "Chill Bunny Wellness",
+      "url": "https://chillbunny.com/en-us",
+      "description": "Cold plunge supplier for the Jupiter Island recovery environment."
+    }
+  ],
+  "about": [
+    {
+      "@id": "https://www.madefromeffort.com/residential-gym-design#service"
+    },
+    "Residential gym design",
+    "Private estate gym",
+    "Custom Watson gym equipment",
+    "Eleiko strength equipment",
+    "Cold plunge recovery",
+    "Jupiter Island Florida"
+  ],
+  "@id": "https://www.madefromeffort.com/project-jupiter-island#project"
+}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.madefromeffort.com/"},{"@type":"ListItem","position":2,"name":"Residential Gym Design","item":"https://www.madefromeffort.com/residential-gym-design"},{"@type":"ListItem","position":3,"name":"Jupiter Island Estate Gym","item":"https://www.madefromeffort.com/project-jupiter-island"}]}</script>
 <a class="mobile-project-cta" href="/contact?project=residence&amp;source=jupiter-island-case-study">Start a Project</a>
 </body>

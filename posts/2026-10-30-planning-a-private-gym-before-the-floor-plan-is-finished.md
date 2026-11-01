@@ -83,4 +83,6 @@ At the next plan review, ask three questions: Where do I begin? What moves durin
 
 Mark the answers on the drawing. Any conflict is a decision to resolve while the room can still change.
 
+For a completed project with training and recovery connected to outdoor space, see the [Jupiter Island estate gym](https://www.madefromeffort.com/project-jupiter-island). Its wraparound balcony extends the session beyond the room.
+
 *Equipment reference: The T3 example uses the linked manual, revision B-31 (2011), printed pages 5 and 22. Confirm the instructions for the model and version being specified; this example is not a complete room layout.*
