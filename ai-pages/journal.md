@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[November 2, 2026 · Gym Design
+
+The Room Has to Teach Itself
+
+Most gym plans quietly assume someone will be there to explain it. A room nobody's guiding has to answer a harder question — can a stranger actually use this alone?](https://www.madefromeffort.com/journal/the-room-has-to-teach-itself)
 [November 1, 2026 · Mindset
 
 Turn the Gap Into a Number

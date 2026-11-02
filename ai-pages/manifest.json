@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "65845c309833125f6373804e84536ba2f8f1b413b613d2f4c15aba044c16be7b",
+      "content_sha256": "879db32f072b062a450ae44bf1033dafcc9bf6fa927ef82b98344b50418aa8d4",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/the-room-has-to-teach-itself",
+      "source": "journal/the-room-has-to-teach-itself.html",
+      "markdown": "/ai-pages/journal/the-room-has-to-teach-itself.md",
+      "title": "The Room Has to Teach Itself — Made From Effort",
+      "content_sha256": "9c4a30d0e245f5ea2fb899bb075d37224527a5ffd634ee8c148d536ef2e884e8",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"

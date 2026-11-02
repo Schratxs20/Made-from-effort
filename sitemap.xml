@@ -134,9 +134,15 @@
   </url>
   <url>
     <loc>https://www.madefromeffort.com/journal/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.madefromeffort.com/journal/the-room-has-to-teach-itself</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.madefromeffort.com/journal/turn-the-gap-into-a-number</loc>
