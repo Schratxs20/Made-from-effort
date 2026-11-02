@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "7ed5d1a8449a51754693ea97b2c2e6789c45474ac13e3e4fac3633059dbcbf9f",
+      "content_sha256": "65845c309833125f6373804e84536ba2f8f1b413b613d2f4c15aba044c16be7b",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/turn-the-gap-into-a-number",
+      "source": "journal/turn-the-gap-into-a-number.html",
+      "markdown": "/ai-pages/journal/turn-the-gap-into-a-number.md",
+      "title": "Turn the Gap Into a Number — Made From Effort",
+      "content_sha256": "e3e293ab48e025c5329dc63ea32bf3a1b4e4e2bcec6e2234e4759acf6999331a",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"

@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[November 1, 2026 · Mindset
+
+Turn the Gap Into a Number
+
+Walking into a harder room doesn't call for vague resolve to work harder. It calls for an honest count of the gap — and a specific, near-term number to close it.](https://www.madefromeffort.com/journal/turn-the-gap-into-a-number)
 [October 30, 2026 · Equipment & Design Trends
 
 Planning a Private Gym Before the Floor Plan Is Finished
