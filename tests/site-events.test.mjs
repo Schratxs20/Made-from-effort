@@ -43,6 +43,22 @@ test('only successful design inquiries count as qualified conversions', () => {
   }
 });
 
+test('explicit test submissions are labeled for the form provider and excluded from inquiry metrics', () => {
+  const site = setup('/contact?mfe_test=1');
+  const fields = new Map();
+  site.window.peAppendAttribution({ append(key, value) { fields.set(key, value); } });
+  assert.equal(fields.get('test_submission'), 'yes');
+  site.window.peTrack('lead_submit', { lead_type: 'design_inquiry' });
+  assert.deepEqual(site.events(), []);
+
+  const normal = setup('/contact');
+  const normalFields = new Map();
+  normal.window.peAppendAttribution({ append(key, value) { normalFields.set(key, value); } });
+  assert.equal(normalFields.has('test_submission'), false);
+  normal.window.peTrack('lead_submit', { lead_type: 'design_inquiry' });
+  assert.deepEqual(normal.events(), ['lead_submit', 'close_convert_lead']);
+});
+
 test('contact CTA tracking works for clean and legacy URLs', () => {
   for (const href of ['/contact?project=residence', '/contact.html?project=residence']) {
     const site = setup();
@@ -100,7 +116,8 @@ test('About, Training, and project entry pages capture first touch', () => {
     'referral-partners.html', 'privacy.html',
   ]) {
     const html = readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
-    assert.equal((html.match(/site-events\.js\?v=2/g) || []).length, 1, path);
+    const version = path === 'training.html' ? 3 : 2;
+    assert.equal((html.match(new RegExp(`site-events\\.js\\?v=${version}`, 'g')) || []).length, 1, path);
   }
 });
 

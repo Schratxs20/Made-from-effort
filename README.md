@@ -1,5 +1,9 @@
 # Journal build system — Made From Effort
 
+## Form measurement checks
+
+For an intentional form test, open the form directly with `?mfe_test=1` (for example, `/contact?mfe_test=1`). The submitted record gets `test_submission=yes`, and the test does not emit inquiry conversion events. This is forward-looking: it does not reclassify earlier GA4 events. Reconcile design leads against both Basin (contact form) and Formspree (homepage form), since GA4 events alone do not establish qualified inquiries.
+
 ## Required public-page checks
 
 All public pages follow [the four-part AI/search routine](docs/ai-search-checklist.md).
