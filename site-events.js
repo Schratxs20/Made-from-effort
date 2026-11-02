@@ -1,6 +1,7 @@
 (function () {
   const measurementId = 'G-MVF11QSSPG';
   const params = new URLSearchParams(window.location.search);
+  const isTestSubmission = params.get('mfe_test') === '1';
   const firstTouchKey = 'pe_first_touch';
   const campaignKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
 
@@ -52,11 +53,13 @@
 
   window.peAppendAttribution = function (formData) {
     Object.entries(window.peAttribution()).forEach(([key, value]) => formData.append(key, value));
+    if (isTestSubmission) formData.append('test_submission', 'yes');
     formData.append('submission_page', window.location.href);
     return formData;
   };
 
   window.peTrack = function (eventName, details) {
+    if (isTestSubmission && ['lead_submit', 'inquiry_cta_click', 'journal_service_click'].includes(eventName)) return;
     const payload = { event: eventName, ...window.peAttribution(), ...(details || {}) };
     window.dataLayer.push(payload);
     if (typeof window.gtag === 'function') window.gtag('event', eventName, payload);
