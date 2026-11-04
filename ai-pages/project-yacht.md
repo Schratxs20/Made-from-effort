@@ -2,9 +2,7 @@
 
 Source: [https://www.madefromeffort.com/project-yacht](https://www.madefromeffort.com/project-yacht)
 
-[![
-
-](https://www.madefromeffort.com/yacht-poster.jpg)](https://www.madefromeffort.com/47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4)
+![Lounge seating and open deck aboard M/Y Canoe Canoe](https://www.madefromeffort.com/assets/projects/canoe-canoe/sundeck-lounge.jpg)
 
 Onboard Wellness · Custom Line 140
 
@@ -29,7 +27,11 @@ Project Overview
 
 Canoe Canoe is a 2025 Custom Line 140 built around indoor-outdoor living and wellness at sea. Its training environment needed to deliver serious capability without permanently claiming a social deck or interrupting the yacht's considered design language.
 
-Performance Edge originated and directed the convertible gym-furniture concept, developing the performance brief and integration strategy for a deck that transitions between training and hospitality. [Paragon Studio](https://www.paragonstudio.co.uk/) developed the concept into the finished bespoke product, leading the furniture design, engineering, drawer integration, equipment fitment, proprietary storage solutions, and fabrication. [Chill Bunny Wellness](https://chillbunny.com/en-us) supplied the vessel’s cold plunge from Australia.
+Performance Edge originated and directed the convertible gym-furniture concept for M/Y Canoe Canoe, developing the performance brief and integration strategy for a deck that transitions between training and hospitality.
+
+[Paragon Studio](https://www.paragonstudio.co.uk/) developed the concept into the finished bespoke product, leading the furniture design, engineering, and fabrication, including the proprietary equipment storage solutions.
+
+[Chill Bunny Wellness](https://chillbunny.com/en-us) supplied the vessel’s cold plunge from Australia.
 
 Project Details
 
@@ -49,33 +51,17 @@ Design Role
 
 Concept + Direction
 
-The Finished Space
+Aboard Canoe Canoe
 
-### Gallery
+### The Deck Setting
 
-[
+The deck’s lounge setting.
 
-](https://www.madefromeffort.com/c468cf699aa14e1887cd5f34512e881e.mov)
+Cold plunge and hot tub on the sundeck.
 
-![Convertible gym and social deck aboard M/Y Canoe Canoe](https://www.madefromeffort.com/IMG_4936.jpeg)
+The yacht and its outdoor decks.
 
-![Bespoke equipment storage detail aboard M/Y Canoe Canoe](https://www.madefromeffort.com/IMG_4924.jpeg)
-
-![Custom onboard wellness joinery aboard M/Y Canoe Canoe](https://www.madefromeffort.com/5D0EB5B8-B489-4800-AEA7-893478C8FF03.jpeg)
-
-![Full view of the Canoe Canoe training deck](https://www.madefromeffort.com/IMG_1285.jpeg)
-
-[
-
-](https://www.madefromeffort.com/1ad2278edded41b6bef9b47ec13ac859.mov)
-
-[
-
-](https://www.madefromeffort.com/864f10aa58e448219e7d4bef55d759f4.mov)
-
-[
-
-](https://www.madefromeffort.com/4f2352a80d6647648cf2bd6cb3a50d44.mov)
+Photography: Jerry Wyszatycki / Avatar Productions.
 
 The Onboard System
 
@@ -105,7 +91,7 @@ A specially selected folding rower delivers full-body conditioning, then reduces
 
 #### Convertible Couch + Weights
 
-The Performance Edge concept places the strength collection inside the social furniture. Paragon Studio developed the finished couch, drawer system, inserts, fitment, engineering, and fabrication.
+Performance Edge’s brief called for a timber couch that retained the client’s existing upholstery cushions and concealed the training equipment. Paragon Studio developed the furniture design, drawer integration, equipment fitment, engineering, and fabrication, including its proprietary storage solutions.
 
 05 · RECOVERY
 
@@ -123,7 +109,7 @@ The Challenge
 
 ### Performance at Sea, Without Compromising the Yacht
 
-On Canoe Canoe, the same upper-deck footprint needed to support purposeful training in the morning and effortless hospitality by evening. Performance Edge established the concept, performance brief, and integration strategy; Paragon Studio developed the furniture and technical solution with the vessel team.
+The deck needed to transition between training and hospitality. Performance Edge originated and directed the convertible gym-furniture concept, developing the performance brief and integration strategy. Paragon Studio developed that concept into the finished bespoke product.
 
 01
 
@@ -133,7 +119,7 @@ A full land-style equipment setup could deliver the training experience, but it 
 
 The Fix
 
-Performance Edge’s brief placed the equipment within a convertible couch rather than arranging furniture around a gym. Paragon Studio developed the furniture design, drawer system, inserts, and equipment fitment that made the transition possible.
+Performance Edge brought the initial concept and project brief: a custom timber couch that kept the client’s existing upholstery cushions and integrated weights and equipment through concealed storage. Paragon Studio led the furniture design and engineering that turned that brief into a finished product.
 
 02
 
@@ -143,7 +129,7 @@ Portable equipment on a shared deck means crew has to set it up and break it dow
 
 The Fix
 
-Dedicated flocked drawer inserts keep dumbbells, kettlebells, yoga equipment, and accessories ordered and secure. The system is either ready or concealed, reducing daily setup and protecting the crew's operating rhythm.
+Paragon Studio’s proprietary equipment-storage solutions, including the drawer inserts and equipment fitment, keep the training collection organized within the furniture. The equipment can be brought out for training and returned to concealed storage afterward.
 
 03
 
