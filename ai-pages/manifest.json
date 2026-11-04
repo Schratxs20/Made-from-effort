@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "879db32f072b062a450ae44bf1033dafcc9bf6fa927ef82b98344b50418aa8d4",
+      "content_sha256": "61fb64524d21c542a5552aaff0fbca116d9dea988fa3b0d1a96ac437e5a99d7e",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/when-to-bring-a-gym-specialist-into-a-residential-project",
+      "source": "journal/when-to-bring-a-gym-specialist-into-a-residential-project.html",
+      "markdown": "/ai-pages/journal/when-to-bring-a-gym-specialist-into-a-residential-project.md",
+      "title": "When to Bring a Gym Specialist Into a Residential Project — Made From Effort",
+      "content_sha256": "fde3bab5bda75cc107e48c1d7a29b1673c4b0cbb63ebbf89714d6fc01bdc1b99",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"
