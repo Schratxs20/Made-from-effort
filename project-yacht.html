@@ -11,11 +11,11 @@
 <meta property="og:description" content="A complete onboard training and recovery system designed to disappear back into the yacht.">
 <meta property="og:url" content="https://www.madefromeffort.com/project-yacht">
 <meta property="og:site_name" content="Made From Effort">
-<meta property="og:image" content="https://www.madefromeffort.com/yacht-poster.jpg">
+<meta property="og:image" content="https://www.madefromeffort.com/assets/projects/canoe-canoe/sundeck-lounge.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="M/Y Canoe Canoe Gym — Custom Line 140 | Performance Edge">
 <meta name="twitter:description" content="A complete onboard training and recovery system designed to disappear back into the yacht.">
-<meta name="twitter:image" content="https://www.madefromeffort.com/yacht-poster.jpg">
+<meta name="twitter:image" content="https://www.madefromeffort.com/assets/projects/canoe-canoe/sundeck-lounge.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
@@ -53,7 +53,7 @@ nav {
   position: relative; height: 100vh; min-height: 600px;
   background: #0a0a0a; overflow: hidden;
 }
-.hero video {
+.hero > img {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; opacity: 0.75;
 }
@@ -129,15 +129,6 @@ nav {
 .gallery-header { margin-bottom: 48px; border-bottom: 1px solid var(--rule); padding-bottom: 24px; }
 .gallery-header h3 { font-family: 'Cormorant', serif; font-size: clamp(26px, 3vw, 40px); font-weight: 300; color: var(--ink); }
 
-/* FEATURED VIDEO */
-.gallery-video-featured {
-  position: relative; width: 100%; aspect-ratio: 16/9;
-  background: #0a0a0a; overflow: hidden; margin-bottom: 16px;
-}
-.gallery-video-featured video {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-}
-
 /* PHOTO GRID */
 .gallery-grid {
   display: grid;
@@ -147,16 +138,20 @@ nav {
 }
 .gallery-item {
   position: relative; overflow: hidden; background: var(--off);
-  cursor: pointer;
+  cursor: pointer; border: 0; width: 100%; display: block;
 }
 .gallery-item.tall { grid-row: span 2; }
 .gallery-item.wide { grid-column: span 2; }
-.gallery-item img, .gallery-item video {
+.gallery-item img {
   width: 100%; height: 100%; object-fit: cover; display: block;
   transition: transform 0.6s ease;
-  min-height: 260px;
+  aspect-ratio: 640 / 479;
 }
-.gallery-item:hover img, .gallery-item:hover video { transform: scale(1.04); }
+.gallery-item:hover img { transform: scale(1.04); }
+
+.gallery-grid figcaption { font-size: 13px; line-height: 1.6; color: var(--ink-light); padding-top: 12px; }
+.gallery-item:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+.photo-credit { font-size: 12px; line-height: 1.6; color: var(--ink-light); margin-top: 24px; }
 
 /* LIGHTBOX */
 .lightbox {
@@ -297,9 +292,7 @@ footer { padding: 32px 48px; border-top: 1px solid var(--rule); display: flex; j
 
 <!-- HERO -->
 <div class="hero">
-  <video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="yacht-poster.jpg">
-    <source src="47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4" type="video/mp4">
-  </video>
+  <img src="/assets/projects/canoe-canoe/sundeck-lounge.jpg" width="640" height="479" fetchpriority="high" alt="Lounge seating and open deck aboard M/Y Canoe Canoe">
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-tag">Onboard Wellness · Custom Line 140</div>
@@ -332,7 +325,9 @@ footer { padding: 32px 48px; border-top: 1px solid var(--rule); display: flex; j
     <div class="section-eyebrow">Project Overview</div>
     <h2>A Gym Built for<br><em>Open Water.</em></h2>
     <p>Canoe Canoe is a 2025 Custom Line 140 built around indoor-outdoor living and wellness at sea. Its training environment needed to deliver serious capability without permanently claiming a social deck or interrupting the yacht's considered design language.</p>
-    <p>Performance Edge originated and directed the convertible gym-furniture concept, developing the performance brief and integration strategy for a deck that transitions between training and hospitality. <a href="https://www.paragonstudio.co.uk/" target="_blank" rel="noopener">Paragon Studio</a> developed the concept into the finished bespoke product, leading the furniture design, engineering, drawer integration, equipment fitment, proprietary storage solutions, and fabrication. <a href="https://chillbunny.com/en-us" target="_blank" rel="noopener">Chill Bunny Wellness</a> supplied the vessel’s cold plunge from Australia.</p>
+    <p>Performance Edge originated and directed the convertible gym-furniture concept for M/Y Canoe Canoe, developing the performance brief and integration strategy for a deck that transitions between training and hospitality.</p>
+    <p><a href="https://www.paragonstudio.co.uk/" target="_blank" rel="noopener">Paragon Studio</a> developed the concept into the finished bespoke product, leading the furniture design, engineering, and fabrication, including the proprietary equipment storage solutions.</p>
+    <p><a href="https://chillbunny.com/en-us" target="_blank" rel="noopener">Chill Bunny Wellness</a> supplied the vessel’s cold plunge from Australia.</p>
   </div>
   <div class="overview-specs reveal">
     <div class="section-eyebrow">Project Details</div>
@@ -360,51 +355,31 @@ footer { padding: 32px 48px; border-top: 1px solid var(--rule); display: flex; j
 <!-- GALLERY -->
 <section class="gallery-section reveal">
   <div class="gallery-header">
-    <div class="section-eyebrow">The Finished Space</div>
-    <h3>Gallery</h3>
+    <div class="section-eyebrow">Aboard Canoe Canoe</div>
+    <h3>The Deck Setting</h3>
   </div>
 
-  <!-- Featured video -->
-  <div class="gallery-video-featured">
-    <video autoplay muted loop playsinline webkit-playsinline preload="auto">
-      <source src="c468cf699aa14e1887cd5f34512e881e.mov" type="video/mp4">
-    </video>
-  </div>
-
-  <!-- Photo + video grid -->
   <div class="gallery-grid">
-    <div class="gallery-item tall" onclick="openLightbox(0)">
-      <img src="IMG_4936.jpeg" alt="Convertible gym and social deck aboard M/Y Canoe Canoe">
-    </div>
-    <div class="gallery-item" onclick="openLightbox(1)">
-      <img src="IMG_4924.jpeg" alt="Bespoke equipment storage detail aboard M/Y Canoe Canoe">
-    </div>
-    <div class="gallery-item" onclick="openLightbox(2)">
-      <img src="5D0EB5B8-B489-4800-AEA7-893478C8FF03.jpeg" alt="Custom onboard wellness joinery aboard M/Y Canoe Canoe">
-    </div>
-    <div class="gallery-item wide" onclick="openLightbox(3)">
-      <img src="IMG_1285.jpeg" alt="Full view of the Canoe Canoe training deck">
-    </div>
+    <figure>
+      <button class="gallery-item" type="button" onclick="openLightbox(0)" aria-label="Enlarge sundeck lounge photograph">
+        <img src="/assets/projects/canoe-canoe/sundeck-lounge.jpg" width="640" height="479" loading="lazy" alt="Upholstered lounge seating and teak deck beneath the sundeck canopy">
+      </button>
+      <figcaption>The deck’s lounge setting.</figcaption>
+    </figure>
+    <figure>
+      <button class="gallery-item" type="button" onclick="openLightbox(1)" aria-label="Enlarge recovery deck photograph">
+        <img src="/assets/projects/canoe-canoe/recovery-deck.jpg" width="640" height="479" loading="lazy" alt="Cold plunge and hot tub on the sundeck of M/Y Canoe Canoe">
+      </button>
+      <figcaption>Cold plunge and hot tub on the sundeck.</figcaption>
+    </figure>
+    <figure>
+      <button class="gallery-item" type="button" onclick="openLightbox(2)" aria-label="Enlarge overhead yacht photograph">
+        <img src="/assets/projects/canoe-canoe/yacht-overhead.jpg" width="640" height="479" loading="lazy" alt="Overhead view of M/Y Canoe Canoe showing the yacht’s outdoor decks">
+      </button>
+      <figcaption>The yacht and its outdoor decks.</figcaption>
+    </figure>
   </div>
-
-  <!-- Secondary videos -->
-  <div class="gallery-grid" style="margin-top:12px">
-    <div class="gallery-item">
-      <video autoplay muted loop playsinline webkit-playsinline preload="auto" style="min-height:260px">
-        <source src="1ad2278edded41b6bef9b47ec13ac859.mov" type="video/mp4">
-      </video>
-    </div>
-    <div class="gallery-item">
-      <video autoplay muted loop playsinline webkit-playsinline preload="auto" style="min-height:260px">
-        <source src="864f10aa58e448219e7d4bef55d759f4.mov" type="video/mp4">
-      </video>
-    </div>
-    <div class="gallery-item">
-      <video autoplay muted loop playsinline webkit-playsinline preload="auto" style="min-height:260px">
-        <source src="4f2352a80d6647648cf2bd6cb3a50d44.mov" type="video/mp4">
-      </video>
-    </div>
-  </div>
+  <p class="photo-credit">Photography: Jerry Wyszatycki / Avatar Productions.</p>
 </section>
 
 <!-- TRAINING + RECOVERY SYSTEM -->
@@ -522,10 +497,9 @@ reveals.forEach(el => io.observe(el));
 
 // Lightbox
 const images = [
-  { src: 'IMG_4936.jpeg' },
-  { src: 'IMG_4924.jpeg' },
-  { src: '5D0EB5B8-B489-4800-AEA7-893478C8FF03.jpeg' },
-  { src: 'IMG_1285.jpeg' }
+  { src: '/assets/projects/canoe-canoe/sundeck-lounge.jpg', alt: 'Lounge seating and teak deck aboard M/Y Canoe Canoe' },
+  { src: '/assets/projects/canoe-canoe/recovery-deck.jpg', alt: 'Cold plunge and hot tub on the sundeck' },
+  { src: '/assets/projects/canoe-canoe/yacht-overhead.jpg', alt: 'Overhead view of M/Y Canoe Canoe and its outdoor decks' }
 ];
 let current = 0;
 
@@ -534,6 +508,7 @@ function openLightbox(idx) {
   const lb = document.getElementById('lightbox');
   const img = document.getElementById('lightbox-img');
   img.src = images[idx].src;
+  img.alt = images[idx].alt;
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -548,6 +523,7 @@ function shiftLightbox(dir, e) {
   e && e.stopPropagation();
   current = (current + dir + images.length) % images.length;
   document.getElementById('lightbox-img').src = images[current].src;
+  document.getElementById('lightbox-img').alt = images[current].alt;
 }
 
 document.addEventListener('keydown', e => {

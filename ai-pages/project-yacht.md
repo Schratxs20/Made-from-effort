@@ -2,9 +2,7 @@
 
 Source: [https://www.madefromeffort.com/project-yacht](https://www.madefromeffort.com/project-yacht)
 
-[![
-
-](https://www.madefromeffort.com/yacht-poster.jpg)](https://www.madefromeffort.com/47E813C8-3541-4C7D-B2A2-74451CC6F268.mp4)
+![Lounge seating and open deck aboard M/Y Canoe Canoe](https://www.madefromeffort.com/assets/projects/canoe-canoe/sundeck-lounge.jpg)
 
 Onboard Wellness · Custom Line 140
 
@@ -29,7 +27,11 @@ Project Overview
 
 Canoe Canoe is a 2025 Custom Line 140 built around indoor-outdoor living and wellness at sea. Its training environment needed to deliver serious capability without permanently claiming a social deck or interrupting the yacht's considered design language.
 
-Performance Edge originated and directed the convertible gym-furniture concept, developing the performance brief and integration strategy for a deck that transitions between training and hospitality. [Paragon Studio](https://www.paragonstudio.co.uk/) developed the concept into the finished bespoke product, leading the furniture design, engineering, drawer integration, equipment fitment, proprietary storage solutions, and fabrication. [Chill Bunny Wellness](https://chillbunny.com/en-us) supplied the vessel’s cold plunge from Australia.
+Performance Edge originated and directed the convertible gym-furniture concept for M/Y Canoe Canoe, developing the performance brief and integration strategy for a deck that transitions between training and hospitality.
+
+[Paragon Studio](https://www.paragonstudio.co.uk/) developed the concept into the finished bespoke product, leading the furniture design, engineering, and fabrication, including the proprietary equipment storage solutions.
+
+[Chill Bunny Wellness](https://chillbunny.com/en-us) supplied the vessel’s cold plunge from Australia.
 
 Project Details
 
@@ -49,33 +51,17 @@ Design Role
 
 Concept + Direction
 
-The Finished Space
+Aboard Canoe Canoe
 
-### Gallery
+### The Deck Setting
 
-[
+The deck’s lounge setting.
 
-](https://www.madefromeffort.com/c468cf699aa14e1887cd5f34512e881e.mov)
+Cold plunge and hot tub on the sundeck.
 
-![Convertible gym and social deck aboard M/Y Canoe Canoe](https://www.madefromeffort.com/IMG_4936.jpeg)
+The yacht and its outdoor decks.
 
-![Bespoke equipment storage detail aboard M/Y Canoe Canoe](https://www.madefromeffort.com/IMG_4924.jpeg)
-
-![Custom onboard wellness joinery aboard M/Y Canoe Canoe](https://www.madefromeffort.com/5D0EB5B8-B489-4800-AEA7-893478C8FF03.jpeg)
-
-![Full view of the Canoe Canoe training deck](https://www.madefromeffort.com/IMG_1285.jpeg)
-
-[
-
-](https://www.madefromeffort.com/1ad2278edded41b6bef9b47ec13ac859.mov)
-
-[
-
-](https://www.madefromeffort.com/864f10aa58e448219e7d4bef55d759f4.mov)
-
-[
-
-](https://www.madefromeffort.com/4f2352a80d6647648cf2bd6cb3a50d44.mov)
+Photography: Jerry Wyszatycki / Avatar Productions.
 
 The Onboard System
 
