@@ -116,7 +116,7 @@ San Francisco Residence
 
 Private Home Gym · Bay Area, CA
 
-[![Sands Point residence gym with strength equipment and open training area](https://www.madefromeffort.com/sands-point-07.jpg)
+[![Sands Point home gym cardio lineup, with the SkiErg at the left](https://www.madefromeffort.com/sands-point-cardio-wide.jpg)
 
 Updated Over Time
 
