@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[November 4, 2026 · Equipment & Design Trends
+
+When to Bring a Gym Specialist Into a Residential Project
+
+Bring training requirements into the design while they can still influence the room. Here is what that collaboration should clarify.](https://www.madefromeffort.com/journal/when-to-bring-a-gym-specialist-into-a-residential-project)
 [November 2, 2026 · Gym Design
 
 The Room Has to Teach Itself
