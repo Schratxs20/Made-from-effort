@@ -91,7 +91,7 @@ A specially selected folding rower delivers full-body conditioning, then reduces
 
 #### Convertible Couch + Weights
 
-The Performance Edge concept places the strength collection inside the social furniture. Paragon Studio developed the finished couch, drawer system, inserts, fitment, engineering, and fabrication.
+Performance Edge’s brief called for a timber couch that retained the client’s existing upholstery cushions and concealed the training equipment. Paragon Studio developed the furniture design, drawer integration, equipment fitment, engineering, and fabrication, including its proprietary storage solutions.
 
 05 · RECOVERY
 
@@ -109,7 +109,7 @@ The Challenge
 
 ### Performance at Sea, Without Compromising the Yacht
 
-On Canoe Canoe, the same upper-deck footprint needed to support purposeful training in the morning and effortless hospitality by evening. Performance Edge established the concept, performance brief, and integration strategy; Paragon Studio developed the furniture and technical solution with the vessel team.
+The deck needed to transition between training and hospitality. Performance Edge originated and directed the convertible gym-furniture concept, developing the performance brief and integration strategy. Paragon Studio developed that concept into the finished bespoke product.
 
 01
 
@@ -119,7 +119,7 @@ A full land-style equipment setup could deliver the training experience, but it 
 
 The Fix
 
-Performance Edge’s brief placed the equipment within a convertible couch rather than arranging furniture around a gym. Paragon Studio developed the furniture design, drawer system, inserts, and equipment fitment that made the transition possible.
+Performance Edge brought the initial concept and project brief: a custom timber couch that kept the client’s existing upholstery cushions and integrated weights and equipment through concealed storage. Paragon Studio led the furniture design and engineering that turned that brief into a finished product.
 
 02
 
@@ -129,7 +129,7 @@ Portable equipment on a shared deck means crew has to set it up and break it dow
 
 The Fix
 
-Dedicated flocked drawer inserts keep dumbbells, kettlebells, yoga equipment, and accessories ordered and secure. The system is either ready or concealed, reducing daily setup and protecting the crew's operating rhythm.
+Paragon Studio’s proprietary equipment-storage solutions, including the drawer inserts and equipment fitment, keep the training collection organized within the furniture. The equipment can be brought out for training and returned to concealed storage afterward.
 
 03
 
