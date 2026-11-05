@@ -1,0 +1,33 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Inter ExtraBold,104,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,-1,0,1,0,6,5,60,60,0,1
+Style: Main,Inter ExtraBold,74,&H00FFFFFF,&H00FFFFFF,&H5A000000,&H00000000,0,0,0,0,100,100,-0.5,0,3,22,0,8,70,70,0,1
+Style: Accent,Inter ExtraBold,74,&H00141414,&H00141414,&H0047C8F2,&H00000000,0,0,0,0,100,100,-0.5,0,3,20,0,8,70,70,0,1
+Style: Label,Inter SemiBold,34,&H00FFFFFF,&H00FFFFFF,&H78000000,&H00000000,0,0,0,0,100,100,1,0,3,12,0,1,60,60,0,1
+Style: Brand,Inter SemiBold,34,&H99FFFFFF,&H99FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,3,0,1,0,0,2,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:00.00,0:00:02.25,Hook,,0,0,0,,{\pos(540,900)\fscx112\fscy112\t(0,160,\fscx100\fscy100)}You didn't quit.
+Dialogue: 1,0:00:02.25,0:00:03.60,Hook,,0,0,0,,{\pos(540,900)\fscx112\fscy112\t(0,160,\fscx100\fscy100)}Your {\c&H47C8F2&}room{\c&HFFFFFF&}\Nmade you quit.
+Dialogue: 1,0:00:03.60,0:00:06.00,Main,,0,0,0,,{\pos(540,560)\fad(100,0)}3 design mistakes ↓
+Dialogue: 1,0:00:06.00,0:00:10.00,Accent,,0,0,0,,{\pos(540,470)\fad(80,0)}1
+Dialogue: 1,0:00:06.00,0:00:10.00,Main,,0,0,0,,{\pos(540,600)\fad(80,0)}You're lit like a\Nparking garage
+Dialogue: 1,0:00:10.00,0:00:14.00,Accent,,0,0,0,,{\pos(540,470)\fad(80,0)}2
+Dialogue: 1,0:00:10.00,0:00:14.00,Main,,0,0,0,,{\pos(540,600)\fad(80,0)}You're staring\Nat a wall
+Dialogue: 1,0:00:14.00,0:00:19.33,Accent,,0,0,0,,{\pos(540,470)\fad(80,0)}3
+Dialogue: 1,0:00:14.00,0:00:19.33,Main,,0,0,0,,{\pos(540,600)\fad(80,0)}Every set starts\Nwith a walk
+Dialogue: 1,0:00:16.00,0:00:19.33,Accent,,0,0,0,,{\pos(540,1060)\fscx90\fscy90\t(0,150,\fscx100\fscy100)}6 steps. Every. Set.
+Dialogue: 1,0:00:19.33,0:00:23.33,Main,,0,0,0,,{\pos(540,560)\fad(150,0)}Same room.
+Dialogue: 1,0:00:20.60,0:00:23.33,Main,,0,0,0,,{\pos(540,700)\fad(150,0)}All 3 fixed.
+Dialogue: 1,0:00:19.33,0:00:23.33,Label,,0,0,0,,{\pos(60,1470)}AI concept render
+Dialogue: 1,0:00:23.33,0:00:25.33,Hook,,0,0,0,,{\pos(540,860)\fscx112\fscy112\t(0,160,\fscx100\fscy100)}Which one is\Nyour gym missing?
+Dialogue: 1,0:00:23.33,0:00:25.33,Accent,,0,0,0,,{\pos(540,1080)}1, 2, or 3?
+Dialogue: 0,0:00:23.33,0:00:25.33,Brand,,0,0,0,,{\pos(540,1440)}MADE FROM EFFORT
