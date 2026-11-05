@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[November 5, 2026 · Mindset
+
+A Standard Nobody Enforces Isn't a Standard
+
+A posted rule about effort means nothing if nobody's actually held to it. The standard that holds up is the one enforced through who stays and who doesn't.](https://www.madefromeffort.com/journal/a-standard-nobody-enforces-isn-t-a-standard)
 [November 4, 2026 · Equipment & Design Trends
 
 When to Bring a Gym Specialist Into a Residential Project

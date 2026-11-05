@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "61fb64524d21c542a5552aaff0fbca116d9dea988fa3b0d1a96ac437e5a99d7e",
+      "content_sha256": "b06e4041f0ce97fe51044014ad5691c60ac7f50f1c9f470b6f57c8d6c676cb1a",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/a-standard-nobody-enforces-isn-t-a-standard",
+      "source": "journal/a-standard-nobody-enforces-isn-t-a-standard.html",
+      "markdown": "/ai-pages/journal/a-standard-nobody-enforces-isn-t-a-standard.md",
+      "title": "A Standard Nobody Enforces Isn't a Standard — Made From Effort",
+      "content_sha256": "54db731480791e66acdd9a4beb94a5f1adac0941e9245f70614d6ff558b678fc",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"

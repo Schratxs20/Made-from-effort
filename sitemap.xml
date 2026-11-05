@@ -134,9 +134,15 @@
   </url>
   <url>
     <loc>https://www.madefromeffort.com/journal/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.madefromeffort.com/journal/a-standard-nobody-enforces-isn-t-a-standard</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.madefromeffort.com/journal/when-to-bring-a-gym-specialist-into-a-residential-project</loc>
