@@ -28,9 +28,15 @@ Scott joins Elizabeth Hashagen for a studio workout segment on News 12.
 
 > “Imagine if you have a dinner plate on your lower back, you don't want that to spill.”
 
-Scott Schratwieser · a cue for staying steady during shoulder taps · 1:05
+Scott Schratwieser · a cue for staying steady during shoulder taps · 1:28
 
 [Open the original News 12 clip ↗](https://www.instagram.com/reel/DMOEVLSpnke/)
+
+Watch the Fitness in 4 segment
+
+[![Your browser does not support this video player. Use the original News 12 link.](https://www.madefromeffort.com/assets/media/news12-fitness-in-4-poster.jpg)](https://www.madefromeffort.com/assets/media/news12-fitness-in-4.mp4)
+
+News 12 · be Well · Fitness in 4 with Elizabeth Hashagen. Recording provided by Scott Schratwieser.
 
 The Active Life Podcast · Episode 208
 

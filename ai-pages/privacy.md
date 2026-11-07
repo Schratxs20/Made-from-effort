@@ -26,7 +26,7 @@ Information submitted through the site is used to respond to the request, review
 
 Google Analytics, Basin, and Formspree are external services used by parts of this site. Their operation and handling of information are governed by their own current policies. The website may also link to social networks and other third-party sites; visiting those links is subject to the third party's practices. This page does not claim that every third party has the same retention, security, or privacy terms.
 
-The About and Training pages include video streamed from LinkedIn, and the About page streams podcast audio from the publisher's hosting service. Loading or playing this media connects your browser to those providers, which may receive connection information and use cookies or similar technology under their own policies. Original-source links remain available if a player does not work.
+The About page includes a News 12 segment served directly by this website. The About and Training pages also include video streamed from LinkedIn, and the About page streams podcast audio from the publisher's hosting service. Loading or playing the externally streamed media connects your browser to those providers, which may receive connection information and use cookies or similar technology under their own policies. Original-source links remain available if a player does not work.
 
 ## Questions or requests
 
