@@ -52,11 +52,11 @@ Audio interview · The Active Life Podcast
 
 ## Personal training review
 
-A client describes how his training goals developed as he worked with Scott.
+A client describes the first conversation and the coaching that followed.
 
-> “It became much, much more specific.”
+> “We spent an hour talking about my day-to-day life.”
 
-Personal training client, describing how his goals developed · 1:53
+Personal training client, describing his first meeting with Scott · 0:27
 
 [Open the original review on LinkedIn ↗](https://www.linkedin.com/posts/scott-schratwieser-ba-cscs-pn1-frcms-62a19656_wellness-healthcoach-holistic-ugcPost-6658007007129284608-ZH2R/)[Explore personal training](https://www.madefromeffort.com/training)
 
