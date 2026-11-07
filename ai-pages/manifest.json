@@ -15,7 +15,7 @@
       "source": "about.html",
       "markdown": "/ai-pages/about.md",
       "title": "About Scott Schratwieser | Made From Effort Gym Design",
-      "content_sha256": "76570aa4928bd9af33a2f51ea6f60cba68f8e8b78e110c6f638d6864ce4f94d6",
+      "content_sha256": "85cd8f2f3bef7e6df08975060622e7e7da3acd8ad430531e3de3e8460520b545",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"
@@ -25,7 +25,7 @@
       "source": "privacy.html",
       "markdown": "/ai-pages/privacy.md",
       "title": "Privacy | Made From Effort",
-      "content_sha256": "ee4a3aca4855344489fdb97e1dc8c042521cc648b022fccca6cb39f9733e85fd",
+      "content_sha256": "2eb316e0fcbf14168636890e6db053a98f0855a5e863f27369056c99160fedb8",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"
