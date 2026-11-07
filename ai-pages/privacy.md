@@ -6,7 +6,7 @@ Website information
 
 # Privacy
 
-Last updated: October 7, 2026
+Last updated: November 6, 2026
 
 This page explains the information practices visible in the Made From Effort and Performance Edge website. It is a plain-language summary, not a statement about information practices that are not described here. If you have a question about a submission, use the [contact page](https://www.madefromeffort.com/contact).
 
@@ -25,6 +25,8 @@ Information submitted through the site is used to respond to the request, review
 ## External services and links
 
 Google Analytics, Basin, and Formspree are external services used by parts of this site. Their operation and handling of information are governed by their own current policies. The website may also link to social networks and other third-party sites; visiting those links is subject to the third party's practices. This page does not claim that every third party has the same retention, security, or privacy terms.
+
+The About and Training pages include players from Instagram and LinkedIn, and the About page streams podcast audio from the publisher's hosting service. Loading or playing this media connects your browser to those providers, which may receive connection information and use cookies or similar technology under their own policies. Original-source links remain available if a player does not work.
 
 ## Questions or requests
 
