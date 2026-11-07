@@ -124,7 +124,7 @@ Sands Point Residence
 
 Private Gym · Long Island, NY
 
-View Project](https://www.madefromeffort.com/residential-gym-design#long-island-projects)
+View Project](https://www.madefromeffort.com/project-sands-point)
 [![Glen Cove Residence gym design rendering](https://www.madefromeffort.com/glen-cove-render-2.jpg)
 
 Design Study
@@ -141,31 +141,31 @@ Our Difference
 
 > "Designed by someone who understands performance. Built for those who take it seriously."
 
-After nearly a decade as a Master Instructor at Equinox and 15 years coaching private clients, every gym we design starts with one question: how does this person actually train? Not how do gyms look on Instagram.
+Scott spent nearly a decade at Equinox, including time as a Master Instructor, and has coached private clients since 2010. That experience informs the layout, equipment, storage, and circulation of every gym we plan.
 
-15
+15+
 
-### Years Training Experience
+### Years in Coaching + Fitness
 
-High-performance athletes and discerning HNW clients who demand excellence.
+Private-client coaching, trainer education, and gym planning informed by how people train.
 
 ~10
 
 ### Years at Equinox
 
-Top trainer and Master Instructor — the benchmark for luxury fitness.
+Nearly a decade at Equinox, including time as a Master Instructor.
 
 CSCS
 
 ### Certified Strength & Conditioning Specialist
 
-The gold standard in performance training certification.
+A strength and conditioning credential that informs training and equipment decisions.
 
 Now
 
 ### Active Private Clientele
 
-Still training HNW individuals — staying connected to what serious clients need.
+Ongoing private-client coaching keeps the design work connected to daily training.
 
 Who We Design For
 
@@ -285,15 +285,15 @@ Most projects complete in 8–20 weeks depending on scope.
 
 The Person Behind the Work
 
-## Trained at the *Highest Level.* Designing at It Too.
+## A Career in Coaching. *A Specialist Perspective on Design.*
 
-I started training in 2010 and spent nearly a decade at **Equinox** — first as a top trainer, then as a **Master Instructor**. I've trained high-net-worth clients and competitive athletes who demand the best from their environments.
+I started training in 2010 and spent nearly a decade at **Equinox** — first as a top trainer, then as a **Master Instructor**. That career brings together private-client coaching, trainer education, and the practical demands of a training space.
 
-The design work came naturally. When you've trained thousands of hours across the world's best facilities, you develop a sharp eye for what works — and what doesn't. I build spaces for the way people actually train.
+My coaching work informs the design decisions: where a movement needs room, which equipment serves the training, and what should be within reach. I bring that perspective to the layout, equipment plan, and conversations with the wider project team.
 
-**Currently working on a small number of large-scale projects** — private estates, yachts, commercial gyms, boutique studios, and country clubs — where every detail gets my full attention.
+**I take on a limited number of design projects at a time.** The service spans private residences, yachts, and select commercial, hospitality, and country-club spaces, with the scope agreed around each project.
 
-CSCS CertifiedEquinox Master Instructor15 Years TrainingLong Island, NYNationwide Projects
+CSCS CertifiedEquinox Master InstructorCoaching Since 2010Long Island, NYNationwide Projects
 
 [Connect with Scott on LinkedIn ↗](https://www.linkedin.com/in/scott-schratwieser-ba-cscs-pn1-frcms-62a19656)
 

@@ -168,4 +168,4 @@ Tell us about the yacht, project stage, available space, cruising environment, a
 
 [Start a Conversation](https://www.madefromeffort.com/contact?project=marine&source=yacht-service-page)
 
-[Read the M/Y Canoe Canoe case study](https://www.madefromeffort.com/project-yacht)[Explore residential design](https://www.madefromeffort.com/residential-gym-design)[Use the project estimator](https://www.madefromeffort.com/estimator)
+[Read the M/Y Canoe Canoe case study](https://www.madefromeffort.com/project-yacht)[Explore residential design](https://www.madefromeffort.com/residential-gym-design)[Discuss your project scope](https://www.madefromeffort.com/contact?project=marine&source=scope-conversation)

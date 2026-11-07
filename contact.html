@@ -483,6 +483,9 @@ select option { background: var(--white); }
   margin: 0 auto;
 }
 
+ .home-link { display: inline-block; color: var(--slate); font-size: 12px; text-decoration: none; margin-bottom: 28px; }
+ .home-link:hover { color: var(--ink); text-decoration: underline; }
+
 /* ── RESPONSIVE ──────────────────────────────── */
 @media (max-width: 700px) {
   .form-card { padding: 36px 28px; }
@@ -502,6 +505,7 @@ select option { background: var(--white); }
 <body>
 
 <section class="section">
+  <a href="/" class="home-link">← Made From Effort</a>
   <p class="section-label" id="pageLabel">Get in Touch</p>
   <h1 class="section-heading" id="pageHeading">Let's Build Something <em>Extraordinary.</em></h1>
   <p class="section-sub" id="pageSub">We take on a limited number of projects at a time. If you're serious about your training environment, we'd like to hear about it.</p>
@@ -548,9 +552,9 @@ select option { background: var(--white); }
           <span class="error-msg">Please enter a valid email address.</span>
         </div>
         <div class="field" id="field-phone">
-          <label for="phone">Phone</label>
+          <label for="phone">Phone (optional)</label>
           <input type="tel" id="phone" name="phone" placeholder="+1 (917) 000 0000" autocomplete="tel">
-          <span class="error-msg">Please enter a phone number.</span>
+          <span class="error-msg">Please enter a valid phone number or leave this blank.</span>
         </div>
       </div>
       <div class="form-nav">
@@ -612,6 +616,9 @@ select option { background: var(--white); }
               <option value="150-300">$150K – $300K</option>
               <option value="300-500">$300K – $500K</option>
               <option value="500+">$500K+</option>
+              <option value="not-defined">Budget not yet defined</option>
+              <option value="audit-consultation">Audit or consultation only</option>
+              <option value="introduction">Professional introduction</option>
             </select>
           </div>
           <span class="error-msg">Please select a budget range.</span>
@@ -625,6 +632,7 @@ select option { background: var(--white); }
               <option value="1-3">1 – 3 months</option>
               <option value="3-6">3 – 6 months</option>
               <option value="6+">6+ months</option>
+              <option value="not-sure">Not sure yet</option>
             </select>
           </div>
           <span class="error-msg">Please select a timeline.</span>
@@ -739,7 +747,7 @@ select option { background: var(--white); }
       check('firstName', fn.length > 0);
       check('lastName', ln.length > 0);
       check('email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em));
-      check('phone', ph.length > 6);
+      check('phone', ph === '' || ph.length > 6);
     }
 
     if (n === 2) {
@@ -859,6 +867,14 @@ select option { background: var(--white); }
   if (requestedProject) {
     const requestedTile = document.getElementById(`tile-${requestedProject}`);
     if (requestedTile) selectTile('projectType', requestedProject, requestedTile);
+  }
+
+  // Preserve qualification without asking an audit or introduction to imply a build budget.
+  const inquirySource = new URLSearchParams(window.location.search).get('source');
+  if (inquirySource === 'fitness-audit') {
+    document.getElementById('budget').value = 'audit-consultation';
+  } else if (inquirySource === 'referral-partners') {
+    document.getElementById('budget').value = 'introduction';
   }
 
   const facilityMedia = document.getElementById('facilityMedia');
