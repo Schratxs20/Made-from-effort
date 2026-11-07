@@ -79,6 +79,14 @@ Yes. [Residential gym design](https://www.madefromeffort.com/residential-gym-des
 
 Read more: [The Pressure Comes Second](https://www.madefromeffort.com/journal/the-pressure-comes-second) and [The Plan You Follow Beats the Plan You Love](https://www.madefromeffort.com/journal/the-plan-you-follow-beats-the-plan-you-love).
 
+Personal training review
+
+## A closer look at working with Scott
+
+[Watch a video review of Scott's personal training work on LinkedIn ↗](https://www.linkedin.com/posts/scott-schratwieser-ba-cscs-pn1-frcms-62a19656_wellness-healthcoach-holistic-ugcPost-6658007007129284608-ZH2R/)
+
+For interviews and a televised workout, see [Scott's media appearances](https://www.madefromeffort.com/about#media-appearances).
+
 Get Started
 
 ## Book a *Consultation.*

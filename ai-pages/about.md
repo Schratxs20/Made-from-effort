@@ -17,3 +17,29 @@ Performance Edge is based on Long Island, New York. The firm plans private home 
 Made From Effort is where I share project context and practical ideas about gym design and training. Portfolio pages identify whether a project is complete, in progress, or a design study. The Journal adds perspective, but a project still needs its own brief, site information, and professional review. I don't treat one room or equipment list as a universal template.
 
 [Explore residential gym design](https://www.madefromeffort.com/residential-gym-design)[See the yacht project](https://www.madefromeffort.com/project-yacht)[Read the Journal](https://www.madefromeffort.com/journal/)[Discuss a project](https://www.madefromeffort.com/contact)[For architects, builders, and referral partners](https://www.madefromeffort.com/referral-partners)
+
+## Media appearances
+
+News 12 · be Well
+
+### Fitness in 4 with Elizabeth Hashagen
+
+Scott joins Elizabeth Hashagen for a studio workout segment on News 12.
+
+[Watch the News 12 clip on Instagram ↗](https://www.instagram.com/reel/DMOEVLSpnke/)
+
+The Active Life Podcast · Episode 208
+
+### From personal trainer to personal brand
+
+A conversation with Sean Pastuch about Scott's career at Equinox, becoming a Master Instructor, and building an independent coaching business.
+
+July 10, 2023
+
+[Listen to the Active Life interview ↗](https://podcasters.spotify.com/pod/show/active-life-podcast/episodes/Starting-as-a-personal-trainer-and-growing-into-a-personal-brand-without-social-media---Scott-Schratwieser--Active-Life-Podcast-Episode-208-e2ciohr)
+
+## Personal training review
+
+A video review of Scott's personal training work, shared on LinkedIn.
+
+[Watch the training review on LinkedIn ↗](https://www.linkedin.com/posts/scott-schratwieser-ba-cscs-pn1-frcms-62a19656_wellness-healthcoach-holistic-ugcPost-6658007007129284608-ZH2R/)[Explore personal training](https://www.madefromeffort.com/training)
