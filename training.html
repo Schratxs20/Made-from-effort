@@ -201,6 +201,9 @@
     footer { padding: 32px 24px; flex-direction: column; text-align: center; }
   }
   .training-questions{max-width:1000px;margin:auto}.training-questions h2{font-size:32px}.training-questions h3{margin-top:30px}.training-questions p{line-height:1.8;max-width:760px}.training-questions a{color:inherit;text-underline-offset:4px}
+
+  .review-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:32px;align-items:center;margin:28px 0}.review-player{position:relative;aspect-ratio:16/9;width:100%;background:var(--ink)}.review-player video{position:absolute;inset:0;width:100%;height:100%;border:0}.media-quote{margin:0;padding-left:20px;border-left:2px solid var(--blue)}.training-questions .media-quote p{font:300 28px/1.5 'Cormorant',Georgia,serif;color:var(--ink);margin:0 0 12px}.media-quote figcaption{font-size:12px;line-height:1.6;color:var(--ink-light)}.media-quote blockquote{margin:0}#training-review{scroll-margin-top:80px}
+  @media(max-width:700px){.review-layout{grid-template-columns:1fr}}
 </style>
 <script src="site-events.js?v=3" defer></script>
 <link rel="alternate" type="text/markdown" href="/ai-pages/training.md" title="Markdown version">
@@ -298,7 +301,12 @@
 <section class="options-section training-questions" id="training-review" aria-labelledby="training-review-title">
   <div class="options-label">Personal training review</div>
   <h2 id="training-review-title">A closer look at working with Scott</h2>
-  <p><a href="https://www.linkedin.com/posts/scott-schratwieser-ba-cscs-pn1-frcms-62a19656_wellness-healthcoach-holistic-ugcPost-6658007007129284608-ZH2R/" target="_blank" rel="noopener noreferrer">Watch a video review of Scott's personal training work on LinkedIn ↗</a></p>
+  <p>A client reflects on the planning and follow-through behind his training.</p>
+  <div class="review-layout">
+    <figure class="media-quote"><blockquote><p>“It was very, very helpful in setting a plan and sticking with it.”</p></blockquote><figcaption>Personal training client · video review · 2:18</figcaption></figure>
+    <div class="review-player"><video controls playsinline preload="none" poster="https://media.licdn.com/dms/image/v2/C4D05AQGwunl-3NrMhg/feedshare-captions-thumbnails-dualWrite-inhouse-videocover_high/feedshare-captions-thumbnails-dualWrite-inhouse-videocover_high/0/1587392576797?e=2147483647&amp;v=beta&amp;t=zOnApgP4PYwFIWA4DclpviEK6n_DJAng76DyjMXxe78" aria-label="Personal training client video review of Scott Schratwieser"><source src="https://dms.licdn.com/playlist/vid/v2/C4D05AQGwunl-3NrMhg/feedshare-captions-thumbnails-dualWrite-inhouse-mp4_h264_aac_500k/feedshare-captions-thumbnails-dualWrite-inhouse-mp4_h264_aac_500k/0/1587392623702?e=2147483647&amp;v=beta&amp;t=DzISQoSstEuWNgeD77g4y711VrCnvMrSis3wp5j94Ew" type="video/mp4">Use the original review link to watch this video.</video></div>
+  </div>
+  <p><a href="https://www.linkedin.com/posts/scott-schratwieser-ba-cscs-pn1-frcms-62a19656_wellness-healthcoach-holistic-ugcPost-6658007007129284608-ZH2R/" target="_blank" rel="noopener noreferrer">Open the original review on LinkedIn ↗</a></p>
   <p>For interviews and a televised workout, see <a href="/about#media-appearances">Scott's media appearances</a>.</p>
 </section>
 

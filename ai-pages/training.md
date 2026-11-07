@@ -83,7 +83,15 @@ Personal training review
 
 ## A closer look at working with Scott
 
-[Watch a video review of Scott's personal training work on LinkedIn ↗](https://www.linkedin.com/posts/scott-schratwieser-ba-cscs-pn1-frcms-62a19656_wellness-healthcoach-holistic-ugcPost-6658007007129284608-ZH2R/)
+A client reflects on the planning and follow-through behind his training.
+
+> “It was very, very helpful in setting a plan and sticking with it.”
+
+Personal training client · video review · 2:18
+
+[![Use the original review link to watch this video.](https://media.licdn.com/dms/image/v2/C4D05AQGwunl-3NrMhg/feedshare-captions-thumbnails-dualWrite-inhouse-videocover_high/feedshare-captions-thumbnails-dualWrite-inhouse-videocover_high/0/1587392576797?e=2147483647&v=beta&t=zOnApgP4PYwFIWA4DclpviEK6n_DJAng76DyjMXxe78)](https://dms.licdn.com/playlist/vid/v2/C4D05AQGwunl-3NrMhg/feedshare-captions-thumbnails-dualWrite-inhouse-mp4_h264_aac_500k/feedshare-captions-thumbnails-dualWrite-inhouse-mp4_h264_aac_500k/0/1587392623702?e=2147483647&v=beta&t=DzISQoSstEuWNgeD77g4y711VrCnvMrSis3wp5j94Ew)
+
+[Open the original review on LinkedIn ↗](https://www.linkedin.com/posts/scott-schratwieser-ba-cscs-pn1-frcms-62a19656_wellness-healthcoach-holistic-ugcPost-6658007007129284608-ZH2R/)
 
 For interviews and a televised workout, see [Scott's media appearances](https://www.madefromeffort.com/about#media-appearances).
 

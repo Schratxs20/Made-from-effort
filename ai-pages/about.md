@@ -26,7 +26,11 @@ News 12 · be Well
 
 Scott joins Elizabeth Hashagen for a studio workout segment on News 12.
 
-[Watch the News 12 clip on Instagram ↗](https://www.instagram.com/reel/DMOEVLSpnke/)
+> “Imagine if you have a dinner plate on your lower back, you don't want that to spill.”
+
+Scott Schratwieser · a cue for staying steady during shoulder taps · 1:05
+
+[Open the original News 12 clip ↗](https://www.instagram.com/reel/DMOEVLSpnke/)
 
 The Active Life Podcast · Episode 208
 
@@ -36,10 +40,24 @@ A conversation with Sean Pastuch about Scott's career at Equinox, becoming a Mas
 
 July 10, 2023
 
-[Listen to the Active Life interview ↗](https://podcasters.spotify.com/pod/show/active-life-podcast/episodes/Starting-as-a-personal-trainer-and-growing-into-a-personal-brand-without-social-media---Scott-Schratwieser--Active-Life-Podcast-Episode-208-e2ciohr)
+[Open the original Active Life interview ↗](https://podcasters.spotify.com/pod/show/active-life-podcast/episodes/Starting-as-a-personal-trainer-and-growing-into-a-personal-brand-without-social-media---Scott-Schratwieser--Active-Life-Podcast-Episode-208-e2ciohr)
+
+Listen to the full conversation
+
+Your browser does not support this audio player. Use the original interview link.
+
+Audio interview · The Active Life Podcast
 
 ## Personal training review
 
-A video review of Scott's personal training work, shared on LinkedIn.
+A client describes the first conversation and the coaching that followed.
 
-[Watch the training review on LinkedIn ↗](https://www.linkedin.com/posts/scott-schratwieser-ba-cscs-pn1-frcms-62a19656_wellness-healthcoach-holistic-ugcPost-6658007007129284608-ZH2R/)[Explore personal training](https://www.madefromeffort.com/training)
+> “We spent an hour talking about my day-to-day life.”
+
+Personal training client, describing his first meeting with Scott · 0:27
+
+[![Use the original review link to watch this video.](https://media.licdn.com/dms/image/v2/C4D05AQGwunl-3NrMhg/feedshare-captions-thumbnails-dualWrite-inhouse-videocover_high/feedshare-captions-thumbnails-dualWrite-inhouse-videocover_high/0/1587392576797?e=2147483647&v=beta&t=zOnApgP4PYwFIWA4DclpviEK6n_DJAng76DyjMXxe78)](https://dms.licdn.com/playlist/vid/v2/C4D05AQGwunl-3NrMhg/feedshare-captions-thumbnails-dualWrite-inhouse-mp4_h264_aac_500k/feedshare-captions-thumbnails-dualWrite-inhouse-mp4_h264_aac_500k/0/1587392623702?e=2147483647&v=beta&t=DzISQoSstEuWNgeD77g4y711VrCnvMrSis3wp5j94Ew)
+
+[Open the original review on LinkedIn ↗](https://www.linkedin.com/posts/scott-schratwieser-ba-cscs-pn1-frcms-62a19656_wellness-healthcoach-holistic-ugcPost-6658007007129284608-ZH2R/)[Explore personal training](https://www.madefromeffort.com/training)
+
+The client video is streamed from LinkedIn; playback may depend on the provider’s availability and your browser settings.
