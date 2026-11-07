@@ -156,4 +156,4 @@ Tell us about the concept, location, square footage, programming, opening target
 
 [Start a Conversation](https://www.madefromeffort.com/contact?project=commercial&source=commercial-service-page)
 
-[Explore country club fitness design](https://www.madefromeffort.com/country-club-fitness-design)[Explore residential design](https://www.madefromeffort.com/residential-gym-design)[Use the project estimator](https://www.madefromeffort.com/estimator)
+[Explore country club fitness design](https://www.madefromeffort.com/country-club-fitness-design)[Explore residential design](https://www.madefromeffort.com/residential-gym-design)[Discuss your project scope](https://www.madefromeffort.com/contact?project=commercial&source=scope-conversation)

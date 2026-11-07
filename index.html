@@ -94,17 +94,17 @@ nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) rotat
 .nav-dropdown-menu a + a { border-top: 1px solid var(--rule); }
 
 /* HERO */
-#hero { margin-top: 60px; min-height: 620px; min-height: max(620px, calc(100svh - 60px)); position: relative; display: flex; align-items: flex-end; overflow: hidden; background: #24221d; }
+#hero { margin-top: 60px; min-height: clamp(220px, 36svh, 480px); position: relative; display: flex; align-items: flex-end; overflow: hidden; background: #24221d; }
 .hero-media, .hero-media img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
 .hero-media img { object-fit: cover; object-position: center 53%; }
 .hero-content { position: relative; z-index: 1; width: 100%; padding: 60px clamp(24px, 5vw, 80px); }
 h1 { font-family: 'Cormorant', serif; font-size: clamp(46px, 5.5vw, 80px); font-weight: 300; line-height: 1.05; color: var(--ink); margin-bottom: 28px; letter-spacing: -0.5px; }
 h1 em { font-style: italic; color: var(--ink-mid); }
-.hero-intro { scroll-margin-top: 60px; padding: 72px clamp(24px, 5vw, 80px); background: var(--white); }
+.hero-intro { scroll-margin-top: 60px; padding: 32px clamp(24px, 5vw, 80px) 56px; background: var(--white); }
 .hero-intro-inner { max-width: 1050px; margin: 0 auto; }
 .hero-intro h1 { max-width: 900px; }
 .hero-intro-copy { max-width: 780px; font-size: 18px; line-height: 1.75; color: var(--ink-light); margin-bottom: 28px; }
-@media (max-width: 600px) { .hero-intro { scroll-margin-top: 60px; padding: 48px 24px; } .hero-intro-copy { font-size: 16px; } }
+@media (max-width: 600px) { .hero-intro { scroll-margin-top: 60px; padding: 32px 24px 48px; } .hero-intro-copy { font-size: 16px; } }
 .hero-ctas { display: flex; align-items: center; }
 .btn { display: inline-block; text-decoration: none; font-family: 'Outfit', sans-serif; font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 400; transition: all 0.25s; }
 .btn-solid { background: var(--ink); color: var(--white); padding: 13px 30px; }
@@ -490,7 +490,7 @@ nav.nav-open .nav-links{display:flex}
 .nav-links .nav-cta{margin:16px 24px; text-align:center; display:block}
 .nav-dropdown-menu{display:block!important; position:static; transform:none; border:none; box-shadow:none; background:var(--off); min-width:0}
 .nav-dropdown>a::after{display:none}
-#hero{min-height:calc(100svh - 60px)}
+#hero{min-height:clamp(220px, 34svh, 340px)}
 .hero-media img{object-position:38% center}
 .hero-content{padding:42px 24px}
 #featured,#about{grid-template-columns:1fr}
@@ -545,7 +545,7 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
       </div>
     </li>
     <li><a href="#process">Process</a></li>
-    <li><a href="#about">About</a></li>
+    <li><a href="/about">About</a></li>
     <li><a href="journal/">Journal</a></li>
     <li><a href="#contact" class="nav-cta">Start a Project</a></li>
   </ul>
@@ -634,7 +634,7 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
     <a href="/project-jupiter-island" class="pc reveal d1"><div class="pc-bg"><img src="jupiter-island-hero.jpg" alt="Jupiter Island Estate"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Jupiter Island Estate</div><div class="pc-loc">Private Residence · South Florida</div></div><span class="pc-view-btn">View Project</span></a>
     <a href="/project-jericho" class="pc reveal d1"><div class="pc-bg"><img src="jericho-room-wide.jpg" alt="Jericho Private Estate"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Complete</span><div class="pc-name">Jericho Private Estate</div><div class="pc-loc">Luxury Residence · Long Island, NY</div></div><span class="pc-view-btn">View Project</span></a>
     <div class="pc reveal d2"><div class="pc-bg"><img src="IMG_6819.jpeg" alt="San Francisco Residence"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">In Progress</span><div class="pc-name">San Francisco Residence</div><div class="pc-loc">Private Home Gym · Bay Area, CA</div></div></div>
-    <a href="/residential-gym-design#long-island-projects" class="pc reveal d3"><div class="pc-bg"><img src="sands-point-cardio-wide.jpg" alt="Sands Point home gym cardio lineup, with the SkiErg at the left"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Updated Over Time</span><div class="pc-name">Sands Point Residence</div><div class="pc-loc">Private Gym · Long Island, NY</div></div><span class="pc-view-btn">View Project</span></a>
+    <a href="/project-sands-point" class="pc reveal d3"><div class="pc-bg"><img src="sands-point-cardio-wide.jpg" alt="Sands Point home gym cardio lineup, with the SkiErg at the left"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-done">Updated Over Time</span><div class="pc-name">Sands Point Residence</div><div class="pc-loc">Private Gym · Long Island, NY</div></div><span class="pc-view-btn">View Project</span></a>
     <a href="/project-glen-cove" class="pc reveal d3"><div class="pc-bg"><img src="glen-cove-render-2.jpg" alt="Glen Cove Residence gym design rendering"></div><div class="pc-overlay"></div><div class="pc-info"><span class="pc-status s-prog">Design Study</span><div class="pc-name">Glen Cove Residence</div><div class="pc-loc">Private Residence · Glen Cove, NY</div></div><span class="pc-view-btn">Explore Project</span></a>
   </div>
 </section>
@@ -646,13 +646,13 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
   <div class="reveal">
     <div class="sec-eyebrow">Our Difference</div>
     <blockquote class="why-quote">"Designed by someone who understands performance. Built for those who take it seriously."</blockquote>
-    <p class="why-body">After nearly a decade as a Master Instructor at Equinox and 15 years coaching private clients, every gym we design starts with one question: how does this person actually train? Not how do gyms look on Instagram.</p>
+    <p class="why-body">Scott spent nearly a decade at Equinox, including time as a Master Instructor, and has coached private clients since 2010. That experience informs the layout, equipment, storage, and circulation of every gym we plan.</p>
   </div>
   <div class="cred-stack reveal d1">
-    <div class="cred-item"><div class="cred-num">15</div><div><h3>Years Training Experience</h3><p>High-performance athletes and discerning HNW clients who demand excellence.</p></div></div>
-    <div class="cred-item"><div class="cred-num">~10</div><div><h3>Years at Equinox</h3><p>Top trainer and Master Instructor — the benchmark for luxury fitness.</p></div></div>
-    <div class="cred-item"><div class="cred-num">CSCS</div><div><h3>Certified Strength & Conditioning Specialist</h3><p>The gold standard in performance training certification.</p></div></div>
-    <div class="cred-item"><div class="cred-num">Now</div><div><h3>Active Private Clientele</h3><p>Still training HNW individuals — staying connected to what serious clients need.</p></div></div>
+    <div class="cred-item"><div class="cred-num">15+</div><div><h3>Years in Coaching + Fitness</h3><p>Private-client coaching, trainer education, and gym planning informed by how people train.</p></div></div>
+    <div class="cred-item"><div class="cred-num">~10</div><div><h3>Years at Equinox</h3><p>Nearly a decade at Equinox, including time as a Master Instructor.</p></div></div>
+    <div class="cred-item"><div class="cred-num">CSCS</div><div><h3>Certified Strength & Conditioning Specialist</h3><p>A strength and conditioning credential that informs training and equipment decisions.</p></div></div>
+    <div class="cred-item"><div class="cred-num">Now</div><div><h3>Active Private Clientele</h3><p>Ongoing private-client coaching keeps the design work connected to daily training.</p></div></div>
   </div>
 </section>
 
@@ -721,12 +721,12 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
   <div class="about-img"><div class="about-img-inner"></div></div>
   <div class="about-text reveal">
     <div class="sec-eyebrow">The Person Behind the Work</div>
-    <h2>Trained at the <em>Highest Level.</em><br>Designing at It Too.</h2>
-    <p>I started training in 2010 and spent nearly a decade at <strong>Equinox</strong> — first as a top trainer, then as a <strong>Master Instructor</strong>. I've trained high-net-worth clients and competitive athletes who demand the best from their environments.</p>
-    <p>The design work came naturally. When you've trained thousands of hours across the world's best facilities, you develop a sharp eye for what works — and what doesn't. I build spaces for the way people actually train.</p>
-    <p><strong>Currently working on a small number of large-scale projects</strong> — private estates, yachts, commercial gyms, boutique studios, and country clubs — where every detail gets my full attention.</p>
+    <h2>A Career in Coaching.<br><em>A Specialist Perspective on Design.</em></h2>
+    <p>I started training in 2010 and spent nearly a decade at <strong>Equinox</strong> — first as a top trainer, then as a <strong>Master Instructor</strong>. That career brings together private-client coaching, trainer education, and the practical demands of a training space.</p>
+    <p>My coaching work informs the design decisions: where a movement needs room, which equipment serves the training, and what should be within reach. I bring that perspective to the layout, equipment plan, and conversations with the wider project team.</p>
+    <p><strong>I take on a limited number of design projects at a time.</strong> The service spans private residences, yachts, and select commercial, hospitality, and country-club spaces, with the scope agreed around each project.</p>
     <div class="badges">
-      <span class="badge">CSCS Certified</span><span class="badge">Equinox Master Instructor</span><span class="badge">15 Years Training</span><span class="badge">Long Island, NY</span><span class="badge">Nationwide Projects</span>
+      <span class="badge">CSCS Certified</span><span class="badge">Equinox Master Instructor</span><span class="badge">Coaching Since 2010</span><span class="badge">Long Island, NY</span><span class="badge">Nationwide Projects</span>
     </div>
     <p class="about-link"><a href="https://www.linkedin.com/in/scott-schratwieser-ba-cscs-pn1-frcms-62a19656" target="_blank" rel="me noopener noreferrer">Connect with Scott on LinkedIn ↗</a></p>
   </div>
@@ -775,7 +775,7 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
         </div>
         <div class="f-row">
           <div class="f-group"><label for="t-email">Email</label><input type="email" id="t-email" name="email" placeholder="you@email.com"></div>
-          <div class="f-group"><label for="t-phone">Phone</label><input type="tel" id="t-phone" name="phone" placeholder="+1 (917) 000 0000"></div>
+          <div class="f-group"><label for="t-phone">Phone (optional)</label><input type="tel" id="t-phone" name="phone" placeholder="+1 (917) 000 0000"></div>
         </div>
         <div class="f-group">
           <label>Training Type</label>
@@ -830,14 +830,14 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
         <div class="f-group"><label for="last-name">Last Name</label><input type="text" id="last-name" name="last_name" placeholder="Last"></div>
       </div>
       <div class="f-group"><label for="email-field">Email</label><input type="email" name="email" id="email-field" placeholder="you@email.com"></div>
-      <div class="f-group"><label for="project-type">Project Type</label><select id="project-type" name="project_type"><option value="" disabled selected>Select one</option><option>Private Residence / Estate Gym</option><option>Yacht or Marine Installation</option><option>Commercial Gym / Boutique Studio</option><option>Country Club / Private Membership Property</option><option>Other</option></select></div>
+      <div class="f-group"><label for="project-type">Project Type</label><select id="project-type" name="project_type"><option value="" disabled selected>Select one</option><option>Private Residence / Estate Gym</option><option>Yacht or Marine Installation</option><option>Commercial Gym / Boutique Studio</option><option>Hotel / Hospitality Fitness Space</option><option>Country Club / Private Membership Property</option><option>Other</option></select></div>
       <div class="f-row" id="residential-details-row">
         <div class="f-group"><label for="space-size">Approximate Space</label><select id="space-size" name="space_size"><option value="" selected>Select if known</option><option>Under 200 sq ft</option><option>200–500 sq ft</option><option>500–1,000 sq ft</option><option>1,000+ sq ft</option><option>Not sure yet</option></select></div>
         <div class="f-group"><label for="project-stage">Project Stage</label><select id="project-stage" name="project_stage"><option value="" selected>Select one</option><option>Early idea</option><option>Design underway</option><option>Construction underway</option><option>Ready to source</option></select></div>
       </div>
       <div class="f-row">
-        <div class="f-group"><label for="budget">Budget Range</label><select id="budget" name="budget"><option value="" disabled selected>Approximate budget</option><option>$50K – $150K</option><option>$150K – $300K</option><option>$300K – $500K</option><option>$500K+</option></select></div>
-        <div class="f-group"><label for="timeline">Timeline</label><select id="timeline" name="timeline"><option value="" disabled selected>When to start</option><option>ASAP</option><option>1–3 Months</option><option>3–6 Months</option><option>6+ Months</option></select></div>
+        <div class="f-group"><label for="budget">Budget Range</label><select id="budget" name="budget"><option value="" disabled selected>Approximate budget</option><option>$50K – $150K</option><option>$150K – $300K</option><option>$300K – $500K</option><option>$500K+</option><option>Budget not yet defined</option><option>Audit or consultation only</option><option>Professional introduction</option></select></div>
+        <div class="f-group"><label for="timeline">Timeline</label><select id="timeline" name="timeline"><option value="" disabled selected>When to start</option><option>ASAP</option><option>1–3 Months</option><option>3–6 Months</option><option>6+ Months</option><option>Not sure yet</option></select></div>
       </div>
       <div class="f-group"><label for="message">Tell us about your vision</label><textarea id="message" name="message" placeholder="Describe your space, training goals, and what you're looking to build..."></textarea></div>
       <div class="f-submit"><button id="submit-btn" type="submit">Send Inquiry →</button></div>
