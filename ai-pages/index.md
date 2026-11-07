@@ -2,10 +2,6 @@
 
 Source: [https://www.madefromeffort.com/](https://www.madefromeffort.com/)
 
-![Jupiter Island private gym with wood-lined architecture, strength equipment, and garden-facing windows](https://www.madefromeffort.com/jupiter-island-hero.jpg)
-
-[Discuss Your Gym Project](https://www.madefromeffort.com/#inquiry-form)
-
 Private Gym Design & Consulting
 
 # Private Gyms, Designed for the Way You Train.
@@ -13,6 +9,8 @@ Private Gym Design & Consulting
 Drawing on more than 15 years of coaching and fitness industry experience, Scott Schratwieser works with homeowners, architects, and interior designers to create thoughtfully planned training spaces. From layout and equipment selection to procurement and installation coordination, every decision is informed by how the space will actually be used.
 
 [Discuss Your Gym Project](https://www.madefromeffort.com/#inquiry-form)
+
+![Jupiter Island private gym with wood-lined architecture, strength equipment, and garden-facing windows](https://www.madefromeffort.com/jupiter-island-hero.jpg)
 
 Private Residences + Estates·Yacht Installations·Commercial Gyms + Studios·Country Clubs·CSCS Certified·Nationwide Projects·Made From Effort·
 Private Residences + Estates·Yacht Installations·Commercial Gyms + Studios·Country Clubs·CSCS Certified·Nationwide Projects·Made From Effort·

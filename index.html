@@ -94,25 +94,31 @@ nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) rotat
 .nav-dropdown-menu a + a { border-top: 1px solid var(--rule); }
 
 /* HERO */
-#hero { margin-top: 60px; min-height: 620px; min-height: max(620px, calc(100svh - 60px)); position: relative; display: flex; align-items: flex-end; overflow: hidden; background: #24221d; }
-.hero-media, .hero-media img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
-.hero-media img { object-fit: cover; object-position: center 53%; }
-.hero-content { position: relative; z-index: 1; width: 100%; padding: 60px clamp(24px, 5vw, 80px); }
+.hero-layout { margin-top: 60px; display: grid; grid-template-columns: minmax(0, 1fr) min(45vw, calc((100svh - 60px) * 896 / 1200)); align-items: center; background: var(--white); }
+#hero { min-width: 0; margin: 0; }
+.hero-media, .hero-media img { display: block; width: 100%; }
+.hero-media img { height: auto; }
 h1 { font-family: 'Cormorant', serif; font-size: clamp(46px, 5.5vw, 80px); font-weight: 300; line-height: 1.05; color: var(--ink); margin-bottom: 28px; letter-spacing: -0.5px; }
 h1 em { font-style: italic; color: var(--ink-mid); }
-.hero-intro { scroll-margin-top: 60px; padding: 32px clamp(24px, 5vw, 80px) 56px; background: var(--white); }
-.hero-intro-inner { max-width: 1050px; margin: 0 auto; }
-.hero-intro h1 { max-width: 900px; }
-.hero-intro-copy { max-width: 780px; font-size: 18px; line-height: 1.75; color: var(--ink-light); margin-bottom: 28px; }
-@media (max-width: 600px) { .hero-intro { scroll-margin-top: 60px; padding: 32px 24px 48px; } .hero-intro-copy { font-size: 16px; } }
-.hero-ctas { display: flex; align-items: center; }
+.hero-intro { min-width: 0; scroll-margin-top: 60px; padding: 40px clamp(32px, 5vw, 80px); }
+.hero-intro-inner { max-width: 650px; margin: 0 auto; }
+.hero-intro h1 { font-size: clamp(44px, 4.6vw, 72px); }
+.hero-intro-copy { font-size: 17px; line-height: 1.65; color: var(--ink-light); margin-bottom: 28px; }
+@media (max-width: 860px) {
+  .hero-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "heading" "action" "photo" "copy"; }
+  .hero-intro, .hero-intro-inner { display: contents; }
+  .hero-heading { grid-area: heading; padding: 28px 24px 0; }
+  .hero-heading .proj-eyebrow { margin-bottom: 14px; }
+  .hero-intro h1 { font-size: clamp(38px, 7vw, 54px); margin-bottom: 20px; }
+  .hero-intro .btn { grid-area: action; justify-self: start; margin: 0 24px 28px; }
+  #hero { grid-area: photo; }
+  .hero-intro-copy { grid-area: copy; margin: 0; padding: 28px 24px 36px; font-size: 16px; }
+}
 .btn { display: inline-block; text-decoration: none; font-family: 'Outfit', sans-serif; font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 400; transition: all 0.25s; }
 .btn-solid { background: var(--ink); color: var(--white); padding: 13px 30px; }
 .btn-solid:hover { background: var(--blue); }
 .btn-outline { border: 1px solid var(--rule); color: var(--ink-light); padding: 12px 30px; }
 .btn-outline:hover { border-color: var(--ink-light); color: var(--ink); }
-#hero .btn-solid { background: var(--white); color: var(--ink); padding: 16px 29px; font-weight: 500; }
-#hero .btn-solid:hover { background: #e9e2d5; }
 
 /* MARQUEE */
 .marquee-bar { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 14px 0; overflow: hidden; background: var(--white); }
@@ -490,9 +496,6 @@ nav.nav-open .nav-links{display:flex}
 .nav-links .nav-cta{margin:16px 24px; text-align:center; display:block}
 .nav-dropdown-menu{display:block!important; position:static; transform:none; border:none; box-shadow:none; background:var(--off); min-width:0}
 .nav-dropdown>a::after{display:none}
-#hero{min-height:calc(100svh - 60px)}
-.hero-media img{object-position:38% center}
-.hero-content{padding:42px 24px}
 #featured,#about{grid-template-columns:1fr}
 .feat-content,.about-text{padding:48px 24px}
 #why{grid-template-columns:1fr;gap:48px;padding:64px 24px}
@@ -553,25 +556,24 @@ footer{padding:32px 24px;flex-direction:column;text-align:center}
 
 <!-- HERO -->
 
-<section id="hero">
-  <picture class="hero-media">
-    <img src="jupiter-island-hero.jpg" alt="Jupiter Island private gym with wood-lined architecture, strength equipment, and garden-facing windows" width="896" height="1200" fetchpriority="high">
-  </picture>
-  <div class="hero-content">
-    <div class="hero-ctas">
-      <a href="#inquiry-form" class="btn btn-solid">Discuss Your Gym Project</a>
-    </div>
-  </div>
-</section>
-
+<div class="hero-layout">
 <section id="gym-design-introduction" class="hero-intro" aria-labelledby="hero-title">
   <div class="hero-intro-inner">
+    <div class="hero-heading">
     <div class="proj-eyebrow">Private Gym Design &amp; Consulting</div>
     <h1 id="hero-title">Private Gyms, Designed for the Way You Train.</h1>
+    </div>
     <p class="hero-intro-copy">Drawing on more than 15 years of coaching and fitness industry experience, Scott Schratwieser works with homeowners, architects, and interior designers to create thoughtfully planned training spaces. From layout and equipment selection to procurement and installation coordination, every decision is informed by how the space will actually be used.</p>
     <a href="#inquiry-form" class="btn btn-solid">Discuss Your Gym Project</a>
   </div>
 </section>
+
+<section id="hero">
+  <picture class="hero-media">
+    <img src="jupiter-island-hero.jpg" alt="Jupiter Island private gym with wood-lined architecture, strength equipment, and garden-facing windows" width="896" height="1200" fetchpriority="high">
+  </picture>
+</section>
+</div>
 
 <!-- MARQUEE -->
 
