@@ -32,8 +32,6 @@ Scott Schratwieser · a cue for staying steady during shoulder taps · 1:05
 
 [Open the original News 12 clip ↗](https://www.instagram.com/reel/DMOEVLSpnke/)
 
-> [Watch Fitness in 4 with Scott Schratwieser and Elizabeth Hashagen on Instagram](https://www.instagram.com/reel/DMOEVLSpnke/)
-
 The Active Life Podcast · Episode 208
 
 ### From personal trainer to personal brand
@@ -58,6 +56,8 @@ A client describes the first conversation and the coaching that followed.
 
 Personal training client, describing his first meeting with Scott · 0:27
 
+[![Use the original review link to watch this video.](https://media.licdn.com/dms/image/v2/C4D05AQGwunl-3NrMhg/feedshare-captions-thumbnails-dualWrite-inhouse-videocover_high/feedshare-captions-thumbnails-dualWrite-inhouse-videocover_high/0/1587392576797?e=2147483647&v=beta&t=zOnApgP4PYwFIWA4DclpviEK6n_DJAng76DyjMXxe78)](https://dms.licdn.com/playlist/vid/v2/C4D05AQGwunl-3NrMhg/feedshare-captions-thumbnails-dualWrite-inhouse-mp4_h264_aac_500k/feedshare-captions-thumbnails-dualWrite-inhouse-mp4_h264_aac_500k/0/1587392623702?e=2147483647&v=beta&t=DzISQoSstEuWNgeD77g4y711VrCnvMrSis3wp5j94Ew)
+
 [Open the original review on LinkedIn ↗](https://www.linkedin.com/posts/scott-schratwieser-ba-cscs-pn1-frcms-62a19656_wellness-healthcoach-holistic-ugcPost-6658007007129284608-ZH2R/)[Explore personal training](https://www.madefromeffort.com/training)
 
-Video players are provided by Instagram and LinkedIn; playback may depend on their availability and your browser settings.
+The client video is streamed from LinkedIn; playback may depend on the provider’s availability and your browser settings.

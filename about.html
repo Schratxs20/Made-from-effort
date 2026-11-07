@@ -16,8 +16,9 @@
     .media-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:32px;margin-top:28px}.media-item{border-top:1px solid var(--rule);padding-top:22px}.media-item h3{font:300 26px/1.25 Georgia,serif;margin:0 0 12px}.media-item p{margin:0 0 16px}.media-item a{color:var(--blue);text-underline-offset:4px}.media-meta{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
     @media(max-width:600px){header{height:auto;padding:20px 0;align-items:flex-start;gap:16px;flex-direction:column}header nav{gap:16px}}
 
-    .media-grid{grid-template-columns:1fr;gap:48px}.media-item{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}.media-copy{min-width:0}.media-player{min-width:0}.media-player .instagram-media{min-width:0!important;width:100%!important;margin:0!important}.media-player iframe{max-width:100%}.media-player audio{display:block;width:100%;margin:8px 0 16px}.review-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:32px;align-items:center;margin-top:28px}.review-player{position:relative;aspect-ratio:16/9;width:100%;background:#181816}.review-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.media-quote{margin:26px 0;padding:0 0 0 20px;border-left:2px solid var(--blue);font:300 25px/1.5 Georgia,serif}.media-quote p{color:var(--ink);margin:0 0 12px}.media-quote figcaption{font:12px/1.6 Arial,sans-serif;color:var(--muted)}.media-quote blockquote{margin:0}.media-note{font-size:12px;line-height:1.6;color:var(--muted)}
+    .media-grid{grid-template-columns:1fr;gap:48px}.media-item{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}.media-copy{min-width:0}.media-player{min-width:0}.media-player audio{display:block;width:100%;margin:8px 0 16px}.review-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:32px;align-items:center;margin-top:28px}.review-player{position:relative;aspect-ratio:16/9;width:100%;background:#181816}.review-player video{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:contain}.media-quote{margin:26px 0;padding:0 0 0 20px;border-left:2px solid var(--blue);font:300 25px/1.5 Georgia,serif}.media-quote p{color:var(--ink);margin:0 0 12px}.media-quote figcaption{font:12px/1.6 Arial,sans-serif;color:var(--muted)}.media-quote blockquote{margin:0}.media-note{font-size:12px;line-height:1.6;color:var(--muted)}
     @media(max-width:700px){.media-item,.review-layout{grid-template-columns:1fr}.media-quote{font-size:23px}.media-player{width:100%;max-width:540px}}
+    .news12-item{grid-template-columns:1fr}.news12-item .media-copy{max-width:760px}
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://www.madefromeffort.com/#scott-schratwieser","name":"Scott Schratwieser","url":"https://www.madefromeffort.com/about","description":"Scott Schratwieser is a gym designer and CSCS-certified performance professional who leads Performance Edge Training + Gym Design on Long Island, New York.","jobTitle":"Founder, Gym Designer and CSCS-Certified Performance Professional","sameAs":["https://www.linkedin.com/in/scott-schratwieser-ba-cscs-pn1-frcms-62a19656","https://www.instagram.com/scottschrat"]}</script>
   <script src="site-events.js?v=2" defer></script>
@@ -37,7 +38,7 @@
     <section id="media-appearances" aria-labelledby="media-heading">
       <h2 id="media-heading">Media appearances</h2>
       <div class="media-grid">
-        <article class="media-item">
+        <article class="media-item news12-item">
           <div class="media-copy">
           <p class="media-meta">News 12 · be Well</p>
           <h3>Fitness in 4 with Elizabeth Hashagen</h3>
@@ -45,9 +46,7 @@
           <figure class="media-quote"><blockquote><p>“Imagine if you have a dinner plate on your lower back, you don't want that to spill.”</p></blockquote><figcaption>Scott Schratwieser · a cue for staying steady during shoulder taps · 1:05</figcaption></figure>
           <a href="https://www.instagram.com/reel/DMOEVLSpnke/" target="_blank" rel="noopener noreferrer">Open the original News 12 clip ↗</a>
           </div>
-          <div class="media-player">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DMOEVLSpnke/" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DMOEVLSpnke/">Watch Fitness in 4 with Scott Schratwieser and Elizabeth Hashagen on Instagram</a></blockquote>
-          </div>
+
         </article>
         <article class="media-item">
           <div class="media-copy">
@@ -70,13 +69,14 @@
       <p>A client describes the first conversation and the coaching that followed.</p>
       <div class="review-layout">
         <figure class="media-quote"><blockquote><p>“We spent an hour talking about my day-to-day life.”</p></blockquote><figcaption>Personal training client, describing his first meeting with Scott · 0:27</figcaption></figure>
-        <div class="review-player"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6658007007129284608?compact=1" title="Personal training client video review of Scott Schratwieser" loading="lazy" allow="fullscreen" allowfullscreen></iframe></div>
+        <div class="review-player"><video controls playsinline preload="none" poster="https://media.licdn.com/dms/image/v2/C4D05AQGwunl-3NrMhg/feedshare-captions-thumbnails-dualWrite-inhouse-videocover_high/feedshare-captions-thumbnails-dualWrite-inhouse-videocover_high/0/1587392576797?e=2147483647&amp;v=beta&amp;t=zOnApgP4PYwFIWA4DclpviEK6n_DJAng76DyjMXxe78" aria-label="Personal training client video review of Scott Schratwieser"><source src="https://dms.licdn.com/playlist/vid/v2/C4D05AQGwunl-3NrMhg/feedshare-captions-thumbnails-dualWrite-inhouse-mp4_h264_aac_500k/feedshare-captions-thumbnails-dualWrite-inhouse-mp4_h264_aac_500k/0/1587392623702?e=2147483647&amp;v=beta&amp;t=DzISQoSstEuWNgeD77g4y711VrCnvMrSis3wp5j94Ew" type="video/mp4">Use the original review link to watch this video.</video></div>
       </div>
       <div class="links"><a href="https://www.linkedin.com/posts/scott-schratwieser-ba-cscs-pn1-frcms-62a19656_wellness-healthcoach-holistic-ugcPost-6658007007129284608-ZH2R/" target="_blank" rel="noopener noreferrer">Open the original review on LinkedIn ↗</a><a href="/training">Explore personal training</a></div>
     </section>
-    <p class="media-note">Video players are provided by Instagram and LinkedIn; playback may depend on their availability and your browser settings.</p>
+    <p class="media-note">The client video is streamed from LinkedIn; playback may depend on the provider’s availability and your browser settings.</p>
   </main>
-  <script async src="https://www.instagram.com/embed.js"></script>
+
+
   <footer><nav aria-label="Footer"><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/llms.txt">Site guide</a><a href="/llm-info">Business facts</a></nav></footer>
 </body>
 </html>
