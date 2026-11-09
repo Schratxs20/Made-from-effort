@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[November 9, 2026 · Gym Design
+
+Plan the Movement First
+
+Most layouts start with a shopping list and work outward. The rooms that actually work start with the movements a body needs to make — then let the equipment list follow.](https://www.madefromeffort.com/journal/plan-the-movement-first)
 [November 8, 2026 · Mindset
 
 Finishing Early Means You Held Something Back

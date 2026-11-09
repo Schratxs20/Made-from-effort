@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "08b1705107330ede97fb47627454c677cc4821f4f483e540834fc680e759aa8f",
+      "content_sha256": "6392ea9bfbf96b08818f87786ea0135ee0f783522ec970b270b1adc6ffc49295",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/plan-the-movement-first",
+      "source": "journal/plan-the-movement-first.html",
+      "markdown": "/ai-pages/journal/plan-the-movement-first.md",
+      "title": "Plan the Movement First — Made From Effort",
+      "content_sha256": "42a0c57ed7cb53e3b04fe7ff41fd0a341d929d9f8915821677b94605c9f7ab1e",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"
