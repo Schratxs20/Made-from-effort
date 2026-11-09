@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Apify__call-actor",
+      "mcp__Apify__get-dataset-items",
+      "mcp__Apify__apify--web-fetch",
+      "mcp__Apify__apify--rag-web-browser",
+      "mcp__Gmail__search_threads",
+      "mcp__Gmail__get_thread",
+      "Write",
+      "Edit",
+      "Bash(git pull *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(python3 scripts/build_journal.py)",
+      "Bash(mkdir -p *)"
+    ]
+  }
+}
