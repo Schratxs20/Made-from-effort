@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "b06e4041f0ce97fe51044014ad5691c60ac7f50f1c9f470b6f57c8d6c676cb1a",
+      "content_sha256": "08b1705107330ede97fb47627454c677cc4821f4f483e540834fc680e759aa8f",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/finishing-early-means-you-held-something-back",
+      "source": "journal/finishing-early-means-you-held-something-back.html",
+      "markdown": "/ai-pages/journal/finishing-early-means-you-held-something-back.md",
+      "title": "Finishing Early Means You Held Something Back — Made From Effort",
+      "content_sha256": "4dd8b6e1961340bafc27d772d9af306c0d708db525c5e89daf31485aa3b93d69",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"

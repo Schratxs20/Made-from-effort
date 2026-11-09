@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[November 8, 2026 · Mindset
+
+Finishing Early Means You Held Something Back
+
+Stopping once a set, a session, or an idea feels "good enough" isn't efficiency. It's banking the discomfort that would have actually gotten you somewhere better.](https://www.madefromeffort.com/journal/finishing-early-means-you-held-something-back)
 [November 5, 2026 · Mindset
 
 A Standard Nobody Enforces Isn't a Standard
