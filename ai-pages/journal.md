@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[November 12, 2026 · Mindset
+
+You Can't Outspend, So Outfocus
+
+Without the budget, the schedule, or the equipment everyone else has, the instinct is to try to compete anyway, spread thin. The better move is to stop competing on resources and start competing on where the effort actually lands.](https://www.madefromeffort.com/journal/you-can-t-outspend-so-outfocus)
 [November 9, 2026 · Gym Design
 
 Plan the Movement First

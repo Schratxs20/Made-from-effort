@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "6392ea9bfbf96b08818f87786ea0135ee0f783522ec970b270b1adc6ffc49295",
+      "content_sha256": "d796356d8c4fba9c27e9b76d1262d848ac122d00fca70f8bcec59eba2a41b34d",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/you-can-t-outspend-so-outfocus",
+      "source": "journal/you-can-t-outspend-so-outfocus.html",
+      "markdown": "/ai-pages/journal/you-can-t-outspend-so-outfocus.md",
+      "title": "You Can't Outspend, So Outfocus — Made From Effort",
+      "content_sha256": "7b45a86126f166d329a5276ab08cf328c745fe4a537c64ef6e51067df195e1bd",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"
