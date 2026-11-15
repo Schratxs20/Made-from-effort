@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[November 15, 2026 · Consistency
+
+The Second Time Is the Signal
+
+Hitting the same wall once is bad luck. Hitting it twice isn't — it's information. The second time is when you stop solving it fresh and start building something that solves it for good.](https://www.madefromeffort.com/journal/the-second-time-is-the-signal)
 [November 12, 2026 · Mindset
 
 You Can't Outspend, So Outfocus

@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "d796356d8c4fba9c27e9b76d1262d848ac122d00fca70f8bcec59eba2a41b34d",
+      "content_sha256": "408a1be64db9e72cb4f415a4a5cdabf69d22558e691ae8f03d684943343a7b79",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/the-second-time-is-the-signal",
+      "source": "journal/the-second-time-is-the-signal.html",
+      "markdown": "/ai-pages/journal/the-second-time-is-the-signal.md",
+      "title": "The Second Time Is the Signal — Made From Effort",
+      "content_sha256": "7a7a46bf37b316543bf4ea60b7cbd254c5bd2c955ab9ef03f24f9d36f46e3ebe",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"
