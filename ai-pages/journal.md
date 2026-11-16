@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[November 16, 2026 · Gym Design
+
+The Room Doesn't Have to Hold Everything
+
+A tight footprint pushes most people to cram the whole program inside four walls. The better fix is deciding which few movements actually need more room than any gym gives for free — and designing the space just outside the room to carry them instead.](https://www.madefromeffort.com/journal/the-room-doesn-t-have-to-hold-everything)
 [November 15, 2026 · Consistency
 
 The Second Time Is the Signal

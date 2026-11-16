@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "408a1be64db9e72cb4f415a4a5cdabf69d22558e691ae8f03d684943343a7b79",
+      "content_sha256": "e8495c292c45af15bcc95db837d233f6771c8f945d1febc13d0a72acd86d1f47",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/the-room-doesn-t-have-to-hold-everything",
+      "source": "journal/the-room-doesn-t-have-to-hold-everything.html",
+      "markdown": "/ai-pages/journal/the-room-doesn-t-have-to-hold-everything.md",
+      "title": "The Room Doesn't Have to Hold Everything — Made From Effort",
+      "content_sha256": "7fbe174d36c21809bce435ed2e3728f3b9b43d27f51d0412bfa1307b71c09cc4",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"
