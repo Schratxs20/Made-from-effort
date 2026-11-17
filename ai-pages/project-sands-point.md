@@ -50,6 +50,10 @@ Training equipment beside the windows.
 
 Cable training and accessory storage.
 
+![A vaulted room at the Sands Point residence with mirrored walls, wood flooring, a massage table, and training equipment](https://www.madefromeffort.com/sands-point-vaulted-room.webp)
+
+A separate room at the residence, with mirrors and wood flooring beneath a vaulted ceiling.
+
 ![Sands Point home gym cardio pieces, SkiErg positioned at the left of the lineup](https://www.madefromeffort.com/sands-point-cardio-wide.jpg)
 
 Cardio lineup, with the SkiErg at the left. One of the newer room views.
