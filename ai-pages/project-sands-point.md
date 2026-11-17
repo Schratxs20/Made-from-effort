@@ -30,6 +30,22 @@ These views show different arrangements rather than a single frozen layout. If a
 
 ## Selected project views
 
+![Dumbbell racks, wall-mounted barbells, and a cable station beneath the sloped ceiling](https://www.madefromeffort.com/sands-point-strength-storage.webp)
+
+Free weights and wall-mounted barbell storage.
+
+![Strength rig with adjustable benches and weight plates in the Sands Point home gym](https://www.madefromeffort.com/sands-point-strength-rig.webp)
+
+Strength rig, benches, and plate storage.
+
+![Rowing and strength equipment beside the windows in the Sands Point home gym](https://www.madefromeffort.com/sands-point-window-training-area.webp)
+
+Training equipment beside the windows.
+
+![Cable station with attachments, exercise balls, and mats in the Sands Point home gym](https://www.madefromeffort.com/sands-point-cable-station.webp)
+
+Cable training and accessory storage.
+
 ![Sands Point home gym cardio pieces, SkiErg positioned at the left of the lineup](https://www.madefromeffort.com/sands-point-cardio-wide.jpg)
 
 Cardio lineup, with the SkiErg at the left. One of the newer room views.
