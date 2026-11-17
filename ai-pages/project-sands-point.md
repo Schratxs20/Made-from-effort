@@ -30,6 +30,10 @@ These views show different arrangements rather than a single frozen layout. If a
 
 ## Selected project views
 
+![Wide view of the Sands Point home gym with a central strength rig, benches, cable station, and cardio equipment](https://www.madefromeffort.com/sands-point-training-floor-wide.webp)
+
+The training floor, with the strength rig at the center and cable and cardio equipment along the sides.
+
 ![Dumbbell racks, wall-mounted barbells, and a cable station beneath the sloped ceiling](https://www.madefromeffort.com/sands-point-strength-storage.webp)
 
 Free weights and wall-mounted barbell storage.
