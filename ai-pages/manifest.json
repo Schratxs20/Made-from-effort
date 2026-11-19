@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "e8495c292c45af15bcc95db837d233f6771c8f945d1febc13d0a72acd86d1f47",
+      "content_sha256": "bbd682eef3e5181cfc4ec3720d4ce3034d9ac14edecccd9f1b88ca39ed4a0418",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/doing-it-yourself-isn-t-a-permanent-strategy",
+      "source": "journal/doing-it-yourself-isn-t-a-permanent-strategy.html",
+      "markdown": "/ai-pages/journal/doing-it-yourself-isn-t-a-permanent-strategy.md",
+      "title": "Doing It Yourself Isn't a Permanent Strategy — Made From Effort",
+      "content_sha256": "a2e752a69ec3895c9d0b94fa14be88343a71fdcd828987d0aea72e8eb8e1e252",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"

@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[November 19, 2026 · Mindset
+
+Doing It Yourself Isn't a Permanent Strategy
+
+Running your own training early on builds something real. Still running every part of it yourself once that stops being the efficient move isn't discipline anymore — it's a cost you've stopped doing the math on.](https://www.madefromeffort.com/journal/doing-it-yourself-isn-t-a-permanent-strategy)
 [November 16, 2026 · Gym Design
 
 The Room Doesn't Have to Hold Everything
