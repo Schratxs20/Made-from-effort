@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "bbd682eef3e5181cfc4ec3720d4ce3034d9ac14edecccd9f1b88ca39ed4a0418",
+      "content_sha256": "0fc9ac86db78e27a2efa6bc61c0ed0c7113dd43ae4a70e2e08af0438c5cade51",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/build-the-capability-the-commitment-demands",
+      "source": "journal/build-the-capability-the-commitment-demands.html",
+      "markdown": "/ai-pages/journal/build-the-capability-the-commitment-demands.md",
+      "title": "Build the Capability the Commitment Demands — Made From Effort",
+      "content_sha256": "0be3bb254f3bb11601a26565ed52d62fc90eccaf4cdc491c1b8bbedf61d94c16",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"

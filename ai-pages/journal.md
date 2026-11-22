@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[November 22, 2026 · Mindset
+
+Build the Capability the Commitment Demands
+
+Waiting until you're ready has the order backwards. Commit to the real thing first, then let that commitment force the capability into existence — instead of waiting for a capability that has no real reason to show up on its own.](https://www.madefromeffort.com/journal/build-the-capability-the-commitment-demands)
 [November 19, 2026 · Mindset
 
 Doing It Yourself Isn't a Permanent Strategy
