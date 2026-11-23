@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "0fc9ac86db78e27a2efa6bc61c0ed0c7113dd43ae4a70e2e08af0438c5cade51",
+      "content_sha256": "7b46b9b9544593498f0f7ec40054a05ddb2597ef334955163acf007671bc1b88",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/a-garage-gym-never-stops-being-a-garage",
+      "source": "journal/a-garage-gym-never-stops-being-a-garage.html",
+      "markdown": "/ai-pages/journal/a-garage-gym-never-stops-being-a-garage.md",
+      "title": "A Garage Gym Never Stops Being a Garage — Made From Effort",
+      "content_sha256": "3a6991c0e47530fe0713de1555dc9a2500476d81d99f397756e62819b49e62de",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"

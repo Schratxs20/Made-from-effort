@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[November 23, 2026 · Gym Design
+
+A Garage Gym Never Stops Being a Garage
+
+Most garage gym plans treat the room like it's been handed over entirely. It hasn't. The door still has to open, the cars might still need to fit, and the boundary between "gym" and "garage" has to be designed on purpose, not discovered by accident.](https://www.madefromeffort.com/journal/a-garage-gym-never-stops-being-a-garage)
 [November 22, 2026 · Mindset
 
 Build the Capability the Commitment Demands
