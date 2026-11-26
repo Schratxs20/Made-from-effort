@@ -6,6 +6,11 @@ On Training & Consistency
 
 # The Journal
 
+[November 26, 2026 · Mindset
+
+The Session Doesn't Wait for the Feeling
+
+Waiting to feel motivated before training treats the feeling as a prerequisite. The people who actually produce consistently show up on schedule whether the feeling arrives or not — and the showing up is usually what produces it.](https://www.madefromeffort.com/journal/the-session-doesn-t-wait-for-the-feeling)
 [November 23, 2026 · Gym Design
 
 A Garage Gym Never Stops Being a Garage

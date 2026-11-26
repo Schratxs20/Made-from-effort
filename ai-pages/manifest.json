@@ -225,7 +225,17 @@
       "source": "journal/index.html",
       "markdown": "/ai-pages/journal.md",
       "title": "Journal — Made From Effort",
-      "content_sha256": "7b46b9b9544593498f0f7ec40054a05ddb2597ef334955163acf007671bc1b88",
+      "content_sha256": "5d7fad8f9cce0ea3ec0344a971990c12642dfbc9edbe90467c6edf5845504d7b",
+      "title_test": "awaiting_eligible_baseline",
+      "crawler_review": "weekly_by_canonical_url",
+      "facts": "https://www.madefromeffort.com/llm-info"
+    },
+    {
+      "url": "https://www.madefromeffort.com/journal/the-session-doesn-t-wait-for-the-feeling",
+      "source": "journal/the-session-doesn-t-wait-for-the-feeling.html",
+      "markdown": "/ai-pages/journal/the-session-doesn-t-wait-for-the-feeling.md",
+      "title": "The Session Doesn't Wait for the Feeling — Made From Effort",
+      "content_sha256": "3521f1cd8c6ddcdc0dbe102ffa5168a090251a2706c170fe7b025f431c718a4f",
       "title_test": "awaiting_eligible_baseline",
       "crawler_review": "weekly_by_canonical_url",
       "facts": "https://www.madefromeffort.com/llm-info"
